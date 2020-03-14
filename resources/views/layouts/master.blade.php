@@ -4,9 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{asset('css/template.css')}}">
-    <link rel="stylesheet" href="{{asset('css/customselect.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/template.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/customselect.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     @stack('css')
@@ -95,8 +95,8 @@
                 </div>
             </div>
         </div>
-        <script src="{{asset('js/app.js')}}"></script>
-        <script src="{{asset('js/searcharea.js')}}"></script>
+        <script src="{{secure_asset('js/app.js')}}"></script>
+        <script src="{{secure_asset('js/searcharea.js')}}"></script>
         @stack('script')
     </body>
     </html>
