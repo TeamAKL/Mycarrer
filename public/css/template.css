@@ -207,3 +207,9 @@ input[type="text"]:focus, input[type="submit"]:focus, #selectoption:focus {
     font-size: 24px;
     color: #fff;
 }
+
+
+/* ============ Register Page ============= */
+.register-container {
+    padding: 30px 0;
+}
