@@ -76,5 +76,5 @@
 
 
 @push('css')
-<link rel="stylesheet" href="{{asset('css/banner.css')}}">
+<link rel="stylesheet" href="{{secure_asset('css/banner.css')}}">
 @endpush
