@@ -1,5 +1,9 @@
 /* ============= Hero Area =========== */
 
+.jumbotron {
+    overflow: hidden !important;
+}
+
 .bg-jumbotron {
     background-image: url("../images/hero-img.jpg");
     background-repeat: no-repeat;
