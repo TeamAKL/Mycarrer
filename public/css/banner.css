@@ -47,7 +47,7 @@
 }
 .user-search-form {
     /* padding-top: 30px;  */
-    padding-top: 50px; /* For Unexpended state */
+    padding-top: 65px; /* For Unexpended state */
 }
 
 .search-model {
@@ -55,8 +55,9 @@
     display: inline-block;
     overflow: hidden;
     position: absolute;
+    padding-bottom: 3px;
     /* right: 91px; */
-    right: 23px; /*for unexpended */
+    right: 8px; /*for unexpended */
 }
 
 .search-model:hover {
@@ -76,7 +77,7 @@
 }
 
 .search-model:hover:after {
-    transform: rotate(0) translate(0);
+    transform: rotate(0) translateX(18px);
     height: 2px;
     width: 111px;
 }
@@ -199,4 +200,35 @@
 .expend-search-form {
     display: none;
     /* z-index: -1; */
+}
+
+.modal-title {
+    font-weight: 600;
+}
+
+.modal-close:focus {
+    outline: none;
+}
+
+.shearch-btn {
+    padding: 12px 41px;
+    text-align: center;
+    color: #fff;
+    background: #0361a4;
+    border: 1px solid #5d4da8;
+    cursor: pointer;
+}
+
+.shearch-btn:hover {
+    background: #015ea1;
+}
+
+
+.label-color {
+    font-weight: 600;
+    color: #0361a4;
+}
+
+.month-search {
+    padding-bottom: 15px;
 }

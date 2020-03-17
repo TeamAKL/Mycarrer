@@ -13,10 +13,10 @@ $(document).ready(function() {
     });
 
     $("#close-icon").bind('click', function() {
-        $(".user-search-form").css("padding-top", "50px");
+        $(".user-search-form").css("padding-top", "65px");
         $(".expend-search-form").css("display", "none");
-        $(".search-model").css("right", "26px");
-        $(".search-engin").css("width", "692.98px");
+        $(".search-model").css("right", "8px");
+        $(".search-engin").css("width", "60%");
         $(".right-side").removeClass("right-side-close");
         $("#change-md").removeClass("col-md-4");
         $("#change-md").addClass("col-md-10");

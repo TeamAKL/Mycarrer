@@ -61,7 +61,7 @@
                         </div>
                     </div>
                 </form>
-                <a href="http://" class="search-model">Advanced Search</a>
+                <a href="http://" class="search-model" data-toggle="modal" data-target=".bd-example-modal-lg">Advanced Search</a>
             </div>
 
             <div class="right-side">
@@ -73,7 +73,92 @@
     </div>
 </div>
 
-
+<!-- Search Modal -->
+<div class="modal fade bd-example-modal-lg" tabindex="-1" role="dialog" aria-labelledby="myLargeModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+            <form>
+                <div class="modal-header">
+                    <h5 class="modal-title">ADVANCED SEARCH</h5>
+                    <button type="button" class="close modal-close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="form-group col-md-6">
+                            <label for="skill" class="label-color">Key Skill</label>
+                            <input type="text" class="form-control" id="skill" placeholder="Enter Job Key">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="loaction" class="label-color">Locations</label>
+                            <input type="text" class="form-control" id="loaction" placeholder="Location">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="experience" class="label-color">Experience</label>
+                            <select id="experience" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label class="month-search">  </label>
+                            <select class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="industry" class="label-color">Industry</label>
+                            <select id="industry" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="function" class="label-color">Function</label>
+                            <select id="function" class="form-control">
+                                <option selected>Choose...</option>
+                                <option>...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="d-flex justify-content-center my-4">
+                        <input type="submit" value="Show Jobs" class="shearch-btn">
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+{{-- <div class="modal fade bd-example-modal-lg" id="staticBackdrop" data-backdrop="static" tabindex="-1" role="dialog" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">ADVANCED SEARCH</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <form>
+                    <div class="form-row">
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="First name">
+                        </div>
+                        <div class="col">
+                            <input type="text" class="form-control" placeholder="Last name">
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Understood</button>
+            </div>
+        </div>
+    </div>
+</div> --}}
 
 @push('css')
 <link rel="stylesheet" href="{{asset('css/banner.css')}}">
