@@ -1,0 +1,12 @@
+.singup_btn{
+    border: 1px solid #015ea1;
+    width: 100%;
+    text-decoration: none;
+    padding: 5px 10px;
+}
+
+.singup_btn:hover{
+    background: #1d68a7;
+    color:#FFF;
+    text-decoration: none;
+}
