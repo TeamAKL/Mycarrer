@@ -15,7 +15,7 @@ $(document).ready(function() {
     $("#close-icon").bind('click', function() {
         $(".user-search-form").css("padding-top", "50px");
         $(".expend-search-form").css("display", "none");
-        $(".search-model").css("right", "91px");
+        $(".search-model").css("right", "26px");
         $(".search-engin").css("width", "692.98px");
         $(".right-side").removeClass("right-side-close");
         $("#change-md").removeClass("col-md-4");
