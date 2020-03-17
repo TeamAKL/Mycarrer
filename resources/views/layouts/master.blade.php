@@ -24,27 +24,35 @@
                 <div class="nav-wapper">
                     <ul class="custom-nav-items">
                        <li class="dropdown">
-                          <a href="" class="dropbtn">Dropdown</a>
+                          <a href="" class="dropbtn">JOB SEARCH</a>
                           <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="#">JOB BY COMPANY</a>
+                            <a href="#">JOB BY POSITION</a>
+                            <a href="#">JOB BY SKILL</a>
+                            <a href="#">PART TIME JOB</a>
+
                           </div>
                         </li>
                         <li class="dropdown">
-                          <a href="" class="dropbtn">Dropdown</a>
+                          <a href="" class="dropbtn">FRESHER </a>
+                          
+                        </li>
+                        <li class="dropdown">
+                          <a href="" class="dropbtn">BLOG</a>
                           <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="#"> NEWS</a>
+                            <a href="#">JS TOOLKITS</a>
+                            <a href="#">EMPLOYER TOOLKITS</a>
+                            <a href="#">HOW TO LOGIN</a>
+                            <a href="#">HOW TO POST</a>
+
                           </div>
                         </li>
                         <li class="dropdown">
-                          <a href="" class="dropbtn">Dropdown</a>
+                          <a href="" class="dropbtn">ABOUT</a>
                           <div class="dropdown-content">
-                            <a href="#">Link 1</a>
-                            <a href="#">Link 2</a>
-                            <a href="#">Link 3</a>
+                            <a href="#">JOB SEEKERS TOOLKITS</a>
+                            <a href="#">EMPLOYER TOOLKITS</a>
                           </div>
                         </li>
                     </ul>
