@@ -12,8 +12,8 @@
 
 .search-engin {
     position: relative;
-    width: 692.98px;
-    /* width: 100%; */
+    /* width: 692.98px; */
+    width: 60%;
     height: 250px;
     padding: 25px;
     background: rgba(0,0,0,.5);
@@ -168,6 +168,8 @@
     flex-direction: row;
     flex-flow: wrap;
     justify-content: space-between;
+    width: 100%;
+    overflow: hidden;
 }
 
 .right-side {
