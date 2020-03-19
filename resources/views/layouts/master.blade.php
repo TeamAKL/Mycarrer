@@ -1,10 +1,10 @@
 <!---
--         -    -         -      - - - -         -         - - - - -        - - - - -   - - - - -   - - - - -
-- -     - -     -       -      -               -  -       -         -      -           -           -        -
--   - -   -       -   -       -               -    -      -          -     -           -           -         -
--         -         -         -              - -  - -     - - - - - -      - - - - -   - - - - -   - - - - - -
--         -         -          -            -        -    -        -       -           -           -        -
--         -         -            - - - -   -          -   -         -      - - - - -   - - - - -   -         -
+    -         -    -         -      - - - -         -         - - - - -        - - - - -   - - - - -   - - - - -
+    - -     - -     -       -      -               -  -       -         -      -           -           -        -
+    -   - -   -       -   -       -               -    -      -          -     -           -           -         -
+    -         -         -         -              - -  - -     - - - - - -      - - - - -   - - - - -   - - - - - -
+    -         -         -          -            -        -    -        -       -           -           -        -
+    -         -         -            - - - -   -          -   -         -      - - - - -   - - - - -   -         -
 -->
 
 <!DOCTYPE html>
@@ -26,48 +26,48 @@
         <div class="container">
             <div class="custom-nav-bar">
                 <div class="nav-logo">
-                    <a href="http://" class="monster-logo">
+                <a href="{{url("/")}}" class="monster-logo">
                         <img src="{{asset('images/monster-logo.svg')}}" alt="">
                     </a>
                 </div>
                 <div class="nav-wapper">
                     <ul class="custom-nav-items">
-                       <li class="dropdown">
-                          <a href="" class="dropbtn">JOB SEARCH</a>
-                          <div class="dropdown-content">
-                            <a href="#">JOB BY COMPANY</a>
-                            <a href="#">JOB BY POSITION</a>
-                            <a href="#">JOB BY SKILL</a>
-                            <a href="#">PART TIME JOB</a>
+                        <li class="dropdown">
+                            <a href="" class="dropbtn">JOB SEARCH</a>
+                            <div class="dropdown-content">
+                                <a href="#">JOB BY COMPANY</a>
+                                <a href="#">JOB BY POSITION</a>
+                                <a href="#">JOB BY SKILL</a>
+                                <a href="#">PART TIME JOB</a>
 
-                          </div>
+                            </div>
                         </li>
                         <li class="dropdown">
-                          <a href="" class="dropbtn">FRESHER </a>
+                            <a href="" class="dropbtn">FRESHER </a>
 
                         </li>
                         <li class="dropdown">
-                          <a href="" class="dropbtn">BLOG</a>
-                          <div class="dropdown-content">
-                            <a href="#"> NEWS</a>
-                            <a href="#">JS TOOLKITS</a>
-                            <a href="#">EMPLOYER TOOLKITS</a>
-                            <a href="#">HOW TO LOGIN</a>
-                            <a href="#">HOW TO POST</a>
+                            <a href="" class="dropbtn">BLOG</a>
+                            <div class="dropdown-content">
+                                <a href="#"> NEWS</a>
+                                <a href="#">JS TOOLKITS</a>
+                                <a href="#">EMPLOYER TOOLKITS</a>
+                                <a href="#">HOW TO LOGIN</a>
+                                <a href="#">HOW TO POST</a>
 
-                          </div>
+                            </div>
                         </li>
                         <li class="dropdown">
-                          <a href="" class="dropbtn">ABOUT</a>
-                          <div class="dropdown-content">
-                            <a href="#">JOB SEEKERS TOOLKITS</a>
-                            <a href="#">EMPLOYER TOOLKITS</a>
-                          </div>
+                            <a href="" class="dropbtn">ABOUT</a>
+                            <div class="dropdown-content">
+                                <a href="#">JOB SEEKERS TOOLKITS</a>
+                                <a href="#">EMPLOYER TOOLKITS</a>
+                            </div>
                         </li>
                     </ul>
                     <ul class="login-section-nav">
                         <li class="nav-link">
-                        <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+                            <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
                             <li class="nav-link"><a href="" class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</a></li>
                         </ul>
                     </div>
@@ -75,25 +75,72 @@
             </div>
         </header>
 
-        @yield('content')
+        <div class="custom-margin">
+            @yield('content')
+        </div>
 
         <!---- Footer --->
-        <div class="container mt-4">
-            <div class="footer-section row">
-                <div class="col-md-3">
-                    <div class="footer-title">
-                        <h5>Job Seekers</h5>
+        <div class="footer-social mt-4">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">Logo in SS</div>
+                    <div class="col-md-3">
+                        <a href="tel:+"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>099999997</a>
                     </div>
-                    <ul class="footer-items">
-                        <li><a href="http://">Job Search</a></li>
-                        <li><a href="http://">Job Search</a></li>
-                        <li><a href="http://">Job Search</a></li>
-                        <li><a href="http://">Job Search</a></li>
-                    </ul>
+                    <div class="col-md-3"><a href="mailto:"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i>info@mycareer.com</a></div>
+                    <div class="col-md-3 last-social-items">
+                        <a href="mailto:" class="pl"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                        <a href="mailto:" class="pl"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                        <a href="http://" class="pl"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                    </div>
                 </div>
-                <div class="col-md-3">Two</div>
-                <div class="col-md-3">Three</div>
-                <div class="col-md-3">Four</div>
+            </div>
+        </div>
+        <div class="footer-section">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div>
+                            <h5 class="footer-title">Job Seekers</h5>
+                            <a href="http://" class="d-block footer-link">Job Search</a>
+                            <a href="http://" class="d-block footer-link">Log In</a>
+                            <a href="http://" class="d-block footer-link">Upload Resume</a>
+                            <a href="http://" class="d-block footer-link">Free Job Alert</a>
+                            <a href="http://" class="d-block footer-link">Find Companies</a>
+                            <a href="http://" class="d-block footer-link">Help</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <h5 class="footer-title">Employers</h5>
+                            <a href="http://" class="d-block footer-link">Employer Log In</a>
+                            <a href="http://" class="d-block footer-link">Job Posting</a>
+                            <a href="http://" class="d-block footer-link">Access Resume Database</a>
+                            <a href="http://" class="d-block footer-link">Advertise with Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <h5 class="footer-title">Legal</h5>
+                            <a href="http://" class="d-block footer-link">Security</a>
+                            <a href="http://" class="d-block footer-link">Policy</a>
+                            <a href="http://" class="d-block footer-link">Terms of Us</a>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div>
+                            <h5 class="footer-title">About Us</h5>
+                            <a href="http://" class="d-block footer-link">Career with Us</a>
+                            <a href="http://" class="d-block footer-link">Send Feedback</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="copyright-footer">
+            <div class="container">
+                <p class="copyright">&copy; 2020 MyCareer- All Rights Reserved</p>
             </div>
         </div>
 
