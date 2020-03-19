@@ -1,3 +1,12 @@
+<!---
+-         -    -         -      - - - -         -         - - - - -        - - - - -   - - - - -   - - - - -
+- -     - -     -       -      -               -  -       -         -      -           -           -        -
+-   - -   -       -   -       -               -    -      -          -     -           -           -         -
+-         -         -         -              - -  - -     - - - - - -      - - - - -   - - - - -   - - - - - -
+-         -         -          -            -        -    -        -       -           -           -        -
+-         -         -            - - - -   -          -   -         -      - - - - -   - - - - -   -         -
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -35,7 +44,7 @@
                         </li>
                         <li class="dropdown">
                           <a href="" class="dropbtn">FRESHER </a>
-                          
+
                         </li>
                         <li class="dropdown">
                           <a href="" class="dropbtn">BLOG</a>
@@ -58,7 +67,7 @@
                     </ul>
                     <ul class="login-section-nav">
                         <li class="nav-link">
-                            <a href="" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
+                        <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
                             <li class="nav-link"><a href="" class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</a></li>
                         </ul>
                     </div>
@@ -67,6 +76,26 @@
         </header>
 
         @yield('content')
+
+        <!---- Footer --->
+        <div class="container mt-4">
+            <div class="footer-section row">
+                <div class="col-md-3">
+                    <div class="footer-title">
+                        <h5>Job Seekers</h5>
+                    </div>
+                    <ul class="footer-items">
+                        <li><a href="http://">Job Search</a></li>
+                        <li><a href="http://">Job Search</a></li>
+                        <li><a href="http://">Job Search</a></li>
+                        <li><a href="http://">Job Search</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3">Two</div>
+                <div class="col-md-3">Three</div>
+                <div class="col-md-3">Four</div>
+            </div>
+        </div>
 
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('js/searcharea.js')}}"></script>

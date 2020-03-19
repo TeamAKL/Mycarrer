@@ -1,7 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
-<div class="container">
+<div class="container mt-4">
     <div class="row d-flex align-items-start">
         <div class="col-md-4">
             <div class="card">
