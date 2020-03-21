@@ -85,9 +85,9 @@
                 <div class="row">
                     <div class="col-md-3">Logo in SS</div>
                     <div class="col-md-3">
-                        <a href="tel:+"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>099999997</a>
+                        <a href="tel:+9599771777212"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09771777212</a>
                     </div>
-                    <div class="col-md-3"><a href="mailto:"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i>info@mycareer.com</a></div>
+                    <div class="col-md-3"><a href="mailto:info@mycareersmyanmar.com"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i>info@mycareersmyanmar.com</a></div>
                     <div class="col-md-3 last-social-items">
                         <a href="mailto:" class="pl"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
                         <a href="mailto:" class="pl"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
@@ -140,7 +140,7 @@
 
         <div class="copyright-footer">
             <div class="container">
-                <p class="copyright">&copy; 2020 MyCareer- All Rights Reserved</p>
+                <p class="copyright">&copy; 2020 MyCareers- All Rights Reserved</p>
             </div>
         </div>
 
