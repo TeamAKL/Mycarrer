@@ -21,3 +21,7 @@
     </div>
 </div>
 @endsection
+
+@push('css')
+    <link rel="stylesheet" href="{{asset('css/slider.css')}}">
+@endpush
