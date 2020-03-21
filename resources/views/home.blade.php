@@ -6,7 +6,6 @@
     <!-- Company Slide -->
     <div class="container">
         <div class="company-slider">
-
         </div>
     </div>
 
