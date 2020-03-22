@@ -26,7 +26,7 @@
         <div class="container">
             <div class="custom-nav-bar">
                 <div class="nav-logo">
-                <a href="{{url("/")}}" class="monster-logo">
+                    <a href="{{url("/")}}" class="monster-logo">
                         <img src="{{asset('images/monster-logo.svg')}}" alt="">
                     </a>
                 </div>
@@ -83,7 +83,9 @@
         <div class="footer-social mt-4">
             <div class="container">
                 <div class="row">
-                    <div class="col-md-3">Logo in SS</div>
+                    <div class="col-md-3" style="color:  #3490dc;">
+                            <i class="fa fa-eye" aria-hidden="true"></i>{{$count}}
+                    </div>
                     <div class="col-md-3">
                         <a href="tel:+9599771777212"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09771777212</a>
                     </div>

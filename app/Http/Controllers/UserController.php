@@ -23,7 +23,7 @@ class UserController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,8 +34,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        $value = $request->session()->get('key');
-        dd($value);
+        $ip = $request->ip();
+        $request->session()->put('ip_address', $ip);
+        $val = $request->session()->get('ip_address');
+        dd(collect($val)->count());
     }
 
     /**
