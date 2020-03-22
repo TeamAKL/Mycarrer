@@ -26,7 +26,7 @@
         <div class="container">
             <div class="custom-nav-bar">
                 <div class="nav-logo">
-                <a href="{{url("/")}}" class="monster-logo">
+                   <a href="{{url("/")}}" class="monster-logo">
                         <img src="{{asset('images/monster-logo.svg')}}" alt="">
                     </a>
                 </div>
@@ -67,13 +67,19 @@
                     </ul>
                     <ul class="login-section-nav">
                         <li class="nav-link">
-                            <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
-                            <li class="nav-link"><a href="" class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</a></li>
-                        </ul>
-                    </div>
-                </div>
+                            <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
+                        </li>
+                        <li class="nav-link" id="one"><a href="" class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</a>
+                            <div class="dropdown-content">
+                                <a href="#">JOB SEEKERS TOOLKITS</a>
+                                <a href="#">EMPLOYER TOOLKITS</a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>    
             </div>
-        </header>
+        </div>
+    </header>
 
         <div class="custom-margin">
             @yield('content')
