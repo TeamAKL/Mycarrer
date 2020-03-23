@@ -115,8 +115,11 @@ li {
 
   .nav-link{
       margin: 14px auto;
+    
   }
-
+  .nav-link:hover .dropdown-content{
+      display: block;
+  }
 
 .nav-link-name, .cbtn {
     color: #3c3c3c;

@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+
 @include('layouts.banner')
 <div class="container-fluid">
     <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="900000">
@@ -44,6 +45,7 @@
             <div class="carousel-item col-12 col-sm-6 col-md-4 col-lg-2">
                 <img class="img-fluid mx-auto d-block" src="//placehold.it/600x400?text=13" alt="slide 13">
             </div>
+
         </div>
         <a class="carousel-control-prev" href="#carouselExample" role="button" data-slide="prev">
             <i class="fa fa-chevron-left fa-lg text-muted"></i>
