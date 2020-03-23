@@ -15,6 +15,7 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/template.css')}}">
+    <link rel="stylesheet" href="{{asset('css/templateTabet.css')}}">
     <link rel="stylesheet" href="{{asset('css/customselect.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
@@ -24,6 +25,14 @@
 <body>
     <header>
         <div class="container">
+            <div class="spinner-master3">
+                <input type="checkbox" id="spinner-form3" />
+                <label for="spinner-form3" class="spinner-spin3">
+                    <div class="spinner3 diagonal part-1"></div>
+                    <div class="spinner3 horizontal"></div>
+                    <div class="spinner3 diagonal part-2"></div>
+                </label>
+            </div>
             <div class="custom-nav-bar">
                 <div class="nav-logo">
                     <a href="{{url("/")}}" class="monster-logo">
@@ -47,7 +56,7 @@
 
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropbtn">BLOG</a>
+                            <span href="" class="dropbtn">BLOG</span>
                             <div class="dropdown-content">
                                 <a href="#"> NEWS</a>
                                 <a href="#">JS TOOLKITS</a>
@@ -84,7 +93,13 @@
             <div class="container">
                 <div class="row">
                     <div class="col-md-3" style="color:  #3490dc;">
-                            <i class="fa fa-eye" aria-hidden="true"></i>{{$count}}
+                        <?php
+                        Request::session()->put('ip_address', Request::ip());
+                        $ipadds = Request::session()->get('ip_address');
+                        $visitors = collect($ipadds)->count();
+                        ?>
+                        <i class="fa fa-eye" aria-hidden="true"></i>{{$visitors}}
+
                     </div>
                     <div class="col-md-3">
                         <a href="tel:+9599771777212"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09771777212</a>
@@ -92,8 +107,8 @@
                     <div class="col-md-3"><a href="mailto:info@mycareersmyanmar.com"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i>info@mycareersmyanmar.com</a></div>
                     <div class="col-md-3 last-social-items">
                         <a href="mailto:" class="pl"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
-                        <a href="mailto:" class="pl"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
-                        <a href="http://" class="pl"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                        <a href="https://www.facebook.com/mycareersmyanmar/" class="pl"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                        <a href="https://www.linkedin.com/in/my-careers-7b75231a5/" class="pl"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
                     </div>
                 </div>
             </div>
@@ -148,6 +163,7 @@
 
         <script src="{{asset('js/app.js')}}"></script>
         <script src="{{asset('js/searcharea.js')}}"></script>
+        <script src="{{asset('js/template.js')}}"></script>
         @stack('script')
     </body>
     </html>

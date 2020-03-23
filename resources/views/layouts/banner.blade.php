@@ -162,4 +162,5 @@
 
 @push('css')
 <link rel="stylesheet" href="{{asset('css/banner.css')}}">
+<link rel="stylesheet" href="{{asset('css/banner_responsive.css')}}">
 @endpush

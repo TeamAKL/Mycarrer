@@ -4,6 +4,10 @@
     box-sizing: border-box;
 }
 
+.spinner-master3 {
+    display: none;
+}
+
 ul {
     margin: 0;
 }
@@ -12,7 +16,7 @@ header {
     position: fixed;
     width: 100%;
     top: 0;
-    z-index: 9999;
+    z-index: 99;
     background-color: #fff;
     height: 72px;
     box-shadow: 0 8px 6px -6px rgba(0,0,0,.13);

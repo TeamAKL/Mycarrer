@@ -90,5 +90,6 @@
                 }
             }
         }
-    });</script>
-    @endpush
+    });
+</script>
+@endpush
