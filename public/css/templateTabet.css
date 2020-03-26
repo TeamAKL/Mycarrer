@@ -32,8 +32,32 @@
     }
 
     .login-section-nav {
-        display: none;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        flex-direction: column;
     }
+
+    .login-section-nav > .nav-link {
+        margin: 0;
+    }
+
+    .cbtn {
+        padding: 0;
+        border: unset;
+        color: #fff;
+    }
+
+    .dropdown:hover .dropbtn {
+        background-color: unset;
+        color: #fff;
+    }
+
+    .nav-link-name .fa {
+        display: none !important;
+    }
+
+
     /*THIRD VERSION*/
 
     .spinner-master3 * {
@@ -100,5 +124,7 @@
 /* For Mobile View  */
 
 @media(max-width: 425px) {
-
+    .nav-wapper {
+        width: 80%;
+    }
 }

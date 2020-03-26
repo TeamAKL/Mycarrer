@@ -115,7 +115,7 @@ li {
 
   .nav-link{
       margin: 14px auto;
-    
+
   }
   .nav-link:hover .dropdown-content{
       display: block;

@@ -42,7 +42,7 @@
                 <div class="nav-wapper">
                     <ul class="custom-nav-items">
                         <li class="dropdown">
-                            <a href="" class="dropbtn">JOB SEARCH</a>
+                            <span class="dropbtn">JOB SEARCH</span>
                             <div class="dropdown-content">
                                 <a href="#">JOB BY COMPANY</a>
                                 <a href="#">JOB BY POSITION</a>
@@ -67,7 +67,7 @@
                             </div>
                         </li>
                         <li class="dropdown">
-                            <a href="" class="dropbtn">ABOUT</a>
+                            <span class="dropbtn">ABOUT</span>
                             <div class="dropdown-content">
                                 <a href="#">JOB SEEKERS TOOLKITS</a>
                                 <a href="#">EMPLOYER TOOLKITS</a>
@@ -78,14 +78,14 @@
                         <li class="nav-link">
                             <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
                         </li>
-                        <li class="nav-link" id="one"><a href="" class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</a>
+                        <li class="nav-link" id="one"><span class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</span>
                             <div class="dropdown-content">
                                 <a href="#">JOB SEEKERS TOOLKITS</a>
                                 <a href="#">EMPLOYER TOOLKITS</a>
                             </div>
                         </li>
                     </ul>
-                </div>    
+                </div>
             </div>
         </div>
     </header>
