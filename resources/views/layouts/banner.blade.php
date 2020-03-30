@@ -56,7 +56,7 @@
                             </select>
                         </div> --}}
                         {{-- Custom Select --}}
-                        <div class="col-md-2">
+                        <div class="col-md-2 col-sm-12">
                             <input type="submit" value="Search" class="custom-btn" disabled>
                         </div>
                     </div>

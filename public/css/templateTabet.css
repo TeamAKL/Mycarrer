@@ -1,4 +1,13 @@
 @media(max-width: 768px) {
+    .last-social-items {
+        text-align: left;
+    }
+
+    .pl {
+        padding-left: 0;
+        padding-right: 20px;
+    }
+
     .nav-logo {
         margin: 0 auto;
     }
@@ -10,6 +19,7 @@
         background: #014c82;
         left: 0;
         height: 100vh;
+        display: none;
         opacity: 0;
         z-index: -22;
         -webkit-box-shadow: inset -9px 0 12px 0 rgba(0,0,0,.5);
@@ -46,6 +56,10 @@
         padding: 0;
         border: unset;
         color: #fff;
+    }
+
+    .mb-btn {
+        width: 100%;
     }
 
     .dropdown:hover .dropbtn {
@@ -126,5 +140,9 @@
 @media(max-width: 425px) {
     .nav-wapper {
         width: 80%;
+    }
+
+    .right-side {
+        display: none;
     }
 }
