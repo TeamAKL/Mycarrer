@@ -145,4 +145,8 @@
     .right-side {
         display: none;
     }
+
+    .last-social-items, .custom-center {
+        text-align: center !important;
+    }
 }

@@ -23,3 +23,8 @@ $(document).ready(function() {
     });
 });
 
+let $browserWidth = $(window).width();
+if($browserWidth <= 425) {
+    $(".footer-social, .footer-section").addClass("text-center");
+    // $(".nth-selector:nth-child(3)").removeClass("text-right");
+}
