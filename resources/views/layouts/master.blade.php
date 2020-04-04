@@ -13,10 +13,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+<<<<<<< HEAD
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/template.css')}}">
     <link rel="stylesheet" href="{{asset('css/templateTabet.css')}}">
     <link rel="stylesheet" href="{{asset('css/customselect.css')}}">
+=======
+    <link rel="stylesheet" href="{{secure_asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/template.css')}}">
+    <link rel="stylesheet" href="{{secure_asset('css/customselect.css')}}">
+>>>>>>> fa8c8fe08b09e5d1e97d45d21c8f36bcb5520e2c
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     @stack('css')
