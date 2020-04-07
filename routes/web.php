@@ -18,4 +18,5 @@ Auth::routes();
 Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/session', 'UserController@store');
-Route::get('/create-job', 'JobCategoryController@create');
+// Route::get('/create-job', 'JobCategoryController@create');
+Route::resource('job-category', 'JobCategoryController');

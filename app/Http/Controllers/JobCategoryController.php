@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\JobCategory;
+
 class JobCategoryController extends Controller
 {
     /**
@@ -34,7 +36,7 @@ class JobCategoryController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        return $request->all();
     }
 
     /**
