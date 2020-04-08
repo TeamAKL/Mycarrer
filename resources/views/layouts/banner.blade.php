@@ -66,7 +66,34 @@
 
             <div class="right-side">
                 <div class="upload-cv">
-                    upload now
+                    @guest
+                    <div class="upload">Upload</div>
+                    @else
+                    <div class="profile">
+                        <div class="row mb10">
+                            <div class="col-xs-9 col-sm-8 col-md-8">THet Tun</div>
+                            <div class="col-xs-3 col-sm-4 col-md-4">
+                                <div class="circle-wrap">
+                                    <div class="scoreCircle">65%</div>
+                                </div>
+                                <div class="profile-scroe">Profile Scroe</div>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="row">
+                            <div class="col-md-6 offset-md-3 col-sm-6 actions text-center">
+                                <div class="profile-meter">
+                                    <div class="view">
+                                        <span>Pending Actions</span>
+                                    </div>
+                                </div>
+                                <div class="text-center">
+                                    <button class="btn btn-info">Upload Profile</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    @endguest
                 </div>
             </div>
         </div>

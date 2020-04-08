@@ -226,3 +226,8 @@ li {
 .custom-blue {
     color:  #3490dc;
 }
+
+.logined-usname {
+    margin: 0;
+    padding: 0;
+}
