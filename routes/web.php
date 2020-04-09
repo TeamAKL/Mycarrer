@@ -19,8 +19,6 @@ Route::get('admin', 'AdminController@index')->name('home');
 
 Route::get('/session', 'UserController@store');
 // Route::get('/create-job', 'JobCategoryController@create');
-Route::resource('job-category', 'JobCategoryController');
-Auth::routes();
 
 Route::get('admin/home', 'AdminController@index')->name('home')->middleware('auth');
 
@@ -40,3 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'ProfileController@password']);
 });
+
+
+// For Seeker Route
+Route::resource('job-category', 'JobCategoryController');
