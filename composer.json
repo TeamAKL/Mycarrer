@@ -9,6 +9,7 @@
     "license": "MIT",
     "require": {
         "php": "^7.1",
+        "almasaeed2010/adminlte": "~3.0",
         "fideloper/proxy": "^4.0",
         "ichtrojan/laravel-location": "^3.1",
         "laravel/framework": "^6.2",
@@ -36,7 +37,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "app/"
+            "App\\": "app/",
+            "LaravelFrontendPresets\\BlackPreset\\": "presets/black/src"
         },
         "classmap": [
             "database/seeds",
@@ -45,7 +47,8 @@
     },
     "autoload-dev": {
         "psr-4": {
-            "Tests\\": "tests/"
+            "Tests\\": "tests/",
+            "LaravelFrontendPresets\\BlackPreset\\": "presets/black/src"
         }
     },
     "minimum-stability": "dev",
