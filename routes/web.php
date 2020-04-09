@@ -42,3 +42,4 @@ Route::group(['middleware' => 'auth'], function () {
 
 // For Seeker Route
 Route::resource('job-category', 'JobCategoryController');
+Route::get('/', 'HomeController@index');
