@@ -89,7 +89,7 @@
 .custom-input:focus {
     outline: none !important;
     box-shadow: none;
-    border-color: #fff;
+    border-color: #ced4da;
 }
 
 .banner-header {
@@ -286,3 +286,7 @@ hr {
     margin-bottom: 7px;
 }
 
+.pl-pr-0 {
+    padding-left: 0 !important;
+    padding-right: 0 !important;
+}

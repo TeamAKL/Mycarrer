@@ -110,7 +110,7 @@
     </div>
 </header>
 
-<div class="custom-margin">
+<div class="custom-padding">
     @yield('content')
 </div>
 
