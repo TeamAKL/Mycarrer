@@ -115,7 +115,7 @@
 </div>
 
 <!---- Footer --->
-<div class="footer-social mt-4">
+<div class="footer-social">
     <div class="container">
         <div class="row">
             <div class="col-md-3 custom-blue">

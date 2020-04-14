@@ -118,6 +118,22 @@
                         </div>
                     </div>
                 </div>
+                <div class="job-category-holder">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <p class="job-cat">Recommended Jobs <span>(100)</span> </p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="job-cat">Applied Jobs <span>(10)</span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="job-cat">Saved Jobs <span></span></p>
+                        </div>
+                        <div class="col-md-12">
+                            <p class="job-cat">Networked Jobs</p>
+                        </div>
+                    </div>
+                </div>
             </div>
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
                 <div class="user-status-area mb10">
@@ -146,7 +162,7 @@
                 <div class="row">
                     <div class="col-md-10">
                         <div class="card mb10">
-                            <div class="card-body">
+                            <div class="card-body pd-b20">
                                 <div class="holder">
                                     <div class="item job-contact-area">
                                         <a href="http://" class="job-position">
@@ -165,16 +181,18 @@
                                         </div>
                                     </div>
                                     <div class="item job-logo">
-                                        logo
+                                    <img src="{{asset('images/adele.jpg')}}" alt="">
                                     </div>
                                 </div>
                                 <div class="mt10 pr">
-                                    <p class="job-desc">
-                                        <span>Job Description: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias molestiae saepe corporis impedit laborum earum doloribus, at expedita qui. Blanditiis eum deserunt ratione sed. Quas libero itaque eveniet quaerat placeat.
-                                    </p>
-                                    <p class="job-skill">
-                                        <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
-                                    </p>
+                                    <a href="http://" class="job-des-holder">
+                                        <p class="job-desc">
+                                            <span>Job Description: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias molestiae saepe corporis impedit laborum earum doloribus, at expedita qui. Blanditiis eum deserunt ratione sed. Quas libero itaque eveniet quaerat placeat.
+                                        </p>
+                                        <p class="job-skill">
+                                            <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -182,7 +200,14 @@
                                     <a href="http://"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                     <div class="share-hover">
                                         <i class="fa fa-share-alt custom-blue" aria-hidden="true"></i>
+                                        <div class="pop-share pa-rt">
+                                            <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                                            <a href="http://"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                                            <a href="http://"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                                            <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
+                                        </div>
                                     </div>
+
                                 </div>
                                 <div class="apply-hover">
                                     <a href="" class="appl-btn">Apply</a>
@@ -193,7 +218,7 @@
 
                     <div class="col-md-10">
                         <div class="card mb10">
-                            <div class="card-body">
+                            <div class="card-body pd-b20">
                                 <div class="holder">
                                     <div class="item job-contact-area">
                                         <a href="http://" class="job-position">
@@ -216,12 +241,14 @@
                                     </div>
                                 </div>
                                 <div class="mt10 pr">
-                                    <p class="job-desc">
-                                        <span>Job Description: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias molestiae saepe corporis impedit laborum earum doloribus, at expedita qui. Blanditiis eum deserunt ratione sed. Quas libero itaque eveniet quaerat placeat.
-                                    </p>
-                                    <p class="job-skill">
-                                        <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
-                                    </p>
+                                    <a href="http://" class="job-des-holder">
+                                        <p class="job-desc">
+                                            <span>Job Description: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias molestiae saepe corporis impedit laborum earum doloribus, at expedita qui. Blanditiis eum deserunt ratione sed. Quas libero itaque eveniet quaerat placeat.
+                                        </p>
+                                        <p class="job-skill">
+                                            <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
+                                        </p>
+                                    </a>
                                 </div>
                             </div>
                             <div class="card-footer">
@@ -229,6 +256,12 @@
                                     <a href="http://"><i class="fa fa-star-o" aria-hidden="true"></i></a>
                                     <div class="share-hover">
                                         <i class="fa fa-share-alt custom-blue" aria-hidden="true"></i>
+                                        <div class="pop-share pa-rt">
+                                            <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                                            <a href="http://"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                                            <a href="http://"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                                            <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
+                                        </div>
                                     </div>
                                 </div>
                                 <div class="apply-hover">

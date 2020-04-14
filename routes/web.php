@@ -46,3 +46,7 @@ Route::get('/', 'HomeController@index');
 Route::get('/seeker/dashboard', function() {
     return view('seeker.index');
 })->name('seeker')->middleware('auth');
+
+Route::get('seeker/job-detail/{id}', function() {
+    return view('seeker.show');
+});

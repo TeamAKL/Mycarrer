@@ -257,6 +257,12 @@
 .job-logo {
     width: 100px;
     text-align: center;
+    height: 63px;
+}
+
+.job-logo img {
+    width: 100%;
+    height: 100%;
 }
 
 .holder::after {
@@ -269,7 +275,7 @@
     width: 83%;
 }
 
-.job-contact-area a h3 {
+.job-contact-area a h3, .card-body h3 {
     line-height: 1.2;
     word-break: break-word;
     font-size: 14px;
@@ -294,7 +300,7 @@
 
 .job-desc::after {
     content: "....";
-    right: 0;
+    right: 5px;
     position: absolute;
     bottom: 35px;
 }
@@ -318,6 +324,7 @@
 
 .star-share-holder {
     display: inline-block;
+    position: relative;
 }
 
 .fa-star-o, .fa-share-alt {
@@ -360,4 +367,54 @@
     color: #fff;
     background: #3490dc;
     border-color: #5d4da8;
+}
+
+.pop-share {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    min-width: 168px;
+    max-width: 276px;
+    padding: 8px;
+    z-index: 2;
+    display: none;
+}
+
+.pa-rt {
+    right: -58px;
+    position: absolute;
+    top: 31px;
+}
+
+.pop-share a {
+    margin-right: 5px;
+}
+
+.pop-share::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    left: 50%;
+    border-width: 0 8px 8px;
+    border-color: transparent transparent #fff;
+    top: -8px;
+    margin-left: -5px;
+}
+
+.job-des-holder:hover {
+    text-decoration: none;
+}
+
+.job-category-holder {
+    background: #fff;
+    width: 100%;
+}
+
+.job-cat {
+    padding: 16px;
+    margin-bottom: 0px;
+    cursor: pointer;
+    border-bottom: 1px solid hsla(0,0%,72%,.46);
 }
