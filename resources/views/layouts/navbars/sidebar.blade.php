@@ -35,6 +35,34 @@
                     </ul>
                 </div>
             </li>
+            <!-- Job Category -->
+            <li>
+                <a data-toggle="collapse" href="#job-category" aria-expanded="true">
+                    <i class="tim-icons icon-paper" ></i>
+                    <span class="nav-link-text" >{{ __('Job Category') }}</span>
+                    <b class="caret mt-1"></b>
+                </a>
+
+                <div class="collapse show" id="job-category">
+                    <ul class="nav pl-4">
+                        <li @if ($pageSlug == 'job-category/create') class="active " @endif>
+                            <a href="{{ route('job-category.create')  }}">
+                                <i class="tim-icons icon-simple-add"></i>
+                                <p>{{ __('Add New Job Category') }}</p>
+                            </a>
+                        </li>
+                        <li @if ($pageSlug == 'users') class="active " @endif>
+                            <a href="{{ route('user.index')  }}">
+                                <i class="tim-icons icon-bullet-list-67"></i>
+                                <p>{{ __('User Management') }}</p>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </li>
+
+            <!-- End Job Category -->
+
             <li @if ($pageSlug == 'icons') class="active " @endif>
                 <a href="{{ route('pages.icons') }}">
                     <i class="tim-icons icon-atom"></i>

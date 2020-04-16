@@ -41,7 +41,7 @@ Route::group(['middleware' => 'auth'], function () {
 
 
 // For Seeker Route
-Route::resource('job-category', 'JobCategoryController');
+Route::resource('job-category', 'JobCategoryController')->middleware('auth');
 Route::get('/', 'HomeController@index');
 Route::get('/seeker/dashboard', function() {
     return view('seeker.index');

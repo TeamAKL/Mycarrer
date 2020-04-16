@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 
 use App\JobCategory;
+use App\Http\Requests\JobCategoryRequest;
 
 class JobCategoryController extends Controller
 {
@@ -25,7 +26,7 @@ class JobCategoryController extends Controller
      */
     public function create()
     {
-        return view('admin.jobcat.create');
+        return view('jobcat.create');
     }
 
     /**
@@ -34,7 +35,7 @@ class JobCategoryController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(JobCategoryRequest $request)
     {
         return $request->all();
     }
