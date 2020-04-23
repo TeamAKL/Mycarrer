@@ -16,7 +16,8 @@ class JobCategoryController extends Controller
      */
     public function index()
     {
-        //
+        $jobCat = JobCategory::all();
+        return view('jobcat.index', compact('jobCat'));
     }
 
     /**
@@ -37,7 +38,9 @@ class JobCategoryController extends Controller
      */
     public function store(JobCategoryRequest $request)
     {
-        return $request->all();
+        JobCategory::create(['category_name' => $request->name]);
+        session()->flash('success');
+        return redirect("job-category");
     }
 
     /**
@@ -59,7 +62,8 @@ class JobCategoryController extends Controller
      */
     public function edit($id)
     {
-        //
+        $jobcat = JobCategory::findOrFail($id);
+        return view('jobcat.edit', compact('jobcat'));
     }
 
     /**
@@ -69,9 +73,12 @@ class JobCategoryController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(JobCategoryRequest $request, $id)
     {
-        //
+        $jobcat = JobCategory::findOrFail($id);
+        $jobcat->category_name = $request->name;
+        $jobcat->save();
+        return redirect("job-category");
     }
 
     /**
@@ -82,6 +89,8 @@ class JobCategoryController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $category = JobCategory::findOrFail($id);
+        $category->delete();
+        return redirect('job-category');
     }
 }

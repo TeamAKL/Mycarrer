@@ -1,21 +1,19 @@
-@extends('layouts.app', ['page' => __('Job Category'), 'pageSlug' => 'job-category/create'])
-
+@extends('layouts.app', ['page' => __('Job Category'), 'pageSlug' => 'job-category'])
 @section('content')
-
 <div class="card">
     <div class="card-header">
-        <h5 class="title">{{ __('Create Job Category') }}</h5>
+        <h5 class="title">{{ __('Edit Job Category') }}</h5>
     </div>
-    <form method="post" action="{{ route('job-category.store') }}" autocomplete="off">
+    <form method="post" action="{{ url('job-category/'.$jobcat->id) }}" autocomplete="off">
         <div class="card-body">
             @csrf
-            {{-- @method('put') --}}
+            @method('put')
 
             @include('alerts.success', ['key' => 'password_status'])
 
             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                 <label>{{ __('Category Name') }}</label>
-                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Category Name') }}" >
+            <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Category Name') }}" value="{{$jobcat->category_name}}" >
                 @include('alerts.feedback', ['field' => 'name'])
             </div>
 
@@ -30,10 +28,8 @@
             </div> --}}
         </div>
         <div class="card-footer">
-            <button type="submit" class="btn btn-fill btn-primary">{{ __('Save') }}</button>
+            <button type="submit" class="btn btn-fill btn-primary">{{ __('Update') }}</button>
         </div>
     </form>
 </div>
 @endsection
-
-

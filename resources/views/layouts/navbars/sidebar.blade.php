@@ -51,10 +51,10 @@
                                 <p>{{ __('Add New Job Category') }}</p>
                             </a>
                         </li>
-                        <li @if ($pageSlug == 'users') class="active " @endif>
-                            <a href="{{ route('user.index')  }}">
+                        <li @if ($pageSlug == 'job-category') class="active " @endif>
+                            <a href="{{ route('job-category.index')  }}">
                                 <i class="tim-icons icon-bullet-list-67"></i>
-                                <p>{{ __('User Management') }}</p>
+                                <p>{{ __('JobCategory List') }}</p>
                             </a>
                         </li>
                     </ul>

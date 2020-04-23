@@ -18,7 +18,6 @@ Auth::routes();
 Route::get('admin', 'AdminController@index')->name('home');
 
 Route::get('/session', 'UserController@store');
-// Route::get('/create-job', 'JobCategoryController@create');
 
 Route::get('admin/home', 'AdminController@index')->name('home')->middleware('auth');
 

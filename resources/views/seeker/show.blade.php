@@ -5,7 +5,7 @@
     <div class="sticky-apply">
         <div class="container">
             <div class="detail-header top-most">
-                <div>
+                <div class="top-most-detalil">
                     <h3>Web Developer</h3>
                 </div>
                 <div class="middle">
@@ -73,6 +73,9 @@
                                         <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
                                     </di>
                                 </div>
+                            </div>
+                            <div class="item job-logo">
+                                <img src="{{asset('images/adele.jpg')}}" alt="">
                             </div>
                         </div>
                     </div>

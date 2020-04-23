@@ -3,32 +3,41 @@
 @section('content')
 
 <div class="container">
-    <form class="pd-13">
-        <div class="form-row">
-            <div class=" input-group mb-2 col-md-4 pl-pr-0">
-                <div class="input-group-prepend ">
-                    <div class="input-group-text custom-input"><i class="fa fa-search" aria-hidden="true"></i></div>
+    <button class="custom-btn wd-100" >Modify Search</button>
+    <div class="search-container">
+        <div>
+            <span class="close-modal"><i class="fa fa-close"></i></span>
+            <form class="pd-13 mb-search">
+                <div class="modif-search-title">
+                    <h2 class="text-center">Modify Search</h2>
                 </div>
-                <input type="text" id="search" class="form-control custom-input" placeholder="Search by Skills, Company & Job Title">
-            </div>
-            <div class="input-group mb-2 col-md-3 expend-search-form pl-pr-0 d-flex">
-                <div class="input-group-prepend ">
-                    <div class="input-group-text custom-input"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                <div class="form-row">
+                    <div class=" input-group mb-2 col-md-4 pl-pr-0">
+                        <div class="input-group-prepend ">
+                            <div class="input-group-text custom-input"><i class="fa fa-search" aria-hidden="true"></i></div>
+                        </div>
+                        <input type="text" id="search" class="form-control custom-input" placeholder="Search by Skills, Company & Job Title">
+                    </div>
+                    <div class="input-group mb-2 col-md-3 expend-search-form pl-pr-0 d-flex">
+                        <div class="input-group-prepend ">
+                            <div class="input-group-text custom-input"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
+                        </div>
+                        <input type="text" class="form-control custom-input" id="location" placeholder="Location">
+                    </div>
+                    <div class="col-md-3 expend-search-form pl-pr-0 d-flex">
+                        <select class="form-control custom-input" id="selectoption">
+                            <option>Default select</option>
+                            <option>Default select</option>
+                            <option>Default select</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2 col-sm-12 pl-pr-0">
+                        <input type="submit" value="Search" class="custom-btn">
+                    </div>
                 </div>
-                <input type="text" class="form-control custom-input" id="location" placeholder="Location">
-            </div>
-            <div class="col-md-3 expend-search-form pl-pr-0 d-flex">
-                <select class="form-control custom-input" id="selectoption">
-                    <option>Default select</option>
-                    <option>Default select</option>
-                    <option>Default select</option>
-                </select>
-            </div>
-            <div class="col-md-2 col-sm-12 pl-pr-0">
-                <input type="submit" value="Search" class="custom-btn">
-            </div>
+            </form>
         </div>
-    </form>
+    </div>
 </div>
 <div class="dashboard-area">
     <div class="container">
@@ -119,17 +128,17 @@
                     </div>
                 </div>
                 <div class="job-category-holder">
-                    <div class="row">
-                        <div class="col-md-12">
+                    <div class="row" id="rm-id">
+                        <div class="col-md-12 dp-inline">
                             <p class="job-cat">Recommended Jobs <span>(100)</span> </p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 dp-inline">
                             <p class="job-cat">Applied Jobs <span>(10)</span></p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 dp-inline">
                             <p class="job-cat">Saved Jobs <span></span></p>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-12 dp-inline">
                             <p class="job-cat">Networked Jobs</p>
                         </div>
                     </div>
@@ -181,7 +190,7 @@
                                         </div>
                                     </div>
                                     <div class="item job-logo">
-                                    <img src="{{asset('images/adele.jpg')}}" alt="">
+                                        <img src="{{asset('images/adele.jpg')}}" alt="">
                                     </div>
                                 </div>
                                 <div class="mt10 pr">

@@ -418,3 +418,83 @@
     cursor: pointer;
     border-bottom: 1px solid hsla(0,0%,72%,.46);
 }
+
+.wd-100 {
+    width: 100%;
+    display: none;
+    margin: 10px 0;
+}
+
+.modif-search-title {
+    display: none;
+}
+
+.user-dashboard-right .row .col-md-10 .card:hover {
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.2);
+    transition: all .3s ease-out;
+}
+
+/* For Mobil View */
+@media(max-width: 425px) {
+    .wd-100 {
+        display: block;
+    }
+
+    .search-container {
+        position: fixed;
+        width: 100%;
+        height: 100vh;
+        background:rgba(0,0,0,.8);
+        z-index: 99;
+        top: 0;
+        right: 0;
+        transition: .3s ease-in-out;
+        transform: translate(100%);
+        visibility: hidden;
+    }
+
+    .mb-search {
+        width: 88.8%;
+        position: fixed;
+        height: 100vh;
+        background: #e8e8e8;
+        right: 0;
+        top: 0;
+        padding: 10px;
+    }
+
+    .mb-search .custom-btn {
+        width: 100%;
+        margin-top: 10px;
+    }
+
+    .modif-search-title {
+        display: block;
+    }
+
+    .dp-inline {
+        display: inline-block;
+        vertical-align: top;
+        border-bottom: 2px solid transparent;
+        padding: 22px 12px;
+    }
+
+    .job-cat {
+        border-bottom: unset;
+        padding: 0px;
+    }
+
+    .job-category-holder {
+        margin-bottom: 10px;
+    }
+
+    /* #rm-id {
+        position: fixed;
+        z-index: 99;
+        width: 100%;
+        background: #fff;
+        left: 0;
+        right: 0;
+        top: 73px;
+    } */
+}

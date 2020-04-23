@@ -102,7 +102,7 @@
         <script src="{{ asset('black') }}/js/black-dashboard.min.js?v=1.0.0"></script>
         <script src="{{ asset('black') }}/js/theme.js"></script>
 
-        @stack('js')
+        {{-- @stack('js') --}}
 
         <script>
             $(document).ready(function() {

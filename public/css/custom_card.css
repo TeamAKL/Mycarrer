@@ -123,3 +123,61 @@
 .middle {
     transform: translateY(8px);
 }
+
+
+@media(max-width: 375px) {
+    .btn-fill {
+        padding: 8px 4px;
+    }
+
+    .share-hover {
+        margin: 0 4px;
+    }
+
+    .top-most h3 {
+        vertical-align: middle;
+        margin-bottom: 0px;
+        padding-top: 5px;
+    }
+
+    .middle {
+        transform: translateY(4px);
+    }
+
+    .about-job-detail, .top-most-detalil {
+        max-width: 50%;
+    }
+
+    .three-dot, .about-job-detail h2, .top-most h3 {
+        font-size: 1rem;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        white-space: nowrap;
+    }
+
+    .posted {
+        display: block;
+        font-size: 11.99px;
+    }
+
+    .seprate::before {
+        display: none;
+    }
+
+    .job-type span {
+        font-size: 11.99px;
+    }
+
+    .card-body .holder {
+        flex-direction: column;
+    }
+
+    .holder .job-contact-area {
+        width: 100%;
+    }
+
+    .holder .job-logo {
+        order: -1;
+        margin-bottom: 10px;
+    }
+}
