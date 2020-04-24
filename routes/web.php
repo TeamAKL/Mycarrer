@@ -21,7 +21,7 @@ Route::get('/session', 'UserController@store');
 
 Route::get('admin/home', 'AdminController@index')->name('home')->middleware('auth');
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'PageController@maps']);
 		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
@@ -31,7 +31,7 @@ Route::group(['middleware' => 'auth'], function () {
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'PageController@upgrade']);
 });
 
-Route::group(['middleware' => 'auth'], function () {
+Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
 	Route::resource('user', 'UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
