@@ -19,7 +19,7 @@ Route::get('admin', 'AdminController@index')->name('home');
 
 Route::get('/session', 'UserController@store');
 
-Route::get('admin/home', 'AdminController@index')->name('home')->middleware('auth');
+// Route::get('admin/home', 'AdminController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
@@ -48,4 +48,4 @@ Route::get('/seeker/dashboard', function() {
 
 Route::get('seeker/job-detail/{id}', function() {
     return view('seeker.show');
-});
+})->middleware('auth');

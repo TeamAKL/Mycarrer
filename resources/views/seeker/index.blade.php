@@ -186,6 +186,7 @@
                                             </di>
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
+                                                <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
                                             </di>
                                         </div>
                                     </div>
