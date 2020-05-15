@@ -10,6 +10,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="_token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
@@ -119,12 +120,12 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 custom-blue">
-<?php
-Request::session()->put('ip_address', Request::ip());
-$ipadds   = Request::session()->get('ip_address');
-$visitors = collect($ipadds)->count();
-?>
-<i class="fa fa-eye" aria-hidden="true"></i>{{$visitors}}
+                <?php
+                Request::session()->put('ip_address', Request::ip());
+                $ipadds   = Request::session()->get('ip_address');
+                $visitors = collect($ipadds)->count();
+                ?>
+                <i class="fa fa-eye" aria-hidden="true"></i>{{$visitors}}
 
             </div>
             <div class="col-md-3">
@@ -186,10 +187,11 @@ $visitors = collect($ipadds)->count();
         <p class="copyright">&copy; 2020 MyCareers- All Rights Reserved</p>
     </div>
 </div>
-
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
 <script src="{{asset('js/app.js')}}"></script>
 <script src="{{asset('js/searcharea.js')}}"></script>
 <script src="{{asset('js/template.js')}}"></script>
+<script src="https://kit.fontawesome.com/a75f6596a2.js" crossorigin="anonymous"></script>
 @stack('script')
 </body>
 </html>

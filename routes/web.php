@@ -49,3 +49,13 @@ Route::get('/seeker/dashboard', function() {
 Route::get('seeker/job-detail/{id}', function() {
     return view('seeker.show');
 })->middleware('auth');
+
+
+Route::get('showpass', 'UserController@showPass');
+
+Route::get('seeker/profile', 'UserController@showProfile');
+
+Route::post('job-proj', 'ProjectController@store');
+Route::post('education', 'EducationController@store');
+Route::get('eduEdit', 'EducationController@edit');
+Route::post('eduupdate', 'EducationController@update');

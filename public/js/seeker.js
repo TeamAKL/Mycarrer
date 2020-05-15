@@ -1,6 +1,22 @@
-$("#ph-show-modal, #mail-modal").on('click', function() {
-    $(".cmodal-overly").addClass('show-modal');
-    $('.global-modal').addClass('slide-modal');
+$("#ph-show-modal").on('click', function() {
+    $(".phone-overly").addClass('show-modal');
+    $('.phone-modal').addClass('slide-modal');
+});
+
+
+$(".show-modal").on('click', function() {
+    $('body').css('overflow-y', 'hidden');
+    let $index = $(this).attr('id');
+    let $dataid = $(this).attr('dataid');
+    $("."+$index+"-overly").addClass('show-modal');
+    $("."+$index+"-modal").addClass("slide-modal");
+
+});
+
+$(".close-modal").on('click', function() {
+    $('body').css('overflow-y', 'auto');
+    $(".cmodal-overly").removeClass('show-modal');
+    $('.global-modal').removeClass('slide-modal');
 });
 
 $("button.custom-btn").on('click', function() {
@@ -14,10 +30,6 @@ $(".search-container .close-modal").on('click', function() {
     });
 });
 
-$(".close-modal").on('click', function() {
-    $(".cmodal-overly").removeClass('show-modal');
-    $('.global-modal').removeClass('slide-modal');
-});
 
 $(".share-hover").hover(function() {
     $(this).children('.pop-share').css("display", "block");
@@ -64,3 +76,29 @@ if($(window).width() <= 425) {
         "overflow-x": "auto"
     });
 }
+
+
+// $(".test").on('click', function() {
+//         $(this).siblings('.inputc').focus();
+//         $(this).siblings('.inputc').valid();
+// });
+
+$('.pj-status').bind('click', function() {
+    var $pjstatus = $(this).val().toLowerCase();
+    if($pjstatus == 'inprogress') {
+        $('.end').css("display", "none");
+    } else if($pjstatus == 'finished') {
+        $('.end').css("display", "block");
+    }
+});
+
+$('.currcompany').bind('click', function() {
+    var $value = $(this).val().toLowerCase();
+    if($value == 'no') {
+        $('.cpresent').css('display', 'none');
+        $('.ctill').css('display', 'block');
+    } else if($value == 'yes') {
+        $('.cpresent').css('display', 'block');
+        $('.ctill').css('display', 'none');
+    }
+});

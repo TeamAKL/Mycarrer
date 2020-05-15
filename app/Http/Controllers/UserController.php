@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\User;
 use App\Http\Requests\UserRequest;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
@@ -17,5 +18,17 @@ class UserController extends Controller
     public function index(User $model)
     {
         return view('users.index', ['users' => $model->paginate(15)]);
+    }
+
+    public function showPass() {
+        $admin = User::find(1);
+        // dd(Hash::check($admin->password, 'admin'));
+    }
+
+    public function showProfile() {
+        $currentUser = Auth::id();
+        $user = User::with(['projects', 'education'])->findOrFail($currentUser);
+        // dd($user);
+        return view('seeker.profile', ['user' => $user]);
     }
 }

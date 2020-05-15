@@ -17,7 +17,7 @@ class NotAdmin
     */
     public function handle($request, Closure $next)
     {
-        if(Auth::id() == 2) {
+        if(Auth::id() == 1) {
             return $next($request);
         } else {
             return redirect('/');

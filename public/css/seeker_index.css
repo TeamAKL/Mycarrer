@@ -497,4 +497,7 @@
         right: 0;
         top: 73px;
     } */
+    .global-modal {
+        width: 100%;
+    }
 }

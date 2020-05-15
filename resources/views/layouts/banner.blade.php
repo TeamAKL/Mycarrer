@@ -74,7 +74,15 @@
                             <div class="col-xs-9 col-sm-8 col-md-8">THet Tun</div>
                             <div class="col-xs-3 col-sm-4 col-md-4">
                                 <div class="circle-wrap">
-                                    <div class="scoreCircle">65%</div>
+                                    <div class="circle">
+                                        <div class="mask full">
+                                            <div class="fill"></div>
+                                        </div>
+                                        <div class="mask half">
+                                            <div class="fill"></div>
+                                        </div>
+                                        <div class="inside-circle">70%</div>
+                                    </div>
                                 </div>
                                 <div class="profile-scroe">Profile Scroe</div>
                             </div>
