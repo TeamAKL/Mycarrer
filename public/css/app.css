@@ -2311,12 +2311,10 @@ textarea.form-control {
   margin-left: -5px;
 }
 
-/* Thet TUn Change */
-
 .form-row > .col,
 .form-row > [class*=col-] {
-  padding-right: 0px;
-  padding-left: 0px;
+  padding-right: 5px;
+  padding-left: 5px;
 }
 
 .form-check {
@@ -8861,16 +8859,14 @@ button.bg-dark:focus {
     margin-top: 0.5rem !important;
   }
 
-  /* Thet Tun Chagne Two */
-
   .mr-sm-2,
   .mx-sm-2 {
-    margin-right: 0rem !important;
+    margin-right: 0.5rem !important;
   }
 
   .mb-sm-2,
   .my-sm-2 {
-    margin-bottom: 0rem !important;
+    margin-bottom: 0.5rem !important;
   }
 
   .ml-sm-2,

@@ -57,10 +57,70 @@
         </a>
     </div>
 </div>
+
+<div class="job-categories custom-margin">
+    <div class="container">
+        <div class="row nth-selector">
+            <div class="col-md-4 custom-center">
+                <div class="job-title">
+                    <a href="http://">Web Developer</a><span class="pl-4 custom-blue">(4)</span>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a><span class="pl-4 custom-blue">(4)</span>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a><span class="pl-4 custom-blue">(4)</span>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a><span class="pl-4 custom-blue">(4)</span>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a><span class="pl-4 custom-blue">(4)</span>
+                </div>
+            </div>
+            <div class="col-md-4 text-center">
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+            </div>
+            <div class="col-md-4 text-right custom-center">
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+                <div class="job-title">
+                    <a href="http://">Web Developer</a>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 @endsection
 
 @push('css')
 <link rel="stylesheet" href="{{asset('css/slider.css')}}">
+<link rel="stylesheet" href="{{asset('css/home.css')}}">
 @endpush
 
 @push('script')
@@ -73,8 +133,6 @@
         Attribution required
 
         */
-
-
         var $e = $(e.relatedTarget);
         var idx = $e.index();
         var itemsPerSlide = 7;

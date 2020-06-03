@@ -1,11 +1,19 @@
 @media(max-width: 768px) {
     .search-engin {
         width: 100%;
-        height: 200px;
+        /* height: 200px; */
+        height: auto;
     }
 
     .right-side {
         height: 200px;
         margin: 20px auto 0;
+    }
+}
+
+
+@media(max-width: 425px) {
+    .custom-btn {
+        width: 100%;
     }
 }

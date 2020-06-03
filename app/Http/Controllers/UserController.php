@@ -2,86 +2,33 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\User;
+use App\Http\Requests\UserRequest;
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Display a listing of the users
      *
-     * @return \Illuminate\Http\Response
+     * @param  \App\User  $model
+     * @return \Illuminate\View\View
      */
-    public function index()
+    public function index(User $model)
     {
-        //
+        return view('users.index', ['users' => $model->paginate(15)]);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-
+    public function showPass() {
+        $admin = User::find(1);
+        // dd(Hash::check($admin->password, 'admin'));
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        $ip = $request->ip();
-        $request->session()->put('ip_address', $ip);
-        $val = $request->session()->get('ip_address');
-        dd(collect($val)->count());
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
+    public function showProfile() {
+        $currentUser = Auth::id();
+        $user = User::with(['projects', 'education'])->findOrFail($currentUser);
+        // dd($user);
+        return view('seeker.profile', ['user' => $user]);
     }
 }
