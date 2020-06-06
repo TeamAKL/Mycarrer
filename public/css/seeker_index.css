@@ -3,6 +3,7 @@
 }
 
 
+
 .dashboard-area {
     background: #f5f5f5;
 }
@@ -305,10 +306,6 @@
     bottom: 35px;
 }
 
-.pr {
-    position: relative;
-}
-
 .card-body {
     padding-bottom: 0px;
 }
@@ -369,7 +366,7 @@
     border-color: #5d4da8;
 }
 
-.pop-share {
+/* .pop-share {
     background-color: #fff;
     border: 1px solid #ddd;
     box-shadow: 0 5px 10px rgba(0,0,0,.2);
@@ -378,7 +375,7 @@
     padding: 8px;
     z-index: 2;
     display: none;
-}
+} */
 
 .pa-rt {
     right: -58px;
@@ -390,7 +387,9 @@
     margin-right: 5px;
 }
 
-.pop-share::before {
+
+
+/* .pop-share::before {
     content: "";
     position: absolute;
     width: 0;
@@ -401,7 +400,7 @@
     border-color: transparent transparent #fff;
     top: -8px;
     margin-left: -5px;
-}
+} */
 
 .job-des-holder:hover {
     text-decoration: none;

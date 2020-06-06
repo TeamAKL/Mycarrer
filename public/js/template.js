@@ -28,3 +28,9 @@ if($browserWidth <= 425) {
     $(".footer-social, .footer-section").addClass("text-center");
     // $(".nth-selector:nth-child(3)").removeClass("text-right");
 }
+
+$(".share-hover").hover(function() {
+    $(this).children('.pop-share').css("display", "block");
+}, function() {
+    $(this).children('.pop-share').css("display", "none");
+});

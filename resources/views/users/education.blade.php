@@ -53,7 +53,7 @@
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="passyear" name="passing_year" class="tocurrent" required/>
+                                    <input type="text" id="passyear" name="passing_year" class="startyear" required/>
                                     <label for="passyear" >Passing Year</label>
                                     <span class="line"></span>
                                 </div>
@@ -129,7 +129,7 @@
             $("#specilization").val("");
             $("#passyear").val("");
             $("input[name='edutype']").each(function() {
-                $("input[name='edutype']").attr('checked');
+                $(this).removeAttr("checked");
             });
             $("#eduaction").attr('action', "{{url('education')}}");
             $("#edusubmit").val("Save");

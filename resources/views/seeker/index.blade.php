@@ -23,7 +23,7 @@
                             </label>
                         </div>
                         <div class="user-name">
-                            <h3>Thet Tun</h3>
+                            <h3>{{Auth::user()->name}}</h3>
                         </div>
                     </div>
                     <div class="clearb mt10">
@@ -31,10 +31,10 @@
                         <a class="fr" id="ph-show-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
                     <div class="clearb mt10">
-                        <p class="fl fs-12 color-g-b">thettun1741997@gmail.com</p>
+                        <p class="fl fs-12 color-g-b">{{Auth::user()->email}}</p>
                         <a class="fr" id="mail-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                     </div>
-                    <a class="btn btn-outline-info mt10 w-100">Update Profile</a>
+                    <a class="btn btn-outline-info mt10 w-100" href="{{url('seeker/profile')}}">Update Profile</a>
                     <div class="cmodal-overly phone-overly">
                         <div class="global-modal phone-modal">
                             <span class="close-modal"><i class="fa fa-close"></i></span>
@@ -139,7 +139,7 @@
                             <div class="card-body pd-b20">
                                 <div class="holder">
                                     <div class="item job-contact-area">
-                                        <a href="http://" class="job-position">
+                                        <a href="{{url('seeker/job-detail/1')}}" class="job-position">
                                             <h3>
                                                 Regional Pricing Analyst (6 months renewable or Convertible)
                                             </h3>
@@ -151,7 +151,7 @@
                                             </di>
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
-                                                <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
+                                                <span><i class="fa fa-database" aria-hidden="true"></i> MMK - 2000</span>
                                             </di>
                                         </div>
                                     </div>
@@ -160,7 +160,7 @@
                                     </div>
                                 </div>
                                 <div class="mt10 pr">
-                                    <a href="http://" class="job-des-holder">
+                                    <a href="{{url('seeker/job-detail/1')}}" class="job-des-holder">
                                         <p class="job-desc">
                                             <span>Job Description: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias molestiae saepe corporis impedit laborum earum doloribus, at expedita qui. Blanditiis eum deserunt ratione sed. Quas libero itaque eveniet quaerat placeat.
                                         </p>

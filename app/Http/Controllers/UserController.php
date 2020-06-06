@@ -27,7 +27,7 @@ class UserController extends Controller
 
     public function showProfile() {
         $currentUser = Auth::id();
-        $user = User::with(['projects', 'education'])->findOrFail($currentUser);
+        $user = User::with(['projects', 'education', 'work_experiences'])->findOrFail($currentUser);
         // dd($user);
         return view('seeker.profile', ['user' => $user]);
     }

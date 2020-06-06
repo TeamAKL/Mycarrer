@@ -1,1 +1,26 @@
+.bg-gray, .job-title {
+    background-color: #f5f5f5;
+    box-shadow: 0 0 8px 0 rgba(0,0,0,.2);
+    padding: 10px;
+}
 
+.bg-gray, .nth-selector {
+    display: flex;
+    flex-direction: row;
+}
+
+.ch {
+    width: 33.33%;
+    text-align: center;
+    font-size: 1.5em;
+    line-height: 1.3;
+}
+
+.child-jb {
+    width: 33.33%;
+    line-height: 3;
+}
+
+.job-title {
+    margin: 19px;
+}

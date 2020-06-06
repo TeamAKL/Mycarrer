@@ -9,9 +9,20 @@
 }
 
 .bg-jumbotron {
-    background-image: url("../images/hero-img.jpg");
+    background-image: url("../images/bunner.jpg");
     background-repeat: no-repeat;
     background-size: cover;
+    /* background-color: orange;
+
+    background: linear-gradient(#e6e0d8, transparent 90%),
+    linear-gradient(0deg, #fff, transparent),
+    #e6e0d8 url('../images/bunner.jpg') no-repeat center;
+    background-size: cover; */
+}
+
+.bg-logo {
+    background: #0060a2;
+    padding: 5px;
 }
 
 .search-engin {
@@ -201,6 +212,7 @@
     width: 303px;
     background:#FFF;
     padding: 15px 10px;
+    position: relative;
 }
 
 .expend-search-form {
@@ -323,4 +335,42 @@ hr {
 .pl-pr-0 {
     padding-left: 0 !important;
     padding-right: 0 !important;
+}
+
+.sepreater::before {
+    content: "";
+    position: absolute;
+    height: 100px;
+    right: 0;
+    border-right: 1px solid gray;
+}
+
+.button-custom {
+    border: 1px solid #f57b00;
+    padding: 7px 10px;
+    border-radius: 3px;
+}
+
+a.button-custom:hover {
+    text-decoration: none;
+}
+
+.button-fill {
+    background: #f57b00;
+    color: #fff;
+}
+a.button-fill:hover {
+    color: #fff;
+}
+.v-align-center {
+    position: absolute;
+    transform: translateY(28px);
+}
+
+.c-yellow {
+    color: #f57b00
+}
+
+a.c-yellow:hover {
+    color: #f57b00;
 }

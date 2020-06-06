@@ -14,14 +14,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="icon" sizes="76x76" href="{{ asset('images/favicon.png') }}">
     <link rel="stylesheet" href="{{asset('css/app.css')}}">
     <link rel="stylesheet" href="{{asset('css/template.css')}}">
     <link rel="stylesheet" href="{{asset('css/templateTabet.css')}}">
     <link rel="stylesheet" href="{{asset('css/customselect.css')}}">
+    {{-- <link rel="stylesheet" href="{{asset('css/seeker_index.css')}}"> --}}
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+
     @stack('css')
-    <title>Document</title>
+    <title>MyCareers</title>
 </head>
 <body>
     <header>
@@ -37,7 +40,7 @@
             <div class="custom-nav-bar">
                 <div class="nav-logo">
                     <a href="{{url('/')}}" class="monster-logo">
-                        <img src="{{asset('images/monster-logo.svg')}}" alt="">
+                        <img src="{{asset('images/MCMLogo.png')}}" alt="">
                     </a>
                 </div>
                 <div class="nav-wapper">
@@ -87,12 +90,34 @@
                             </div>
                         </li>
                         @else
-                        <li class="nav-link logined-usname">
-                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                        <li class="nav-link logined-usname share-hover mr0 pr">
+                            {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
                                 {{ Auth::user()->name }} <span class="caret"></span>
-                            </a>
+                            </a> --}}
+                            <div class="profile-avatar-user">
+                                <img src="{{asset('images/adele.jpg')}}" alt="" class="current-user">
+                            </div>
 
-                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                            <div class="pop-share profile-hover dropdown-content">
+                                <a class="dropdown-item">{{ Auth::user()->name }}</a>
+                                {{-- <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                                <a href="http://"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                                <a href="http://"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                                <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a> --}}
+                                <div>
+                                    <a class="dropdown-item" href="{{ route('logout') }}"
+                                    onclick="event.preventDefault();
+                                    document.getElementById('logout-form').submit();">
+                                    {{ __('Logout') }}
+                                </a>
+
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                    @csrf
+                                </form>
+                            </div>
+
+
+                            {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
@@ -101,7 +126,7 @@
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
-                            </form>
+                            </form> --}}
                         </div>
                     </li>
                     @endguest
@@ -120,12 +145,10 @@
     <div class="container">
         <div class="row">
             <div class="col-md-3 custom-blue">
-                <?php
-                Request::session()->put('ip_address', Request::ip());
-                $ipadds   = Request::session()->get('ip_address');
-                $visitors = collect($ipadds)->count();
-                ?>
-                <i class="fa fa-eye" aria-hidden="true"></i>{{$visitors}}
+                <span class="tooltipc" data-tip ="Web Site Viewers" tabindex = "1">
+                    @inject('Counter', 'App\Http\CounterTrait\Counter')
+                    <i class="fa fa-eye" aria-hidden="true"></i>{{$Counter->userCounter()}}
+                </span>
 
             </div>
             <div class="col-md-3">
@@ -192,6 +215,7 @@
 <script src="{{asset('js/searcharea.js')}}"></script>
 <script src="{{asset('js/template.js')}}"></script>
 <script src="https://kit.fontawesome.com/a75f6596a2.js" crossorigin="anonymous"></script>
+
 @stack('script')
 </body>
 </html>

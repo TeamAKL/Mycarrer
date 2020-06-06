@@ -31,11 +31,11 @@ $(".search-container .close-modal").on('click', function() {
 });
 
 
-$(".share-hover").hover(function() {
-    $(this).children('.pop-share').css("display", "block");
-}, function() {
-    $(this).children('.pop-share').css("display", "none");
-});
+// $(".share-hover").hover(function() {
+//     $(this).children('.pop-share').css("display", "block");
+// }, function() {
+//     $(this).children('.pop-share').css("display", "none");
+// });
 
 
 $(window).on('scroll', function() {
@@ -68,7 +68,6 @@ $(window).on('scroll', function() {
 });
 
 if($(window).width() <= 425) {
-
     $(".dp-inline").removeClass("col-md-12");
     $("#rm-id").removeClass("row").css({
         "display": "block",
@@ -77,28 +76,38 @@ if($(window).width() <= 425) {
     });
 }
 
-
-// $(".test").on('click', function() {
-//         $(this).siblings('.inputc').focus();
-//         $(this).siblings('.inputc').valid();
-// });
-
+// FOR PROJECT
 $('.pj-status').bind('click', function() {
     var $pjstatus = $(this).val().toLowerCase();
-    if($pjstatus == 'inprogress') {
-        $('.end').css("display", "none");
-    } else if($pjstatus == 'finished') {
-        $('.end').css("display", "block");
-    }
+    checkPjStatus($pjstatus);
 });
 
 $('.currcompany').bind('click', function() {
     var $value = $(this).val().toLowerCase();
-    if($value == 'no') {
-        $('.cpresent').css('display', 'none');
-        $('.ctill').css('display', 'block');
-    } else if($value == 'yes') {
-        $('.cpresent').css('display', 'block');
-        $('.ctill').css('display', 'none');
-    }
+    checkCurrentCompany($value);
 });
+
+function checkCurrentCompany($value)
+{
+    if($value == 'no') {
+        $("#ccno").attr('checked', 'true');
+        $("#ccyes").removeAttr('checked');
+        return $("#worktill").val('').removeAttr('disabled');
+    } else if($value == 'yes') {
+        $("#ccyes").attr('checked', 'true');
+        $("#ccno").removeAttr('checked');
+        return $("#worktill").val('Present').attr('disabled', 'disabled');
+    }
+}
+
+function checkPjStatus($state) {
+    if($state == 'inprogress') {
+        $("#f").removeAttr("checked");
+        $("#inpro").attr("checked", "true");
+        return $('.end').css("display", "none");
+    } else if($state == 'finished') {
+        $("#inpro").removeAttr("checked");
+        $("#f").attr("checked", "true");
+        return $('.end').css("display", "block");
+    }
+}

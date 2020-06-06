@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid bg-jumbotron">
     <div class="container">
         <div class="banner-header">
-            <h2>Find Better. Faster with Mycareer</h2>
+            <h2 class="bg-logo">Find Smarter, Faster & Better with MyCareers</h2>
             <div class="search-close">
                 <i class="fa fa-times" aria-hidden="true" id="close-icon"></i>
             </div>
@@ -67,11 +67,19 @@
             <div class="right-side">
                 <div class="upload-cv">
                     @guest
-                    <div class="upload">Upload</div>
+                    <h3 class="pt-3 text-center">Register With Us</h3>
+                    <div class="row my-3">
+                        <div class="col-md-6 sepreater">
+                            <a href="" class="button-fill button-custom v-align-center">Upload Resume</a>
+                        </div>
+                        <div class="col-md-6">
+                                <a href="" class="c-yellow button-custom v-align-center">Create Job Alert</a>
+                        </div>
+                    </div>
                     @else
                     <div class="profile">
                         <div class="row mb10">
-                            <div class="col-xs-9 col-sm-8 col-md-8">THet Tun</div>
+                            <div class="col-xs-9 col-sm-8 col-md-8">{{Auth::user()->name}}</div>
                             <div class="col-xs-3 col-sm-4 col-md-4">
                                 <div class="circle-wrap">
                                     <div class="circle">

@@ -22,6 +22,9 @@ header {
     box-shadow: 0 8px 6px -6px rgba(0,0,0,.13);
     -webkit-box-shadow: 0 8px 6px -6px rgba(0,0,0,.13);
 }
+.custom-nav-items {
+    padding-top: 6px;
+}
 .custom-nav-bar {
     display: flex;
     width: 100%;
@@ -50,33 +53,33 @@ header {
 
 li {
     float: left;
-  }
-  .dropdown{
-      margin: 8px auto;
-  }
+}
+.dropdown{
+    margin: 8px auto;
+}
 
-  .dropdown a, .dropbtn {
+.dropdown a, .dropbtn {
     display: inline-block;
     color: #000;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
+}
 
-  .dropdown:hover .dropbtn {
+.dropdown:hover .dropbtn {
     background-color: #fff;
     display: inline-block;
     color: #000;
     text-align: center;
     padding: 14px 16px;
     text-decoration: none;
-  }
+}
 
-  li.dropdown {
+li.dropdown {
     display: inline-block;
-  }
+}
 
-  .dropdown-content {
+.dropdown-content {
     display: none;
     position: absolute;
     background-color: #f9f9f9;
@@ -84,42 +87,42 @@ li {
     box-shadow: -4px -4px 4px grey;
     z-index: 99;
     border-radius: 5px;
-  }
+}
 
-  .dropdown-content a {
+.dropdown-content a {
     color: black;
     padding: 12px 16px;
     text-decoration: none;
     display: block;
     text-align: left;
-  }
-  .dropdown-content:before {
-          position: absolute;
-          top: -9px;
-          left:20px;
-          display: inline-block;
-          border-right: 9px solid transparent;
-          border-bottom: 9px solid #fff;
-          border-left: 9px solid transparent;
-          content: '';
-          }
+}
+.dropdown-content:before {
+    position: absolute;
+    top: -9px;
+    left:20px;
+    display: inline-block;
+    border-right: 9px solid transparent;
+    border-bottom: 9px solid #fff;
+    border-left: 9px solid transparent;
+    content: '';
+}
 
-  .dropdown-content a:hover {
-      background-color: #fff;
-      border-left: 4px solid violet;
-  }
+.dropdown-content a:hover {
+    background-color: #fff;
+    border-left: 4px solid violet;
+}
 
-  .dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content {
     display: block;
-  }
+}
 
-  .nav-link{
-      margin: 14px auto;
+.nav-link{
+    margin: 14px auto;
 
-  }
-  .nav-link:hover .dropdown-content{
-      display: block;
-  }
+}
+.nav-link:hover .dropdown-content{
+    display: block;
+}
 
 .nav-link-name, .cbtn {
     color: #3c3c3c;
@@ -230,4 +233,100 @@ li {
 .logined-usname {
     margin: 0;
     padding: 0;
+}
+
+/* ============= Profile Hover ============ */
+.pr {
+    position: relative;
+}
+
+.profile-hover {
+    position: absolute;
+    left: -65%;
+}
+
+.current-user {
+    width: 70px;
+    height: 70px;
+    padding: 2px;
+    border-radius: 50%;
+    border-width: 1px;
+    border-style: solid;
+    border-color: rgb(120, 120, 120);
+    border-image: initial;
+}
+
+.profile-avatar-user {
+    position: relative;
+    border-radius: 50%;
+    margin: 0 auto;
+    height: 78px;
+}
+
+.mr0 {
+    margin: 0 !important;
+}
+
+.pop-share {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    box-shadow: 0 5px 10px rgba(0,0,0,.2);
+    min-width: 168px;
+    max-width: 276px;
+    padding: 8px;
+    z-index: 2;
+    display: none;
+}
+
+.pop-share::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    left: 50%;
+    border-width: 0 8px 8px;
+    border-color: transparent transparent #fff;
+    top: -8px;
+    margin-left: -5px;
+}
+
+.tooltipc {
+    position: relative;
+	cursor: help;
+}
+
+.tooltipc::before,
+.tooltipc::after {
+	position: absolute;
+	left: 50%;
+	opacity: 0;
+	z-index: -100;
+}
+
+.tooltipc:hover::before,
+.tooltipc:focus::before,
+.tooltipc:hover::after,
+.tooltipc:focus::after {
+	opacity: 1;
+	z-index: 100;
+}
+.tooltipc::before {
+	border-style: solid;
+	border-width: 1em .75em 0 .75em;
+	border-color: #3E474F transparent transparent transparent;
+	bottom: 100%;
+	margin-left: -1.5em;
+	content: " ";
+}
+.tooltipc::after {
+	background: #3E474F;
+	border-radius: .25em;
+	bottom: 165%;
+    width: 14.5em;
+    text-align: center;
+	color: #EDEFF0;
+	padding: 1em;
+	margin-left: -8.75em;
+	content: attr(data-tip);
 }

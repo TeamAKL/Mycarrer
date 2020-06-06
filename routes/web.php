@@ -59,3 +59,9 @@ Route::post('job-proj', 'ProjectController@store');
 Route::post('education', 'EducationController@store');
 Route::get('eduEdit', 'EducationController@edit');
 Route::post('eduupdate', 'EducationController@update');
+Route::get('projectedit', 'ProjectController@edit');
+Route::post('job-updateproj', 'ProjectController@update');
+
+Route::get('editworkexp', 'WorkExperienceController@edit');
+Route::post('addworkexp', 'WorkExperienceController@store');
+Route::post('updateworkexp', 'WorkExperienceController@update');
