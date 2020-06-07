@@ -195,6 +195,11 @@
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.project')
                     </div>
+
+                    <!-- Course And Certification -->
+                    <div class="col-md-12 col-sx-12 mb10">
+                        @include('users.certificate')
+                    </div>
                 </div>
             </div>
             <!-- CModal Overly Section -->

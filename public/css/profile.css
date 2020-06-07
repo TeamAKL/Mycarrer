@@ -434,3 +434,12 @@ input:disabled {
 .flex-row {
     display: flex;
 }
+
+.validity {
+    margin-bottom: 0px;
+    font-weight: bold;
+}
+
+.mt23 {
+    margin-top: 23px;
+}
