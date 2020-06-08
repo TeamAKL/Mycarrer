@@ -24,6 +24,15 @@
             <li>
                 <h3>6</h3>
             </li>
+            <li>
+                <h3>7</h3>
+            </li>
+            <li>
+                <h3>8</h3>
+            </li>
+            <li>
+                <h3>9</h3>
+            </li>
         </ul>
     </div>
 
@@ -162,10 +171,10 @@
         margin-bottom: 60px;
     }
     .content-slider li{
-        background-color: greenyellow;
-        /* background-color: #ed3020; */
+        background-color: #ed3020;
         text-align: center;
         color: #FFF;
+        width: 175px;
     }
     .content-slider h3 {
         margin: 0;
@@ -174,18 +183,7 @@
     .demo{
         width: 800px;
     }
-    .item-a { width:200px; }
-    .item-b { width:340px; }
-    .item-c { width:290px; }
-    .item-d { width:220px; }
-    .item-e { width:350px; }
-    @media (max-width: 768px) {
-        .item-a { width:100px; }
-        .item-b { width:240px; }
-        .item-c { width:190px; }
-        .item-d { width:120px; }
-        .item-e { width:250px; }
-    }
+
 </style>
 @endpush
 
@@ -193,44 +191,17 @@
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 <script src="{{asset('js/lightslider.js')}}"></script>
 <script>
-    // $('#carouselExample').on('slide.bs.carousel', function (e) {
-
-        //     /*
-
-        //     CC 2.0 License Iatek LLC 2018
-        //     Attribution required
-
-        //     */
-        //     var $e = $(e.relatedTarget);
-        //     var idx = $e.index();
-        //     var itemsPerSlide = 7;
-        //     var totalItems = $('.carousel-item').length;
-
-        //     if (idx >= totalItems-(itemsPerSlide-1)) {
-            //         var it = itemsPerSlide - (totalItems - idx);
-            //         for (var i=0; i<it; i++) {
-                //             // append slides to end
-                //             if (e.direction=="left") {
-                    //                 $('.carousel-item').eq(i).appendTo('.carousel-inner');
-                    //             }
-                    //             else {
-                        //                 $('.carousel-item').eq(0).appendTo('.carousel-inner');
-                        //             }
-                        //         }
-                        //     }
-                        // });
-
-
-                        $(document).ready(function() {
-                            var autoplaySlider = $('#autoplay').lightSlider({
-                                auto:true,
-                                loop:true,
-                                pauseOnHover: true,
-                                onBeforeSlide: function (el) {
-                                    $('#current').text(el.getCurrentSlideCount());
-                                }
-                            });
-                            $('#total').text(autoplaySlider.getTotalSlideCount());
-                        });
-                    </script>
-                    @endpush
+    $(document).ready(function() {
+        var autoplaySlider = $('#autoplay').lightSlider({
+            auto:true,
+            loop:true,
+            autoWidth: true,
+            pauseOnHover: true,
+            onBeforeSlide: function (el) {
+                $('#current').text(el.getCurrentSlideCount());
+            }
+        });
+        $('#total').text(autoplaySlider.getTotalSlideCount());
+    });
+</script>
+@endpush

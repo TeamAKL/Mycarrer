@@ -104,7 +104,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                    <button class="btn btn-info">Upload Profile</button>
+                                <a href="{{url('seeker/profile')}}" class="btn btn-info">Update Profile</a>
                                 </div>
                             </div>
                         </div>

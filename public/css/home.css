@@ -24,3 +24,17 @@
 .job-title {
     margin: 19px;
 }
+
+@media(max-width: 768px) {
+    .nth-selector {
+        flex-direction: column;
+    }
+
+    .child-jb {
+        width: 100%;
+    }
+
+    .ch {
+        font-size: 0.8rem;
+    }
+}

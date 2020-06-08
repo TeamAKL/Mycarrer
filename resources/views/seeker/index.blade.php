@@ -136,6 +136,9 @@
                 <div class="row">
                     <div class="col-md-10">
                         <div class="card mb10">
+                            <div class="mycareers-bags">
+                                <span class="featuer">New</span>
+                            </div>
                             <div class="card-body pd-b20">
                                 <div class="holder">
                                     <div class="item job-contact-area">
@@ -144,6 +147,7 @@
                                                 Regional Pricing Analyst (6 months renewable or Convertible)
                                             </h3>
                                             <a href="http://">Property Star Ltd</a>
+                                            <p class="text-muted">2min ago</p>
                                         </a>
                                         <div class="row mt10">
                                             <di class="col-md-6">

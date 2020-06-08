@@ -45,12 +45,6 @@
                                     <span class="line"></span>
                                 </div>
 
-                                <div class="floating-label-input mb10">
-                                    <input type="text" id="institute" name="institute" required/>
-                                    <label for="institute" >Institute</label>
-                                    <span class="line"></span>
-                                </div>
-
                                 <div class="row mb30">
                                     <div class="col-md-6">
                                         <p class="validity">Validity</p>
@@ -70,8 +64,10 @@
                                 </div>
 
                                 <div class="custom-group">
-                                    <input type="checkbox" name="" id="lifetime">
-                                    <label for="lifetime" >Lifetime</label>
+                                    <div class="custom-control custom-checkbox">
+                                        <input type="checkbox" class="custom-control-input" id="lifetime">
+                                        <label class="custom-control-label" for="lifetime">Lifetime</label>
+                                    </div>
                                 </div>
 
                             </div>

@@ -200,6 +200,11 @@
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.certificate')
                     </div>
+
+                    <!-- Personal Detail -->
+                    <div class="col-md-12 col-sx-12 mb10">
+                        @include('users.personalDetail')
+                    </div>
                 </div>
             </div>
             <!-- CModal Overly Section -->
