@@ -65,3 +65,4 @@ Route::post('job-updateproj', 'ProjectController@update');
 Route::get('editworkexp', 'WorkExperienceController@edit');
 Route::post('addworkexp', 'WorkExperienceController@store');
 Route::post('updateworkexp', 'WorkExperienceController@update');
+Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCertificate')->name('seeker.generate_certificate');

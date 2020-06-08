@@ -10,6 +10,7 @@
     "require": {
         "php": "^7.1",
         "almasaeed2010/adminlte": "~3.0",
+        "barryvdh/laravel-dompdf": "^0.8.6",
         "fideloper/proxy": "^4.0",
         "ichtrojan/laravel-location": "^3.1",
         "laravel/framework": "^6.2",

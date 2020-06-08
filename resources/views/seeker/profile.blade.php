@@ -200,6 +200,10 @@
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.certificate')
                     </div>
+                    <a href="{!! route('seeker.generate_certificate', [$user['id']]) !!}"
+                       class="btn btn-warning pull-right" style="margin-right: 28px;margin-bottom: 10px;"
+                       target="_blank"><i class="fa fa-certificate"></i> Generate
+                        PDF</a>
                 </div>
             </div>
             <!-- CModal Overly Section -->
