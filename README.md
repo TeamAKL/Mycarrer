@@ -6,3 +6,11 @@
 
 ## For Admin OR User Redirect Path
 ## Change RedirectsUsers.php file and RouteServiceProvider and LoginController File;
+
+## Command for Country 
+## Thet Tun
+
+## 1. composer require ichtrojan/laravel-location
+## 2. php artisan vendor:publish --tag=laravel-location
+## 3. php artisan migrate
+## 4. php artisan db:seed --class=Ichtrojan\\Location\\Seeds\\LocationDatabaseSeeder

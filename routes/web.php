@@ -13,6 +13,8 @@
 
 // Route::get('/', "h");
 
+use Facade\FlareClient\Http\Response;
+
 Auth::routes();
 
 Route::get('admin', 'AdminController@index')->name('home');
@@ -66,3 +68,26 @@ Route::get('editworkexp', 'WorkExperienceController@edit');
 Route::post('addworkexp', 'WorkExperienceController@store');
 Route::post('updateworkexp', 'WorkExperienceController@update');
 Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCertificate')->name('seeker.generate_certificate');
+
+
+// FOREMPLOYER ROUTES
+Route::get('employer', function() {
+    return view('employer.index');
+});
+
+Route::get('jobs', function() {
+    return view('employer.jobs');
+});
+
+Route::get('company/view', function() {
+    return view('employer.company.index');
+});
+
+
+Route::get('findcountry', 'HomeController@countrySearch');
+
+Route::get('city', 'HomeController@searchCity');
+
+Route::get('company/detail', function() {
+    return view('employer.company.detail');
+});

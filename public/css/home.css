@@ -1,7 +1,7 @@
 .bg-gray, .job-title {
     background-color: #f5f5f5;
     box-shadow: 0 0 8px 0 rgba(0,0,0,.2);
-    padding: 10px;
+    padding: 20px;
 }
 
 .bg-gray, .nth-selector {
@@ -23,6 +23,11 @@
 
 .job-title {
     margin: 19px;
+}
+
+.job-title > a {
+    text-decoration: none;
+    cursor: default;
 }
 
 @media(max-width: 768px) {

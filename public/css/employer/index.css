@@ -1,0 +1,121 @@
+.fs-2 {
+    font-size: 2em;
+}
+
+.ptb {
+    padding-top: 29px !important;
+    padding-bottom: 23px !important;
+}
+
+.select-area, .state-area, .search-city {
+    /* height: auto; */
+    display: none;
+    width: 100%;
+    background: transparent;
+    border-bottom-right-radius: 5px;
+    border-bottom-left-radius: 5px;
+    border: 1px solid #2b3553;
+    border-top: unset;
+}
+
+.state-area, .search-city {
+    height: 100px;
+    max-height: 100px;
+    overflow-y: auto;
+}
+
+.cityname:hover {
+    background: gray;
+}
+
+.select-area, .cityname {
+    padding: 6px 18px;
+}
+
+.select-area > p, .cityname {
+    color: rgba(255, 255, 255, 0.8);
+    cursor: pointer;
+}
+
+.mb0 {
+    margin-bottom: 0 !important;
+}
+
+.border-unset:focus + .select-area {
+    border-color: #e14eca;
+}
+
+.state-nonradius {
+    border-bottom-left-radius: unset !important;
+    border-bottom-right-radius: unset !important;
+}
+.state:focus + .state-area, .state:focus ~ .search-city {
+    border-color: #e14eca;
+}
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+
+.custom-align-right {
+    text-align: right;
+    color: #fff;
+    padding-bottom: 2px;
+}
+
+.p-relative {
+    position: relative;
+    overflow: hidden;
+}
+.custom-search {
+    /* opacity: 0; */
+    /* transform: translateX(400px); */
+    display: inline-block;
+    width: unset;
+    padding-right: 47px;
+}
+
+.custom-search:focus + .cbutton::before, .custom-search:focus +  .cbutton:hover{
+    /* border-color: #e14eca !important; */
+    border: 1px solid #e14eca !important;
+}
+
+.cbutton {
+    position: absolute;
+    right: 0px;
+    border-color: #2b3553 !important;
+    background: transparent;
+    width: 48px;
+    margin: 0;
+    padding: 0;
+    top: 1px;
+    bottom: 0;
+    border-radius: unset;
+    border-top-right-radius: 0.4285rem;
+    border-bottom-right-radius: 0.4285rem;
+}
+
+.cbutton::before {
+    content: "";
+    position: absolute;
+    border: 1px solid #2b3553;
+    left: -1px;
+    top: 0;
+    bottom: 0
+}

@@ -3,6 +3,12 @@
 namespace App\Http\Controllers;
 
 // use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Arr;
+use Illuminate\Http\Request;
+use App\Country;
+use App\City;
+use App\JobCategory;
+use Dotenv\Regex\Result;
 
 class HomeController extends Controller
 {
@@ -14,41 +20,24 @@ class HomeController extends Controller
     */
     public function index()
     {
-        // $sessionId = session()->getId();
-        // $now = now();
-        // $counterKey = "mycareers_counter_key";
-        // $userKey = "mycareers_user_key";
+        $categories = JobCategory::all();
+        return view('home', ['categories' => $categories]);
+    }
 
-        // $users = Cache::get($userKey, []);
-        // $userUpdate = [];
+    public function countrySearch(Request $request)
+    {
+        if($request->ajax()) {
+            $countries = Country::where('name', 'LIKE', '%' . $request->country . '%')->get();
+            return Response($countries);
+        } else {
+            return Response("No country");
+        }
 
-        // $difference = 0;
+    }
 
-        // foreach($users as $session => $lastVisit) {
-        //     if($now->diffInMinutes($lastVisit) >= 1) {
-        //         $difference--;
-        //     } else {
-        //         $userUpdate[$session] = $lastVisit;
-        //     }
-        // }
-
-        // if(!array_key_exists($sessionId, $users)) {
-        //     $difference++;
-        // }
-
-        // $userUpdate[$sessionId] = $now;
-        // Cache::forever($userKey, $userUpdate);
-
-        // if(!Cache::has($counterKey)) {
-        //     Cache::forever($counterKey, 1);
-        // } else {
-        //     Cache::increment($counterKey, $difference);
-        // }
-
-        // $counter = Cache::get($counterKey);
-
-        // dd($sessionId);
-
-        return view('home');
+    public function searchCity(Request $request)
+    {
+        $cities = City::where('country_id', $request->countryId)->get();
+        return Response($cities);
     }
 }

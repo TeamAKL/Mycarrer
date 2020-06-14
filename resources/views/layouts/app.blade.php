@@ -19,12 +19,13 @@
         <!-- CSS -->
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
+        @stack('stylesheet')
     </head>
     <body class="{{ $class ?? '' }}">
         @auth()
             <div class="wrapper">
                     @include('layouts.navbars.sidebar')
-                <div class="main-panel">
+                <div class="main-panel" data="blue">
                     @include('layouts.navbars.navbar')
 
                     <div class="content">
@@ -60,8 +61,8 @@
                 <li class="adjustments-line">
                     <a href="javascript:void(0)" class="switch-trigger background-color">
                     <div class="badge-colors text-center">
-                        <span class="badge filter badge-primary active" data-color="primary"></span>
-                        <span class="badge filter badge-info" data-color="blue"></span>
+                        <span class="badge filter badge-primary " data-color="primary"></span>
+                        <span class="badge filter badge-info active" data-color="blue"></span>
                         <span class="badge filter badge-success" data-color="green"></span>
                     </div>
                     <div class="clearfix"></div>
@@ -87,6 +88,8 @@
                 </ul>
             </div>
         </div>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        {{-- <script src="{{asset('js/app.js')}}"></script> --}}
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('black') }}/js/core/popper.min.js"></script>
         <script src="{{ asset('black') }}/js/core/bootstrap.min.js"></script>
