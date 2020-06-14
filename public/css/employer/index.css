@@ -119,3 +119,49 @@
     top: 0;
     bottom: 0
 }
+
+textarea.form-control {
+    border: 1px solid #2b3553;
+    border-radius: 0.4285rem;
+    max-height: 255px;
+}
+
+textarea.form-control:focus {
+    border: 1px solid #e14eca;
+}
+
+.form-group input[type=file]  {
+    opacity: 0;
+    position: absolue;
+}
+
+img.preview {
+    width: 100%;
+    max-height: 200px;
+}
+
+.custom-file-label {
+    border: 1px solid #2b3553;
+}
+
+.custom-file-input:focus~.custom-file-label, .custom-file-input:focus~.custom-file-label::after {
+    border-color: #e14eca;
+}
+
+.custom-file-label::after {
+    border-left: 1px solid #2b3553;
+}
+
+.custom-lable {
+    font-size: 0.75rem;
+    margin-bottom: 5px;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.mt20 {
+    margin-top: 20px;
+}
+
+.pd-r {
+    padding-right: 20px;
+}

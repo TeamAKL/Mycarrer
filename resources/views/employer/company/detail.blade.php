@@ -4,8 +4,10 @@
 <div class="container">
     <div class="row mt-5">
         <div class="col-md-4">
-            <h3>About</h3>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Numquam in, earum porro veritatis molestias sequi recusandae quidem facilis aliquid autem voluptatem cupiditate enim aliquam quo, praesentium laudantium temporibus quaerat. Corporis.
+            <h3 class="mb20 underline">About</h3>
+            <p>
+                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi ipsam numquam delectus et dolores ullam tempora reprehenderit rerum accusantium assumenda sapiente, natus eaque est, consectetur animi id minima fugit consequuntur.
+            </p>
         </div>
         <div class="col-md-8">
             <table class="table table-dark">
@@ -50,7 +52,7 @@
         </div>
         <div class="clo-md-6 float-right">
             <div class="vision">
-                <h3>Vision</h3>
+                <h3 class="mb20 underline">Vision</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos porro optio, corrupti quasi veniam saepe sit laudantium assumenda unde, blanditiis sapiente molestias, voluptatum qui consequatur distinctio nobis nam repellendus dolor!</p>
             </div>
         </div>
@@ -59,7 +61,7 @@
     <div class="row my-5">
         <div class="clo-md-6 float-right">
             <div class="vision">
-                <h3>Misiion</h3>
+                <h3 class="mb20 underline">Misiion</h3>
                 <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos porro optio, corrupti quasi veniam saepe sit laudantium assumenda unde, blanditiis sapiente molestias, voluptatum qui consequatur distinctio nobis nam repellendus dolor!</p>
             </div>
         </div>
