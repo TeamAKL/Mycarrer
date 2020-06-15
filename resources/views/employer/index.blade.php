@@ -112,7 +112,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form>
+                <form class="modal-form">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="job-position">Job Position</label>
@@ -127,6 +127,14 @@
                         <label for="inputAddress">Address</label>
                         <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
                     </div>
+
+                    <div class="form-group">
+                        <label for="job-category">Select Category</label>
+                        <select name="" id="job-category" class="form-control">
+                            <option value="">Mane</option>
+                        </select>
+                    </div>
+
                     <div class="form-group ">
                         <label for="" class="pd-r">Employer Type</label>
                         <div class="form-check form-check-radio form-check-inline">

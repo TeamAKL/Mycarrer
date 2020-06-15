@@ -165,3 +165,7 @@ img.preview {
 .pd-r {
     padding-right: 20px;
 }
+
+.modal-body .modal-form input, .modal-body .modal-form select {
+    color: #25273a;
+}
