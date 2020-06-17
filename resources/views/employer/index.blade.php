@@ -170,7 +170,8 @@
                             <label for="unit">Salary Unit</label>
                             <select id="unit" class="form-control">
                                 <option selected>Choose...</option>
-                                <option>...</option>
+                                <option>MMK</option>
+                                <option>USD</option>
                             </select>
                         </div>
                     </div>

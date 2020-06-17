@@ -17,6 +17,10 @@ use Facade\FlareClient\Http\Response;
 
 Auth::routes();
 
+Route::get('seeker/register', 'Auth\RegisterController@showRegistrationForm')->name('seekerRegister');
+Route::get('employer/register', 'Auth\RegisterController@showRegistrationForm')->name('employerRegister');
+// Route::post('register', 'Auth\RegisterController@register')->name('register');
+
 Route::get('admin', 'AdminController@index')->name('home');
 
 Route::get('/session', 'UserController@store');
@@ -91,3 +95,5 @@ Route::get('city', 'HomeController@searchCity');
 Route::get('company/detail', function() {
     return view('employer.company.detail');
 });
+
+Route::post('company-info', 'HomeController@companyedit');

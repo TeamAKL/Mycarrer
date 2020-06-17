@@ -169,3 +169,8 @@ img.preview {
 .modal-body .modal-form input, .modal-body .modal-form select {
     color: #25273a;
 }
+
+
+#emp-size, #industry {
+    background: #27293d;
+}

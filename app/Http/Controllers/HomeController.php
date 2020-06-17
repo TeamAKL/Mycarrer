@@ -40,4 +40,9 @@ class HomeController extends Controller
         $cities = City::where('country_id', $request->countryId)->get();
         return Response($cities);
     }
+
+    public function companyedit(Request $request)
+    {
+        dd($request->about);
+    }
 }
