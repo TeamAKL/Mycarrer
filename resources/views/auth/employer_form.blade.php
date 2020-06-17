@@ -2,11 +2,14 @@
     <legend>Company Information:</legend>
     <div class="form-group">
         <label for="cname">Company Name</label>
-        <input type="text" class="form-control" id="cname" placeholder="Company Name">
+        <input type="text" name="company_name" class="form-control {{ $errors->has('company_name') ? ' is-invalid' : '' }}" id="cname" placeholder="Company Name">
+        @if ($errors->has('company_name'))
+        <span class="invalid-feedback" role="alert">{{ $errors->first('company_name') }}</span>
+        @endif
     </div>
     <div class="form-group">
         <label for="cemail">Company Email</label>
-        <input type="email" class="form-control" id="cemail" placeholder="Company Email">
+        <input type="email" name="company_email" class="form-control" id="cemail" placeholder="Company Email">
     </div>
 
     <div class="form-group row">

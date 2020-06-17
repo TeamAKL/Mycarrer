@@ -51,35 +51,42 @@ class RegisterController extends Controller
     */
     protected function validator(array $data)
     {
-        return Validator::make($data, [
-            'name' => ['required', 'string', 'max:255'],
-            'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'phone_number' => ['required', 'string', 'min:11' , 'max:13'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
-
-            'role_id' => ['integer']
-            ]);
-        }
-
-        /**
-        * Create a new user instance after a valid registration.
-        *
-        * @param  array  $data
-        * @return \App\User
-        */
-        protected function create(array $data)
-        {
-            return User::create([
-                'name' => $data['name'],
-                'email' => $data['email'],
-                'password' => Hash::make($data['password']),
-                'phone_number' => $data['phone_number'],
-                'role_id' => $data['role_id']
+        if($data['role_id'] == 0) {
+            return Validator::make($data, [
+                'name' => ['required', 'string', 'max:255'],
+                'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                'phone_number' => ['required', 'string', 'min:11' , 'max:13'],
+                'password' => ['required', 'string', 'min:8', 'confirmed'],
+                'role_id' => ['integer']
                 ]);
+            } else {
+                return Validator::make($data, [
+                    'company_name' => ['required'],
+                    'name' => ['required', 'string', 'max:255'],
+                    'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+                    'phone_number' => ['required', 'string', 'min:11' , 'max:13'],
+                    'password' => ['required', 'string', 'min:8', 'confirmed'],
+                    'role_id' => ['integer']
+                    ]);
+                }
+
             }
-        }
 
-        // protected function companyRegisterValidat(array $companydata)
-        // {
+            /**
+            * Create a new user instance after a valid registration.
+            *
+            * @param  array  $data
+            * @return \App\User
+            */
+            protected function create(array $data)
+            {
+                return User::create([
+                    'name' => $data['name'],
+                    'email' => $data['email'],
+                    'password' => Hash::make($data['password']),
+                    'phone_number' => $data['phone_number'],
+                    'role_id' => $data['role_id']
+                    ]);
+                }
 
-        // }
+            }
