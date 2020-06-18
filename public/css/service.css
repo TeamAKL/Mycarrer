@@ -1,0 +1,83 @@
+.heading-title {
+    color: blue;
+    text-transform: uppercase;
+    font-size: 3rem;
+    margin-top: 1rem;
+    margin-bottom: 2rem;
+    float: left;
+    width: 100%;
+}
+
+.staff {
+    background-color: aliceblue;
+    width: 100%;
+    float: left;
+    display: block;
+    margin-bottom: 40px;
+    padding: 10px;
+}
+.staff .staff-img {
+    border-radius: 0.8rem;
+    width: 100%;
+    float: left;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    position: relative;
+    height: 200px;
+    margin-bottom: 20px;
+    display: table;
+}
+.heading-title span {
+    padding-left: 15px;
+    font-size: 70%;
+    text-transform: initial;
+}
+
+.staff h3 {
+    font-size: 24px;
+    cursor: pointer;
+
+}
+.staff h3 a {
+    color: blue;
+    text-decoration: none;
+}
+
+.staff .staff-img:hover {
+    opacity: 0.7;
+}
+.staff .btn {
+    display: inline-block;
+    padding: 6px 12px;
+    margin-bottom: 0;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.42857143;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: middle;
+    touch-action: manipulation;
+    cursor: pointer;
+    user-select: none;
+}
+
+.staff .btn-full {
+    width: 100%;
+}
+.staff .btn-second {
+    background: #159ed9;
+    border-radius: 15px;
+    color: #fff;
+    text-transform: uppercase;
+    
+}
+.staff .btn-second:hover{
+    background-color: brown;
+}
+.btn-outline {
+    border: 1px solid #159ed9;
+    border-radius: 15px;
+    text-transform: uppercase;
+    margin-top: 10px;
+}

@@ -65,9 +65,57 @@
         @endforeach
     </div>
 
+    <!-- For Service -->
+
+    <div id="fh5co-staff">
+		<div class="container">
+            <div class="col-md-12">
+                <h3 class="heading-title text-center">
+                    SERVICES <span>We are looking forward to being your partner.</span>
+                </h3>
+            </div>
+			<div class="row">
+				<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+					<div class="staff">
+						<div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">	
+						</div>
+						
+						<h3><a href="#">Mike Smith</a></h3>
+						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.</p>
+                        <a href="" class="btn btn-second btn-full">Detail</a>
+                        <a href="" class="btn btn-outline btn-full mt-10">Request DEMO</a>
+                    </div>
+				</div>
+				<div class="col-md-4 col-sm-6 col-xs-12 text-center">
+					<div class="staff">
+						<div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">	
+						</div>
+						
+						<h3><a href="#">Mike Smith</a></h3>
+						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.</p>
+                        <a href="" class="btn btn-second btn-full">Detail</a>
+                        <a href="" class="btn btn-outline btn-full mt-10">Request DEMO</a>
+                    </div>
+				</div>
+				<div class="col-md-4 col-sm-6  col-xs-12 text-center">
+					<div class="staff">
+						<div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">
+						</div>
+						
+						<h3><a href="#">Mike Smith</a></h3>
+						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.</p>
+                        <a href="" class="btn btn-second btn-full">Detail</a>
+                        <a href="" class="btn btn-outline btn-full mt-10">Request DEMO</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
     @endsection
 
     @push('css')
+    <link rel="stylesheet" href="{{asset('css/service.css')}}">
     <link rel="stylesheet" href="{{asset('css/slider.css')}}">
     <link rel="stylesheet" href="{{asset('css/home.css')}}">
     <link type="text/css" rel="stylesheet" href="{{asset('css/lightslider.css')}}" />
