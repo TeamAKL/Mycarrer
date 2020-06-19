@@ -7,6 +7,6 @@ use Faker\Generator as Faker;
 
 $factory->define(JobCategory::class, function (Faker $faker) {
     return [
-        'category_name' => $faker->sentence(10)
+        'category_name' => $faker->name()
     ];
 });

@@ -16,6 +16,6 @@ class JobCategory extends Model
 
     public function posts()
     {
-        return $this->belongsToMany('App\Post', 'jobCategory_post', 'jobcategory_id', 'post_id');
+        return $this->belongsToMany('App\Post')->withTimestamps();
     }
 }

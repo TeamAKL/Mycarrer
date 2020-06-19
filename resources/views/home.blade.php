@@ -59,7 +59,7 @@
         @foreach($categories as $category)
         <div class="col-md-4 text-center">
             <div class="job-title">
-                <a href="http://">{{$category->category_name}}</a><span class="pl-4 custom-blue">(4)</span>
+            <a href="http://">{{$category->category_name}}</a><span class="pl-4 custom-blue">{{$category->posts()->count()}}</span>
             </div>
         </div>
         @endforeach

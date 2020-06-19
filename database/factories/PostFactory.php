@@ -7,13 +7,14 @@ use Faker\Generator as Faker;
 
 $factory->define(Post::class, function (Faker $faker) {
     return [
-        'position' => $faker->sentence(15),
-        'type' => $faker->sentence(6),
-        'address' => $faker->sentence(3),
-        'employer_type' => $faker->word(),
+        'position' => $faker->jobTitle(),
+        'experience' => $faker->randomDigit(),
+        'type' => $faker->randomElement(array("Full Time", "Part Time")),
+        'address' => $faker->address(),
+        'employer_type' => $faker->randomElement(array("Male", "Female", "M/F")),
         'employer_number' => $faker->randomDigit(),
         'salary_amount' => $faker->numberBetween(10, 1000),
-        'department' => $faker->sentence(10),
+        'department' => $faker->word(),
         'report_to' => $faker->name(),
         'job_description' => $faker->realText(200, 2),
         'job_requirement' => $faker->realText(200, 2),

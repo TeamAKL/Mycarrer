@@ -48,13 +48,10 @@ Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
 // For Seeker Route
 Route::resource('job-category', 'JobCategoryController')->middleware('auth');
 Route::get('/', 'HomeController@index');
-Route::get('/seeker/dashboard', function() {
-    return view('seeker.index');
-})->name('seeker')->middleware('auth');
+Route::get('/seeker/dashboard', 'PostController@index')->name('seeker')->middleware('auth');
 
-Route::get('seeker/job-detail/{id}', function() {
-    return view('seeker.show');
-})->middleware('auth');
+Route::get('seeker/job-detail/{id}', 'PostController@show')->middleware('auth');
+// Route::resource('posts', 'PostController');
 
 
 Route::get('showpass', 'UserController@showPass');

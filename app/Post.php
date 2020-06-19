@@ -9,6 +9,7 @@ class Post extends Model
     protected $fillable = [
         'position',
         'type',
+        'experience',
         'address',
         'job_description',
         'job_requirement',
@@ -20,4 +21,12 @@ class Post extends Model
         'report_to',
         'urgent'
     ];
+
+    protected $table = "posts";
+    protected $date = ['created_at', 'updated_at'];
+
+    public function job_categories()
+    {
+        return $this->belongsToMany('App\JobCategory');
+    }
 }
