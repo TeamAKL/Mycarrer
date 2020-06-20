@@ -19,6 +19,9 @@ Auth::routes();
 
 Route::get('seeker/register', 'Auth\RegisterController@showRegistrationForm')->name('seekerRegister');
 Route::get('employer/register', 'Auth\RegisterController@showRegistrationForm')->name('employerRegister');
+
+Route::get('seeker/login', 'Auth\LoginController@showLoginForm')->name('seekerlogin');
+Route::get('employer/login', 'Auth\LoginController@showLoginForm')->name('employeerlogin');
 // Route::post('register', 'Auth\RegisterController@register')->name('register');
 
 Route::get('admin', 'AdminController@index')->name('home');
