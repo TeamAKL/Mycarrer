@@ -1,12 +1,23 @@
+<!---
+    -         -    -         -      - - - -         -         - - - - -        - - - - -   - - - - -   - - - - -
+    - -     - -     -       -      -               -  -       -         -      -           -           -        -
+    -   - -   -       -   -       -               -    -      -          -     -           -           -         -
+    -         -         -         -              - -  - -     - - - - - -      - - - - -   - - - - -   - - - - - -
+    -         -         -          -            -        -    -        -       -           -           -        -
+    -         -         -            - - - -   -          -   -         -      - - - - -   - - - - -   -         -
+-->
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <meta name="_token" content="{{ csrf_token() }}">
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="{{secure_asset('css/app.css')}}">
-    <link rel="stylesheet" href="{{secure_asset('css/template.css')}}">
-    <link rel="stylesheet" href="{{secure_asset('css/customselect.css')}}">
+    <link rel="stylesheet" href="{{asset('css/app.css')}}">
+    <link rel="stylesheet" href="{{asset('css/template.css')}}">
+    <link rel="stylesheet" href="{{asset('css/templateTabet.css')}}">
+    <link rel="stylesheet" href="{{asset('css/customselect.css')}}">
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
     @stack('css')
@@ -15,88 +26,172 @@
 <body>
     <header>
         <div class="container">
+            <div class="spinner-master3">
+                <input type="checkbox" id="spinner-form3" />
+                <label for="spinner-form3" class="spinner-spin3">
+                    <div class="spinner3 diagonal part-1"></div>
+                    <div class="spinner3 horizontal"></div>
+                    <div class="spinner3 diagonal part-2"></div>
+                </label>
+            </div>
             <div class="custom-nav-bar">
                 <div class="nav-logo">
-                    <a href="http://" class="monster-logo">
+                    <a href="{{url('/')}}" class="monster-logo">
                         <img src="{{asset('images/monster-logo.svg')}}" alt="">
                     </a>
                 </div>
                 <div class="nav-wapper">
                     <ul class="custom-nav-items">
-                        <li class="nav-link"><a href="http://" class="nav-link-name">Job Search</a></li>
-                        <li class="nav-link"><a href="http://" class="nav-link-name">Fresher</a></li>
-                        <li class="nav-link"><a href="http://" class="nav-link-name">Blog</a></li>
-                        <li class="nav-link"><a href="http://" class="nav-link-name">About</a></li>
+                        <li class="dropdown">
+                            <span class="dropbtn">JOB SEARCH</span>
+                            <div class="dropdown-content">
+                                <a href="#">JOB BY COMPANY</a>
+                                <a href="#">JOB BY POSITION</a>
+                                <a href="#">JOB BY SKILL</a>
+                                <a href="#">PART TIME JOB</a>
+
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <a href="" class="dropbtn">FRESHER </a>
+
+                        </li>
+                        <li class="dropdown">
+                            <span href="" class="dropbtn">BLOG</span>
+                            <div class="dropdown-content">
+                                <a href="#"> NEWS</a>
+                                <a href="#">JS TOOLKITS</a>
+                                <a href="#">EMPLOYER TOOLKITS</a>
+                                <a href="#">HOW TO LOGIN</a>
+                                <a href="#">HOW TO POST</a>
+
+                            </div>
+                        </li>
+                        <li class="dropdown">
+                            <span class="dropbtn">ABOUT</span>
+                            <div class="dropdown-content">
+                                <a href="#">JOB SEEKERS TOOLKITS</a>
+                                <a href="#">EMPLOYER TOOLKITS</a>
+                            </div>
+                        </li>
                     </ul>
                     <ul class="login-section-nav">
+                        @guest
                         <li class="nav-link">
-                            <a href="" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a></li>
-                            <li class="nav-link"><a href="" class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</a></li>
-                        </ul>
-                    </div>
+                            <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
+                        </li>
+                        <li class="nav-link" id="one"><span class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</span>
+                            <div class="dropdown-content">
+                                <a href="#">JOB SEEKERS TOOLKITS</a>
+                                <a href="#">EMPLOYER TOOLKITS</a>
+                            </div>
+                        </li>
+                        @else
+                        <li class="nav-link logined-usname">
+                            <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
+                                {{ Auth::user()->name }} <span class="caret"></span>
+                            </a>
+
+                            <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </div>
+                    </li>
+                    @endguest
+                </ul>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="custom-padding">
+    @yield('content')
+</div>
+
+<!---- Footer --->
+<div class="footer-social">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3 custom-blue">
+                <?php
+                Request::session()->put('ip_address', Request::ip());
+                $ipadds   = Request::session()->get('ip_address');
+                $visitors = collect($ipadds)->count();
+                ?>
+                <i class="fa fa-eye" aria-hidden="true"></i>{{$visitors}}
+
+            </div>
+            <div class="col-md-3">
+                <a href="tel:+9599771777212"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09771777212</a>
+            </div>
+            <div class="col-md-3"><a href="mailto:info@mycareersmyanmar.com"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i>info@mycareersmyanmar.com</a></div>
+            <div class="col-md-3 last-social-items">
+                <a href="mailto:" class="pl"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                <a href="https://www.facebook.com/mycareersmyanmar/" class="pl"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                <a href="https://www.linkedin.com/in/my-careers-7b75231a5/" class="pl"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="footer-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-3">
+                <div>
+                    <h5 class="footer-title">Job Seekers</h5>
+                    <div><a href="http://" class="footer-link">Job Search</a></div>
+                    <div><a href="http://" class="footer-link">Log In</a></div>
+                    <div><a href="http://" class="footer-link">Upload Resume</a></div>
+                    <div><a href="http://" class="footer-link">Free Job Alert</a></div>
+                    <div><a href="http://" class="footer-link">Find Companies</a></div>
+                    <div><a href="http://" class="footer-link">Help</a></div>
                 </div>
             </div>
-        </header>
-        <div class="jumbotron jumbotron-fluid bg-jumbotron">
-            <div class="container">
-                <div class="banner-header">
-                    <h2>Find Better. Faster with Mycareer</h2>
-                    <div class="search-close">
-                        <i class="fa fa-times" aria-hidden="true" id="close-icon"></i>
-                    </div>
+            <div class="col-md-3">
+                <div>
+                    <h5 class="footer-title">Employers</h5>
+                    <div><a href="http://" class="footer-link">Employer Log In</a></div>
+                    <div><a href="http://" class="footer-link">Job Posting</a></div>
+                    <div><a href="http://" class="footer-link">Access Resume Database</a></div>
+                    <div><a href="http://" class="footer-link">Advertise with Us</a></div>
                 </div>
-                <div class="search-engin">
-                    <form class="user-search-form">
-                        <div class="form-row">
-                            <div class=" input-group mb-2 mr-sm-2 col-md-4">
-                                <div class="input-group-prepend ">
-                                    <div class="input-group-text custom-input"><i class="fa fa-search" aria-hidden="true"></i></div>
-                                </div>
-                                <input type="text" id="search" class="form-control custom-input" placeholder="Search by Skills, Company & Job Title">
-                            </div>
-                            <div class="input-group mb-2 mr-sm-2 col-md-3">
-                                <div class="input-group-prepend ">
-                                    <div class="input-group-text custom-input"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
-                                </div>
-                                <input type="text" class="form-control custom-input" id="location" placeholder="Location">
-                            </div>
-                            <div class="col-md-3">
-                                <select class="form-control custom-input" id="selectoption">
-                                    <option>Default select</option>
-                                    <option>Default select</option>
-                                    <option>Default select</option>
-                                </select>
-                            </div>
-                            {{-- Custom Select --}}
-                            {{-- <div class="custom-select col-md-3">
-                                <select class="custom-input" style="display:none;">
-                                    <option value="0">Select car:</option>
-                                    <option value="1">Audi</option>
-                                    <option value="2">BMW</option>
-                                    <option value="3">Citroen</option>
-                                    <option value="4">Ford</option>
-                                    <option value="5">Honda</option>
-                                    <option value="6">Jaguar</option>
-                                    <option value="7">Land Rover</option>
-                                    <option value="8">Mercedes</option>
-                                    <option value="9">Mini</option>
-                                    <option value="10">Nissan</option>
-                                    <option value="11">Toyota</option>
-                                    <option value="12">Volvo</option>
-                                </select>
-                            </div> --}}
-                            {{-- Custom Select --}}
-                            <div class="col-md-2">
-                                <input type="submit" value="Search" class="custom-btn ">
-                            </div>
-                        </div>
-                    </form>
-                    <a href="http://" class="search-model d-flex justify-content-end">Advanced Search</a>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h5 class="footer-title">Legal</h5>
+                    <div><a href="http://" class="footer-link">Security</a></div>
+                    <div><a href="http://" class="footer-link">Policy</a></div>
+                    <div><a href="http://" class="footer-link">Terms of Us</a></div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div>
+                    <h5 class="footer-title">About Us</h5>
+                    <div><a href="http://" class="footer-link">Career with Us</a></div>
+                    <div><a href="http://" class="footer-link">Send Feedback</a></div>
                 </div>
             </div>
         </div>
-        <script src="{{secure_asset('js/app.js')}}"></script>
-        <script src="{{secure_asset('js/searcharea.js')}}"></script>
-        @stack('script')
-    </body>
-    </html>
+    </div>
+</div>
+
+<div class="copyright-footer">
+    <div class="container">
+        <p class="copyright">&copy; 2020 MyCareers- All Rights Reserved</p>
+    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+<script src="{{asset('js/app.js')}}"></script>
+<script src="{{asset('js/searcharea.js')}}"></script>
+<script src="{{asset('js/template.js')}}"></script>
+<script src="https://kit.fontawesome.com/a75f6596a2.js" crossorigin="anonymous"></script>
+@stack('script')
+</body>
+</html>
