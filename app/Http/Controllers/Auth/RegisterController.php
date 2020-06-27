@@ -5,9 +5,11 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
+use App\Company;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
+use Illuminate\Support\Facades\File;
 
 class RegisterController extends Controller
 {
@@ -61,7 +63,10 @@ class RegisterController extends Controller
                 ]);
             } else {
                 return Validator::make($data, [
-                    'company_name' => ['required'],
+                    'company_name' => ['required', 'string', 'max:255'],
+                    'company_email' => ['required', 'string', 'max:255', 'unique:companies'],
+                    'size' => ['required', 'string'],
+                    'company_logo' => ['required'],
                     'name' => ['required', 'string', 'max:255'],
                     'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
                     'phone_number' => ['required', 'string', 'min:11' , 'max:13'],
@@ -80,13 +85,24 @@ class RegisterController extends Controller
             */
             protected function create(array $data)
             {
-                return User::create([
-                    'name' => $data['name'],
-                    'email' => $data['email'],
-                    'password' => Hash::make($data['password']),
-                    'phone_number' => $data['phone_number'],
-                    'role_id' => $data['role_id']
-                    ]);
-                }
+                if($data['role_id'] == 0) {
+                    return User::create([
+                        'name' => $data['name'],
+                        'email' => $data['email'],
+                        'password' => Hash::make($data['password']),
+                        'phone_number' => $data['phone_number'],
+                        'role_id' => $data['role_id']
+                        ]);
+                    } else {
+                        return User::create([
+                            'name' => $data['name'],
+                            'email' => $data['email'],
+                            'password' => Hash::make($data['password']),
+                            'phone_number' => $data['phone_number'],
+                            'role_id' => $data['role_id']
+                            ]);
+                            }
 
-            }
+                        }
+
+                    }

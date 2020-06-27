@@ -81,14 +81,15 @@
                     <ul class="login-section-nav">
                         @guest
                         <li class="nav-link">
-                            <a href="{{url('login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>Login</a>
+                            <a href="{{url('seeker/login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>SEEKER LOGIN</a>
+                            <span class="d-block pt6"><a href="{{url('employer/login')}}">LogIn as Employer Instance</a></span>
                         </li>
-                        <li class="nav-link" id="one"><span class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</span>
+                        {{-- <li class="nav-link" id="one"><span class="cbtn nav-link-name"><i class="fa fa-users" aria-hidden="true"></i>Employer Login</span>
                             <div class="dropdown-content">
                                 <a href="#">JOB SEEKERS TOOLKITS</a>
                                 <a href="#">EMPLOYER TOOLKITS</a>
                             </div>
-                        </li>
+                        </li> --}}
                         @else
                         <li class="nav-link logined-usname share-hover mr0 pr">
                             {{-- <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>

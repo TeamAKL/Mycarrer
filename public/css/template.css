@@ -136,6 +136,16 @@ li.dropdown {
 
 .login-section-nav > li {
     padding-right: 0;
+    margin-top: 5px !important;
+}
+
+.pt6 {
+    padding-top: 6px;
+}
+
+.pt6 > a {
+    text-decoration: none;
+    font-weight: 600;
 }
 
 .login-section-nav {

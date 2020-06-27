@@ -14,7 +14,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(10);
+        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
         return view('seeker.index', ["posts" => $posts]);
     }
 
@@ -36,7 +36,29 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        if($request->urgent) {
+            $urgent = 1;
+        } else {
+            $urgent = 0;
+        }
+        $post = Post::create([
+            "position" => $request->jobposition,
+            "experience" => $request->experience,
+            "address" => $request->address,
+            "type" => $request->jobtype,
+            "employer_type" => $request->emptype,
+            "employer_number" => $request->employernumber,
+            "min_salary" => $request->minsalary,
+            "max_salary" => $request->maxsalary,
+            "salary_unit" => $request->currency,
+            "department" => $request->department,
+            "report_to" => $request->reportto,
+            "job_description" => $request->jobdescription,
+            "job_requirement" => $request->jobrequirement,
+            "urgent" => $urgent
+        ]);
+        dd($post);
+        return redirect('employer');
     }
 
     /**

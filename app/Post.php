@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
+        'company_id',
         'position',
         'type',
         'experience',
@@ -15,10 +16,12 @@ class Post extends Model
         'job_requirement',
         'employer_type',
         'employer_number',
-        'salary_amount',
+        'min_salary',
+        'max_salary',
         'salary_unit',
         'department',
         'report_to',
+        'job_status',
         'urgent'
     ];
 
@@ -28,5 +31,10 @@ class Post extends Model
     public function job_categories()
     {
         return $this->belongsToMany('App\JobCategory');
+    }
+
+    public function companies()
+    {
+        return $this->belongsTo('App\Company');
     }
 }

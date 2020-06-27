@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageSlug' => 'jobs'])
+@extends('layouts.app', ['page' => __('Company information'), 'pageSlug' => 'company_info'])
 @section('content')
 <h3>Company Information</h3>
 <div class="row">
@@ -372,8 +372,6 @@
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
     });
-
-
 
 
     // //====== CKE Editore

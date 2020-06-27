@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Jobs'), 'pageSlug' => 'jobs'])
+@extends('layouts.app', ['page' => __('applied resume'), 'pageSlug' => 'appliedresume'])
 @section('content')
 <div class="card-body">
     <div class="d-flex justify-content-end p-relative">
@@ -10,10 +10,10 @@
     <table class="table tablesorter " id="">
         <thead class=" text-primary">
             <tr><th scope="col">ID</th>
-                <th scope="col">Title</th>
-                <th scope="col">Post</th>
+                <th scope="col">Job Title</th>
+                <th scope="col">Job Type</th>
+                <th scope="col">Job Category</th>
                 <th scope="col">Location</th>
-                <th scope="col">Status</th>
             </tr>
         </thead>
         <tbody>

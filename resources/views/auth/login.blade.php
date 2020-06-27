@@ -12,6 +12,7 @@
         <div class="col-md-6 offset-md-3">
             <form method="post" action="{{ route('login') }}">
                 @csrf
+                <input type="hidden" name="route_name" value="{{Route::currentRouteName() == 'seekerlogin' ? 'seeker/login' : 'employer/login'}}">
                 <div class="form-group">
                     <label for="exampleInputEmail1">Email address</label>
                     <input type="email" name="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter email">
@@ -25,6 +26,12 @@
                     @if ($errors->has('password'))
                     <span class="invalid-feedback" role="alert">{{ $errors->first('password') }}</span>
                     @endif
+                </div>
+                <div class="form-check mb-3">
+                    <input class="form-check-input" type="checkbox" name="remember" value="true" id="rememberme">
+                    <label class="form-check-label" for="rememberme">
+                        Remember Me
+                    </label>
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 <div class="row">
