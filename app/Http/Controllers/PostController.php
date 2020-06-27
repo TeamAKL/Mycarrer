@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Post;
+use App\JobCategory;
 use Illuminate\Http\Request;
 
 class PostController extends Controller
@@ -41,6 +42,7 @@ class PostController extends Controller
         } else {
             $urgent = 0;
         }
+        dd()
         $post = Post::create([
             "position" => $request->jobposition,
             "experience" => $request->experience,
@@ -55,6 +57,7 @@ class PostController extends Controller
             "report_to" => $request->reportto,
             "job_description" => $request->jobdescription,
             "job_requirement" => $request->jobrequirement,
+            "company_id" => $request->company_id,
             "urgent" => $urgent
         ]);
         dd($post);
