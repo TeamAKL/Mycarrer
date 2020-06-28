@@ -1,4 +1,4 @@
-@extends('layouts.app', ['pageSlug' => 'dashboard'])
+@extends('layouts.app', ['page' => __('Dashboard'), 'pageSlug' => 'dashboard'])
 @section('content')
 <div class="container">
     <h2>Dashboard</h2>
@@ -112,94 +112,117 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="modal-form">
+                <form class="modal-form" action="{{route('createpost')}}" method="post">
+                    @csrf
+                    <input type="hidden" name="company_id" value="{{Auth::user()->companies->id}}">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="job-position">Job Position</label>
-                            <input type="text" class="form-control" id="job-position" placeholder="Job Position">
+                            <input type="text" name="jobposition" class="form-control" id="job-position" placeholder="Job Position">
                         </div>
                         <div class="form-group col-md-6">
                             <label for="job-type">Job Type</label>
-                            <input type="text" class="form-control" id="job-type" placeholder="Job Type">
+                            <select name="jobtype" id="job-category" class="form-control">
+                                <option>Select</option>
+                                <option value="Full Time">Full Time</option>
+                                <option value="Part Time">Part Time</option>
+                                <option value="Work From Home">Work From Home</option>
+                            </select>
                         </div>
                     </div>
-                    <div class="form-group">
-                        <label for="inputAddress">Address</label>
-                        <input type="text" class="form-control" id="inputAddress" placeholder="1234 Main St">
+
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="job-category">Job Category</label>
+                            <select name="jobcategory" id="job-category" class="form-control">
+                                <option>Select</option>
+                                @foreach ($jobCategories as $jobCategory)
+                                <option value="{{$jobCategory->id}}">{{$jobCategory->category_name}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="experience">Experience</label>
+                            <input type="text" class="form-control" id="experience" name="experience">
+                        </div>
                     </div>
 
-                    <div class="form-group">
-                        <label for="job-category">Select Category</label>
-                        <select name="" id="job-category" class="form-control">
-                            <option value="">Mane</option>
-                        </select>
+                    <div class="form-row">
+                        <div class="form-group col-md-6">
+                            <label for="inputAddress">Address</label>
+                            <input type="text" name="address" class="form-control" id="inputAddress" placeholder="1234 Main St">
+                        </div>
+                        <div class="form-group col-md-6">
+                            <label for="inputCity">Number Of Employer</label>
+                            <input type="number" name="employernumber" min="1" class="form-control" id="inputCity">
+                        </div>
                     </div>
 
                     <div class="form-group ">
                         <label for="" class="pd-r">Employer Type</label>
                         <div class="form-check form-check-radio form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1"> Male
+                                <input class="form-check-input" type="radio" name="emptype" id="inlineRadio1" value="Male"> Male
                                 <span class="form-check-sign"></span>
                             </label>
                         </div>
                         <div class="form-check form-check-radio form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2"> Female
+                                <input class="form-check-input" type="radio" name="emptype" id="inlineRadio2" value="Female"> Female
                                 <span class="form-check-sign"></span>
                             </label>
                         </div>
                         <div class="form-check form-check-radio form-check-inline">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3"> Both
+                                <input class="form-check-input" type="radio" name="emptype" id="inlineRadio3" value="Mail / Female"> Both
                                 <span class="form-check-sign"></span>
                             </label>
                         </div>
                     </div>
 
                     <div class="form-row">
-                        <div class="form-group col-md-6">
-                            <label for="inputCity">Number Of Employer</label>
-                            <input type="text" class="form-control" id="inputCity">
+                        <div class="form-group col-md-5">
+                            <label for="min-salary">Minimum Salary</label>
+                            <input type="number" name="minsalary" min="0" class="form-control" id="min-salary">
                         </div>
-                        <div class="form-group col-md-4">
-                            <label for="amount">Salary Amount</label>
-                            <input type="text" class="form-control" id="amount">
+                        <div class="form-group col-md-5">
+                            <label for="max-salary">Maximum Salary</label>
+                            <input type="text" name="maxsalary" class="form-control" id="max-salary">
                         </div>
                         <div class="form-group col-md-2">
-                            <label for="unit">Salary Unit</label>
-                            <select id="unit" class="form-control">
+                            <label for="unit">Currency</label>
+                            <select name="currency" id="unit" class="form-control">
                                 <option selected>Choose...</option>
-                                <option>MMK</option>
-                                <option>USD</option>
+                                <option value="MMK">MMK</option>
+                                <option value="USD">USD</option>
                             </select>
                         </div>
                     </div>
 
                     <div class="form-row">
-                            <div class="form-group col-md-6">
-                                <label for="department">Department</label>
-                                <input type="text" class="form-control" id="department" placeholder="HR Department">
-                            </div>
-                            <div class="form-group col-md-6">
-                                <label for="report-to">Report To</label>
-                                <input type="text" class="form-control" id="report-to" placeholder="HR Manager">
-                            </div>
+                        <div class="form-group col-md-6">
+                            <label for="department">Department</label>
+                            <input type="text" name="department" class="form-control" id="department" placeholder="HR Department">
                         </div>
+                        <div class="form-group col-md-6">
+                            <label for="report-to">Report To</label>
+                            <input type="text" name="reportto" class="form-control" id="report-to" placeholder="HR Manager">
+                        </div>
+                    </div>
 
                     <div class="form-group">
                         <label for="job-description">Job Description</label>
-                        <textarea class="form-control" id="job-description" placeholder="Job Description"></textarea>
+                        <textarea class="form-control" name="jobdescription" id="job-description" placeholder="Job Description"></textarea>
                     </div>
                     <div class="form-group">
                         <label for="job-requirement">Job Requirement</label>
-                        <textarea class="form-control" id="job-requirement" placeholder="Job Requirement"></textarea>
+                        <textarea class="form-control" name="jobrequirement" id="job-requirement" placeholder="Job Requirement"></textarea>
                     </div>
 
                     <div class="form-group">
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" type="checkbox" value="">
+                                <input class="form-check-input" name="urgent" type="checkbox" value="">
                                 Urgent
                                 <span class="form-check-sign">
                                     <span class="check"></span>

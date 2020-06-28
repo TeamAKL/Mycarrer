@@ -134,6 +134,7 @@
 
                 <!-- Job Card -->
                 <div class="row">
+                    @foreach($posts as $post)
                     <div class="col-md-10">
                         <div class="card mb10">
                             <div class="mycareers-bags">
@@ -142,20 +143,20 @@
                             <div class="card-body pd-b20">
                                 <div class="holder">
                                     <div class="item job-contact-area">
-                                        <a href="{{url('seeker/job-detail/1')}}" class="job-position">
+                                        <a href="{{url('seeker/job-detail/'.$post->id)}}" target="_blank" class="job-position">
                                             <h3>
-                                                Regional Pricing Analyst (6 months renewable or Convertible)
+                                                {{$post->position}}
                                             </h3>
                                             <a href="http://">Property Star Ltd</a>
-                                            <p class="text-muted">2min ago</p>
+                                            <p class="text-muted">{{$post->created_at->diffForHumans()}}</p>
                                         </a>
                                         <div class="row mt10">
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-map-marker" aria-hidden="true"></i> Singapore</span>
                                             </di>
                                             <di class="col-md-6">
-                                                <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
-                                                <span><i class="fa fa-database" aria-hidden="true"></i> MMK - 2000</span>
+                                                <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
+                                                <span><i class="fa fa-database" aria-hidden="true"></i> MMK - {{$post->salary_amount}}</span>
                                             </di>
                                         </div>
                                     </div>
@@ -164,9 +165,10 @@
                                     </div>
                                 </div>
                                 <div class="mt10 pr">
-                                    <a href="{{url('seeker/job-detail/1')}}" class="job-des-holder">
+                                    <a href="{{url('seeker/job-detail/'.$post->id)}}" class="job-des-holder" target="_blank">
                                         <p class="job-desc">
-                                            <span>Job Description: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias molestiae saepe corporis impedit laborum earum doloribus, at expedita qui. Blanditiis eum deserunt ratione sed. Quas libero itaque eveniet quaerat placeat.
+                                            <span>Job Description: </span>
+                                            {{$post->job_description}}
                                         </p>
                                         <p class="job-skill">
                                             <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
@@ -194,8 +196,11 @@
                             </div>
                         </div>
                     </div>
+                    @endforeach
 
-                    <div class="col-md-10">
+                    {{ $posts->links() }}
+
+                    {{-- <div class="col-md-10">
                         <div class="card mb10">
                             <div class="card-body pd-b20">
                                 <div class="holder">
@@ -248,7 +253,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
+                    </div> --}}
 
                 </div>
 

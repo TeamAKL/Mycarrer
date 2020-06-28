@@ -6,7 +6,7 @@
         <div class="container">
             <div class="detail-header top-most">
                 <div class="top-most-detalil">
-                    <h3>Web Developer</h3>
+                    <h3>{{$post->position}}</h3>
                 </div>
                 <div class="middle">
                     <div class="star-share-holder">
@@ -34,7 +34,7 @@
 
                 <div class="detail-header mt20">
                     <div class="about-job-detail">
-                        <h2>About The Job Detail</h2>
+                        <h2>{{$post->position}}</h2>
                     </div>
                     <div>
                         <div class="star-share-holder">
@@ -61,7 +61,7 @@
                             <div class="item job-contact-area">
                                 <a href="http://" class="job-position">
                                     <h3>
-                                        Regional Pricing Analyst (6 months renewable or Convertible)
+                                        {{$post->position}}
                                     </h3>
                                     <a href="http://">Property Star Ltd</a>
                                 </a>
@@ -70,7 +70,7 @@
                                         <span><i class="fa fa-map-marker" aria-hidden="true"></i> Singapore</span>
                                     </di>
                                     <di class="col-md-6">
-                                        <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
+                                        <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
                                     </di>
                                 </div>
                             </div>
@@ -81,12 +81,12 @@
                     </div>
                     <div class="card-footer apply-footer">
                         <div class="posted-update">
-                            <span class="posted seprate plr-10">Posted On: 23 days agao</span>
+                            <span class="posted seprate plr-10">Posted On: {{$post->created_at->diffForHumans()}}</span>
                             <span class="posted seprate plr-10">Total Views: 53</span>
                             <span class="posted seprate plr-10">Total Applications: 5</span>
                         </div>
                         <div class="job-type">
-                            <span>Permanent Job</span>
+                            <span>{{$post->type}}</span>
                         </div>
                     </div>
                     <div class="card-body ">
@@ -94,7 +94,7 @@
                         <div class="responsibility mb10">
                             <h3>Responsibilities:</h3>
                             <p>
-                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Earum, cum odit commodi atque, aperiam pariatur voluptatem optio alias officiis sit, repellat delectus consequatur ducimus animi deserunt nostrum magni soluta error.
+                                {{$post->job_description}}
                             </p>
                         </div>
                         <div class="requriment mb10">

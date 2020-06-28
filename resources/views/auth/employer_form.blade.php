@@ -2,28 +2,35 @@
     <legend>Company Information:</legend>
     <div class="form-group">
         <label for="cname">Company Name</label>
-        <input type="text" name="company_name" class="form-control {{ $errors->has('company_name') ? ' is-invalid' : '' }}" id="cname" placeholder="Company Name">
+        <input type="text" name="company_name" value="{{old('company_name')}}" class="form-control {{ $errors->has('company_name') ? ' is-invalid' : '' }}" id="cname" placeholder="Company Name">
         @if ($errors->has('company_name'))
         <span class="invalid-feedback" role="alert">{{ $errors->first('company_name') }}</span>
         @endif
     </div>
+
     <div class="form-group">
-        <label for="cemail">Company Email</label>
-        <input type="email" name="company_email" class="form-control" id="cemail" placeholder="Company Email">
+        <label for="company_email">Email</label>
+        <input type="email" name="company_email" value="{{old('company_email')}}" id="company_email" class="form-control {{ $errors->has('company_email') ? ' is-invalid' : '' }}" placeholder="Company Email">
+        @if ($errors->has('company_email'))
+        <span class="invalid-feedback" role="alert">{{ $errors->first('company_email') }}</span>
+        @endif
     </div>
 
     <div class="form-group row">
         <div class="col-md-6">
             <p class="mb-8">Choose Logo</p>
             <div class="custom-file">
-                <input type="file" class="custom-file-input" id="company_logo" name="company_logo">
+                <input type="file" class="custom-file-input {{ $errors->has('company_logo') ? ' is-invalid' : '' }}" id="company_logo" name="company_logo" value="{{old('company_logo')}}">
                 <label class="custom-file-label" for="company_logo">Choose Company Logo</label>
+                @if ($errors->has('company_logo'))
+                <span class="invalid-feedback" role="alert">{{ $errors->first('company_logo') }}</span>
+                @endif
             </div>
             <img src="{{asset('images/hero-img.jpg')}}" id="banner-preview" class="img-thumbnail preview">
         </div>
         <div class="col-md-6">
             <label for="c-size">Size</label>
-            <select name="size" id="c-size" class="form-control">
+            <select name="size" id="c-size" class="form-control {{ $errors->has('size') ? ' is-invalid' : '' }}">
                 <option>Size</option>
                 <option value="1-5 employees">1-5 employees</option>
                 <option value="6-10 employee">6-10 employees</option>
@@ -37,6 +44,9 @@
                 <option value="10001-20000 employees">10001-20000 employees</option>
                 <option value="More than 20000">More than 20000</option>
             </select>
+            @if ($errors->has('size'))
+            <span class="invalid-feedback" role="alert">{{ $errors->first('size') }}</span>
+            @endif
         </div>
     </div>
     <hr>
@@ -45,14 +55,14 @@
     <div class="form-group row">
         <div class="col-md-6">
             <label for="name">Name</label>
-            <input type="text" name="name" id="name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">
+            <input type="text" name="name" value="{{old('name')}}" id="name" class="form-control {{ $errors->has('name') ? ' is-invalid' : '' }}">
             @if ($errors->has('name'))
             <span class="invalid-feedback" role="alert">{{ $errors->first('name') }}</span>
             @endif
         </div>
         <div class="col-md-6">
             <label for="email">Email</label>
-            <input type="email" name="email" id="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}">
+            <input type="email" name="email" value="{{old('email')}}" id="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}">
             @if ($errors->has('email'))
             <span class="invalid-feedback" role="alert">{{ $errors->first('email') }}</span>
             @endif
@@ -61,7 +71,7 @@
 
     <div class="form-group">
         <label for="phone_number">Phone Number</label>
-        <input type="text" name="phone_number" id="phone_number" class="form-control {{ $errors->has('phone_number') ? ' is-invalid' : '' }}">
+        <input type="text" name="phone_number" value="{{old('phone_number')}}" id="phone_number" class="form-control {{ $errors->has('phone_number') ? ' is-invalid' : '' }}">
         @if ($errors->has('phone_number'))
         <span class="invalid-feedback" role="alert">{{ $errors->first('phone_number') }}</span>
         @endif
@@ -96,7 +106,7 @@
     }
 
     legend {
-        background-color: #e9b62c;
+        background-color: #3490dc;
         border: 1px solid #ddd;
         border-radius: 4px;
         color: #fff;
