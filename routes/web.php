@@ -40,7 +40,7 @@ Route::get('/session', 'UserController@store');
 // Route::get('admin/home', 'AdminController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
-    Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
+    // Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
     Route::get('maps', ['as' => 'pages.maps', 'uses' => 'PageController@maps']);
     Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
     Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'PageController@rtl']);
@@ -85,11 +85,10 @@ Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCert
 
 // FOREMPLOYER ROUTES
 Route::group(['middleware' => 'employer'], function () {
+    Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
     Route::get('employer', "CompanyController@index")->name("employer");
 
-    Route::get('jobs', function() {
-        return view('employer.jobs');
-    })->name('jobs');
+    Route::get('jobs', 'PostController@employerindex')->name('jobs');
 
     Route::get('company/view', function() {
         return view('employer.company.index');

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Company;
 use App\JobCategory;
+use App\Post;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -20,8 +21,10 @@ class CompanyController extends Controller
      */
     public function index()
     {
+        $company_id = Auth::user()->companies->id;
+        $company = Company::where('id', $company_id)->with('posts')->first();
         $jobCategories = JobCategory::all();
-        return view('employer.index', ['jobCategories' => $jobCategories]);
+        return view('employer.index', ['jobCategories' => $jobCategories, 'company' => $company]);
 
     }
 

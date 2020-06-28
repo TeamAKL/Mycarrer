@@ -28,7 +28,8 @@
         <!-- Company -->
         <li>
             <a data-toggle="collapse" href="#company" aria-expanded="false"> <!-- initial is true and use flase to hide -->
-                <i class="fa fa-desktop" aria-hidden="true"></i>
+                {{-- <i class="fa fa-desktop" aria-hidden="true"></i> --}}
+                <i class="tim-icons icon-istanbul"></i>
                 <span class="nav-link-text" >{{ __('Company') }}</span>
                 <b class="caret mt-1"></b>
             </a>
@@ -37,7 +38,8 @@
                 <ul class="nav pl-4">
                     <li @if ($pageSlug == 'company_info') class="active " @endif>
                         <a href="{{ route('company')  }}">
-                            <i class="tim-icons icon-istanbul"></i>
+                            {{-- <i class="tim-icons icon-istanbul"></i> --}}
+                            <i class="fa fa-info" aria-hidden="true"></i>
                             <p>{{ __('Company Info') }}</p>
                         </a>
                     </li>

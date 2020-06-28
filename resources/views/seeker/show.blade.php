@@ -93,16 +93,14 @@
                         <h2 class="mb10">Job Description</h2>
                         <div class="responsibility mb10">
                             <h3>Responsibilities:</h3>
-                            <p>
-                                {{$post->job_description}}
-                            </p>
+                            {!! $post->job_description !!}
                         </div>
-                        <div class="requriment mb10">
+                        {{-- <div class="requriment mb10">
                             <h3>Requriments:</h3>
                             <p>
                                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos dolorum ratione magni fugit, doloribus at recusandae adipisci, aspernatur ipsam, voluptate mollitia quia accusamus alias tenetur aliquam qui deleniti. Modi, sunt!
                             </p>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="card mt20 pd-b20">

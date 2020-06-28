@@ -134,9 +134,12 @@ li.dropdown {
     text-decoration: none;
 }
 
-.login-section-nav > li {
+.login-section-nav > li.guest {
     padding-right: 0;
     margin-top: 5px !important;
+}
+.login-section-nav > li.logined-usname  {
+    margin-top: 1px !important;
 }
 
 .pt6 {
@@ -303,42 +306,42 @@ li.dropdown {
 
 .tooltipc {
     position: relative;
-	cursor: help;
+    cursor: help;
 }
 
 .tooltipc::before,
 .tooltipc::after {
-	position: absolute;
-	left: 50%;
-	opacity: 0;
-	z-index: -100;
+    position: absolute;
+    left: 50%;
+    opacity: 0;
+    z-index: -100;
 }
 
 .tooltipc:hover::before,
 .tooltipc:focus::before,
 .tooltipc:hover::after,
 .tooltipc:focus::after {
-	opacity: 1;
-	z-index: 100;
+    opacity: 1;
+    z-index: 100;
 }
 .tooltipc::before {
-	border-style: solid;
-	border-width: 1em .75em 0 .75em;
-	border-color: #3E474F transparent transparent transparent;
-	bottom: 100%;
-	margin-left: -1.5em;
-	content: " ";
+    border-style: solid;
+    border-width: 1em .75em 0 .75em;
+    border-color: #3E474F transparent transparent transparent;
+    bottom: 100%;
+    margin-left: -1.5em;
+    content: " ";
 }
 .tooltipc::after {
-	background: #3E474F;
-	border-radius: .25em;
-	bottom: 165%;
+    background: #3E474F;
+    border-radius: .25em;
+    bottom: 165%;
     width: 14.5em;
     text-align: center;
-	color: #EDEFF0;
-	padding: 1em;
-	margin-left: -8.75em;
-	content: attr(data-tip);
+    color: #EDEFF0;
+    padding: 1em;
+    margin-left: -8.75em;
+    content: attr(data-tip);
 }
 
 .mb0 {

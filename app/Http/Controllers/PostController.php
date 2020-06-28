@@ -2,9 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Company;
 use App\Post;
 use App\JobCategory;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
+
+// use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
@@ -15,7 +19,9 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->paginate(10);
+        // $post = Post::with(['company'])->findOrFail(1);
+        // dd($post->company->id);
+        $posts = Post::where('job_status', 'active')->with(['company'])->orderBy('created_at', 'desc')->paginate(10);
         return view('seeker.index', ["posts" => $posts]);
     }
 
@@ -42,7 +48,6 @@ class PostController extends Controller
         } else {
             $urgent = 0;
         }
-        dd()
         $post = Post::create([
             "position" => $request->jobposition,
             "experience" => $request->experience,
@@ -60,7 +65,7 @@ class PostController extends Controller
             "company_id" => $request->company_id,
             "urgent" => $urgent
         ]);
-        dd($post);
+        $post->job_categories()->attach(JobCategory::findOrFail($request->jobcategory));
         return redirect('employer');
     }
 
@@ -108,5 +113,17 @@ class PostController extends Controller
     public function destroy(Post $post)
     {
         //
+    }
+
+    /**
+     * To Show in Employer Job List File
+     * Get All Jobs
+     */
+    public function employerindex()
+    {
+        // $posts = Post::paginate(3);
+        $company_id = Auth::user()->companies->id;
+        $company = Company::where('id', $company_id)->with('posts')->first();
+        return view('employer.jobs', ['posts' => $company->posts()->paginate(3)]);
     }
 }
