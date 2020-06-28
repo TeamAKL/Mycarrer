@@ -6,13 +6,14 @@
         <div class="card card-chart">
             <div class="card-body ">
                 {{-- <form action="{{url('company-info')}}" method="post"> --}}
-                <form method="post">
-                    {{-- @csrf --}}
+                <form method="post" action="{{url('company/company-info')}}" enctype="multipart/form-data">
+                     @csrf
                     <div class="form-row">
+                        <input type="hidden" name="company_id" value="{{ isset($user->companies) ? $user->companies->id : ''}}"/>
                         <div class="col-md-6">
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <label>{{ __('Company Name') }}</label>
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Company Name') }}" >
+                                <input type="text" name="company_name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Company Name') }}" value="{{ isset($user->companies) ? $user->companies->company_name : ''}}" >
                                 @include('alerts.feedback', ['field' => 'name'])
                             </div>
                         </div>
@@ -21,7 +22,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                         <label for="country">{{ __('Country') }}</label>
-                                        <input type="text" name="country" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 border-unset" placeholder="{{ __('Country Name') }}" id="country">
+                                        <input type="text" name="country_name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 border-unset" placeholder="{{ __('Country Name') }}" id="country">
                                         @include('alerts.feedback', ['field' => 'name'])
                                         <div class="select-area" >
 
@@ -31,7 +32,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                         <label for="city">{{ __('City Name') }}</label>
-                                        <input type="text" name="cityname" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 state" placeholder="{{ __('City Name') }}" id="city">
+                                        <input type="text" name="city_name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 state" placeholder="{{ __('City Name') }}" id="city" >
                                         @include('alerts.feedback', ['field' => 'name'])
                                         <div class="state-area">
 
@@ -46,23 +47,32 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
-                                <input type="email" class="form-control" id="email" placeholder="Company Email">
+                                <input type="email" class="form-control" id="email" name="company_email" placeholder="Company Email" value="{{ isset($user->companies) ? $user->companies->company_email : ''}}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="address">Address</label>
-                                <input type="text" class="form-control" id="address" placeholder="Company Address">
+                                <input type="text" class="form-control" id="address" placeholder="Company Address" name="address" value="{{ isset($user->companies) ? $user->companies->address : ''}}">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="industry">Company Idustry</label>
+                                <label for="industry">Company Industry</label>
                                 <select name="industry" id="industry" class="form-control">
                                     <option >Please Choose</option>
-                                    <option value="">IT Hardware/Software</option>
+                                    @if(isset($jobCategories))
+                                        @foreach($jobCategories as $jobCategory)
+                                            @isset($user->companies->industry_id)
+                                                @if($jobCategory->id == $user->companies->industry_id)
+                                                    <option value="{{$jobCategory->id}}" selected>{{$jobCategory->category_name}}</option>
+                                                @endif
+                                            @endisset
+                                            <option value="{{$jobCategory->id}}">{{$jobCategory->category_name}}</option>
+                                        @endforeach
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -70,26 +80,26 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="phone">Phone</label>
-                                <input type="text" id="phone" class="form-control" placeholder="Phone Number">
+                                <input type="text" id="phone" class="form-control" placeholder="Phone Number" name="phone_number" value="{{ isset($user->companies) ? $user->companies->phone_number : ''}}" >
                             </div>
                         </div>
-
                         <div class="col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-gropu ">
                                         <p class="custom-lable">Company Logo</p>
                                         <div class="custom-file mb-3">
-                                            <input type="file" class="custom-file-input" id="logo" name="filename">
+                                            <input type="file" class="custom-file-input" id="logo" name="company_logo">
                                             <label class="custom-file-label" for="logo">Choose Logo</label>
                                         </div>
-                                        <img src="{{asset('images/company-logo-avatar.png')}}" id="logo-preview" class="img-thumbnail preview">
+                                        <img src="{{asset('images/company/'.$user->companies->company_logo)}}" id="logo-preview" class="img-thumbnail preview">
                                     </div>
                                 </div>
+{{--                                @dd($user->companies->about);--}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="about">About</label>
-                                        <textarea name="about" id="about" cols="30" rows="10" class="form-control"></textarea>
+                                        <textarea name="about" id="about" cols="30" rows="10" class="form-control" value="kkg "></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -98,7 +108,7 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="vision-des">Company Vision</label>
-                                <textarea name="vision" id="vision-des" cols="30" rows="10" class="form-control rich_editor"></textarea>
+                                <textarea name="vision" id="vision-des" cols="30" rows="10" class="form-control rich_editor" value="{{ isset($user->companies) ? $user->companies->vission : ''}}"></textarea>
                             </div>
                         </div>
 
@@ -106,10 +116,10 @@
                             <div class="form-gropu ">
                                 <p class="custom-lable">Vision Image</p>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="vision" name="filename">
+                                    <input type="file" class="custom-file-input" id="vision" name="vision_image">
                                     <label class="custom-file-label" for="vision">Choose Vision Image</label>
                                 </div>
-                                <img src="{{asset('images/vision.jpg')}}" id="vision-preview" class="img-thumbnail preview">
+                                <img src="{{asset('images/company/'.$user->companies->vission_image)}}" id="vision-preview" class="img-thumbnail preview">
                             </div>
                         </div>
 
@@ -117,36 +127,33 @@
                             <div class="form-gropu ">
                                 <p class="custom-lable">Mission Image</p>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="mission" name="filename">
+                                    <input type="file" class="custom-file-input" id="mission" name="mission_image">
                                     <label class="custom-file-label" for="mission">Choose Mission Image</label>
                                 </div>
-                                <img src="{{asset('images/mission.jpg')}}" id="mission-preview" class="img-thumbnail preview">
+                                <img src="{{asset('images/company/'.$user->companies->mission_image)}}" id="mission-preview" class="img-thumbnail preview">
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="mission-des">Company Mission</label>
-                                <textarea name="mission" id="mission-des" cols="30" rows="10" class="form-control rich_editor"></textarea>
+                                <textarea name="mission" id="mission-des" cols="30" rows="10" class="form-control rich_editor" value="{{ isset($user->companies) ? $user->companies->mission : ''}}"></textarea>
                             </div>
                         </div>
 
                         <div class="col-md-6">
                             <div class="form-group">
-                                <label for="emp-size">Size</label>
                                 <select name="size" id="emp-size" class="form-control">
-                                    <option>Size</option>
-                                    <option value="1-5 employees">1-5 employees</option>
-                                    <option value="6-10 employee">6-10 employees</option>
-                                    <option value="11-20 employees">11-20 employees</option>
-                                    <option value="51-100 employees">51-100 employees</option>
-                                    <option value="101-200 employees">101-200 employees</option>
-                                    <option value="201-500 employees">201-500 employees</option>
-                                    <option value="501-1000 employees">501-1000 employees</option>
-                                    <option value="1001-5000 employees">1001-5000 employees</option>
-                                    <option value="5001-10000 employees">5001-10000 employees</option>
-                                    <option value="10001-20000 employees">10001-20000 employees</option>
-                                    <option value="More than 20000">More than 20000</option>
+                                    @if(isset($emp_sizes))
+                                        @for($i=0;$i < 11;$i++)
+                                            @isset($user->companies->size)
+                                                @if($user->companies->size == $i)
+                                                    <option value="{{$i}}" selected>{{$emp_sizes[$i]}}</option>
+                                                    @endif
+                                            @endisset
+                                                <option value="{{$i}}">{{$emp_sizes[$i]}}</option>
+                                        @endfor
+                                    @endif
                                 </select>
                             </div>
                         </div>
@@ -162,15 +169,14 @@
                             <div class="form-gropu ">
                                 <p class="custom-lable">Choose banner Image</p>
                                 <div class="custom-file mb-3">
-                                    <input type="file" class="custom-file-input" id="banner" name="filename">
+                                    <input type="file" class="custom-file-input" id="banner" name="banner_image">
                                     <label class="custom-file-label" for="banner">Choose banner Image</label>
                                 </div>
-                                <img src="{{asset('images/hero-img.jpg')}}" id="banner-preview" class="img-thumbnail preview">
+                                <img src="{{asset('images/company/'.$user->companies->banner_image)}}" id="banner-preview" class="img-thumbnail preview">
                             </div>
                         </div>
                     </div>
-                    <input type="text" value="" data-role="tagsinput" placeholder="Add tags" class="form-control"/>
-                    {{-- <button type="submit" class="btn btn-primary mt20">Save</button> --}}
+                     <button type="submit" class="btn btn-primary mt20">Save</button>
                 </form>
             </div>
         </div>

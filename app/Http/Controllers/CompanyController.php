@@ -3,12 +3,16 @@
 namespace App\Http\Controllers;
 
 use App\Company;
+use App\Helper\CompanySize;
 use App\JobCategory;
+use App\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class CompanyController extends Controller
 {
+    use CompanySize;
     public function __construct()
     {
         $this->middleware('auth');
@@ -21,7 +25,8 @@ class CompanyController extends Controller
     public function index()
     {
         $jobCategories = JobCategory::all();
-        return view('employer.index', ['jobCategories' => $jobCategories]);
+        $emp_sizes = $this->get_company_size();
+        return view('employer.index', ['jobCategories' => $jobCategories,'emp_sizes' => $emp_sizes]);
 
     }
 
@@ -65,6 +70,12 @@ class CompanyController extends Controller
      */
     public function edit(Company $company)
     {
+        $currentUser = Auth::id();
+        $emp_sizes = $this->get_company_size();
+        $user = User::with(['companies'])->findOrFail($currentUser);
+        $jobCategories = JobCategory::all();
+        //dd($jobCategories);
+        return view('employer.company.index',compact('user','emp_sizes','jobCategories'));
         //
     }
 
@@ -77,7 +88,50 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $input = $request->all();
+        //dd($input);
+        if(isset($input['company_logo'])){
+            $logo_file = $request->file('company_logo');
+            $logo_name = uniqid().'-'.$logo_file->getClientOriginalName();
+            $request->company_logo->storeAs('company', $logo_name, 'my_upload');
+        }
+        if(isset($input['vision_image'])){
+            $vision_file = $request->file('vision_image');
+            $vision_logo_name = uniqid().'-'.$vision_file->getClientOriginalName();
+            $request->vision_image->storeAs('company', $vision_logo_name, 'my_upload');
+        }
+        if(isset($input['mission_image'])){
+            $mission_file = $request->file('mission_image');
+            $mission_logo_name = uniqid().'-'.$mission_file->getClientOriginalName();
+            $request->mission_image->storeAs('company', $mission_logo_name, 'my_upload');
+        }
+        if(isset($input['banner_image'])){
+            $banner_file = $request->file('banner_image');
+            $banner_logo_name = uniqid().'-'.$banner_file->getClientOriginalName();
+            $request->banner_image->storeAs('company', $banner_logo_name, 'my_upload');
+        }
+        if(isset($input['company_id'])){
+            Company::updateOrCreate(
+                ['id' => $input['company_id']], [
+                'company_name' => $input['company_name'] != null ? $input['company_name'] : '',
+                'company_email' => $input['company_email'] != null ? $input['company_email'] : '',
+                'size' => $input['size'],
+                'phone_number' => $input['phone_number'] != null ? $input['phone_number'] : '',
+//                'city' => $input['city_name'] != null ? $input['city_name'] : '',
+//                'country' => $input['country_name'] != null ? $input['country_name'] : '',
+                'address' => $input['address'] != null ? $input['address'] : '',
+                'industry_id' =>$input['industry'] != null ? $input['industry'] : '',
+                'about' =>$input['about'] != null ? $input['about'] : '',
+                'mission' => $input['mission'] != null ? $input['mission'] : '',
+                'vission' => $input['vision'] != null ? $input['vision'] : '',
+                'foundation_date' => $input['foundation-date'],
+                'company_logo' => isset($logo_name) ? $logo_name : '',
+                'mission_image' => isset($mission_logo_name) ? $mission_logo_name : '',
+                'vission_image' => isset($vision_logo_name) ? $vision_logo_name : '',
+                'banner_image' => isset($banner_logo_name) ? $banner_logo_name : ''
+
+            ]);
+        }
     }
 
     /**

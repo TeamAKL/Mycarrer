@@ -42,7 +42,6 @@ class PostController extends Controller
         } else {
             $urgent = 0;
         }
-        dd()
         $post = Post::create([
             "position" => $request->jobposition,
             "experience" => $request->experience,
