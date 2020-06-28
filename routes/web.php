@@ -111,3 +111,14 @@ Route::group(['middleware' => 'employer'], function () {
 });
 
 Route::post('company-info', 'HomeController@companyedit');
+
+//for all resumes
+
+Route::get('allresumes', function(){
+    return view('resumes.index');
+})->name('allresumes');
+
+//for purchased
+Route::get('purchasedresumes', function(){
+    return view('resumes.purchased');
+})->name('purchased');
