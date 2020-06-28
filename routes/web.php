@@ -111,4 +111,18 @@ Route::group(['middleware' => 'employer'], function () {
 
 });
 
+
 Route::post('company/company-info', 'CompanyController@update');
+
+
+//for all resumes
+
+Route::get('allresumes', function(){
+    return view('resumes.index');
+})->name('allresumes');
+
+//for purchased
+Route::get('purchasedresumes', function(){
+    return view('resumes.purchased');
+})->name('purchased');
+
