@@ -70,6 +70,7 @@
         $('[data-toggle="tooltip"]').tooltip()
     });
 
+// For Job Status
     $('.btn-icon').on('click', function() {
         let $value = $(this).attr('value');
         let $id = $(this).attr('id');
