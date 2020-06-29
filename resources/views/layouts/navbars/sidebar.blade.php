@@ -71,7 +71,7 @@
             <div class="collapse" id="resume">
                 <ul class="nav pl-4">
                     <li @if ($pageSlug == 'users') class="active " @endif>
-                        <a href="{{ route('user.index')  }}">
+                        <a href="{{ route('allresumes')  }}">
                             <i class="tim-icons icon-bullet-list-67"></i>
                             <p>{{ __('All Resumes') }}</p>
                         </a>
@@ -83,7 +83,7 @@
                         </a>
                     </li>
                     <li @if ($pageSlug == 'purchaseresume') class="active " @endif>
-                        <a href="{{ route('user.index')  }}">
+                        <a href="{{ route('purchased')  }}">
                             <i class="tim-icons icon-notes"></i>
                             <p>{{ __('Purchased Resume') }}</p>
                         </a>

@@ -90,9 +90,10 @@ Route::group(['middleware' => 'employer'], function () {
 
     Route::get('jobs', 'PostController@employerindex')->name('jobs');
 
-    Route::get('company/view', function() {
-        return view('employer.company.index');
-    })->name('company');
+//    Route::get('company/view', function() {
+//        return view('employer.company.index');
+//    })->name('company');
+    Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');
     Route::get('company/detail', function() {
@@ -109,4 +110,18 @@ Route::group(['middleware' => 'employer'], function () {
 
 });
 
-Route::post('company-info', 'HomeController@companyedit');
+
+Route::post('company/company-info', 'CompanyController@update');
+
+
+//for all resumes
+
+Route::get('allresumes', function(){
+    return view('resumes.index');
+})->name('allresumes');
+
+//for purchased
+Route::get('purchasedresumes', function(){
+    return view('resumes.purchased');
+})->name('purchased');
+
