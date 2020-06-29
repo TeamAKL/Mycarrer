@@ -50,7 +50,7 @@
                         </a>
                     </li>
                     <li @if ($pageSlug == 'users') class="active " @endif>
-                        <a href="{{ route('user.index')  }}">
+                        <a href="{{ route('profile.edit')  }}">
                             <i class="tim-icons icon-single-02"></i>
                             <p>{{ __('User') }}</p>
                         </a>
@@ -70,7 +70,7 @@
 
             <div class="collapse" id="resume">
                 <ul class="nav pl-4">
-                    <li @if ($pageSlug == 'users') class="active " @endif>
+                    <li @if ($pageSlug == 'allresume') class="active " @endif>
                         <a href="{{ route('allresumes')  }}">
                             <i class="tim-icons icon-bullet-list-67"></i>
                             <p>{{ __('All Resumes') }}</p>
@@ -82,7 +82,7 @@
                             <p>{{ __('Applied Resume') }}</p>
                         </a>
                     </li>
-                    <li @if ($pageSlug == 'purchaseresume') class="active " @endif>
+                    <li @if ($pageSlug == 'purchasedresumes') class="active " @endif>
                         <a href="{{ route('purchased')  }}">
                             <i class="tim-icons icon-notes"></i>
                             <p>{{ __('Purchased Resume') }}</p>

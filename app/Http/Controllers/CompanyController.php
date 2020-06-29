@@ -5,12 +5,9 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Helper\CompanySize;
 use App\JobCategory;
-<<<<<<< HEAD
 use App\Post;
-=======
 use App\User;
 use Carbon\Carbon;
->>>>>>> 6592e519fda791dc19751e2fc0d9e5d7a82ae7e7
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -31,12 +28,9 @@ class CompanyController extends Controller
         $company_id = Auth::user()->companies->id;
         $company = Company::where('id', $company_id)->with('posts')->first();
         $jobCategories = JobCategory::all();
-<<<<<<< HEAD
+        // $emp_sizes = $this->get_company_size();
         return view('employer.index', ['jobCategories' => $jobCategories, 'company' => $company]);
-=======
-        $emp_sizes = $this->get_company_size();
-        return view('employer.index', ['jobCategories' => $jobCategories,'emp_sizes' => $emp_sizes]);
->>>>>>> 6592e519fda791dc19751e2fc0d9e5d7a82ae7e7
+        // return view('employer.index', ['jobCategories' => $jobCategories,'emp_sizes' => $emp_sizes]);
 
     }
 

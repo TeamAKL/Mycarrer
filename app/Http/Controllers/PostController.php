@@ -87,9 +87,18 @@ class PostController extends Controller
      * @param  \App\Post  $post
      * @return \Illuminate\Http\Response
      */
-    public function edit(Post $post)
+    public function edit(Request $request)
     {
-        //
+        $status = $request->status;
+        $id = $request->id;
+        $post = Post::find($id);
+        $post->job_status = $status;
+        $post->save();
+        if($post) {
+            return "true";
+        } else {
+            return "false";
+        }
     }
 
     /**

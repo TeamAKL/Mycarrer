@@ -26,14 +26,14 @@
                 <td>{{$post->address}}</td>
                 <td>
                     @if($post->job_status == 'active')
-                    <button type="button" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon" data-toggle="tooltip" data-placement="top" title="Success">
+                    <button id="{{$post->id}}" value="successed" type="button" rel="tooltip" class="btn btn-success btn-sm btn-round btn-icon" data-toggle="tooltip" data-placement="top" title="Success">
                         <i class="tim-icons icon-check-2"></i>
                     </button>
-                    <button type="button" rel="tooltip" class="btn btn-danger btn-sm btn-round btn-icon" data-toggle="tooltip" data-placement="top" title="Close">
+                    <button id="{{$post->id}}" value="closed" type="button" rel="tooltip" class="btn btn-danger btn-sm btn-round btn-icon" data-toggle="tooltip" data-placement="top" title="Close">
                         <i class="tim-icons icon-simple-remove"></i>
                     </button>
                     @elseif($post->job_status == 'successed')
-                        <span class="text-success">Successed</span>
+                    <span class="text-success">Successed</span>
                     @elseif($post->job_status == 'closed')
                     <span class="text-danger">Closed</span>
                     @else
@@ -65,8 +65,26 @@
 
 @push('js')
 <script>
+    // Tool Tips
     $(function () {
         $('[data-toggle="tooltip"]').tooltip()
     });
+
+    $('.btn-icon').on('click', function() {
+        let $value = $(this).attr('value');
+        let $id = $(this).attr('id');
+        $.ajax({
+            type: 'get',
+            url: '{{URL::to("changejobstatus")}}',
+            data: {'status': $value, 'id': $id},
+            success: function(data) {
+                if(data) {
+                    location.reload();
+                }
+            }
+        });
+    });
+
+
 </script>
 @endpush

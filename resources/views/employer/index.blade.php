@@ -50,7 +50,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card card-chart">
-                <a href="http://">
+                <a href="{{url('allresumes')}}">
                     <div class="card-header text-center ptb">
                         <h5 class="card-category "><i class="tim-icons icon-coins text-primary fs-2"></i></h5>
                         <h5 class="card-title">Resumes Database</h5>
@@ -60,7 +60,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card card-chart">
-                <a href="http://">
+                <a href="{{url('appliedresume')}}">
                     <div class="card-header text-center ptb">
                         <h5 class="card-category "><i class="tim-icons icon-badge text-primary fs-2"></i></h5>
                         <h5 class="card-title">Applied Resume</h5>
@@ -80,7 +80,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card card-chart">
-                <a href="http://">
+                <a href="{{url('profile')}}">
                     <div class="card-header text-center ptb">
                         <h5 class="card-category "><i class="tim-icons icon-single-02 text-primary fs-2"></i></h5>
                         <h5 class="card-title">Users</h5>

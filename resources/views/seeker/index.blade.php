@@ -137,9 +137,11 @@
                     @foreach($posts as $post)
                     <div class="col-md-10">
                         <div class="card mb10">
+                            @if($post->urgent != 0)
                             <div class="mycareers-bags">
-                                <span class="featuer">New</span>
+                                <span class="featuer">{{$post->urgent}}</span>
                             </div>
+                            @endif
                             <div class="card-body pd-b20">
                                 <div class="holder">
                                     <div class="item job-contact-area">
@@ -156,12 +158,12 @@
                                             </di>
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
-                                                <span><i class="fa fa-database" aria-hidden="true"></i> MMK - {{$post->salary_amount}}</span>
+                                                <span><i class="fa fa-database" aria-hidden="true"></i> {{$post->min_salary}} - {{$post->max_salary}} {{$post->salary_unit}} </span>
                                             </di>
                                         </div>
                                     </div>
                                     <div class="item job-logo">
-                                        <img src="{{asset('images/adele.jpg')}}" alt="">
+                                        <img src="{{asset('images/company/'.$post->company->company_logo)}}" alt="">
                                     </div>
                                 </div>
                                 <div class="mt10 pr">

@@ -89,10 +89,6 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('employer', "CompanyController@index")->name("employer");
 
     Route::get('jobs', 'PostController@employerindex')->name('jobs');
-
-//    Route::get('company/view', function() {
-//        return view('employer.company.index');
-//    })->name('company');
     Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');
@@ -101,12 +97,14 @@ Route::group(['middleware' => 'employer'], function () {
     });
 
     // Resume
-    Route::get('appiedresume', function() {
+    Route::get('appliedresume', function() {
         return view('employer.applyresume');
     })->name('appliedresume');
 
     // POST
     Route::post('posts', 'PostController@store')->name('createpost');
+
+    Route::get('changejobstatus', 'PostController@edit');
 
 });
 
