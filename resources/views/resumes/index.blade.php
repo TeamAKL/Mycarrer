@@ -41,7 +41,8 @@
                   Current Salary:500000 MMK <br>
                   Gender:Male
               </td>
-              <td class="view-resume">     
+              <td class="view-resume">
+                <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>     
                 <button type="button" class="btn btn-info">View Resume</button>
               </td>
             </tr>
@@ -67,7 +68,8 @@
                     Current Salary:500000 MMK <br>
                     Gender:Male
                 </td>
-                <td class="view-resume">     
+                <td class="view-resume">
+                  <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>     
                   <button type="button" class="btn btn-info">View Resume</button>
                 </td>
             </tr>
@@ -93,7 +95,8 @@
                     Current Salary:500000 MMK <br>
                     Gender:Male
                 </td>
-                <td class="view-resume">     
+                <td class="view-resume">
+                  <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>     
                   <button type="button" class="btn btn-info">View Resume</button>
                 </td>
              
