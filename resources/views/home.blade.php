@@ -81,9 +81,9 @@
 						</div>
 						
 						<h3><a href="#">Mike Smith</a></h3>
-						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.</p>
+						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
+                           Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
                         <a href="" class="btn btn-second btn-full">Detail</a>
-                        <a href="" class="btn btn-outline btn-full mt-10">Request DEMO</a>
                     </div>
 				</div>
 				<div class="col-md-4 col-sm-6 col-xs-12 text-center">
@@ -92,9 +92,9 @@
 						</div>
 						
 						<h3><a href="#">Mike Smith</a></h3>
-						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.</p>
+						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. 
+                           Nullam ac urna eu felis dapibus condimentum.Sed ut imperdiet nisi.</p>
                         <a href="" class="btn btn-second btn-full">Detail</a>
-                        <a href="" class="btn btn-outline btn-full mt-10">Request DEMO</a>
                     </div>
 				</div>
 				<div class="col-md-4 col-sm-6  col-xs-12 text-center">
@@ -103,9 +103,9 @@
 						</div>
 						
 						<h3><a href="#">Mike Smith</a></h3>
-						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. Sed ut imperdiet nisi.</p>
+						<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. 
+                           Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
                         <a href="" class="btn btn-second btn-full">Detail</a>
-                        <a href="" class="btn btn-outline btn-full mt-10">Request DEMO</a>
                     </div>
                 </div>
             </div>

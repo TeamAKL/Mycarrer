@@ -137,9 +137,11 @@
                     @foreach($posts as $post)
                     <div class="col-md-10">
                         <div class="card mb10">
+                            @if($post->urgent != 0)
                             <div class="mycareers-bags">
-                                <span class="featuer">New</span>
+                                <span class="featuer">{{$post->urgent}}</span>
                             </div>
+                            @endif
                             <div class="card-body pd-b20">
                                 <div class="holder">
                                     <div class="item job-contact-area">
@@ -147,7 +149,7 @@
                                             <h3>
                                                 {{$post->position}}
                                             </h3>
-                                            <a href="http://">Property Star Ltd</a>
+                                            <a href="http://">{{$post->company->company_name}}</a>
                                             <p class="text-muted">{{$post->created_at->diffForHumans()}}</p>
                                         </a>
                                         <div class="row mt10">
@@ -156,19 +158,19 @@
                                             </di>
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
-                                                <span><i class="fa fa-database" aria-hidden="true"></i> MMK - {{$post->salary_amount}}</span>
+                                                <span><i class="fa fa-database" aria-hidden="true"></i> {{$post->min_salary}} - {{$post->max_salary}} {{$post->salary_unit}} </span>
                                             </di>
                                         </div>
                                     </div>
                                     <div class="item job-logo">
-                                        <img src="{{asset('images/adele.jpg')}}" alt="">
+                                        <img src="{{asset('images/company/'.$post->company->company_logo)}}" alt="">
                                     </div>
                                 </div>
                                 <div class="mt10 pr">
                                     <a href="{{url('seeker/job-detail/'.$post->id)}}" class="job-des-holder" target="_blank">
                                         <p class="job-desc">
                                             <span>Job Description: </span>
-                                            {{$post->job_description}}
+                                            {{strip_tags($post->job_description)}}
                                         </p>
                                         <p class="job-skill">
                                             <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
@@ -199,61 +201,6 @@
                     @endforeach
 
                     {{ $posts->links() }}
-
-                    {{-- <div class="col-md-10">
-                        <div class="card mb10">
-                            <div class="card-body pd-b20">
-                                <div class="holder">
-                                    <div class="item job-contact-area">
-                                        <a href="http://" class="job-position">
-                                            <h3>
-                                                Regional Pricing Analyst (6 months renewable or Convertible)
-                                            </h3>
-                                            <a href="http://">Property Star Ltd</a>
-                                        </a>
-                                        <div class="row mt10">
-                                            <di class="col-md-6">
-                                                <span><i class="fa fa-map-marker" aria-hidden="true"></i> Singapore</span>
-                                            </di>
-                                            <di class="col-md-6">
-                                                <span><i class="fa fa-briefcase" aria-hidden="true"></i> 2-3 Years</span>
-                                            </di>
-                                        </div>
-                                    </div>
-                                    <div class="item job-logo">
-                                        logo
-                                    </div>
-                                </div>
-                                <div class="mt10 pr">
-                                    <a href="http://" class="job-des-holder">
-                                        <p class="job-desc">
-                                            <span>Job Description: </span>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Alias molestiae saepe corporis impedit laborum earum doloribus, at expedita qui. Blanditiis eum deserunt ratione sed. Quas libero itaque eveniet quaerat placeat.
-                                        </p>
-                                        <p class="job-skill">
-                                            <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
-                                        </p>
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="card-footer">
-                                <div class="star-share-holder pa">
-                                    <a href="http://"><i class="fa fa-star-o" aria-hidden="true"></i></a>
-                                    <div class="share-hover">
-                                        <i class="fa fa-share-alt custom-blue" aria-hidden="true"></i>
-                                        <div class="pop-share pa-rt">
-                                            <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
-                                            <a href="http://"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
-                                            <a href="http://"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
-                                            <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="apply-hover">
-                                    <a href="" class="appl-btn">Apply</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div> --}}
 
                 </div>
 

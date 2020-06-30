@@ -40,7 +40,7 @@ Route::get('/session', 'UserController@store');
 // Route::get('admin/home', 'AdminController@index')->name('home')->middleware('auth');
 
 Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
-    Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
+    // Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
     Route::get('maps', ['as' => 'pages.maps', 'uses' => 'PageController@maps']);
     Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
     Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'PageController@rtl']);
@@ -85,15 +85,11 @@ Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCert
 
 // FOREMPLOYER ROUTES
 Route::group(['middleware' => 'employer'], function () {
+    Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
     Route::get('employer', "CompanyController@index")->name("employer");
 
-    Route::get('jobs', function() {
-        return view('employer.jobs');
-    })->name('jobs');
-
-    Route::get('company/view', function() {
-        return view('employer.company.index');
-    })->name('company');
+    Route::get('jobs', 'PostController@employerindex')->name('jobs');
+    Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');
     Route::get('company/detail', function() {
@@ -101,16 +97,20 @@ Route::group(['middleware' => 'employer'], function () {
     });
 
     // Resume
-    Route::get('appiedresume', function() {
+    Route::get('appliedresume', function() {
         return view('employer.applyresume');
     })->name('appliedresume');
 
     // POST
     Route::post('posts', 'PostController@store')->name('createpost');
 
+    Route::get('changejobstatus', 'PostController@edit');
+
 });
 
-Route::post('company-info', 'HomeController@companyedit');
+
+Route::post('company/company-info', 'CompanyController@update');
+
 
 //for all resumes
 
@@ -122,3 +122,4 @@ Route::get('allresumes', function(){
 Route::get('purchasedresumes', function(){
     return view('resumes.purchased');
 })->name('purchased');
+

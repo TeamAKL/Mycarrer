@@ -75,9 +75,3 @@
 .staff .btn-second:hover{
     background-color: brown;
 }
-.btn-outline {
-    border: 1px solid #159ed9;
-    border-radius: 15px;
-    text-transform: uppercase;
-    margin-top: 10px;
-}

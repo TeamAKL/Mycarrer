@@ -1,14 +1,14 @@
-@extends('layouts.app', ['page' => __('Dashboard'), 'pageSlug' => 'dashboard'])
+@extends('layouts.app', ['page' => __('All Resume'), 'pageSlug' => 'allresume'])
 @section('content')
 <div class="table-responsive">
         <!--Table-->
         <table class="table table-hover table-dark">
-      
+
           <!--Table head-->
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th> 
+              <th>Name</th>
               <th></th>
               <th></th>
               <th></th>
@@ -16,7 +16,7 @@
             </tr>
           </thead>
           <!--Table head-->
-      
+
           <!--Table body-->
           <tbody>
             <tr>
@@ -99,7 +99,7 @@
                   <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>     
                   <button type="button" class="btn btn-info">View Resume</button>
                 </td>
-             
+
             </tr>
           </tbody>
           <!--Table body-->

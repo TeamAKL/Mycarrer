@@ -28,7 +28,8 @@
         <!-- Company -->
         <li>
             <a data-toggle="collapse" href="#company" aria-expanded="false"> <!-- initial is true and use flase to hide -->
-                <i class="fa fa-desktop" aria-hidden="true"></i>
+                {{-- <i class="fa fa-desktop" aria-hidden="true"></i> --}}
+                <i class="tim-icons icon-istanbul"></i>
                 <span class="nav-link-text" >{{ __('Company') }}</span>
                 <b class="caret mt-1"></b>
             </a>
@@ -37,7 +38,8 @@
                 <ul class="nav pl-4">
                     <li @if ($pageSlug == 'company_info') class="active " @endif>
                         <a href="{{ route('company')  }}">
-                            <i class="tim-icons icon-istanbul"></i>
+                            {{-- <i class="tim-icons icon-istanbul"></i> --}}
+                            <i class="fa fa-info" aria-hidden="true"></i>
                             <p>{{ __('Company Info') }}</p>
                         </a>
                     </li>
@@ -48,7 +50,7 @@
                         </a>
                     </li>
                     <li @if ($pageSlug == 'users') class="active " @endif>
-                        <a href="{{ route('user.index')  }}">
+                        <a href="{{ route('profile.edit')  }}">
                             <i class="tim-icons icon-single-02"></i>
                             <p>{{ __('User') }}</p>
                         </a>
@@ -68,7 +70,7 @@
 
             <div class="collapse" id="resume">
                 <ul class="nav pl-4">
-                    <li @if ($pageSlug == 'users') class="active " @endif>
+                    <li @if ($pageSlug == 'allresume') class="active " @endif>
                         <a href="{{ route('allresumes')  }}">
                             <i class="tim-icons icon-bullet-list-67"></i>
                             <p>{{ __('All Resumes') }}</p>
@@ -80,7 +82,7 @@
                             <p>{{ __('Applied Resume') }}</p>
                         </a>
                     </li>
-                    <li @if ($pageSlug == 'purchaseresume') class="active " @endif>
+                    <li @if ($pageSlug == 'purchasedresumes') class="active " @endif>
                         <a href="{{ route('purchased')  }}">
                             <i class="tim-icons icon-notes"></i>
                             <p>{{ __('Purchased Resume') }}</p>

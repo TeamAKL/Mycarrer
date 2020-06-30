@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Post extends Model
 {
     protected $fillable = [
-        'company_id',
+
         'position',
         'type',
         'experience',
@@ -22,6 +22,7 @@ class Post extends Model
         'department',
         'report_to',
         'job_status',
+        'company_id',
         'urgent'
     ];
 
@@ -33,7 +34,7 @@ class Post extends Model
         return $this->belongsToMany('App\JobCategory');
     }
 
-    public function companies()
+    public function company()
     {
         return $this->belongsTo('App\Company');
     }

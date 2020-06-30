@@ -7,7 +7,7 @@
             <div class="card card-chart">
                 <div class="card-header text-center">
                     <h5 class="card-category ">All Jobs</h5>
-                    <h3 class="card-title">12</h3>
+                    <h3 class="card-title">{{$company->posts()->count()}}</h3>
                 </div>
             </div>
         </div>
@@ -15,7 +15,7 @@
             <div class="card card-chart">
                 <div class="card-header text-center">
                     <h5 class="card-category">Active Jobs</h5>
-                    <h3 class="card-title">3</h3>
+                    <h3 class="card-title">{{$company->posts()->where('job_status', 'active')->count()}}</h3>
                 </div>
             </div>
         </div>
@@ -23,7 +23,7 @@
             <div class="card card-chart">
                 <div class="card-header text-center">
                     <h5 class="card-category">Closed Jobs</h5>
-                    <h3 class="card-title">9</h3>
+                    <h3 class="card-title">{{$company->posts()->where('job_status', 'closed')->count()}}</h3>
                 </div>
             </div>
         </div>
@@ -31,7 +31,7 @@
             <div class="card card-chart">
                 <div class="card-header text-center">
                     <h5 class="card-category">Successfull Jobs</h5>
-                    <h3 class="card-title">8</h3>
+                    <h3 class="card-title">{{$company->posts()->where('job_status', 'successed')->count()}}</h3>
                 </div>
             </div>
         </div>
@@ -50,7 +50,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card card-chart">
-                <a href="http://">
+                <a href="{{url('allresumes')}}">
                     <div class="card-header text-center ptb">
                         <h5 class="card-category "><i class="tim-icons icon-coins text-primary fs-2"></i></h5>
                         <h5 class="card-title">Resumes Database</h5>
@@ -60,7 +60,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card card-chart">
-                <a href="http://">
+                <a href="{{url('appliedresume')}}">
                     <div class="card-header text-center ptb">
                         <h5 class="card-category "><i class="tim-icons icon-badge text-primary fs-2"></i></h5>
                         <h5 class="card-title">Applied Resume</h5>
@@ -80,7 +80,7 @@
         </div>
         <div class="col-lg-4">
             <div class="card card-chart">
-                <a href="http://">
+                <a href="{{url('profile')}}">
                     <div class="card-header text-center ptb">
                         <h5 class="card-category "><i class="tim-icons icon-single-02 text-primary fs-2"></i></h5>
                         <h5 class="card-title">Users</h5>
@@ -112,9 +112,9 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form class="modal-form" action="{{route('createpost')}}" method="post">
+                <form class="modal-form" action="{{route('createpost')}}" method="post" id="potCreateForm">
                     @csrf
-                    <input type="hidden" name="company_id" value="{{Auth::user()->companies->id}}">
+                    <input type="hidden" name="company_id" value="{{$company->id}}">
                     <div class="form-row">
                         <div class="form-group col-md-6">
                             <label for="job-position">Job Position</label>
@@ -123,7 +123,7 @@
                         <div class="form-group col-md-6">
                             <label for="job-type">Job Type</label>
                             <select name="jobtype" id="job-category" class="form-control">
-                                <option>Select</option>
+                                <option value="">Select</option>
                                 <option value="Full Time">Full Time</option>
                                 <option value="Part Time">Part Time</option>
                                 <option value="Work From Home">Work From Home</option>
@@ -135,7 +135,7 @@
                         <div class="form-group col-md-6">
                             <label for="job-category">Job Category</label>
                             <select name="jobcategory" id="job-category" class="form-control">
-                                <option>Select</option>
+                                <option value="">Select..</option>
                                 @foreach ($jobCategories as $jobCategory)
                                 <option value="{{$jobCategory->id}}">{{$jobCategory->category_name}}</option>
                                 @endforeach
@@ -183,7 +183,7 @@
                     <div class="form-row">
                         <div class="form-group col-md-5">
                             <label for="min-salary">Minimum Salary</label>
-                            <input type="number" name="minsalary" min="0" class="form-control" id="min-salary">
+                            <input type="text" name="minsalary" class="form-control" id="min-salary">
                         </div>
                         <div class="form-group col-md-5">
                             <label for="max-salary">Maximum Salary</label>
@@ -192,7 +192,7 @@
                         <div class="form-group col-md-2">
                             <label for="unit">Currency</label>
                             <select name="currency" id="unit" class="form-control">
-                                <option selected>Choose...</option>
+                                <option value="">Choose...</option>
                                 <option value="MMK">MMK</option>
                                 <option value="USD">USD</option>
                             </select>
@@ -243,4 +243,88 @@
 
 @push('stylesheet')
 <link rel="stylesheet" href="{{asset('css/employer/index.css')}}">
+@endpush
+
+@push('js')
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+<script>
+    jQuery.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+        if (regexp.constructor != RegExp)
+        regexp = new RegExp(regexp);
+        else if (regexp.global)
+        regexp.lastIndex = 0;
+        return this.optional(element) || regexp.test(value);
+    },"erreur expression reguliere"
+    );
+
+    $("#potCreateForm").validate({
+        "errorClass": 'is-invalid',
+        "validClass": 'is-valid',
+        "errorElement": 'div',
+
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            error.appendTo(element.parent());
+        },
+
+        rules: {
+            "experience": {
+                required: true,
+                regex: "^[0-9 -]*$"
+            },
+            "jobposition": {
+                required: true
+            },
+            "jobtype": {
+                required: true
+            },
+            "jobcategory": {
+                required: true
+            },
+            "employernumber": {
+                required: true,
+                digits: true
+            },
+            "emptype": {
+                required: true
+            },
+            "address": {
+                required: true
+            },
+            "minsalary": {
+                required: true,
+                digits: true
+            },
+            "maxsalary": {
+                required: true,
+                digits: true
+            },
+            "currency": {
+                required: true
+            },
+            "department": {
+                required: true
+            },
+            "reportto": {
+                required: true
+            },
+            "jobdescription": {
+                required: true,
+                minlength: 5,
+                maxlength: 30,
+                lettersonly: true
+            },
+            "jobrequirement": {
+                required: true
+            }
+        },
+
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+</script>
 @endpush

@@ -1,14 +1,14 @@
-@extends('layouts.app', ['page' => __('Dashboard'), 'pageSlug' => 'dashboard'])
+@extends('layouts.app', ['page' => __('Purchased Resume'), 'pageSlug' => 'purchasedresumes'])
 @section('content')
 <div class="table-responsive">
         <!--Table-->
         <table class="table table-hover table-dark">
-      
+
           <!--Table head-->
           <thead>
             <tr>
               <th>ID</th>
-              <th>Name</th> 
+              <th>Name</th>
               <th></th>
               <th></th>
               <th></th>
@@ -16,7 +16,7 @@
             </tr>
           </thead>
           <!--Table head-->
-      
+
           <!--Table body-->
           <tbody>
             <tr>
@@ -41,7 +41,7 @@
                   Current Salary:500000 MMK <br>
                   Gender:Male
               </td>
-              <td class="view-resume">     
+              <td class="view-resume">
                 <button type="button" class="btn btn-info">View Resume</button>
               </td>
             </tr>
@@ -67,7 +67,7 @@
                     Current Salary:500000 MMK <br>
                     Gender:Male
                 </td>
-                <td class="view-resume">     
+                <td class="view-resume">
                   <button type="button" class="btn btn-info">View Resume</button>
                 </td>
             </tr>
@@ -93,10 +93,10 @@
                     Current Salary:500000 MMK <br>
                     Gender:Male
                 </td>
-                <td class="view-resume">     
+                <td class="view-resume">
                   <button type="button" class="btn btn-info">View Resume</button>
                 </td>
-             
+
             </tr>
           </tbody>
           <!--Table body-->
