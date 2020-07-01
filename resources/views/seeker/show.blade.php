@@ -63,7 +63,7 @@
                                     <h3>
                                         {{$post->position}}
                                     </h3>
-                                    <a href="http://">Property Star Ltd</a>
+                                    <a href="http://">{{$post->company->company_name}}</a>
                                 </a>
                                 <div class="row mt10">
                                     <di class="col-md-6">
@@ -71,18 +71,19 @@
                                     </di>
                                     <di class="col-md-6">
                                         <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
+                                        <span><i class="fa fa-database" aria-hidden="true"></i> {{$post->min_salary}} - {{$post->max_salary}} {{$post->salary_unit}} </span>
                                     </di>
                                 </div>
                             </div>
                             <div class="item job-logo">
-                                <img src="{{asset('images/adele.jpg')}}" alt="">
+                                <img src="{{asset('images/company/'.$post->company->company_logo)}}" alt="">
                             </div>
                         </div>
                     </div>
                     <div class="card-footer apply-footer">
                         <div class="posted-update">
                             <span class="posted seprate plr-10">Posted On: {{$post->created_at->diffForHumans()}}</span>
-                            <span class="posted seprate plr-10">Total Views: 53</span>
+                            <span class="posted seprate plr-10">Total Views: {{$counter}}</span>
                             <span class="posted seprate plr-10">Total Applications: 5</span>
                         </div>
                         <div class="job-type">
@@ -107,18 +108,18 @@
                     <div class="card-body">
                         <h2>Job Details</h2>
                         <div class="jd-holder">
-                            <div class="jd-h">Industry:</div>
-                            <div class="jd-c"> AKL Co., ltd</div>
+                            <div class="jd-h">Compnay Name:</div>
+                            <div class="jd-c"> {{$post->company->company_name}} </div>
                         </div>
                         <div class="jd-holder">
-                            <div class="jd-h">Function:</div>
-                            <div class="jd-c"> IT </div>
+                            <div class="jd-h">Industry:</div>
+                            <div class="jd-c">{{$post->job_categories->first()->category_name}}</div>
                         </div>
                         <div class="jd-holder">
                             <div class="jd-h">Roles:</div>
                             <div class="jd-c">
                                 <span class="hover-custom-blue">
-                                    <a href="http://">Software Engineer/Programmer</a>
+                                    <a href="http://">{{$post->position}}</a>
                                 </span>
                             </div>
                         </div>

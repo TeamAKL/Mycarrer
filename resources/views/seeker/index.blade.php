@@ -139,7 +139,7 @@
                         <div class="card mb10">
                             @if($post->urgent != 0)
                             <div class="mycareers-bags">
-                                <span class="featuer">{{$post->urgent}}</span>
+                                <span class="featuer">Urgent</span>
                             </div>
                             @endif
                             <div class="card-body pd-b20">
