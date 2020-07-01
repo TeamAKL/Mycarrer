@@ -222,7 +222,7 @@
                     <div class="form-group">
                         <div class="form-check">
                             <label class="form-check-label">
-                                <input class="form-check-input" name="urgent" type="checkbox" value="">
+                                <input class="form-check-input" name="urgent" type="checkbox" value="1">
                                 Urgent
                                 <span class="form-check-sign">
                                     <span class="check"></span>

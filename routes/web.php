@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
     Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'PageController@upgrade']);
 });
 
-Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
+Route::group(['middleware' => 'auth', 'middleware' => 'employer'], function () {
     Route::resource('user', 'UserController', ['except' => ['show']]);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
@@ -89,6 +89,7 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('employer', "CompanyController@index")->name("employer");
 
     Route::get('jobs', 'PostController@employerindex')->name('jobs');
+    Route::get('livesearch', 'PostController@livesearch');
     Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');

@@ -37,6 +37,7 @@ class HomeController extends Controller
 
     public function searchCity(Request $request)
     {
+        // return Response($request->countryId);
         $cities = City::where('country_id', $request->countryId)->get();
         return Response($cities);
     }
