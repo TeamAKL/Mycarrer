@@ -92,27 +92,39 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
+        $company_id = Auth::user()->companies->id;
+        $company = Company::where('id', $company_id)->with('posts')->first();
+        //dd($company);
+        $jobCategories = JobCategory::all();
         $input = $request->all();
         //dd($input);
         if(isset($input['company_logo'])){
             $logo_file = $request->file('company_logo');
             $logo_name = uniqid().'-'.$logo_file->getClientOriginalName();
             $request->company_logo->storeAs('company', $logo_name, 'my_upload');
+        }else if($company->company_logo != null){
+            $logo_name = $company->company_logo;
         }
         if(isset($input['vision_image'])){
             $vision_file = $request->file('vision_image');
             $vision_logo_name = uniqid().'-'.$vision_file->getClientOriginalName();
             $request->vision_image->storeAs('company', $vision_logo_name, 'my_upload');
+        }else if($company->vission_image != null){
+            $vision_logo_name = $company->vission_image;
         }
         if(isset($input['mission_image'])){
             $mission_file = $request->file('mission_image');
             $mission_logo_name = uniqid().'-'.$mission_file->getClientOriginalName();
             $request->mission_image->storeAs('company', $mission_logo_name, 'my_upload');
+        }else if($company->mission_image != null){
+            $mission_logo_name = $company->mission_image;
         }
         if(isset($input['banner_image'])){
             $banner_file = $request->file('banner_image');
             $banner_logo_name = uniqid().'-'.$banner_file->getClientOriginalName();
             $request->banner_image->storeAs('company', $banner_logo_name, 'my_upload');
+        }else if($company->banner_image != null){
+            $banner_logo_name = $company->banner_image;
         }
         if(isset($input['company_id'])){
             Company::updateOrCreate(
@@ -121,8 +133,8 @@ class CompanyController extends Controller
                 'company_email' => $input['company_email'] != null ? $input['company_email'] : '',
                 'size' => $input['size'],
                 'phone_number' => $input['phone_number'] != null ? $input['phone_number'] : '',
-//                'city' => $input['city_name'] != null ? $input['city_name'] : '',
-//                'country' => $input['country_name'] != null ? $input['country_name'] : '',
+                'city' => $input['city_name'] != null ? $input['city_name'] : '',
+                'country' => $input['country_name'] != null ? $input['country_name'] : '',
                 'address' => $input['address'] != null ? $input['address'] : '',
                 'industry_id' =>$input['industry'] != null ? $input['industry'] : '',
                 'about' =>$input['about'] != null ? $input['about'] : '',
@@ -136,6 +148,7 @@ class CompanyController extends Controller
 
             ]);
         }
+        return view('employer.index', ['jobCategories' => $jobCategories, 'company' => $company]);
     }
 
     /**

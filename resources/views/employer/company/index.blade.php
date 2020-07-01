@@ -22,7 +22,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                         <label for="country">{{ __('Country') }}</label>
-                                        <input type="text" name="country_name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 border-unset" placeholder="{{ __('Country Name') }}" id="country">
+                                        <input type="text" name="country_name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 border-unset" placeholder="{{ __('Country Name') }}" id="country" value="{{isset($user->companies) ? $user->companies->country : ''}}">
                                         @include('alerts.feedback', ['field' => 'name'])
                                         <div class="select-area" >
 
@@ -32,7 +32,7 @@
                                 <div class="col-md-6">
                                     <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                         <label for="city">{{ __('City Name') }}</label>
-                                        <input type="text" name="city_name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 state" placeholder="{{ __('City Name') }}" id="city" >
+                                        <input type="text" name="city_name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }} mb0 state" placeholder="{{ __('City Name') }}" id="city" value="{{isset($user->companies) ? $user->companies->city : ''}}">
                                         @include('alerts.feedback', ['field' => 'name'])
                                         <div class="state-area">
 
@@ -44,6 +44,7 @@
                                 </div>
                             </div>
                         </div>
+{{--                        @dd($user->companies);--}}
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="email">Email</label>
@@ -92,14 +93,14 @@
                                             <input type="file" class="custom-file-input" id="logo" name="company_logo">
                                             <label class="custom-file-label" for="logo">Choose Logo</label>
                                         </div>
-                                        <img src="{{asset('images/company/'.$user->companies->company_logo)}}" id="logo-preview" class="img-thumbnail preview">
+                                        <img src="{{$user->companies->company_logo  != null ? asset('images/company/'.$user->companies->company_logo) : asset('images/company-logo-avatar.png')}}" id="logo-preview" class="img-thumbnail preview">
                                     </div>
                                 </div>
-{{--                                @dd($user->companies->about);--}}
+{{--                                @dd($user->compani$user->companieses->about);--}}
                                 <div class="col-md-6">
                                     <div class="form-group">
                                         <label for="about">About</label>
-                                        <textarea name="about" id="about" cols="30" rows="10" class="form-control" value="kkg "></textarea>
+                                        <textarea name="about" id="about" cols="30" rows="10" class="form-control"></textarea>
                                     </div>
                                 </div>
                             </div>
@@ -119,7 +120,7 @@
                                     <input type="file" class="custom-file-input" id="vision" name="vision_image">
                                     <label class="custom-file-label" for="vision">Choose Vision Image</label>
                                 </div>
-                                <img src="{{asset('images/company/'.$user->companies->vission_image)}}" id="vision-preview" class="img-thumbnail preview">
+                                <img src="{{$user->companies->vission_image != null ? asset('images/company/'.$user->companies->vission_image) : asset('images/vision.jpg')}}" id="vision-preview" class="img-thumbnail preview">
                             </div>
                         </div>
 
@@ -130,7 +131,7 @@
                                     <input type="file" class="custom-file-input" id="mission" name="mission_image">
                                     <label class="custom-file-label" for="mission">Choose Mission Image</label>
                                 </div>
-                                <img src="{{asset('images/company/'.$user->companies->mission_image)}}" id="mission-preview" class="img-thumbnail preview">
+                                <img src="{{$user->companies->mission_image != null ? asset('images/company/'.$user->companies->mission_image) : asset('images/mission.jpg') }}" id="mission-preview" class="img-thumbnail preview">
                             </div>
                         </div>
 
@@ -143,6 +144,7 @@
 
                         <div class="col-md-6">
                             <div class="form-group">
+                                <label for="company-size">Company Size</label>
                                 <select name="size" id="emp-size" class="form-control">
                                     @if(isset($emp_sizes))
                                         @for($i=0;$i < 11;$i++)
@@ -172,7 +174,7 @@
                                     <input type="file" class="custom-file-input" id="banner" name="banner_image">
                                     <label class="custom-file-label" for="banner">Choose banner Image</label>
                                 </div>
-                                <img src="{{asset('images/company/'.$user->companies->banner_image)}}" id="banner-preview" class="img-thumbnail preview">
+                                <img src="{{$user->companies->banner_image ? asset('images/company/'.$user->companies->banner_image) : asset('images/hero-img.jpg')}}" id="banner-preview" class="img-thumbnail preview">
                             </div>
                         </div>
                     </div>
