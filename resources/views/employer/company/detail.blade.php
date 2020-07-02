@@ -6,7 +6,7 @@
         <div class="col-md-4">
             <h3 class="mb20 underline">About</h3>
             <p>
-                Lorem ipsum dolor sit, amet consectetur adipisicing elit. Modi ipsam numquam delectus et dolores ullam tempora reprehenderit rerum accusantium assumenda sapiente, natus eaque est, consectetur animi id minima fugit consequuntur.
+                {{$company->about}}
             </p>
         </div>
         <div class="col-md-8">
@@ -48,12 +48,12 @@
     </div>
     <div class="row my-5">
         <div class="clo-md-6 images">
-            <img src="{{asset('images/vision.jpg')}}" alt="">
+            <img src="{{$company->vission_image != null ? asset('images/company/'.$company->vission_image) : asset('images/vision.jpg')}}" alt="">
         </div>
         <div class="clo-md-6 float-right">
             <div class="vision">
                 <h3 class="mb20 underline">Vision</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos porro optio, corrupti quasi veniam saepe sit laudantium assumenda unde, blanditiis sapiente molestias, voluptatum qui consequatur distinctio nobis nam repellendus dolor!</p>
+                <p>{{isset($company) ? $company->vission : ''}}</p>
             </div>
         </div>
     </div>
@@ -61,12 +61,12 @@
     <div class="row my-5">
         <div class="clo-md-6 float-right">
             <div class="vision">
-                <h3 class="mb20 underline">Misiion</h3>
-                <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Eos porro optio, corrupti quasi veniam saepe sit laudantium assumenda unde, blanditiis sapiente molestias, voluptatum qui consequatur distinctio nobis nam repellendus dolor!</p>
+                <h3 class="mb20 underline">Mission</h3>
+                <p>{{ isset($company) ? $company->mission : ''}}</p>
             </div>
         </div>
         <div class="clo-md-6 images">
-            <img src="{{asset('images/mission.jpg')}}" alt="">
+            <img src="{{$company->mission_image != null ? asset('images/company/'.$company->mission_image) : asset('images/mission.jpg') }}" alt="">
         </div>
     </div>
 </div>

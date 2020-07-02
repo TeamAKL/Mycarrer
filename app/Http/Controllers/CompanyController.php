@@ -63,7 +63,10 @@ class CompanyController extends Controller
      */
     public function show(Company $company)
     {
+        $company_id = Auth::user()->companies->id;
+        $company = Company::where('id', $company_id)->with('posts')->first();
         //
+        return view('employer.company.detail',compact('company'));
     }
 
     /**
@@ -94,10 +97,10 @@ class CompanyController extends Controller
     {
         $company_id = Auth::user()->companies->id;
         $company = Company::where('id', $company_id)->with('posts')->first();
-        //dd($company);
+
         $jobCategories = JobCategory::all();
         $input = $request->all();
-        //dd($input);
+
         if(isset($input['company_logo'])){
             $logo_file = $request->file('company_logo');
             $logo_name = uniqid().'-'.$logo_file->getClientOriginalName();

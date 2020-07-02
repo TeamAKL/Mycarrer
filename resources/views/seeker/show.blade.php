@@ -147,7 +147,7 @@
                             </div>
                         </div>
                         <div class="apply-hover">
-                            <a href="" class="appl-btn btn-fill">Apply</a>
+                            <a href="" class="appl-btn btn-fill" email="{{$post->company->company_email}}">Apply</a>
                         </div>
                     </div>
                 </div>
@@ -164,4 +164,20 @@
 
 @push('script')
 <script src="{{asset('js/seeker.js')}}"></script>
+    <script>
+        $('.appl-btn').on('click',function (e) {
+            e.preventDefault();
+            let email = $(this).attr('email');
+            $.ajax({
+                type: 'get',
+                url: '{{URL::to("sendEmail")}}',
+                data: {'email':email},
+                success: function(data) {
+                   console.log(data);
+
+                }
+            });
+            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        });
+    </script>
 @endpush

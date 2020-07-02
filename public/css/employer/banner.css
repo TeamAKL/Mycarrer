@@ -67,6 +67,9 @@ a.active::before {
     color: #fff;
     font-size: 18px;
     font-weight: 700;
+    background-color: #0060a2;
+    display: inline-block;
+    padding: 0 10px;
 }
 
 
