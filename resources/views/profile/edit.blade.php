@@ -25,6 +25,16 @@
                                 <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}" value="{{ old('email', auth()->user()->email) }}">
                                 @include('alerts.feedback', ['field' => 'email'])
                             </div>
+                            <div class="form-group{{ $errors->has('handphone') ? ' has-danger' : '' }}">
+                                <label>{{ __('Hand Phone') }}</label>
+                                <input type="text" name="handphone" class="form-control{{ $errors->has('handphone') ? ' is-invalid' : '' }}" placeholder="{{ __('Hand Phone Number') }}" value="09791963594">
+                                @include('alerts.feedback', ['field' => 'email'])
+                            </div>
+                            <div class="form-group{{ $errors->has('officephone') ? ' has-danger' : '' }}">
+                                <label>{{ __('Office phone') }}</label>
+                                <input type="text" name="officephone" class="form-control{{ $errors->has('officephone') ? ' is-invalid' : '' }}" placeholder="{{ __('Office phone number') }}" value="09791963504">
+                                @include('alerts.feedback', ['field' => 'email'])
+                            </div>
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Save') }}</button>
@@ -75,16 +85,85 @@
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
                             <a href="#">
-                                <img class="avatar" src="{{ asset('black') }}/img/emilyz.jpg" alt="">
-                                <h5 class="title">{{ auth()->user()->name }}</h5>
+                              <div class="profile-sec mb8">
+                                <div class="user-imgname">
+                                    <div class="profile-avatar avatar-dashboard">
+                                        <img class="avatar" src="{{ asset('black') }}/img/emilyz.jpg" alt="">
+                                        <label for="avatar" class="camera-btn">
+                                            <input type="file" name="" id="avatar">
+                                            <i class="fa fa-camera"></i>
+                                        </label>
+                                    </div>
+                                    <div class="user-name">
+                                        <h5 class="title">{{ auth()->user()->name }}</h5>
+
+                                    </div>
+                                </div>
+                                    <!-- <div class="profile-avatar avatar-dashboard">
+                                        <img class="avatar" src="{{ asset('black') }}/img/emilyz.jpg" alt="">
+                                        <label for="avatar" class="camera-btn">
+                                            <input type="file" name="" id="avatar">
+                                            <i class="fa fa-camera"></i>
+                                        </label>
+                                    </div>
+                                    <h5 class="title">{{ auth()->user()->name }}</h5> -->
+                              </div>
                             </a>
-                            <p class="description">
-                                {{ __('Ceo/Co-Founder') }}
-                            </p>
+                            <div class="clearb mt10">
+                                <span class="fl fs-12 color-g-b" style="color:white;font-size:16px;"> {{ __('Ceo/Co-Founder') }}  </span>
+                                  <a data-toggle="modal" data-target=".bd-example-modal-sm">
+                                    <i class="tim-icons icon-pencil" style="color:white;margin-left:10px;"></i>
+                                  </a>
+
+                                    <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                                    <div class="modal-dialog modal-sm">
+                                        <div class="modal-content">
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <label for="recipient-name" class="col-form-label">Role:</label>
+                                                <input type="text" class="form-control" id="recipient-name" placeholder="CEO/Co-Founder" style="color:black;">
+                                            </div>
+
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                            <button type="button" class="btn btn-primary">Save changes</button>
+                                        </div>
+                                        </div>
+
+                                    </div>
+                                    </div>
+                            </div>
+                            
                         </div>
                     </p>
                     <div class="card-description">
+                      <a data-toggle="modal" data-target="#exampleModal">
                         {{ __('Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...') }}
+                      </a>
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">About Company</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                                </div>
+                                <div class="modal-body">
+                                <div class="form-group">
+                                    <textarea name="about" id="about" style="width:460px;height:300px;">Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...              
+                                    </textarea>
+                                </div>
+                                
+                                </div>
+                                <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                                <button type="button" class="btn btn-primary">Save changes</button>
+                                </div>
+                            </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div class="card-footer">
@@ -102,5 +181,15 @@
                 </div>
             </div>
         </div>
+
+    
+
+
     </div>
 @endsection
+
+@push('stylesheet')
+<link rel="stylesheet" href="{{asset('css/employer_profile.css')}}">
+
+@endpush
+
