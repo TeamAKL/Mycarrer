@@ -95,10 +95,10 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');
-    Route::get('company/detail', function() {
-        return view('employer.company.detail');
-    });
-    Route::get('company/detail','CompanyController@show');
+//    Route::get('company/detail', function() {
+//        return view('employer.company.detail');
+//    });
+    Route::get('company/detail/{id}','CompanyController@show');
 
 
     // Resume

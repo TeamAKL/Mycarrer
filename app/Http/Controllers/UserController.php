@@ -3,13 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
-use App\Http\Requests\UserRequest;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-//use http\Env\Request;
-//use http\Env\Response;
-use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
 use Mail;
 
@@ -56,12 +52,17 @@ class UserController extends Controller
         $to = $request->email;
         $message = 'test email';
         $subject = 'CV Form';
+        $currentUser = Auth::id();
+        $user = User::with(['projects', 'education', 'work_experiences'])->findOrFail($currentUser);
+        $file_name = $user->name."_cv_form.pdf";
+        $pdf = PDF::setOptions(['images' => true, 'isPhpEnabled' => true, 'isRemoteEnabled' => true])->loadView('exports.cv_form', compact('user'))->setPaper('a4', 'portrait');
 
-        Mail::send(['html' => 'emails.mail'],['text' => $message],function ($messages) use ($subject,$to) {
-            $messages->to($to)->subject($subject);
+
+
+        Mail::send(['html' => 'emails.mail'],['text' => $message],function ($messages) use ($subject,$to,$pdf,$file_name) {
+            $messages->to($to)->subject($subject)->attachData($pdf->output(), $file_name);
             $messages->from('thettun1741997@gmail.com', $name = 'AKL');
             $messages->replyTo('thettun1741997@gmail.com', $name = 'AKL');
         });
-        //return Response::json(["message"=> 'message']);
     }
 }

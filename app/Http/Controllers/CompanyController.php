@@ -61,11 +61,10 @@ class CompanyController extends Controller
      * @param  \App\Company  $company
      * @return \Illuminate\Http\Response
      */
-    public function show(Company $company)
+    public function show($id)
     {
-        $company_id = Auth::user()->companies->id;
-        $company = Company::where('id', $company_id)->with('posts')->first();
-        //
+        $company = Company::where('id', $id)->with('posts')->first();
+
         return view('employer.company.detail',compact('company'));
     }
 

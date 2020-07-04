@@ -149,7 +149,7 @@
                                             <h3>
                                                 {{$post->position}}
                                             </h3>
-                                            <a href="http://">{{$post->company->company_name}}</a>
+                                            <a href="{{url('company/detail/'.$post->company->id)}}">{{$post->company->company_name}}</a>
                                             <p class="text-muted">{{$post->created_at->diffForHumans()}}</p>
                                         </a>
                                         <div class="row mt10">

@@ -22,7 +22,7 @@
                         </div>
                     </div>
                     <div class="apply-hover">
-                        <a href="" class="appl-btn btn-fill">Apply</a>
+                        <a href="" class="appl-btn btn-fill" email="{{$post->company->company_email}}">Apply</a>
                     </div>
                 </div>
             </div>
@@ -50,7 +50,7 @@
                             </div>
                         </div>
                         <div class="apply-hover">
-                            <a href="" class="appl-btn btn-fill">Apply</a>
+                            <a href="" class="appl-btn btn-fill" email="{{$post->company->company_email}}">Apply</a>
                         </div>
                     </div>
                 </div>
