@@ -164,6 +164,7 @@
 <script src="{{asset('js/seeker.js')}}"></script>
     <script>
         $('.appl-btn').on('click',function (e) {
+            console.log("hello");
             e.preventDefault();
             let email = $(this).attr('email');
             $.ajax({
