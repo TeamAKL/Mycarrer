@@ -5,18 +5,20 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Post;
 use App\JobCategory;
+use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Cache;
 
 // use App\Http\Requests\PostRequest;
 
 class PostController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Display a listing of the resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function index()
     {
         // $post = Post::with(['company'])->findOrFail(1);
@@ -26,21 +28,21 @@ class PostController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    * Show the form for creating a new resource.
+    *
+    * @return \Illuminate\Http\Response
+    */
     public function create()
     {
         //
     }
 
     /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    * Store a newly created resource in storage.
+    *
+    * @param  \Illuminate\Http\Request  $request
+    * @return \Illuminate\Http\Response
+    */
     public function store(Request $request)
     {
         if($request->urgent) {
@@ -64,75 +66,126 @@ class PostController extends Controller
             "job_requirement" => $request->jobrequirement,
             "company_id" => $request->company_id,
             "urgent" => $urgent
-        ]);
-        $post->job_categories()->attach(JobCategory::findOrFail($request->jobcategory));
-        return redirect('employer');
-    }
+            ]);
+            $post->job_categories()->attach(JobCategory::findOrFail($request->jobcategory));
+            return redirect('employer');
+        }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Post $post, $id)
-    {
-        $postDetail = Post::find($id);
-        return view('seeker.show', ["post" => $postDetail]);
-    }
+        /**
+        * Display the specified resource.
+        *
+        * @param  \App\Post  $post
+        * @return \Illuminate\Http\Response
+        */
+        public function show(Post $post, $id)
+        {
+            $postDetail = Post::find($id);
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Request $request)
-    {
-        $status = $request->status;
-        $id = $request->id;
-        $post = Post::find($id);
-        $post->job_status = $status;
-        $post->save();
-        if($post) {
-            return "true";
-        } else {
-            return "false";
+            $sessionID = session()->getId();
+            $counterKey = "job-post-{$id}-counter";
+            $userKey = "job-post-{$id}-user";
+            $users = Cache::get($userKey, []);
+            $userUpdate = [];
+            $difference = 0;
+            $now = now();
+            foreach($users as $session => $lastVisit) {
+                if($now->diffInMinutes($lastVisit) >= 1) {
+                    $difference;
+                } else {
+                    $userUpdate[$session] = $lastVisit;
+                }
+            }
+            if(!array_key_exists($sessionID, $users) || $now->diffInMinutes($users[$sessionID]))
+            {
+                $difference++;
+            }
+            $userUpdate[$sessionID] = $now;
+            Cache::forever($userKey, $userUpdate);
+            if(!Cache::has($counterKey)) {
+                Cache::forever($counterKey, 1);
+            } else {
+                Cache::increment($counterKey, $difference);
+            }
+
+            $counter = Cache::get($counterKey);
+            return view('seeker.show', ["post" => $postDetail, "counter" => $counter]);
+        }
+
+        /**
+        * Show the form for editing the specified resource.
+        *
+        * @param  \App\Post  $post
+        * @return \Illuminate\Http\Response
+        */
+        public function edit(Request $request)
+        {
+            $status = $request->status;
+            $id = $request->id;
+            $post = Post::find($id);
+            $post->job_status = $status;
+            $post->save();
+            if($post) {
+                return "true";
+            } else {
+                return "false";
+            }
+        }
+
+        /**
+        * Update the specified resource in storage.
+        *
+        * @param  \Illuminate\Http\Request  $request
+        * @param  \App\Post  $post
+        * @return \Illuminate\Http\Response
+        */
+        public function update(Request $request, Post $post)
+        {
+            //
+        }
+
+        /**
+        * Remove the specified resource from storage.
+        *
+        * @param  \App\Post  $post
+        * @return \Illuminate\Http\Response
+        */
+        public function destroy(Post $post)
+        {
+            //
+        }
+
+        /**
+        * To Show in Employer Job List File
+        * Get All Jobs
+        */
+        public function employerindex()
+        {
+            $company_id = Auth::user()->companies->id;
+            $company = Company::where('id', $company_id)->with('posts')->first();
+            return view('employer.jobs', ['posts' => $company->posts()->paginate(3)]);
+        }
+
+        public function livesearch(Request $request)
+        {
+            $search = $request->get('query');
+            $page = $request->get('page');
+            $company_id = Auth::user()->companies->id;
+            // $company = Company::where('id', $company_id)->with('posts')->first();
+            if(strlen($search) != 0) {
+                $posts = Post::where(function($query) use ($search) {
+                    $query->where('position', 'like', '%'.$search.'%')
+                    ->orWhere('address', 'like', '%'.$search.'%')
+                    ->orWhere('job_status', 'like', '%'.$search.'%');
+                })
+                ->where(function($query) use ($company_id) {
+                    $query->where('company_id', $company_id);
+                })
+                ->paginate(3);
+            } else {
+                $posts = Post::where('company_id', $company_id)
+                ->paginate(3);
+            }
+
+            return view('employer.jobtable', compact('posts'))->render();
         }
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Post $post)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Post  $post
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Post $post)
-    {
-        //
-    }
-
-    /**
-     * To Show in Employer Job List File
-     * Get All Jobs
-     */
-    public function employerindex()
-    {
-        // $posts = Post::paginate(3);
-        $company_id = Auth::user()->companies->id;
-        $company = Company::where('id', $company_id)->with('posts')->first();
-        return view('employer.jobs', ['posts' => $company->posts()->paginate(3)]);
-    }
-}

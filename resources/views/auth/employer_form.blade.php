@@ -32,17 +32,17 @@
             <label for="c-size">Size</label>
             <select name="size" id="c-size" class="form-control {{ $errors->has('size') ? ' is-invalid' : '' }}">
                 <option>Size</option>
-                <option value="1-5 employees">1-5 employees</option>
-                <option value="6-10 employee">6-10 employees</option>
-                <option value="11-20 employees">11-20 employees</option>
-                <option value="51-100 employees">51-100 employees</option>
-                <option value="101-200 employees">101-200 employees</option>
-                <option value="201-500 employees">201-500 employees</option>
-                <option value="501-1000 employees">501-1000 employees</option>
-                <option value="1001-5000 employees">1001-5000 employees</option>
-                <option value="5001-10000 employees">5001-10000 employees</option>
-                <option value="10001-20000 employees">10001-20000 employees</option>
-                <option value="More than 20000">More than 20000</option>
+                <option value="0">1-5 employees</option>
+                <option value="1">6-10 employees</option>
+                <option value="2">11-20 employees</option>
+                <option value="3">51-100 employees</option>
+                <option value="4">101-200 employees</option>
+                <option value="5">201-500 employees</option>
+                <option value="6">501-1000 employees</option>
+                <option value="7">1001-5000 employees</option>
+                <option value="8">5001-10000 employees</option>
+                <option value="9">10001-20000 employees</option>
+                <option value="10">More than 20000</option>
             </select>
             @if ($errors->has('size'))
             <span class="invalid-feedback" role="alert">{{ $errors->first('size') }}</span>

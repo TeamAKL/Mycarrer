@@ -6,8 +6,12 @@ use App\User;
 use App\Http\Requests\UserRequest;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
+use Illuminate\Http\Request;
+//use http\Env\Request;
+//use http\Env\Response;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Auth;
+use Mail;
 
 class UserController extends Controller
 {
@@ -45,5 +49,19 @@ class UserController extends Controller
         $pdf = PDF::setOptions(['images' => true, 'isPhpEnabled' => true, 'isRemoteEnabled' => true])->loadView($viewFile, compact('user'))->setPaper('a4', 'portrait');
         return $pdf->stream(''.$fileName.'.pdf', array("Attachment" => false));
 
+    }
+
+    public function sendEmailToCompany(Request $request){
+
+        $to = $request->email;
+        $message = 'test email';
+        $subject = 'CV Form';
+
+        Mail::send(['html' => 'emails.mail'],['text' => $message],function ($messages) use ($subject,$to) {
+            $messages->to($to)->subject($subject);
+            $messages->from('thettun1741997@gmail.com', $name = 'AKL');
+            $messages->replyTo('thettun1741997@gmail.com', $name = 'AKL');
+        });
+        //return Response::json(["message"=> 'message']);
     }
 }

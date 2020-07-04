@@ -49,7 +49,7 @@ Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
     Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'PageController@upgrade']);
 });
 
-Route::group(['middleware' => 'auth', 'middleware' => 'notAdmin'], function () {
+Route::group(['middleware' => 'auth', 'middleware' => 'employer'], function () {
     Route::resource('user', 'UserController', ['except' => ['show']]);
     Route::get('profile', ['as' => 'profile.edit', 'uses' => 'ProfileController@edit']);
     Route::put('profile', ['as' => 'profile.update', 'uses' => 'ProfileController@update']);
@@ -82,6 +82,8 @@ Route::post('addworkexp', 'WorkExperienceController@store');
 Route::post('updateworkexp', 'WorkExperienceController@update');
 Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCertificate')->name('seeker.generate_certificate');
 
+Route::get('sendEmail','UserController@sendEmailToCompany');
+
 
 // FOREMPLOYER ROUTES
 Route::group(['middleware' => 'employer'], function () {
@@ -89,12 +91,15 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('employer', "CompanyController@index")->name("employer");
 
     Route::get('jobs', 'PostController@employerindex')->name('jobs');
+    Route::get('livesearch', 'PostController@livesearch');
     Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');
     Route::get('company/detail', function() {
         return view('employer.company.detail');
     });
+    Route::get('company/detail','CompanyController@show');
+
 
     // Resume
     Route::get('appliedresume', function() {
@@ -123,3 +128,7 @@ Route::get('purchasedresumes', function(){
     return view('resumes.purchased');
 })->name('purchased');
 
+
+//Route::get('sendEmail', function() {
+//    return Response("hi");
+//});
