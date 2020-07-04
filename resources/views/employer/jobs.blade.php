@@ -22,7 +22,6 @@
         </tbody>
     </table>
     <input type="hidden" name="page" value="1">
-    {{-- <input type="hidden" name="company_id" value="{{$post->company->company_name}}"> --}}
 </div>
 @endsection
 

@@ -161,8 +161,10 @@ class PostController extends Controller
         public function employerindex()
         {
             $company_id = Auth::user()->companies->id;
-            $company = Company::where('id', $company_id)->with('posts')->first();
-            return view('employer.jobs', ['posts' => $company->posts()->paginate(3)]);
+            // $company = Company::where('id', $company_id)->with('posts')->first();
+            // return view('employer.jobs', ['posts' => $company->posts()->paginate(3)]);
+            $posts = Post::where('company_id', $company_id)->paginate(15);
+            return view('employer.jobs', ['posts' => $posts ]);
         }
 
         public function livesearch(Request $request)
@@ -170,7 +172,6 @@ class PostController extends Controller
             $search = $request->get('query');
             $page = $request->get('page');
             $company_id = Auth::user()->companies->id;
-            // $company = Company::where('id', $company_id)->with('posts')->first();
             if(strlen($search) != 0) {
                 $posts = Post::where(function($query) use ($search) {
                     $query->where('position', 'like', '%'.$search.'%')
@@ -179,11 +180,9 @@ class PostController extends Controller
                 })
                 ->where(function($query) use ($company_id) {
                     $query->where('company_id', $company_id);
-                })
-                ->paginate(3);
+                })->paginate(15);
             } else {
-                $posts = Post::where('company_id', $company_id)
-                ->paginate(3);
+                $posts = Post::where('company_id', $company_id)->paginate(15);
             }
 
             return view('employer.jobtable', compact('posts'))->render();

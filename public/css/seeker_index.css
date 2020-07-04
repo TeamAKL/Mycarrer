@@ -535,17 +535,35 @@
 
 
 /* background: red;
-    float: right;
-    transform: rotate(36deg);
-    top: 17px;
-    right: -60px;
-    position: relative;
-    text-align: center;
-    width: 200px;
-    font-size: 12px;
-    margin: 0;
-    padding: 7px 10px;
-    letter-spacing: 1.5px;
-    font-weight: 400;
+float: right;
+transform: rotate(36deg);
+top: 17px;
+right: -60px;
+position: relative;
+text-align: center;
+width: 200px;
+font-size: 12px;
+margin: 0;
+padding: 7px 10px;
+letter-spacing: 1.5px;
+font-weight: 400;
+color: #000;
+box-shadow: 1px 2px 3px 0 rgba(2, 0, 0, .2); */
+.responsibility h3, .requriment h3 {
     color: #000;
-    box-shadow: 1px 2px 3px 0 rgba(2, 0, 0, .2); */
+    font-weight: bold;
+}
+
+.responsibility ul, .requriment ul {
+    display: flex;
+    flex-direction: column;
+}
+
+.responsibility ul > li, .requriment ul > li{
+    list-style: circle;
+}
+
+.responsibility p, .requriment p, .responsibility ul, .requriment ul {
+    margin-left: 36px;
+    margin-top: 5px;
+}
