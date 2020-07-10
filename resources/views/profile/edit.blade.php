@@ -112,7 +112,7 @@
                             <div class="clearb mt10">
                                 <span class="fl fs-12 color-g-b" style="color:white;font-size:16px;"> {{ __('Ceo/Co-Founder') }}  </span>
                                   <a data-toggle="modal" data-target=".bd-example-modal-sm">
-                                    <i class="tim-icons icon-pencil" style="color:white;margin-left:10px;"></i>
+                                    <i class="tim-icons icon-pencil" style="color:white;margin-left:10px;cursor:pointer;"></i>
                                   </a>
 
                                     <div class="modal fade bd-example-modal-sm" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
@@ -138,14 +138,14 @@
                         </div>
                     </p>
                     <div class="card-description">
-                      <a data-toggle="modal" data-target="#exampleModal">
+                      <a data-toggle="modal" data-target="#exampleModal" style="cursor:pointer;">
                         {{ __('Do not be scared of the truth because we need to restart the human foundation in truth And I love you like Kanye loves Kanye I love Rick Owens’ bed design but the back is...') }}
                       </a>
                         <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                             <div class="modal-dialog" role="document">
                             <div class="modal-content">
                                 <div class="modal-header">
-                                <h5 class="modal-title" id="exampleModalLabel">About Company</h5>
+                                <h5 class="modal-title" id="exampleModalLabel">About</h5>
                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                     <span aria-hidden="true">&times;</span>
                                 </button>
