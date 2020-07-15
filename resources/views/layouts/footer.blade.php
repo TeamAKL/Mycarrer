@@ -3,12 +3,12 @@
         <ul class="nav">
             <li class="nav-item">
                 <a href="https://creative-tim.com" target="blank" class="nav-link">
-                    {{ __('Creative Tim') }}
+                    {{ __('Employer Toolkits') }}
                 </a>
             </li>
             <li class="nav-item">
                 <a href="https://updivision.com" target="blank" class="nav-link">
-                    {{ __('Updivision') }}
+                    {{ __('How to Post') }}
                 </a>
             </li>
             <li class="nav-item">
@@ -23,9 +23,7 @@
             </li>
         </ul>
         <div class="copyright">
-            &copy; {{ now()->year }} {{ __('made with') }} <i class="tim-icons icon-heart-2"></i> {{ __('by') }}
-            <a href="https://creative-tim.com" target="_blank">{{ __('Creative Tim') }}</a> &amp;
-            <a href="https://updivision.com" target="_blank">{{ __('Updivision') }}</a> {{ __('for a better web') }}.
+            &copy; {{ now()->year }} {{ __('MyCareers') }}  {{ __('- All Right Rererved') }}.
         </div>
     </div>
 </footer>
