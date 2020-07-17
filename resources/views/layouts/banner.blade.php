@@ -33,9 +33,19 @@
                         </div>
                         <div class="col-md-3 expend-search-form pl-pr-0">
                             <select class="form-control custom-input" id="selectoption" name="experience">
-                                <option>Default select</option>
-                                <option>Default select</option>
-                                <option>Default select</option>
+                                <option>Experience</option>
+                                <option value="0">0 Year</option>
+                                <option value="1">1 Year</option>
+                                <option value="2">2 Year</option>
+                                <option value="3">3 Year</option>
+                                <option value="4">4 Year</option>
+                                <option value="5">5 Year</option>
+                                <option value="6">6 Year</option>
+                                <option value="7">7 Year</option>
+                                <option value="8">8 Year</option>
+                                <option value="9">9 Year</option>
+                                <option value="10">10 Year</option>
+                                <option value="11">More than 10 Year</option>
                             </select>
                         </div>
                         <div class="col-md-2 col-sm-12 pl-pr-0">
@@ -55,7 +65,7 @@
                             <a href="" class="button-fill button-custom v-align-center">Upload Resume</a>
                         </div>
                         <div class="col-md-6">
-                                <a href="" class="c-yellow button-custom v-align-center">Create Job Alert</a>
+                            <a href="" class="c-yellow button-custom v-align-center">Create Job Alert</a>
                         </div>
                     </div>
                     @else
@@ -86,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                <a href="{{url('seeker/profile')}}" class="btn btn-info">Update Profile</a>
+                                    <a href="{{url('seeker/profile')}}" class="btn btn-info">Update Profile</a>
                                 </div>
                             </div>
                         </div>

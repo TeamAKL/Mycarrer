@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
 @section('content')
-
-
 @include('seeker.searchContainer')
 <div class="dashboard-area">
     <div class="container">
@@ -13,6 +11,7 @@
         </div>
         <div class="user-dashboard-parent row">
             <div class="user-dashboard-left col-md-4 col-xl-3 col-lg-4">
+                @if(Auth::user())
                 <div class="profile-sec mb8">
                     <div class="user-imgname">
                         <div class="profile-avatar avatar-dashboard">
@@ -107,17 +106,18 @@
                             <p class="job-cat">Networked Jobs</p>
                         </div>
                     </div>
-                </div> 
+                </div>
+                @else
                 <div id="sticky-monster" class="filter-aside mt15">
                     <aside class="pb0 no-bdr">
                         <div class="engage tc">
                             <h2 class="fs-14 mb20 semi-bold uprcse">New to Mycarrer?</h2>
                             <div class="upload-resume">
                                 <a href="" title="Click to upload your resume" class="btn block resume-btn btn-orange">
-                                    <span class="uprcse semi-bold">Upload Resume</span> 
+                                    <span class="uprcse semi-bold">Upload Resume</span>
                                     <span class="block fs-11 mt10">We will create your profile</span>
-                                </a> 
-                                
+                                </a>
+
                             </div>
                             <div class="or">
                                 <span>OR</span>
@@ -127,7 +127,8 @@
                             </div>
                         </div>
                     </aside>
-                </div>    
+                </div>
+                @endif
             </div>
 
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
