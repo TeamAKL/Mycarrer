@@ -144,3 +144,10 @@ Route::post('jobcatlivesearch', 'JobCategoryController@jobcatlivesearch');
 // JOBPReference
 
 Route::post('job_perefernce/create', 'JobPreferenceController@store');
+
+//Profile Detail
+
+Route::post('profile_detail/create','ProfileDetailController@store');
+// Route::post('profile_detail/create',function(){
+//     return "Hello ";
+// });
