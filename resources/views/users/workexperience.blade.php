@@ -49,7 +49,7 @@
                 <h3>Work Experience</h3>
             </div>
             <div class="modal-description mt10">
-                <form action="" method="POST" id="expwork">
+                <form action="{{url('addworkexp')}}" method="POST" id="expwork">
                     @csrf
                     <div class="form-group">
                         <div class="row">
@@ -113,7 +113,7 @@
                                             </div>
                                         </div>
                                         <div class="col-md-8">
-                                            <input type="text" name="salary_amount" id="amount" class="formbb">
+                                            <input type="text" name="salary_amount" id="amount1" class="formbb amount">
                                         </div>
                                     </div>
                                 </div>
@@ -122,15 +122,15 @@
                                     <span class="group-lable">Salary Mode</span>
                                     <label class="radio-lable-container pr100">
                                         <span class="clabel">Monthly</span>
-                                        <input type="radio" name="salarymode" value="Monthly" checked>
+                                        <input type="radio" name="salarymode" value="Monthly" class="work" checked>
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-lable-container pr100">
                                         <span class="clabel">Annually</span>
-                                        <input type="radio" name="salarymode" value="Annually">
+                                        <input type="radio" name="salarymode" value="Annually" class="work">
                                         <span class="checkmark"></span>
                                     </label>
-                                    <span id="calculatedSalary"></span>
+                                    <span class="calculatedSalary"></span>
                                 </div>
 
                                 <div class="custom-group">
@@ -142,7 +142,7 @@
                         </div>
                     </div>
                     <div class="form-group d-flex justify-content-end">
-                        <input type="submit" value="" class="custom-btn" id="expworksubmit">
+                        <input type="submit" value="Save" class="custom-btn" id="expworksubmit">
                     </div>
                 </form>
             </div>
@@ -152,6 +152,23 @@
 
 @push('script')
 <script>
+    $("input[name='salarymode']").bind("change", function() {
+        if($(this).val() == "Monthly") {
+            $(this).attr("checked", "true");
+            $("input[value='Annually']").removeAttr("checked");
+        } else if($(this).val() == "Annually") {
+            $(this).attr("checked", "true");
+            $("input[value='Monthly']").removeAttr("checked");
+        }
+        let $resultf = current_salaryMode($(this).val(), null, $(this));
+        $(".calculatedSalary").html($resultf);
+    });
+
+    $(".amount").bind('keyup', function() {
+        let $finalresult = current_salaryMode(null, $(this).val());
+        $(".calculatedSalary").html($finalresult);
+    });
+
     $(".show-modal").on('click', function() {
         $('body').css('overflow-y', 'hidden');
         let $index = $(this).attr('id');
@@ -176,11 +193,11 @@
                     $(".select-items.select-hide div").each(function() {
                         if($(this).html() == data.salary_unit) {
                             $(this).addClass("same-as-selected");
-                            $(".select-selected").html(data.salary_unit);
+                            $("div.select-selected").html(data.salary_unit);
                         }
                     });
 
-                    $("#amount").val(data.salary_amount);
+                    $(".amount").val(data.salary_amount);
                     $("input[name='salarymode']").each(function() {
                         if($(this).val() == data.salary_mode) {
                             $(this).attr("checked", "true");
@@ -190,14 +207,14 @@
                     });
                     $("#desProfile").val(data.profile_detail);
                     // For Test in edit
-                    $("#calculatedSalary").html(current_salaryMode(data.salary_mode, null));
-                    $("#amount").bind('keyup', function() {
+                    $(".calculatedSalary").html(current_salaryMode(data.salary_mode, null));
+                    $(".amount").bind('keyup', function() {
                         let $finalresult = current_salaryMode(null, $(this).val());
-                        $("#calculatedSalary").html($finalresult);
+                        $(".calculatedSalary").html($finalresult);
                     });
                     $("input[name='salarymode']").bind('click', function() {
                         let $resultf = current_salaryMode($(this).val(), null);
-                        $("#calculatedSalary").html($resultf);
+                        $(".calculatedSalary").html($resultf);
                     });
                 }
             });
@@ -208,36 +225,33 @@
             $("."+$index+"-modal").addClass("slide-modal");
             $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         } else {
-
-            $("input[name='salarymode']").bind("change", function() {
-                if($(this).val() == "Monthly") {
-                    $(this).attr("checked", "true");
-                    $("input[value='Annually']").removeAttr("checked");
-                } else if($(this).val() == "Annually") {
-                    $(this).attr("checked", "true");
-                    $("input[value='Monthly']").removeAttr("checked");
-                }
-            });
-
-            $("#amount").bind('keyup', function() {
-                let $finalresult = current_salaryMode(null, $(this).val());
-                $("#calculatedSalary").html($finalresult);
-            });
-            $("input[name='salarymode']").bind('click', function() {
-                let $resultf = current_salaryMode($(this).val(), null);
-                $("#calculatedSalary").html($resultf);
-            });
-
-            $("#expwork").attr('action', '{{url("addworkexp")}}');
-            $("#expworksubmit").val("Save");
+            $("#designation").val("");
+            $("#organisation").val("");
+            $("#desProfile").val();
+            checkCurrentCompany("")
+            $("#worktill").val('Present');
+            $("#workfrom").val();
+            $("#noticPeriod").val("");
+            $("div.select-selected").html("Select");
+            $(".amount").val("");
+            $("input[value='Annually']").removeAttr("checked");
+            $(".calculatedSalary").html("");
+            $(".expwork").attr('action', '{{url("addworkexp")}}');
+            $(".expworksubmit").val("Save");
         }
     });
 
     // Check current Salary Mode
-    function current_salaryMode($current = null, $amount = null)
+    function current_salaryMode($current = null, $amount = null, that)
     {
+        var $boole = $(that).hasClass("work");
         let $salary_unit = $("div.select-selected").html();
-        let $salary = $("#amount").val();
+        var $salary;
+        if($boole) {
+            $salary = $("#amount1").val()
+        } else {
+            $salary = $(".amount").val();
+        }
         let $salary_mode;
         let $final;
         let $result;
@@ -250,20 +264,21 @@
         if($amount) {
             if($salary_mode == "Monthly") {
                 $final = $amount * 12;
-                $result = "Calculated Annually Salary is "+$salary_unit +" "+ $final;
+                $result = "Calculated Annually Salary is "+ $final;
             } else {
                 $final = $amount / 12;
-                $result = "Calculated Monthly Salary is "+$salary_unit+" "+ Math.round($final);
+                // $result = "Calculated Monthly Salary is "+$salary_unit+" "+ Math.round($final);
+                $result = "Calculated Monthly Salary is "+ Math.round($final);
             }
         }
 
         if($current) {
             if($salary_mode == "Monthly") {
                 $final = $salary * 12;
-                $result = "Calculated Annually Salary is "+$salary_unit +" "+ $final;
+                $result = "Calculated Annually Salary is "+ $final;
             } else {
                 $final = $salary / 12;
-                $result = "Calculated Monthly Salary is "+$salary_unit+" "+ Math.round($final);
+                $result = "Calculated Monthly Salary is "+ Math.round($final);
             }
         }
         return $result;

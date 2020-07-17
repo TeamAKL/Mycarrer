@@ -20,14 +20,14 @@
                     <div class="col-md-12">
                         <div class="bg-white pd20 d-flex center ">
                             <img src="{{asset('images/adele.jpg')}}" alt="" class="current-user">
-                        <h2 class="d-block">{{Auth::user()->name}}</h2>
+                            <h2 class="d-block">{{Auth::user()->name}}</h2>
                             <p>Fresher</p>
                             <div class="flex-row">
                                 <p>+95957363847</p>
                                 <a href="http://">Verify</a>
                             </div>
                             <div class="flex-row">
-                            <p>{{Auth::user()->email}}</p>
+                                <p>{{Auth::user()->email}}</p>
                                 <a href="http://">Verify</a>
                             </div>
                         </div>
@@ -93,93 +93,7 @@
                     </div>
 
                     <div class="col-md-12 col-sx-12 mb10">
-                        <div class="bg-white row">
-                            <div class="col-md-9">
-                                <h4 class="medium">Job Preference</h4>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="fr blue-color show-modal" id="job-preference"><i class="fa fa-pencil"></i></a>
-                            </div>
-                            <div class="col-md-12 col-xs-12 mt15">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">industry:</div>
-                                            <div class="col-md-7 column-color fw400">IT/Computers - Software</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">Function:</div>
-                                            <div class="col-md-7 column-color fw400">IT</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-xs-12 mt15">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">Role:</div>
-                                            <div class="col-md-7 column-color fw400">Software Engineer/Programmer</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">Job Type:</div>
-                                            <div class="col-md-7 column-color fw400">Permanent</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-xs-12 mt15">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">Employment Type:</div>
-                                            <div class="col-md-7 column-color fw400">Full</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">Preferred Shift:</div>
-                                            <div class="col-md-7 column-color fw400">Day Shift</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="col-md-12 col-xs-12 mt15">
-                                <div class="row">
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">Preferred Location:</div>
-                                            <div class="col-md-7 column-color fw400">Singapore, Myanmar</div>
-                                        </div>
-                                    </div>
-                                    <div class="col-md-6">
-                                        <div class="row">
-                                            <div class="col-md-5 fw700">Expected Salary:</div>
-                                            <div class="col-md-7 column-color fw400">Monthly salary:SGD 3200</div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-xs-12 mt15">
-                                <div class="row">
-                                    <div class="col-md-5 fw700">Are you willing to work 6 days a week?</div>
-                                    <div class="col-md-7 column-color fw400">Yes</div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-12 col-xs-12 mt15">
-                                <div class="row">
-                                    <div class="col-md-5 fw700">Are you open to joining early stage startups?</div>
-                                    <div class="col-md-7 column-color fw400">Yes</div>
-                                </div>
-                            </div>
-
-                        </div>
+                        @include('users.job_preference')
                     </div>
 
                     <div class="col-md-12 col-sx-12 mb10">
@@ -206,9 +120,9 @@
                         @include('users.personalDetail')
                     </div>
                     <a href="{!! route('seeker.generate_certificate', [$user['id']]) !!}"
-                       class="btn btn-warning pull-right" style="margin-right: 28px;margin-bottom: 10px;"
-                       target="_blank"><i class="fa fa-certificate"></i> Generate
-                        PDF</a>
+                    class="btn btn-warning pull-right" style="margin-right: 28px;margin-bottom: 10px;"
+                    target="_blank"><i class="fa fa-certificate"></i> Generate
+                    PDF</a>
                 </div>
             </div>
             <!-- CModal Overly Section -->
@@ -294,172 +208,6 @@
                                                 <input type="text" name="" id="name" class="formbb inputc">
                                                 <label for="name" class="test">Please Type Here</label>
                                             </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group d-flex justify-content-end">
-                                    <input type="submit" value="Verify" class="custom-btn">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="cmodal-overly job-preference-overly">
-                <div class="global-modal job-preference-modal">
-                    <span class="close-modal"><i class="fa fa-close"></i></span>
-                    <div class="modal-body">
-                        <div class="cmodal-header d-block mb10">
-                            <h3>Job Preference</h3>
-                        </div>
-                        <div class="modal-description mt15">
-                            <form action="">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="floating-label-input mb10">
-                                                <input type="text" id="id" required/>
-                                                <label for="id" >Preferred Industry</label>
-                                                <span class="line"></span>
-                                            </div>
-
-                                            <div class="floating-label-input mb10">
-                                                <input type="text" id="pfunction" required/>
-                                                <label for="pfunction">Preferred Function</label>
-                                                <span class="line"></span>
-                                            </div>
-
-                                            <div class="floating-label-input mb30">
-                                                <input type="text" id="prole" required/>
-                                                <label for="prole">Preferred Role</label>
-                                                <span class="line"></span>
-                                            </div>
-                                            {{-- <div class="custom-group">
-                                                <input type="text" name="" id="name" class="formbb inputc" >
-                                                <label for="name" class="test">Preferred Industry</label>
-                                            </div>
-
-                                            <div class="custom-group">
-                                                <input type="text" name="" id="name" class="formbb inputc">
-                                                <label for="name" class="test">Preferred Function</label>
-                                            </div>
-
-                                            <div class="custom-group">
-                                                <input type="text" name="" id="name" class="formbb inputc" >
-                                                <label for="name" class="test">Preferred Role</label>
-                                            </div> --}}
-
-                                            <div class="custom-group">
-                                                <span class="group-lable">Job Type</span>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">Permanent</span>
-                                                    <input type="radio" name="gender" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-lable-container pr162">
-                                                    <span class="clabel">Temporary/Contract</span>
-                                                    <input type="radio" name="gender" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-lable-container">
-                                                    <span class="clabel">Both</span>
-                                                    <input type="radio" name="gender" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-
-                                            <div class="custom-group">
-                                                <span class="group-lable">Employment Type</span>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">Full time</span>
-                                                    <input type="radio" name="emp_type" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">Part time</span>
-                                                    <input type="radio" name="emp_type" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-lable-container">
-                                                    <span class="clabel">Both</span>
-                                                    <input type="radio" name="emp_type" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-
-                                            {{-- <div class="custom-group">
-                                                <input type="text" name="" id="name" class="formbb inputc" >
-                                                <label for="name" class="test">Preferred Shift</label>
-                                            </div> --}}
-
-                                            <div class="floating-label-input mb30">
-                                                <input type="text" id="pshift" required/>
-                                                <label for="pshift">Preferred Shift</label>
-                                                <span class="line"></span>
-                                            </div>
-
-                                            <div class="custom-group">
-                                                <span class="group-lable">Expected Salary</span>
-                                                <div class="row">
-                                                    <div class="col-md-4">
-                                                        {{-- <input type="text" name="currency_unit" id="" class="formbb"> --}}
-                                                        <div class="custom-select">
-                                                            <select name="slaray_unit" id="">
-                                                                <option value="">Select</option>
-                                                                <option value="">USD</option>
-                                                                <option value="">MMK</option>
-                                                                <option value="">SGD</option>
-                                                            </select>
-                                                        </div>
-                                                    </div>
-                                                    <div class="col-md-8">
-                                                        <input type="text" name="salary_amount" id="" class="formbb">
-                                                    </div>
-                                                </div>
-                                            </div>
-                                            <div class="custom-group">
-                                                <span class="group-lable">Salary Mode</span>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">Monthly</span>
-                                                    <input type="radio" name="salary_mode" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">Annually</span>
-                                                    <input type="radio" name="salary_mode" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-
-                                            <div class="custom-group">
-                                                <span class="group-lable">Are you willing to work 6 days a week?</span>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">Yes</span>
-                                                    <input type="radio" name="work" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">No</span>
-                                                    <input type="radio" name="work" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-
-                                            <div class="custom-group">
-                                                <span class="group-lable">Are you open to joining early stage startups?</span>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">Yes</span>
-                                                    <input type="radio" name="join" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                                <label class="radio-lable-container pr100">
-                                                    <span class="clabel">No</span>
-                                                    <input type="radio" name="join" value="permanent">
-                                                    <span class="checkmark"></span>
-                                                </label>
-                                            </div>
-
                                         </div>
                                     </div>
                                 </div>

@@ -37,6 +37,7 @@ class WorkExperienceController extends Controller
     */
     public function store(Request $request)
     {
+        dd($request->all());
         WorkExperience::create([
             'desigination' => $request->designation,
             'organisation' => $request->organisation,

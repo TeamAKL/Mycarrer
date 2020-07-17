@@ -132,3 +132,15 @@ Route::get('purchasedresumes', function(){
 //Route::get('sendEmail', function() {
 //    return Response("hi");
 //});
+
+// JOB SEARCH
+Route::get('result', 'PostController@searchjobs');
+
+//  JOB PREGERRED Page
+
+Route::post('getallcategory', 'JobCategoryController@getall');
+Route::post('jobcatlivesearch', 'JobCategoryController@jobcatlivesearch');
+
+// JOBPReference
+
+Route::post('job_perefernce/create', 'JobPreferenceController@store');

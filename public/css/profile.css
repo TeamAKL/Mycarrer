@@ -420,7 +420,7 @@ input:disabled {
     background: unset;
 }
 
-#calculatedSalary {
+.calculatedSalary {
     display: block;
     font-size: 12px;
     padding-top: 8px;

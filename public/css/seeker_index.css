@@ -554,16 +554,16 @@ box-shadow: 1px 2px 3px 0 rgba(2, 0, 0, .2); */
     font-weight: bold;
 }
 
-.responsibility ul, .requriment ul {
+.responsibility ul, .requriment ul, .requriment ol, .responsibility ol {
     display: flex;
     flex-direction: column;
 }
 
-.responsibility ul > li, .requriment ul > li{
+/* .responsibility ul > li, .requriment ul > li{
     list-style: circle;
-}
+} */
 
-.responsibility p, .requriment p, .responsibility ul, .requriment ul {
+.responsibility p, .requriment p, .responsibility ul, .requriment ul, .responsibility ol, .requriment ol {
     margin-left: 36px;
     margin-top: 5px;
 }

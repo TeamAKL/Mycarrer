@@ -9,6 +9,7 @@ use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\DB;
 
 // use App\Http\Requests\PostRequest;
 
@@ -21,8 +22,6 @@ class PostController extends Controller
     */
     public function index()
     {
-        // $post = Post::with(['company'])->findOrFail(1);
-        // dd($post->company->id);
         $posts = Post::where('job_status', 'active')->with(['company'])->orderBy('created_at', 'desc')->paginate(10);
         return view('seeker.index', ["posts" => $posts]);
     }
@@ -186,5 +185,26 @@ class PostController extends Controller
             }
 
             return view('employer.jobtable', compact('posts'))->render();
+        }
+
+        /**
+        *
+        * Find The JOB
+        */
+        public function searchjobs(Request $req)
+        {
+            $skill = $req->skill;
+            $location = $req->location;
+            $experience = $req->experience;
+            $sql = Post::select('posts.*')
+            ->where('posts.job_status', '=', 'active')
+            ->where(function($query) use($skill, $location, $experience) {
+                $query->where('posts.experience', 'like', '%'.$experience.'%')
+                ->orWhere('posts.address', 'like', '%'.$location.'%')
+                ->where('posts.position', 'like', '%'.$skill.'%');
+            });
+            $posts = $sql->orderBy('created_at', 'desc')->paginate(10);
+            // dd($posts);
+            return view('seeker.index', ["posts" => $posts]);
         }
     }

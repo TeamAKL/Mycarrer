@@ -67,7 +67,7 @@
                                 </a>
                                 <div class="row mt10">
                                     <di class="col-md-6">
-                                        <span><i class="fa fa-map-marker" aria-hidden="true"></i> Singapore</span>
+                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->company->country}}</span>
                                     </di>
                                     <di class="col-md-6">
                                         <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
@@ -121,13 +121,13 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="jd-holder">
+                        {{-- <div class="jd-holder">
                             <div class="jd-h">Skills:</div>
                             <div class="jd-c">
                                 <span class="oval-shape oval-hover"><a href="http://">PHP Developer</a></span>
                                 <span class="oval-shape oval-hover"><a href="http://">PHP Programmer</a></span>
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                 </div>
                 <div class="card mt20 pd-b20">

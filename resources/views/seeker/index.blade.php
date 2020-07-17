@@ -154,7 +154,7 @@
                                         </a>
                                         <div class="row mt10">
                                             <di class="col-md-6">
-                                                <span><i class="fa fa-map-marker" aria-hidden="true"></i> Singapore</span>
+                                                <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->company->country}}</span>
                                             </di>
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
@@ -199,9 +199,7 @@
                         </div>
                     </div>
                     @endforeach
-
                     {{ $posts->links() }}
-
                 </div>
 
             </div>
@@ -217,3 +215,4 @@
 @push('script')
 <script src="{{asset('js/seeker.js')}}"></script>
 @endpush
+
