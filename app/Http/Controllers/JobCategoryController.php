@@ -93,4 +93,24 @@ class JobCategoryController extends Controller
         $category->delete();
         return redirect('job-category');
     }
+    /**
+     *
+     * To Get All RECORD FOR JOB PREFERRED
+     */
+    public function getall()
+    {
+        $categories = JobCategory::all();
+        return response()->json(["message" => "Successfully Get Categories", "categories" => $categories]);
+    }
+
+    /**
+     *
+     * JOB CAT LIVE SEARCH
+     */
+    public function jobcatlivesearch(Request $req)
+    {
+        $search = trim($req->data);
+        $categories = JobCategory::where('category_name', 'like', '%'.$search.'%')->get();
+        return response()->json(["message" => "success", "categories" => $categories]);
+    }
 }

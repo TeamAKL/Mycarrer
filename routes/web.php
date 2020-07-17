@@ -133,4 +133,25 @@ Route::get('purchasedresumes', function(){
 //    return Response("hi");
 //});
 
+
 Route::get('company/detail/{id}','CompanyController@show');
+
+// JOB SEARCH
+Route::get('result', 'PostController@searchjobs');
+
+//  JOB PREGERRED Page
+
+Route::post('getallcategory', 'JobCategoryController@getall');
+Route::post('jobcatlivesearch', 'JobCategoryController@jobcatlivesearch');
+
+// JOBPReference
+
+Route::post('job_perefernce/create', 'JobPreferenceController@store');
+
+//Profile Detail
+
+Route::post('profile_detail/create','ProfileDetailController@store');
+// Route::post('profile_detail/create',function(){
+//     return "Hello ";
+// });
+

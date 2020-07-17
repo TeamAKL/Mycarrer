@@ -37,7 +37,6 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
-
                     <div class="detail-header mt20">
                         <div class="about-job-detail">
                             <h2>{{$post->position}}</h2>
@@ -57,6 +56,24 @@
                                         <a href="http://"><i class="fa fa-envelope-o social-font"
                                                              aria-hidden="true"></i></a>
                                     </div>
+                <div class="card mt10">
+                    <div class="card-body pd-b20">
+                        <div class="holder">
+                            <div class="item job-contact-area">
+                                <a href="http://" class="job-position">
+                                    <h3>
+                                        {{$post->position}}
+                                    </h3>
+                                    <a href="http://">{{$post->company->company_name}}</a>
+                                </a>
+                                <div class="row mt10">
+                                    <di class="col-md-6">
+                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->company->country}}</span>
+                                    </di>
+                                    <di class="col-md-6">
+                                        <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
+                                        <span><i class="fa fa-database" aria-hidden="true"></i> {{$post->min_salary}} - {{$post->max_salary}} {{$post->salary_unit}} </span>
+                                    </di>
                                 </div>
                             </div>
                             <div class="apply-hover">
@@ -165,8 +182,6 @@
                                 <button type="button" class="appl-btn btn-fill" data-toggle="modal"
                                         data-target="#cvUploadModal">Apply
                                 </button>
-                            </div>
-                        </div>
                     </div>
                 </div>
             </div>

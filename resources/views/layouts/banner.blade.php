@@ -16,46 +16,38 @@
                         <li class="search-nav-itme"><a href="http://" class="search-nav-link-name">Part Time</a></li>
                     </ul>
                 </div>
-                <form class="user-search-form">
+                <form class="user-search-form" action="{{url('result')}}" method="GET">
+                    @csrf
                     <div class="form-row">
                         <div class=" input-group mb-2 col-md-10 pl-pr-0" id="change-md">
                             <div class="input-group-prepend ">
                                 <div class="input-group-text custom-input"><i class="fa fa-search" aria-hidden="true"></i></div>
                             </div>
-                            <input type="text" id="search" class="form-control custom-input" placeholder="Search by Skills, Company & Job Title">
+                            <input type="text" name="skill" id="search" class="form-control custom-input" placeholder="Search by Skills, Company & Job Title">
                         </div>
                         <div class="input-group mb-2 col-md-3 expend-search-form pl-pr-0">
                             <div class="input-group-prepend ">
                                 <div class="input-group-text custom-input"><i class="fa fa-map-marker" aria-hidden="true"></i></div>
                             </div>
-                            <input type="text" class="form-control custom-input" id="location" placeholder="Location">
+                            <input type="text" name="location" class="form-control custom-input" id="location" placeholder="Location">
                         </div>
                         <div class="col-md-3 expend-search-form pl-pr-0">
-                            <select class="form-control custom-input" id="selectoption">
-                                <option>Default select</option>
-                                <option>Default select</option>
-                                <option>Default select</option>
+                            <select class="form-control custom-input" id="selectoption" name="experience">
+                                <option>Experience</option>
+                                <option value="0">0 Year</option>
+                                <option value="1">1 Year</option>
+                                <option value="2">2 Year</option>
+                                <option value="3">3 Year</option>
+                                <option value="4">4 Year</option>
+                                <option value="5">5 Year</option>
+                                <option value="6">6 Year</option>
+                                <option value="7">7 Year</option>
+                                <option value="8">8 Year</option>
+                                <option value="9">9 Year</option>
+                                <option value="10">10 Year</option>
+                                <option value="11">More than 10 Year</option>
                             </select>
                         </div>
-                        {{-- Custom Select --}}
-                        {{-- <div class="custom-select col-md-3">
-                            <select class="custom-input" style="display:none;">
-                                <option value="0">Select car:</option>
-                                <option value="1">Audi</option>
-                                <option value="2">BMW</option>
-                                <option value="3">Citroen</option>
-                                <option value="4">Ford</option>
-                                <option value="5">Honda</option>
-                                <option value="6">Jaguar</option>
-                                <option value="7">Land Rover</option>
-                                <option value="8">Mercedes</option>
-                                <option value="9">Mini</option>
-                                <option value="10">Nissan</option>
-                                <option value="11">Toyota</option>
-                                <option value="12">Volvo</option>
-                            </select>
-                        </div> --}}
-                        {{-- Custom Select --}}
                         <div class="col-md-2 col-sm-12 pl-pr-0">
                             <input type="submit" value="Search" class="custom-btn" disabled>
                         </div>
@@ -73,7 +65,7 @@
                             <a href="" class="button-fill button-custom v-align-center">Upload Resume</a>
                         </div>
                         <div class="col-md-6">
-                                <a href="" class="c-yellow button-custom v-align-center">Create Job Alert</a>
+                            <a href="" class="c-yellow button-custom v-align-center">Create Job Alert</a>
                         </div>
                     </div>
                     @else
@@ -104,7 +96,7 @@
                                     </div>
                                 </div>
                                 <div class="text-center">
-                                <a href="{{url('seeker/profile')}}" class="btn btn-info">Update Profile</a>
+                                    <a href="{{url('seeker/profile')}}" class="btn btn-info">Update Profile</a>
                                 </div>
                             </div>
                         </div>

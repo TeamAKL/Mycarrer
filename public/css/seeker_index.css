@@ -569,16 +569,95 @@ box-shadow: 1px 2px 3px 0 rgba(2, 0, 0, .2); */
     font-weight: bold;
 }
 
-.responsibility ul, .responsibility ol, .requriment ul , .requriment ol {
+.responsibility ul, .requriment ul, .requriment ol, .responsibility ol {
     display: flex;
     flex-direction: column;
 }
 
-.responsibility ul > li, .requriment ul > li{
+/* .responsibility ul > li, .requriment ul > li{
     list-style: circle;
-}
+} */
 
-.responsibility p, .requriment p, .responsibility ul, .requriment ul {
+.responsibility p, .requriment p, .responsibility ul, .requriment ul, .responsibility ol, .requriment ol {
     margin-left: 36px;
     margin-top: 5px;
+}
+/* for resume-upload */
+div.filter-aside{
+    display: block;
+    top: 57px;
+    width: 255px;
+    margin-top: 20px;
+    /* position: absolute; */
+}
+h2.fs-14{
+    display: block;
+    font-size: 14px;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    text-align: center;
+
+}
+aside.pb0{
+    padding: 15px 10px;
+    display: block;
+    background-color: #fff;
+}
+.upload-resume{
+    color:#3c3c3c;
+    padding-left: 20px;
+
+}
+.btn-orange{
+   background: #f5a623;
+   border: 1px solid #f5a623;
+   color: #fff;
+}
+span.uprcse{
+   font-size: 1.071em;
+   line-height: normal;
+   cursor: pointer;
+   text-transform: uppercase;
+   font-weight: 400;
+   display: block;
+}
+span.fs-11{
+    display: block;
+    margin-top: 10px;
+
+}
+.filter-aside .or {
+   font-size: .929em;
+   text-align: center;
+   color: #6c54da;
+   margin: 6px 0 6px;
+   position: relative;
+}
+.filter-aside .or:before {
+   content: "";
+   border-top: 1px solid #eee;
+   position: absolute;
+   width: 100%;
+   top: 49%;
+   left: 50%;
+   transform: translate(-50%,-50%);
+}
+.filter-aside .or>span {
+   background: #fff;
+   position: relative;
+   padding: 5px 15px;
+   color: #a2a2a2;
+}
+.filter-aside .signinModal{
+    display: block;
+    text-align: center;
+}
+.signinModal .reg-btn{
+    line-height: 34px;
+    text-transform: uppercase;
+    display: block;
+    color: #6c54da;
+    cursor: pointer;
+    text-decoration: none;
+    font-weight: 400;
 }
