@@ -60,5 +60,9 @@ class User extends Authenticatable
     {
         return $this->hasOne('App\Company');
     }
+    public function profile_details()
+    {
+        return $this->hasOne('App\ProfileDetail');
+    }
 
 }
