@@ -25,14 +25,7 @@
                                 <span class="d-block d-sm-none">
                                     <i class="tim-icons icon-gift-2"></i>
                                 </span>
-                            </label>
-                            <label class="btn btn-sm btn-primary btn-simple" id="2">
-                                <input type="radio" class="d-none" name="options">
-                                <span class="d-none d-sm-block d-md-block d-lg-block d-xl-block">Sessions</span>
-                                <span class="d-block d-sm-none">
-                                    <i class="tim-icons icon-tap-02"></i>
-                                </span>
-                            </label>
+                        </label>
                             </div>
                         </div>
                     </div>
@@ -45,8 +38,8 @@
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-lg-4">
+    <div class="row" style="display:none;">
+        <div class="col-lg-6">
             <div class="card card-chart">
                 <div class="card-header">
                     <h5 class="card-category">Total Shipments</h5>
@@ -59,20 +52,7 @@
                 </div>
             </div>
         </div>
-        <div class="col-lg-4">
-            <div class="card card-chart">
-                <div class="card-header">
-                    <h5 class="card-category">Daily Sales</h5>
-                    <h3 class="card-title"><i class="tim-icons icon-delivery-fast text-info"></i> 3,500€</h3>
-                </div>
-                <div class="card-body">
-                    <div class="chart-area">
-                        <canvas id="CountryChart"></canvas>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="col-lg-4">
+        <div class="col-lg-6">
             <div class="card card-chart">
                 <div class="card-header">
                     <h5 class="card-category">Completed Tasks</h5>
@@ -86,7 +66,7 @@
             </div>
         </div>
     </div>
-    <div class="row">
+    <!-- <div class="row">
         <div class="col-lg-6 col-md-12">
             <div class="card card-tasks">
                 <div class="card-header ">
@@ -368,7 +348,7 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 @endsection
 
 @push('js')
