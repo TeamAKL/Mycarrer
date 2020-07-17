@@ -42,46 +42,46 @@
     $(document).on('click', '.btn-icon', function() {
         let $value = $(this).attr('value');
         let $id = $(this).attr('id');
-        $.ajax({
-                type: 'get',
-                url: '{{URL::to("changejobstatus")}}',
-                data: {'status': $value, 'id': $id},
-                success: function(data) {
-                        if(data) {
-                                location.reload();
-                            }
-                        }
-                    });
-                    // swal({
-                    //     title: "Are you sure?",
-                    //     text: "Once deleted, you will not be able to recover this imaginary file!",
-                    //     icon: "warning",
-                    //     buttons: true,
-                    //     dangerMode: true,
-                    // })
-                    // .then((willDelete) => {
-                    //     if (willDelete) {
-                    //         let $value = $(this).attr('value');
-                    //         let $id = $(this).attr('id');
-                    //         $.ajax({
-                    //             type: 'get',
-                    //             url: '{{URL::to("changejobstatus")}}',
-                    //             data: {'status': $value, 'id': $id},
-                    //             success: function(data) {
-                    //                 if(data) {
-                    //                     swal("Poof! Your imaginary file has been deleted!", {
-                    //                         icon: "success",
-                    //                     }).then((yes) => {
-                    //                         location.reload();
-                    //                     });
-                    //                 }
-                    //             }
-                    //         });
+        // $.ajax({
+                {{--type: 'get',--}}
+                {{--url: '{{URL::to("changejobstatus")}}',--}}
+                {{--data: {'status': $value, 'id': $id},--}}
+                {{--success: function(data) {--}}
+                {{--        if(data) {--}}
+                {{--                location.reload();--}}
+                {{--            }--}}
+                {{--        }--}}
+                {{--    });--}}
+                     swal({
+                        title: "Are you sure?",
+                        text: "Once deleted, you will not be able to recover this imaginary file!",
+                         icon: "warning",
+                         buttons: true,
+                         dangerMode: true,
+                     })
+                     .then((willDelete) => {
+                         if (willDelete) {
+                             let $value = $(this).attr('value');
+                             let $id = $(this).attr('id');
+                             $.ajax({
+                                 type: 'get',
+                                 url: '{{URL::to("changejobstatus")}}',
+                                data: {'status': $value, 'id': $id},
+                                 success: function(data) {
+                                     if(data) {
+                                         swal("Poof! Your imaginary file has been deleted!", {
+                                             icon: "success",
+                                         }).then((yes) => {
+                                             location.reload();
+                                         });
+                                     }
+                                 }
+                             });
 
-                    //     } else {
-                    //         // swal("Your imaginary file is safe!");
-                    //     }
-                    // });
+                         } else {
+                             // swal("Your imaginary file is safe!");
+                         }
+                     });
                 });
 
                 function fetch_data($query, $page)

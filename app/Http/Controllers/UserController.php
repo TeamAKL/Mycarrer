@@ -49,18 +49,23 @@ class UserController extends Controller
 
     public function sendEmailToCompany(Request $request){
 
-        $to = $request->email;
+        $to = $request->company_email;
         $message = 'test email';
         $subject = 'CV Form';
         $currentUser = Auth::id();
         $user = User::with(['projects', 'education', 'work_experiences'])->findOrFail($currentUser);
         $file_name = $user->name."_cv_form.pdf";
-        $pdf = PDF::setOptions(['images' => true, 'isPhpEnabled' => true, 'isRemoteEnabled' => true])->loadView('exports.cv_form', compact('user'))->setPaper('a4', 'portrait');
+        $cv_file = $request->file('upload_resume');
+            $pdf = file_get_contents($cv_file);
 
-
+//        if($request->cv_file != " "){
+//            $pdf = PDF::setOptions(['images' => true, 'isPhpEnabled' => true, 'isRemoteEnabled' => true])->loadView('exports.cv_form', compact('user'))->setPaper('a4', 'portrait');
+//        }else{
+//            $pdf = ($request->cv_file)->getClientOriginalName();
+//        }
 
         Mail::send(['html' => 'emails.mail'],['text' => $message],function ($messages) use ($subject,$to,$pdf,$file_name) {
-            $messages->to($to)->subject($subject)->attachData($pdf->output(), $file_name);
+            $messages->to($to)->subject($subject)->attachData($pdf, $file_name);
             $messages->from('thettun1741997@gmail.com', $name = 'AKL');
             $messages->replyTo('thettun1741997@gmail.com', $name = 'AKL');
         });

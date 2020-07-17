@@ -82,7 +82,7 @@ Route::post('addworkexp', 'WorkExperienceController@store');
 Route::post('updateworkexp', 'WorkExperienceController@update');
 Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCertificate')->name('seeker.generate_certificate');
 
-Route::get('sendEmail','UserController@sendEmailToCompany');
+Route::post('sendEmail','UserController@sendEmailToCompany');
 
 
 // FOREMPLOYER ROUTES
@@ -98,7 +98,7 @@ Route::group(['middleware' => 'employer'], function () {
 //    Route::get('company/detail', function() {
 //        return view('employer.company.detail');
 //    });
-    Route::get('company/detail/{id}','CompanyController@show');
+
 
 
     // Resume
@@ -132,3 +132,5 @@ Route::get('purchasedresumes', function(){
 //Route::get('sendEmail', function() {
 //    return Response("hi");
 //});
+
+Route::get('company/detail/{id}','CompanyController@show');

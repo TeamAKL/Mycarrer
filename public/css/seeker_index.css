@@ -533,6 +533,21 @@
     box-shadow: 1px 2px 3px 0 rgb(2, 0, 0);
 }
 
+.line-btn {
+    padding: 10px;
+    background: transparent;
+    border: 1px solid #5d4da8;
+    color: #5d4da8;
+    line-height: normal;
+}
+
+.upload-resume, .copy-paste-resume {
+    background: #fafafa;
+    padding: 20px;
+    border-radius: 8px;
+    border: 1px dashed #999;
+    position: relative;
+}
 
 /* background: red;
 float: right;
@@ -554,7 +569,7 @@ box-shadow: 1px 2px 3px 0 rgba(2, 0, 0, .2); */
     font-weight: bold;
 }
 
-.responsibility ul, .requriment ul {
+.responsibility ul, .responsibility ol, .requriment ul , .requriment ol {
     display: flex;
     flex-direction: column;
 }
