@@ -5,21 +5,6 @@
     <div class="col-md-3">
         <a class="fr blue-color show-modal" id="newworkexp"><i class="fa fa-plus"></i>{{$user->work_experiences->count() == 0 ? 'Add' : 'AddMore'}}</a>
     </div>
-    <!-- Experience Box -->
-    {{-- <div class="col-md-12 mt15 experience-box">
-        <div class="work-title">
-            <p>Full Stack Developer</p>
-            <a class="blue-color show-modal" id="newworkexp" dataid="1"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-        </div>
-        <div class="work-company">
-            <p class="company">ITVISIONHUB</p>
-            <p class="date">1 April 2018 to 30 November 2019</p>
-            <p class="salary">Monthly Salary: SGD 1000</p>
-        </div>
-        <div class="job-description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dicta cum laboriosam consequatur, nemo tempore, doloremque minus quae architecto, illo possimus dignissimos. Corrupti amet reiciendis deleniti facere facilis cupiditate atque.</p>
-        </div>
-    </div> --}}
     @foreach ($user->work_experiences as $workexp)
     <div class="col-md-12 mt15 experience-box">
         <div class="work-title">

@@ -51,9 +51,14 @@ class User extends Authenticatable
         return $this->hasMany('App\WorkExperience');
     }
 
+    public function certificates()
+    {
+        return $this->hasMany('App\Certificate');
+    }
+
     public function job_preferences()
     {
-        return $this->hasMany('App\JobPreference');
+        return $this->hasOne('App\JobPreference');
     }
 
     public function companies()

@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateProfileDetailsTable extends Migration
+class CreateCertificatesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,18 +13,15 @@ class CreateProfileDetailsTable extends Migration
      */
     public function up()
     {
-        Schema::create('profile_details', function (Blueprint $table) {
+        Schema::create('certificates', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->string('home_town')->nullable();
-            $table->string('gender')->nullable();
-            $table->string('marital_status')->nullable();
-            $table->string('permanent_address')->nullable();
-            $table->string('date_of_birth')->nullable();
-            $table->string('nationality')->nullable();
-            $table->string('profile_image')->nullable();
+            $table->string('certificate');
+            $table->string('issue_by');
+            $table->string('year');
+            $table->string('month');
+            $table->integer('lifetime')->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
-
             $table->timestamps();
         });
     }
@@ -36,6 +33,6 @@ class CreateProfileDetailsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('profile_details');
+        Schema::dropIfExists('certificates');
     }
 }

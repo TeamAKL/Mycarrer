@@ -144,7 +144,6 @@
                 url: '{{URL::to("projectedit")}}',
                 data: {'id':$dataid},
                 success: function(data) {
-                    console.log(data);
                     $("#job-title").val(data.title);
                     $("#job-client").val(data.client);
                     $("#job-location").val(data.location);

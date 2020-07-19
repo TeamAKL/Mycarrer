@@ -172,7 +172,7 @@
                                                 <p class="mb30 text-center">Thet_Tun.pdf</p>
                                                 <div class="line-btn text-center">or select file to upload</div>
                                                 <p class="text-center mb0">* doc, docx, rtf, pdf - Max. 6 MB</p>
-                                                <input type="file" name="" class="">
+                                                <input type="file" name="" class="resume">
                                             </div>
                                             <div class="ib hroizonal-line mb30">
                                                 <div class="horizonal-text">OR</div>

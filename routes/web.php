@@ -145,13 +145,14 @@ Route::post('getallcategory', 'JobCategoryController@getall');
 Route::post('jobcatlivesearch', 'JobCategoryController@jobcatlivesearch');
 
 // JOBPReference
-
 Route::post('job_perefernce/create', 'JobPreferenceController@store');
+Route::post('updatepreference', 'JobPreferenceController@update');
+// Route::get('editpreference', 'JobPreferenceController@edit');
 
 //Profile Detail
-
 Route::post('profile_detail/create','ProfileDetailController@store');
-// Route::post('profile_detail/create',function(){
-//     return "Hello ";
-// });
+Route::post('updatepersonaldetail', 'ProfileDetailController@update');
 
+// Certificate
+Route::post('certificate', 'CertificateController@store');
+Route::get('certEdit', 'CertificateController@edit');

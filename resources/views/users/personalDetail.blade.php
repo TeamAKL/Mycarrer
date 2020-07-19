@@ -3,7 +3,11 @@
         <h4 class="medium">Personal Detail</h4>
     </div>
     <div class="col-md-3">
-        <a class="fr blue-color show-modal" id="job-person">@if(isset($user->profile_details)) <i class="fa fa-pencil"></i> @else <i class="fa fa-plus"></i> @endif</a>
+        @if(isset($user->profile_details))
+        <a class="fr blue-color show-modal" id="job-person" dataid="{{$user->profile_details->id}}"> <i class="fa fa-pencil"></i></a>
+        @else
+        <a class="fr blue-color show-modal" id="job-person"><i class="fa fa-plus"></i>Add</a>
+        @endif
     </div>
     @if(isset($user->profile_details))
     <div class="col-md-12 col-xs-12 mt15">
@@ -11,13 +15,13 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-5 fw700">Home Town:</div>
-                    <div class="col-md-7 column-color fw400">{{$user->profile_details->home_town}}</div>
+                    <div class="col-md-7 column-color text-capitalize fw400">{{$user->profile_details->home_town}}</div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-5 fw700">Permanent Address:</div>
-                    <div class="col-md-7 column-color fw400">{{$user->profile_details->permanent_address}}</div>
+                    <div class="col-md-7 column-color text-capitalize fw400">{{$user->profile_details->permanent_address}}</div>
                 </div>
             </div>
         </div>
@@ -27,13 +31,13 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-5 fw700">Gender:</div>
-                    <div class="col-md-7 column-color fw400">{{$user->profile_details->gender}}</div>
+                    <div class="col-md-7 column-color text-capitalize fw400">{{$user->profile_details->gender}}</div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-5 fw700">Date of Birth:</div>
-                    <div class="col-md-7 column-color fw400">{{$user->profile_details->date_of_birth}}</div>
+                    <div class="col-md-7 column-color text-capitalize fw400">{{$user->profile_details->date_of_birth}}</div>
                 </div>
             </div>
         </div>
@@ -43,13 +47,13 @@
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-5 fw700">Marital Status:</div>
-                    <div class="col-md-7 column-color fw400">{{$user->profile_details->marital_status}}</div>
+                    <div class="col-md-7 column-color text-capitalize fw400">{{$user->profile_details->marital_status}}</div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="row">
                     <div class="col-md-5 fw700">Nationality:</div>
-                    <div class="col-md-7 column-color fw400">{{$user->profile_details->nationality}}</div>
+                    <div class="col-md-7 column-color text-capitalize fw400">{{$user->profile_details->nationality}}</div>
                 </div>
             </div>
         </div>
@@ -65,13 +69,13 @@
                 <h3>Personal Detail</h3>
             </div>
             <div class="modal-description mt15">
-                <form action="{{url('profile_detail/create')}}" method="POST">
+                <form action="{{url('profile_detail/create')}}" method="POST" id="personaldetail">
                     @csrf
                     <div class="form-group">
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="hometown" name="home_town" required/>
+                                    <input type="text" id="hometown" name="home_town" value="{{$user->profile_details ? $user->profile_details->home_town : ''}}" required/>
                                     <label for="hometown">Home Town</label>
                                     <span class="line"></span>
                                 </div>
@@ -80,41 +84,41 @@
                                     <span class="group-lable">Gender</span>
                                     <label class="radio-lable-container pr100">
                                         <span class="clabel">Male</span>
-                                        <input type="radio" name="gender" value="male">
+                                        <input type="radio" name="gender" value="male" @if($user->profile_details && $user->profile_details->gender == "male") checked @endif>
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-lable-container pr100">
                                         <span class="clabel">Female</span>
-                                        <input type="radio" name="gender" value="female">
+                                        <input type="radio" name="gender" value="female" @if($user->profile_details && $user->profile_details->gender == "female") checked @endif>
                                         <span class="checkmark"></span>
-                                    </label>    
+                                    </label>
                                 </div>
 
                                 <div class="custom-group">
                                     <span class="group-lable">Marital Status</span>
                                     <label class="radio-lable-container pr100">
                                         <span class="clabel">Single</span>
-                                        <input type="radio" name="marital_status" value="single">
+                                        <input type="radio" name="marital_status" value="single" @if($user->profile_details && $user->profile_details->marital_status == "single") checked @endif>
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-lable-container pr100">
                                         <span class="clabel">Married</span>
-                                        <input type="radio" name="marital_status" value="married">
+                                        <input type="radio" name="marital_status" value="married" @if($user->profile_details && $user->profile_details->marital_status == "married") checked @endif>
                                         <span class="checkmark"></span>
                                     </label>
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="permanent_address" name="permanent_address" required/>
+                                    <input type="text" id="permanent_address" name="permanent_address" value="{{$user->profile_details ? $user->profile_details->permanent_address : ''}}" required/>
                                     <label for="permanent_address">Permanent Address</label>
                                     <span class="line"></span>
                                 </div>
                                 <div class="custom-group">
                                     <label for="date_of_birth">Date of Birth</label>
-                                    <input type="text" name="date_of_birth" id="date_of_birth" class="formbb tocurrent" placeholder="dd-MM-yyyy">
+                                    <input type="text" name="date_of_birth" id="date_of_birth" class="formbb tocurrent" placeholder="dd-MM-yyyy" value="{{$user->profile_details ? $user->profile_details->date_of_birth : ''}}">
                                 </div>
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="nationality" name="nationality" required/>
+                                    <input type="text" id="nationality" name="nationality" value="{{$user->profile_details ? $user->profile_details->nationality : ''}}" required/>
                                     <label for="nationality">Nationality</label>
                                     <span class="line"></span>
                                 </div>
@@ -124,15 +128,33 @@
                         </div>
                     </div>
                     <div class="form-group d-flex justify-content-end">
-                        <input type="submit" value="Save" class="custom-btn">
+                        <input type="submit" value="Save" class="custom-btn" id="perosnal_submit">
                     </div>
                 </form>
             </div>
         </div>
     </div>
 </div>
+
 @push('script')
 <script>
-   
+
+    $(".show-modal").on('click', function() {
+        $('body').css('overflow-y', 'hidden');
+        let $index = $(this).attr('id');
+        let $dataid = $(this).attr('dataid');
+        if($dataid) {
+            current_salaryMode($("input[name='salarymode']").val(), $(".amount").val());
+            $("#personaldetail").append("<input type='hidden' value='"+ $dataid +"' name='id'/>");
+            $("#personaldetail").attr('action', '{{url("updatepersonaldetail")}}');
+            $("#perosnal_submit").val("Verify");
+            $("."+$index+"-overly").addClass('show-modal');
+            $("."+$index+"-modal").addClass("slide-modal");
+        } else {
+            $("#personaldetail").attr('action', '{{url("profile_detail/create")}}');
+            $("#perosnal_submit").val("Save");
+        }
+    });
+
 </script>
 @endpush

@@ -3,17 +3,20 @@
         <h4 class="medium">Courses & Certification</h4>
     </div>
     <div class="col-md-3">
-        <a class="fr blue-color show-modal" id="certification"><i class="fa fa-plus"></i>{{$user->education->count() == 0 ? 'Add' : 'Add More'}}</a>
+        <a class="fr blue-color show-modal" id="certification"><i class="fa fa-plus"></i>{{$user->certificates->count() == 0 ? 'Add' : 'Add More'}}</a>
     </div>
-    @foreach ($user->education as $edu)
+    @foreach ($user->certificates as $cert)
     <div class="col-md-12 mt15 experience-box">
         <div class="work-title">
-            <p>{{$edu->qualification}}</p>
-            <a class="blue-color show-modal" id="certification" dataid="{{$edu->id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+            <p>{{$cert->certificate}}</p>
+            <a class="blue-color show-modal" id="certification" dataid="{{$cert->id}}"><i class="fa fa-pencil" aria-hidden="true"></i></a>
         </div>
         <div class="work-company">
-            <p class="company">{{$edu->institute}}</p>
-            <p class="date">{{$edu->passing_year}} ({{$edu->education_type}})</p>
+            <p class="company">Issued By: {{$cert->issue_by}}</p>
+            <p class="date">{{$cert->year}} ({{$cert->month}})</p>
+            @if($cert->lifetime == 1)
+            <p class="date">Validity: Lifetime</p>
+            @endif
         </div>
     </div>
     @endforeach
@@ -28,7 +31,7 @@
                 <h3>Courses & Certification</h3>
             </div>
             <div class="modal-description mt10">
-                <form method="POST" id="eduaction" action="">
+                <form method="POST" id="eduaction" action="{{url('certificate')}}">
                     @csrf
                     <div class="form-group">
                         <div class="row">
@@ -65,7 +68,7 @@
 
                                 <div class="custom-group">
                                     <div class="custom-control custom-checkbox">
-                                        <input type="checkbox" class="custom-control-input" id="lifetime">
+                                        <input type="checkbox" name="lifetime" class="custom-control-input" id="lifetime" value="1">
                                         <label class="custom-control-label" for="lifetime">Lifetime</label>
                                     </div>
                                 </div>
@@ -81,3 +84,44 @@
         </div>
     </div>
 </div>
+
+@push('script')
+<script>
+    $(".show-modal").on('click', function() {
+        $('body').css('overflow-y', 'hidden');
+        let $index = $(this).attr('id');
+        let $dataid = $(this).attr('dataid');
+        if($dataid) {
+            $.ajax({
+                type: 'get',
+                url: '{{URL::to("certEdit")}}',
+                data: {'id':$dataid},
+                success:function(data) {
+                    if(data) {
+                        $("#qualification").val(data.qualification);
+                        $("#eduaction").attr('action', '{{url("eduupdate")}}');
+                        $("#eduaction").append("<input type='hidden' value='"+ $dataid +"' name='id'/>");
+                        $("#edusubmit").val("Verify");
+                    }else {
+                        console.log("hello");
+                    }
+                }
+            });
+            $("."+$index+"-overly").addClass('show-modal');
+            $("."+$index+"-modal").addClass("slide-modal");
+            $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
+        } else {
+            $("#qualification").val("");
+            $("#institute").val("");
+            $("#specilization").val("");
+            $("#specilization").val("");
+            $("#passyear").val("");
+            $("input[name='edutype']").each(function() {
+                $(this).removeAttr("checked");
+            });
+            $("#eduaction").attr('action', "{{url('education')}}");
+            $("#edusubmit").val("Save");
+        }
+    });
+</script>
+@endpush
