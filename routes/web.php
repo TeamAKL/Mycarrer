@@ -82,7 +82,12 @@ Route::post('addworkexp', 'WorkExperienceController@store');
 Route::post('updateworkexp', 'WorkExperienceController@update');
 Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCertificate')->name('seeker.generate_certificate');
 
-Route::post('sendEmail','UserController@sendEmailToCompany');
+Route::post('applyCv','UserController@applyCvToCompany');
+
+Route::post('checkApplyPost','UserController@checkApplyPost');
+Route::post('uploadCv','ProfileDetailController@edit');
+
+
 
 
 // FOREMPLOYER ROUTES

@@ -151,7 +151,6 @@
                     </div>
                 </div>
             </div>
-
             <div class="cmodal-overly resume-overly">
                 <div class="global-modal resume-modal">
                     <span class="close-modal"><i class="fa fa-close"></i></span>
@@ -161,7 +160,8 @@
                             <p>Upload your resume to get more opportunity to your relevant profile.</p>
                         </div>
                         <div class="modal-description mt10">
-                            <form action="">
+                            <form action="{{url('uploadCv')}}" method="post" enctype="multipart/form-data">
+                                @csrf
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
@@ -172,7 +172,7 @@
                                                 <p class="mb30 text-center">Thet_Tun.pdf</p>
                                                 <div class="line-btn text-center">or select file to upload</div>
                                                 <p class="text-center mb0">* doc, docx, rtf, pdf - Max. 6 MB</p>
-                                                <input type="file" name="" class="">
+                                                <input type="file" name="" class="resume">
                                             </div>
                                             <div class="ib hroizonal-line mb30">
                                                 <div class="horizonal-text">OR</div>
@@ -191,6 +191,7 @@
                     </div>
                 </div>
             </div>
+
 
             <div class="cmodal-overly skill-overly">
                 <div class="global-modal skill-modal">

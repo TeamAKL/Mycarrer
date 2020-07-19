@@ -2,9 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use App\JobCategory;
+use App\Post;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
+use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Mail;
@@ -56,18 +59,44 @@ class UserController extends Controller
         $user = User::with(['projects', 'education', 'work_experiences'])->findOrFail($currentUser);
         $file_name = $user->name."_cv_form.pdf";
         $cv_file = $request->file('upload_resume');
-            $pdf = file_get_contents($cv_file);
 
-//        if($request->cv_file != " "){
-//            $pdf = PDF::setOptions(['images' => true, 'isPhpEnabled' => true, 'isRemoteEnabled' => true])->loadView('exports.cv_form', compact('user'))->setPaper('a4', 'portrait');
-//        }else{
-//            $pdf = ($request->cv_file)->getClientOriginalName();
-//        }
+
+        if(isset($cv_file)){
+            $pdf = file_get_contents($cv_file);
+        }else{
+            $pdf = PDF::setOptions(['images' => true, 'isPhpEnabled' => true, 'isRemoteEnabled' => true])->loadView('exports.cv_form', compact('user'))->setPaper('a4', 'portrait');
+        }
 
         Mail::send(['html' => 'emails.mail'],['text' => $message],function ($messages) use ($subject,$to,$pdf,$file_name) {
             $messages->to($to)->subject($subject)->attachData($pdf, $file_name);
             $messages->from('thettun1741997@gmail.com', $name = 'AKL');
             $messages->replyTo('thettun1741997@gmail.com', $name = 'AKL');
         });
+    }
+
+    public function applyCvToCompany(Request $request){
+        $user_id = Auth::id();
+        $user = User::findOrFail($user_id);
+        $hasPostUser = $this->checkApplyPost($request);
+        if($hasPostUser == true){
+            dd('kkg');
+        }else{
+            $user->posts()->attach($request->post_id);
+            $this->sendEmailToCompany($request);
+        }
+
+
+    }
+
+    public function checkApplyPost(Request $request){
+
+        $post_id = $request->post_id;
+        $user = User::find(Auth::id());
+        $hasPostUser =  $user->posts()->where('post_id', $post_id)->exists();
+        return \Response::json(array(
+            'status' => $hasPostUser,
+            'message' => 'Valid Pincode'),
+            200
+        );
     }
 }

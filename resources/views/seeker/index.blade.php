@@ -215,7 +215,8 @@
 
                                 </div>
                                 <div class="apply-hover">
-                                    <a href="" class="appl-btn">Apply</a>
+                                    <button class="appl-btn apply_btn" post="{{$post->id}}">Apply</button>
+{{--                                    <a href="{{url('seeker/job-detail/'.$post->id)}}" class="appl-btn">Apply</a>--}}
                                 </div>
                             </div>
                         </div>
@@ -236,5 +237,32 @@
 
 @push('script')
 <script src="{{asset('js/seeker.js')}}"></script>
+@endpush
+
+@push('script')
+    <script src="{{asset('js/seeker.js')}}"></script>
+    <script>
+        $('.apply_btn').on('click',function (e) {
+            e.preventDefault();
+            var $post_id = $(this).attr('post');
+            $.ajax({
+                type: 'post',
+                url: '{{URL::to("checkApplyPost")}}',
+                data: {'post_id':$post_id},
+                headers: {
+                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+                },
+                success: function(data) {
+
+                   if(data.status == true){
+                       window.alert('Applied Post');
+                   }else{
+                       window.location.replace("job-detail/"+$post_id);
+                   }
+
+                }
+            });
+        });
+    </script>
 @endpush
 

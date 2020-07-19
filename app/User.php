@@ -65,4 +65,9 @@ class User extends Authenticatable
         return $this->hasOne('App\ProfileDetail');
     }
 
+    public function posts()
+    {
+        return $this->belongsToMany('App\Post')->withTimestamps();
+    }
+
 }
