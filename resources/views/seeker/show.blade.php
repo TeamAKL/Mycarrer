@@ -14,22 +14,17 @@
                             <div class="share-hover">
                                 <i class="fa fa-share-alt custom-blue" aria-hidden="true"></i>
                                 <div class="pop-share pa-rt">
-                                    <a href="http://"><i class="fa fa-facebook-square social-font-l"
-                                                         aria-hidden="true"></i></a>
-                                    <a href="http://"><i class="fa fa-twitter-square social-font-l"
-                                                         aria-hidden="true"></i></a>
-                                    <a href="http://"><i class="fa fa-linkedin-square social-font-l"
-                                                         aria-hidden="true"></i></a>
-                                    <a href="http://"><i class="fa fa-envelope-o social-font"
-                                                         aria-hidden="true"></i></a>
+                                    <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                                    <a href="http://"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                                    <a href="http://"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                                    <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
                                 </div>
                             </div>
                         </div>
                         <div class="apply-hover">
-                            <button type="button" class="appl-btn btn-fill" data-toggle="modal"
-                                    data-target="#cvUploadModal">Apply
-                            </button>
+                            <button type="button" class="appl-btn btn-fill" data-toggle="modal" data-target="#cvUploadModal">Apply </button>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -37,6 +32,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-10">
+
                     <div class="detail-header mt20">
                         <div class="about-job-detail">
                             <h2>{{$post->position}}</h2>
@@ -47,39 +43,15 @@
                                 <div class="share-hover">
                                     <i class="fa fa-share-alt custom-blue" aria-hidden="true"></i>
                                     <div class="pop-share pa-rt">
-                                        <a href="http://"><i class="fa fa-facebook-square social-font-l"
-                                                             aria-hidden="true"></i></a>
-                                        <a href="http://"><i class="fa fa-twitter-square social-font-l"
-                                                             aria-hidden="true"></i></a>
-                                        <a href="http://"><i class="fa fa-linkedin-square social-font-l"
-                                                             aria-hidden="true"></i></a>
-                                        <a href="http://"><i class="fa fa-envelope-o social-font"
-                                                             aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
                                     </div>
-                <div class="card mt10">
-                    <div class="card-body pd-b20">
-                        <div class="holder">
-                            <div class="item job-contact-area">
-                                <a href="http://" class="job-position">
-                                    <h3>
-                                        {{$post->position}}
-                                    </h3>
-                                    <a href="http://">{{$post->company->company_name}}</a>
-                                </a>
-                                <div class="row mt10">
-                                    <di class="col-md-6">
-                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->company->country}}</span>
-                                    </di>
-                                    <di class="col-md-6">
-                                        <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
-                                        <span><i class="fa fa-database" aria-hidden="true"></i> {{$post->min_salary}} - {{$post->max_salary}} {{$post->salary_unit}} </span>
-                                    </di>
                                 </div>
                             </div>
                             <div class="apply-hover">
-                                <button type="button" class="appl-btn btn-fill" data-toggle="modal"
-                                        data-target="#cvUploadModal">Apply
-                                </button>
+                                <button type="button" class="appl-btn btn-fill" data-toggle="modal" data-target="#cvUploadModal">Apply </button>
                             </div>
                         </div>
                     </div>
@@ -111,8 +83,7 @@
                         </div>
                         <div class="card-footer apply-footer">
                             <div class="posted-update">
-                                <span
-                                    class="posted seprate plr-10">Posted On: {{$post->created_at->diffForHumans()}}</span>
+                                <span class="posted seprate plr-10">Posted On: {{$post->created_at->diffForHumans()}}</span>
                                 <span class="posted seprate plr-10">Total Views: {{$counter}}</span>
                                 <span class="posted seprate plr-10">Total Applications: 5</span>
                             </div>
@@ -167,21 +138,17 @@
                                 <div class="share-hover">
                                     <i class="fa fa-share-alt custom-blue" aria-hidden="true"></i>
                                     <div class="pop-share pa-rt">
-                                        <a href="http://"><i class="fa fa-facebook-square social-font-l"
-                                                             aria-hidden="true"></i></a>
-                                        <a href="http://"><i class="fa fa-twitter-square social-font-l"
-                                                             aria-hidden="true"></i></a>
-                                        <a href="http://"><i class="fa fa-linkedin-square social-font-l"
-                                                             aria-hidden="true"></i></a>
-                                        <a href="http://"><i class="fa fa-envelope-o social-font"
-                                                             aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-linkedin-square social-font-l" aria-hidden="true"></i></a>
+                                        <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
                                     </div>
                                 </div>
                             </div>
                             <div class="apply-hover">
-                                <button type="button" class="appl-btn btn-fill" data-toggle="modal"
-                                        data-target="#cvUploadModal">Apply
-                                </button>
+                                <button type="button" class="appl-btn btn-fill" data-toggle="modal" data-target="#cvUploadModal">Apply </button>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -199,7 +166,7 @@
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
-                <form action="{{url('sendEmail')}}" method="post" enctype="multipart/form-data">
+                <form action="{{url('applyCv')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="company_email" value="{{$post->company->company_email}}"/>
                     <div class="apply-modal-body">
@@ -215,9 +182,7 @@
                         <div class="ib hroizonal-line mb30">
                             <div class="horizonal-text">OR</div>
                         </div>
-                        <button style="alignment: center" type="button" class="btn btn-primary" data-dismiss="modal"
-                                id="upload_current_cv" email="{{$post->company->company_email}}">Upload Current CV
-                        </button>
+                        <button style="alignment: center" type="button" class="btn btn-primary" data-dismiss="modal" id="upload_current_cv" email="{{$post->company->company_email}}">Upload Current CV</button>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
