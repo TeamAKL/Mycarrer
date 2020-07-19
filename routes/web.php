@@ -85,7 +85,6 @@ Route::get('/seeker/generate-certificate/{userID}', 'UserController@generateCert
 Route::post('applyCv','UserController@applyCvToCompany');
 
 Route::post('checkApplyPost','UserController@checkApplyPost');
-Route::post('uploadCv','ProfileDetailController@edit');
 
 
 

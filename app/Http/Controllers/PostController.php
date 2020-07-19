@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Company;
 use App\Post;
 use App\JobCategory;
+use App\User;
 use Facade\FlareClient\Http\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -23,7 +24,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::where('job_status', 'active')->with(['company'])->orderBy('created_at', 'desc')->paginate(10);
-        return view('seeker.index', ["posts" => $posts]);
+        $user = User::find(Auth::id());
+        return view('seeker.index', ["posts" => $posts,"user"=>$user]);
     }
 
     /**
@@ -107,7 +109,9 @@ class PostController extends Controller
             }
 
             $counter = Cache::get($counterKey);
-            return view('seeker.show', ["post" => $postDetail, "counter" => $counter]);
+            $user = User::find(Auth::id());
+            $hasPostUser =  $user->posts()->where('post_id', $id)->exists();
+            return view('seeker.show', ["post" => $postDetail, "counter" => $counter,"hasPostUser" => $hasPostUser]);
         }
 
         /**

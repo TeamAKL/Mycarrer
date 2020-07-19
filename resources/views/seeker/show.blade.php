@@ -22,7 +22,7 @@
                             </div>
                         </div>
                         <div class="apply-hover">
-                            <button type="button" class="appl-btn btn-fill" data-toggle="modal" data-target="#cvUploadModal">Apply </button>
+                            <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal(this.value);" value="{{$hasPostUser}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                         </div>
 
                     </div>
@@ -51,7 +51,7 @@
                                 </div>
                             </div>
                             <div class="apply-hover">
-                                <button type="button" class="appl-btn btn-fill" data-toggle="modal" data-target="#cvUploadModal">Apply </button>
+                                <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal(this.value);" value="{{$hasPostUser}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                             </div>
                         </div>
                     </div>
@@ -146,7 +146,7 @@
                                 </div>
                             </div>
                             <div class="apply-hover">
-                                <button type="button" class="appl-btn btn-fill" data-toggle="modal" data-target="#cvUploadModal">Apply </button>
+                                <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal(this.value);" value="{{$hasPostUser}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                             </div>
                         </div>
                     </div>
@@ -161,7 +161,7 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Apply</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Apply For {{$post->position}}</h5>
                     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
@@ -169,20 +169,24 @@
                 <form action="{{url('applyCv')}}" method="post" enctype="multipart/form-data">
                     @csrf
                     <input type="hidden" name="company_email" value="{{$post->company->company_email}}"/>
+                    <input type="hidden" name="post_id" value="{{$post->id}}"/>
                     <div class="apply-modal-body">
                         <div class="upload-resume mb10">
                             <div class="d-flex justify-content-center mb10">
                                 <i class="fa fa-cloud-upload" style="font-size: 31px; color: #5d4da8"></i>
                             </div>
-                            <p class="mb30 text-center">Thet_Tun.pdf</p>
-                            <div class="line-btn text-center">or select file to upload</div>
+                            <div class="line-btn text-center">Select New CV</div>
                             <p class="text-center mb0">* doc, docx, rtf, pdf - Max. 6 MB</p>
                             <input type="file" name="upload_resume" class="resume" id="upload_resume">
                         </div>
                         <div class="ib hroizonal-line mb30">
                             <div class="horizonal-text">OR</div>
                         </div>
-                        <button style="alignment: center" type="button" class="btn btn-primary" data-dismiss="modal" id="upload_current_cv" email="{{$post->company->company_email}}">Upload Current CV</button>
+                        <p class="text-center">
+                            <input name="checkcv" type="checkbox" value="use_current_cv" class="btn btn-primary" id="checkcv"> <label for="checkcv">Use Current CV</label>
+                        </p>
+
+{{--                        <button style="alignment: center" type="button" class="btn btn-primary" data-dismiss="modal" id="upload_current_cv" email="{{$post->company->company_email}}">Use Current CV</button>--}}
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
@@ -203,4 +207,15 @@
 
 @push('script')
     <script src="{{asset('js/seeker.js')}}"></script>
+    <script>
+
+        function showModal(check) {
+           if(check == 1){
+               window.alert('Applied post');
+           }else{
+               $('#cvUploadModal').modal('toggle');
+           }
+        }
+
+    </script>
 @endpush

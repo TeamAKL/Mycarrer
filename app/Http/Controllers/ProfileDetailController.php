@@ -47,8 +47,27 @@ class ProfileDetailController extends Controller
             $detail->date_of_birth = $request->date_of_birth;
             $detail->nationality = $request->nationality;
             $detail->user_id = $user_id;
+            $detail->text_resume = $request->text_resume;
+            if ($request->hasFile('upload_resume')) {
+                //Remove old sign
+                $old_cv = public_path() . '/resumes/resumes/' . $detail->resume;
+                if(file_exists($old_cv)) unlink($old_cv);
+
+                $resume_file = $request->file('upload_resume');
+                $resume_name = $resume_file->getClientOriginalName();
+                $request->upload_resume->storeAs('resumes', $resume_name, 'upload_resume');
+                $detail->resume = $resume_name;
+            }
             $detail->save();
+
         } else {
+            if ($request->hasFile('upload_resume')) {
+                $resume_file = $request->file('upload_resume');
+                $resume_name = $resume_file->getClientOriginalName();
+                $request->upload_resume->storeAs('resumes', $resume_name, 'upload_resume');
+                $resume = $resume_name;
+
+            }
             ProfileDetail::create([
                 "home_town" => $request->home_town,
                 "gender" => $request->gender,
@@ -56,7 +75,10 @@ class ProfileDetailController extends Controller
                 "permanent_address" => $request->permanent_address,
                 "date_of_birth" => $request->date_of_birth,
                 "nationality" => $request->nationality,
-                'user_id' => $user_id
+                "user_id" => $user_id,
+                "resume" => $resume,
+                "text_resume" => $request->text_resume
+
             ]);
         }
         return redirect('seeker/profile');
@@ -80,9 +102,9 @@ class ProfileDetailController extends Controller
      * @param  \App\profileDetail  $profileDetail
      * @return \Illuminate\Http\Response
      */
-    public function edit(profileDetail $profileDetail)
+    public function edit(Request $request)
     {
-        //
+
     }
 
     /**
