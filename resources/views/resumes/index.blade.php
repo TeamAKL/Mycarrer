@@ -17,91 +17,37 @@
             </tr>
           </thead>
           <!--Table head-->
-            @dd($resumes);
           <!--Table body-->
           <tbody>
+          @foreach($resumes as $key=>$resume)
             <tr>
-              <th scope="row">1</th>
+              <th scope="row">{{$key}}</th>
               <td>
-                  <b>Name</b><br><br>
-                  Position:Manager <br>
-                  Address:Yangon
+                  <b>{{$resume->name}}</b><br><br>
+                  Position:{{isset($resume->job_preferences->role) ? $resume->job_preferences->role : ""}} <br>
+                  Address:{{isset($resume->profile_details->permanent_address) ? $resume->profile_details->permanent_address : ''}}
               </td>
               <td>
                   <br><br>
-                  Job Status:Full-time <br>
+                  Employer Type:{{isset($resume->job_preferences->employer_type) ? $resume->job_preferences->employer_type : ""}} <br>
                   Experience: 2yrs
               </td>
               <td>
                   <br><br>
-                  Degree:Computer University Meiktila <br>
-                  Certificate:CCNA
+                  Degree:{{isset($resume->education[0]->qualification) ? $resume->education[0]->qualification : ""}} <br>
+                  Certificate:{{isset($resume->certificates[0]->certificate) ? $resume->certificates[0]->certificate : ""}}
               </td>
               <td>
                   <br><br>
                   Current Salary:500000 MMK <br>
-                  Gender:Male
+                  Gender:{{isset($resume->profile_details->gender) ? $resume->profile_details->gender : ""}}
               </td>
               <td class="view-resume">
                 <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>
                 <button type="button" class="btn btn-info">View Resume</button>
               </td>
             </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>
-                    <b>Name</b><br><br>
-                    Position:Manager <br>
-                    Address:Yangon
-                </td>
-                <td>
-                    <br><br>
-                    Job Status:Full-time <br>
-                    Experience: 2yrs
-                </td>
-                <td>
-                    <br><br>
-                    Degree:Computer University Meiktila <br>
-                    Certificate:CCNA
-                </td>
-                <td>
-                    <br><br>
-                    Current Salary:500000 MMK <br>
-                    Gender:Male
-                </td>
-                <td class="view-resume">
-                  <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>
-                  <button type="button" class="btn btn-info">View Resume</button>
-                </td>
-            </tr>
-            <tr>
-                <th scope="row">3</th>
-                <td>
-                    <b>Name</b><br><br>
-                    Position:Manager <br>
-                    Address:Yangon
-                </td>
-                <td>
-                    <br><br>
-                    Job Status:Full-time <br>
-                    Experience: 2yrs
-                </td>
-                <td>
-                    <br><br>
-                    Degree:Computer University Meiktila <br>
-                    Certificate:CCNA
-                </td>
-                <td>
-                    <br><br>
-                    Current Salary:500000 MMK <br>
-                    Gender:Male
-                </td>
-                <td class="view-resume">
-                  <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>
-                  <button type="button" class="btn btn-info">View Resume</button>
-                </td>
-
-            </tr>
+            @endforeach
           </tbody>
           <!--Table body-->
         </table>
