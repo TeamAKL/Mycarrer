@@ -14,7 +14,7 @@ class AddTextResumeToProfileDetailsTable extends Migration
     public function up()
     {
         Schema::table('profile_details', function (Blueprint $table) {
-            $table->string('text_resume')->nullable();
+            $table->string('text_resume', 255)->nullable();
         });
     }
 

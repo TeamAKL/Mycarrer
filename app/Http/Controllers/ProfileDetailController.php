@@ -55,8 +55,27 @@ class ProfileDetailController extends Controller
             $detail->nationality = $request->nationality;
             $detail->profile_image = $logo_name;
             $detail->user_id = $user_id;
+            $detail->text_resume = $request->text_resume;
+            if ($request->hasFile('upload_resume')) {
+                //Remove old sign
+                $old_cv = public_path() . '/resumes/resumes/' . $detail->resume;
+                if(file_exists($old_cv)) unlink($old_cv);
+
+                $resume_file = $request->file('upload_resume');
+                $resume_name = $resume_file->getClientOriginalName();
+                $request->upload_resume->storeAs('resumes', $resume_name, 'upload_resume');
+                $detail->resume = $resume_name;
+            }
             $detail->save();
+
         } else {
+            if ($request->hasFile('upload_resume')) {
+                $resume_file = $request->file('upload_resume');
+                $resume_name = $resume_file->getClientOriginalName();
+                $request->upload_resume->storeAs('resumes', $resume_name, 'upload_resume');
+                $resume = $resume_name;
+
+            }
             ProfileDetail::create([
                 "home_town" => $request->home_town,
                 "gender" => $request->gender,
@@ -65,10 +84,13 @@ class ProfileDetailController extends Controller
                 "date_of_birth" => $request->date_of_birth,
                 "nationality" => $request->nationality,
                 "profile_image" => $logo_name,
-                'user_id' => $user_id
-                ]);
-            }
-            return redirect('seeker/profile');
+                "user_id" => $user_id,
+                "resume" => $resume,
+                "text_resume" => $request->text_resume
+
+            ]);
+        }
+        return redirect('seeker/profile');
 
         }
 

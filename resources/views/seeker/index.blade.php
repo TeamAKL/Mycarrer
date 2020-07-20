@@ -158,6 +158,8 @@
                 <!-- Job Card -->
                 <div class="row">
                     @foreach($posts as $post)
+                       <?php
+                        $hasPostUser =  $user->posts()->where('post_id', $post->id)->exists(); ?>
                     <div class="col-md-10">
                         <div class="card mb10">
                             @if($post->urgent != 0)
@@ -216,8 +218,8 @@
 
                                 </div>
                                 <div class="apply-hover">
-                                    <button class="appl-btn apply_btn" post="{{$post->id}}">Apply</button>
-                                    {{--                                    <a href="{{url('seeker/job-detail/'.$post->id)}}" class="appl-btn">Apply</a>--}}
+                                    <button class="appl-btn apply_btn" post="{{$post->id}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
+{{--                                    <a href="{{url('seeker/job-detail/'.$post->id)}}" class="appl-btn">Apply</a>--}}
                                 </div>
                             </div>
                         </div>
