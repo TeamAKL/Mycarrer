@@ -15,7 +15,11 @@
                 <div class="profile-sec mb8">
                     <div class="user-imgname">
                         <div class="profile-avatar avatar-dashboard">
+                            @if(isset(Auth::user()->profile_details->profile_image))
                             <img src="{{asset('images/seeker_profile/'.Auth::user()->profile_details->profile_image)}}" alt="" class="user-image">
+                            @else
+                            <img src="{{asset('images/seeker_profile/defaultavator.webp')}}" alt="" class="user-image">
+                            @endif
                             {{-- <label for="avatar" class="camera-btn">
                                 <input type="file" name="" id="avatar">
                                 <i class="fa fa-camera"></i>

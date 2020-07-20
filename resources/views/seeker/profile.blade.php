@@ -22,7 +22,11 @@
                     <div class="profile-avatar avatar-dashboard">
                     <form method="post" enctype="multipart/form-data" action="{{url('profile_detail/create')}}" id="formid">
                             @csrf
+                        @if(isset($user->profile_details->profile_image))
                         <img src="{{asset('images/seeker_profile/'.$user->profile_details->profile_image)}}" alt="" class="current-user">
+                        @else
+                        <img src="{{asset('images/seeker_profile/defaultavator.webp')}}" alt="" class="current-user">
+                        @endif
                         <label for="avatar" class="camera-btn">
                             <input type="file" name="profile_image" id="avatar">
                             <i class="fa fa-camera"></i>
