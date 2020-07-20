@@ -165,3 +165,5 @@ Route::post('certupdate', 'CertificateController@update');
 Route::get('getDocument', 'ProfileDetailController@getDocument')->name('cv_file.getDocument');
 
 Route::get('dropDocument', 'ProfileDetailController@dropDocument')->name('cv_file.dropDocument');
+
+Route::get('seeker/applied-job/{id}', 'PostController@appliedjob');

@@ -49,8 +49,10 @@
         </div>
     </div>
     <div class="col-md-9 col-xs-8">
-        <p class="d-flex justify-content-end">Last Updated on: 7 january 2020</p>
-        <div class="row">
+        @if(isset($user->profile_details))
+        <p class="d-flex justify-content-end">Last Updated on: {{$user->profile_details->updated_at->format('j F Y')}}</p>
+        @endif
+        <div class="row pt-3">
             <div class="col-md-12 col-xs-12 mb10">
                 <div class="bg-white row">
                     <div class="col-md-9">

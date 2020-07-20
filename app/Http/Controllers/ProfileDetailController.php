@@ -40,6 +40,7 @@ class ProfileDetailController extends Controller
     {
         $user_id = Auth::id();
         $detail = ProfileDetail::where('user_id', '=', $user_id)->first();
+
         if($request->hasFile('profile_image')){
         $logo_image = $request->file('profile_image');
         $logo_name = uniqid().'-'.$logo_image->getClientOriginalName();
@@ -71,13 +72,13 @@ class ProfileDetailController extends Controller
             $detail->save();
 
         } else {
-            dd("in else");
             if ($request->hasFile('upload_resume')) {
                 $resume_file = $request->file('upload_resume');
                 $resume_name = $resume_file->getClientOriginalName();
                 $request->upload_resume->storeAs('resumes', $resume_name, 'upload_resume');
                 $resume = $resume_name;
-
+            } else {
+                $resume = "";
             }
             ProfileDetail::create([
                 "home_town" => $request->home_town,

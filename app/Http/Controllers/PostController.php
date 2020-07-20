@@ -24,8 +24,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::where('job_status', 'active')->with(['company'])->orderBy('created_at', 'desc')->paginate(10);
-        $user = User::find(Auth::id());
-        return view('seeker.index', ["posts" => $posts,"user"=>$user]);
+        // $user = User::find(Auth::id());
+        return view('seeker.index', ["posts" => $posts]);
     }
 
     /**
@@ -210,5 +210,18 @@ class PostController extends Controller
             $posts = $sql->orderBy('created_at', 'desc')->paginate(10);
             // dd($posts);
             return view('seeker.index', ["posts" => $posts]);
+        }
+
+        //Applied Jobs
+
+        public function appliedjob($id)
+        {
+            $post = Post::findOrFail($id);
+            foreach($post->users as $user) {
+                if($user->pivot->user_id == Auth::id()) {
+                    $applieddate = $user->pivot->created_at->format('d-m-Y');
+                }
+            }
+            return view('seeker.applied_job', ["post" => $post, "date" => $applieddate]);
         }
     }

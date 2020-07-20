@@ -1,59 +1,53 @@
 @extends('layouts.master')
 @section('content')
-<div class="container">
-    <div class="table-responsive">
-        <!--Table-->
-        <table class="table table-bordered table-hover">
-
-            <!--Table head-->
-            <thead class="thead-light">
-                <tr>
-                    <th>Job Status</th>
-                    <th>Applied date</th>
-                    <th>Job Title</th>
-                    <th>Resume on file</th>
-                    <th>Other applicants</th>
-                    <th>Action</th>
-                </tr>
-            </thead>
-            <!--Table head-->
-
-            <!--Table body-->
-            <tbody>
-                <tr>
-                    <td>
-                        Active
-                    </td>
-                    <td>
-                        Applied <br>
-                        <span>18-7-2020</span>
-                    </td>
-                    <td>
-                        Area Sales Manager <br>
-                        <span class="glyphicon glyphicon-home"></span>AKL Company
-                        <span class="glyphicon glyphicon-map-maker"></span>Yangon
-
-                    </td>
-                    <td>
-                        Download profile
-                    </td>
-                    <td>
-                        2
-                    </td>
-                    <td>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-eye-open"></i>
-                        </a>
-                        <a href="#">
-                            <i class="glyphicon glyphicon-search"></i>
-                        </a>
-                    </td>
-                </tr>
-
-            </tbody>
-            <!--Table body-->
-        </table>
-        <!--Table-->
+@include('seeker.searchContainer')
+<div class="dashboard-area">
+    <div class="container">
+        <div class="table-responsive pt-3">
+            <!--Table-->
+            <table class="table table-bordered table-hover">
+                
+                <!--Table head-->
+                <thead class="thead-light">
+                    <tr>
+                        <th>Job Status</th>
+                        <th>Applied date</th>
+                        <th>Job Title</th>
+                        <th>Other applicants</th>
+                    </tr>
+                </thead>
+                <!--Table head-->
+                
+                <!--Table body-->
+                <tbody>
+                    <tr>
+                        <td>
+                            <span style="color: #3490dc;" class="text-capitalize">{{$post->job_status}}</span>
+                        </td>
+                        <td>
+                            Applied <br>
+                            <span style="color: #3490dc;">{{$date}}</span>
+                        </td>
+                        <td>
+                            <span style="color: #3490dc; font-weight: bold;">{{$post->position}}</span><br>
+                            <span style="color: #3490dc"><i class="fa fa-building-o" aria-hidden="true"></i>{{$post->company->company_name}}</span>
+                            <span style="color: #3490dc;"><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->address}}</span>
+                            
+                        </td>
+                        <td>
+                            <span style="color: #3490dc;">{{$post->users->count() - 1}}</span>
+                        </td>
+                    </tr>
+                    
+                </tbody>
+                <!--Table body-->
+            </table>
+            <!--Table-->
+        </div>
     </div>
 </div>
 @endsection
+@push('css')
+<link rel="stylesheet" href="{{asset('css/banner.css')}}">
+<link rel="stylesheet" href="{{asset('css/seeker_index.css')}}">
+@endpush

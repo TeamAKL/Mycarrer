@@ -122,7 +122,7 @@
                                     <span class="uprcse semi-bold">Upload Resume</span>
                                     <span class="block fs-11 mt10">We will create your profile</span>
                                 </a>
-
+                                
                             </div>
                             <div class="or">
                                 <span>OR</span>
@@ -135,7 +135,7 @@
                 </div>
                 @endguest
             </div>
-
+            
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
                 <div class="user-status-area mb10">
                     <div class="dashboard-status text-center">
@@ -158,17 +158,22 @@
                 <div class="recommended-job">
                     <h3>Recommended Jobs - <span> 100 </span></h3>
                 </div>
-
+                {{-- @dd($posts) --}}
                 <!-- Job Card -->
                 <div class="row">
                     @foreach($posts as $post)
-                       <?php
-                        $hasPostUser =  $user->posts()->where('post_id', $post->id)->exists(); ?>
+                    @auth()
+                    @php $hasPostUser =  Auth::user()->posts()->where('post_id', $post->id)->exists(); @endphp
+                    @endauth
                     <div class="col-md-10">
                         <div class="card mb10">
                             @if($post->urgent != 0)
                             <div class="mycareers-bags">
                                 <span class="featuer">Urgent</span>
+                            </div>
+                            @elseif(now()->diffInMinutes($post->created_at) < 120) <!-- 10080 -->
+                            <div class="mycareers-bags">
+                                <span class="featuer">New</span>
                             </div>
                             @endif
                             <div class="card-body pd-b20">
@@ -219,11 +224,15 @@
                                             <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-
+                                    
                                 </div>
                                 <div class="apply-hover">
+                                    @auth()
                                     <button class="appl-btn apply_btn" post="{{$post->id}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
-{{--                                    <a href="{{url('seeker/job-detail/'.$post->id)}}" class="appl-btn">Apply</a>--}}
+                                    @endauth
+                                    @guest
+                                    <a href="#" id="unauthapply" class="appl-btn apply_btn">Apply</a>
+                                    @endguest
                                 </div>
                             </div>
                         </div>
@@ -231,7 +240,7 @@
                     @endforeach
                     {{ $posts->links() }}
                 </div>
-
+                
             </div>
         </div>
     </div>
@@ -243,6 +252,7 @@
 @endpush
 
 @push('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset('js/seeker.js')}}"></script>
 <script>
     $('.apply_btn').on('click',function (e) {
@@ -256,13 +266,28 @@
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             },
             success: function(data) {
-
+                
                 if(data.status == true){
-                    window.alert('Applied Post');
+                    window.location.replace('applied-job/'+$post_id);
                 }else{
                     window.location.replace("job-detail/"+$post_id);
                 }
-
+                
+            }
+        });
+    });
+    
+    $("#unauthapply").on("click", function(e) {
+        e.preventDefault();
+        swal({
+            title: "Sorry!",
+            text: "Please Login First",
+            icon: "warning",
+            dangerMode: true,
+            button: "Ok!",
+        }).then(result => {
+            if(result) {
+                window.location.pathname = '/seeker/login';
             }
         });
     });

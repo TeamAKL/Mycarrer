@@ -83,7 +83,8 @@ class UserController extends Controller
     {
         $user_id = Auth::id();
         $user = User::findOrFail($user_id);
-        $user->posts()->attach($request->post_id);
+        $post = Post::findOrFail($request->post_id);
+        $user->posts()->attach($post);
         $this->sendEmailToCompany($request);
         return redirect('seeker/dashboard');
     }

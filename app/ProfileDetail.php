@@ -8,6 +8,7 @@ class ProfileDetail extends Model
 {
     protected $table = "profile_details";
     protected $guarded = [];
+    protected $date = ['created_at', 'updated_at'];
 
     public function user()
     {
