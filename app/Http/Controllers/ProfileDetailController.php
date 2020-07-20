@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProfileDetail;
+use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -150,4 +151,34 @@ class ProfileDetailController extends Controller
         {
             //
         }
+
+    public function getDocument(){
+
+        $user_id = Auth::id();
+        $user = User::with(['profile_details'])->findOrFail($user_id);
+        $filePath = public_path() . '/resumes/resumes/';
+        $path = $filePath.$user->profile_details->resume;
+        $this->downloadFile($path,$user->profile_details->resume);
     }
+    public function downloadFile($fullpath,$filename){
+        header('Content-Description: File Transfer');
+        header('Content-Type: application/octet-stream');
+        header('Content-Disposition: attachment; filename='.$filename.'');
+        header('Content-Transfer-Encoding: binary');
+        header('Expires: 0');
+        header('Cache-Control: must-revalidate, post-check=0, pre-check=0');
+        header('Pragma: public');
+        flush();
+        readfile($fullpath);
+        exit;
+    }
+
+    public function dropDocument(){
+        $user_id = Auth::id();
+        $detail = ProfileDetail::where('user_id', '=', $user_id)->first();
+        $old_cv = public_path() . '/resumes/resumes/' . $detail->resume;
+        if(file_exists($old_cv)) unlink($old_cv);
+        return redirect('seeker/profile');
+
+    }
+}

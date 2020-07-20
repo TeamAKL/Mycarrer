@@ -161,3 +161,7 @@ Route::post('updatepersonaldetail', 'ProfileDetailController@update');
 Route::post('certificate', 'CertificateController@store');
 Route::get('certEdit', 'CertificateController@edit');
 Route::post('certupdate', 'CertificateController@update');
+
+Route::get('getDocument', 'ProfileDetailController@getDocument')->name('cv_file.getDocument');
+
+Route::get('dropDocument', 'ProfileDetailController@dropDocument')->name('cv_file.dropDocument');
