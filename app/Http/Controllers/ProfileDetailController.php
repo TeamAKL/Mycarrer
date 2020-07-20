@@ -179,6 +179,7 @@ class ProfileDetailController extends Controller
         $detail = ProfileDetail::where('user_id', '=', $user_id)->first();
         $old_cv = public_path() . '/resumes/resumes/' . $detail->resume;
         if(file_exists($old_cv)) unlink($old_cv);
+        ProfileDetail::where('user_id', $user_id)->update(array('resume' => ''));
         return redirect('seeker/profile');
 
     }
