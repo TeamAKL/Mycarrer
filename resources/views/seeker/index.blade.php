@@ -97,7 +97,7 @@
                             <p class="job-cat">Recommended Jobs <span>(100)</span> </p>
                         </div>
                         <div class="col-md-12 dp-inline">
-                            <p class="job-cat">Applied Jobs <span>(10)</span></p>
+                            <p class="job-cat">Applied Jobs <span>({{Auth::user()->posts->count()}})</span></p>
                         </div>
                         <div class="col-md-12 dp-inline">
                             <p class="job-cat">Saved Jobs <span></span></p>
