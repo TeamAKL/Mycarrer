@@ -66,7 +66,8 @@ class CertificateController extends Controller
      */
     public function edit(Request $request)
     {
-        dd($request->id);
+        $certificate = Certificate::findOrFail($request->id);
+        return response()->json(["data" => $certificate]);
     }
 
     /**
@@ -76,9 +77,17 @@ class CertificateController extends Controller
      * @param  \App\Certificate  $certificate
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Certificate $certificate)
+    public function update(Request $request)
     {
-        //
+        $certificate = Certificate::find($request->id);
+        $certificate->certificate = $request->certificate;
+        $certificate->issue_by = $request->issueby;
+        $certificate->year = $request->certificate_year;
+        $certificate->month = $request->cerfificate_month;
+        $certificate->lifetime = $request->lifetime;
+        $certificate->user_id = Auth::id();
+        $certificate->save();
+        return redirect('seeker/profile');
     }
 
     /**

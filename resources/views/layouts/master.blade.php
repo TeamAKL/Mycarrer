@@ -87,7 +87,7 @@
                         @else
                         <li class="nav-link logined-usname share-hover mr0 pr">
                             <div class="profile-avatar-user">
-                                <img src="{{asset('images/adele.jpg')}}" alt="" class="current-user">
+                                <img src="{{asset('images/seeker_profile/'.Auth::user()->profile_details->profile_image)}}" alt="" class="current-user">
                             </div>
 
                             <div class="pop-share profile-hover dropdown-content">

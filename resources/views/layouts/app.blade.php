@@ -7,13 +7,12 @@
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Black Dashboard') }}</title>
+    <title>MyCareers</title>
 
     {{-- CKE Editor --}}
     <script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
     <!-- Favicon -->
-    <link rel="apple-touch-icon" sizes="76x76" href="{{ asset('black') }}/img/apple-icon.png">
-    <link rel="icon" type="image/png" href="{{ asset('black') }}/img/favicon.png">
+    <link rel="icon" sizes="76x76" href="{{ asset('images/favicon.png') }}">
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css?family=Poppins:200,300,400,600,700,800" rel="stylesheet" />
     <link href="https://use.fontawesome.com/releases/v5.0.6/css/all.css" rel="stylesheet">

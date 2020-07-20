@@ -19,7 +19,7 @@ class CreateCertificatesTable extends Migration
             $table->string('issue_by');
             $table->string('year');
             $table->string('month');
-            $table->integer('lifetime')->default(0);
+            $table->integer('lifetime')->nullable()->default(0);
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');
             $table->timestamps();

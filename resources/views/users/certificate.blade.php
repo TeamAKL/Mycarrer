@@ -31,7 +31,7 @@
                 <h3>Courses & Certification</h3>
             </div>
             <div class="modal-description mt10">
-                <form method="POST" id="eduaction" action="{{url('certificate')}}">
+                <form method="POST" id="certificateform" action="{{url('certificate')}}">
                     @csrf
                     <div class="form-group">
                         <div class="row">
@@ -77,7 +77,7 @@
                         </div>
                     </div>
                     <div class="form-group d-flex justify-content-end">
-                        <input type="submit" value="Save" class="custom-btn" id="edusubmit">
+                        <input type="submit" value="Save" class="custom-btn" id="certsubmit">
                     </div>
                 </form>
             </div>
@@ -96,12 +96,21 @@
                 type: 'get',
                 url: '{{URL::to("certEdit")}}',
                 data: {'id':$dataid},
-                success:function(data) {
-                    if(data) {
-                        $("#qualification").val(data.qualification);
-                        $("#eduaction").attr('action', '{{url("eduupdate")}}');
-                        $("#eduaction").append("<input type='hidden' value='"+ $dataid +"' name='id'/>");
-                        $("#edusubmit").val("Verify");
+                success:function(response) {
+                    console.log(response.data.certificate);
+                    if(response.data) {
+                        $("#certificate").val(response.data.certificate);
+                        $("#issueby").val(response.data.issue_by);
+                        $("#year").val(response.data.year);
+                        $("#month").val(response.data.month);
+                        if(response.data.lifetime == 1) {
+                            $("#lifetime").attr("checked", true);
+                        } else {
+                            $("#lifetime").attr("checked", false);
+                        }
+                        $("#certificateform").attr('action', '{{url("certupdate")}}');
+                        $("#certificateform").append("<input type='hidden' value='"+ $dataid +"' name='id'/>");
+                        $("#certsubmit").val("Verify");
                     }else {
                         console.log("hello");
                     }
@@ -111,16 +120,13 @@
             $("."+$index+"-modal").addClass("slide-modal");
             $.ajaxSetup({ headers: { 'csrftoken' : '{{ csrf_token() }}' } });
         } else {
-            $("#qualification").val("");
-            $("#institute").val("");
-            $("#specilization").val("");
-            $("#specilization").val("");
-            $("#passyear").val("");
-            $("input[name='edutype']").each(function() {
-                $(this).removeAttr("checked");
-            });
-            $("#eduaction").attr('action', "{{url('education')}}");
-            $("#edusubmit").val("Save");
+            $("#certificate").val("");
+            $("#issueby").val("");
+            $("#year").val("");
+            $("#month").val("");
+            $("#lifetime").attr("checked", false);
+            $("#certificateform").attr('action', "{{url('certificate')}}");
+            $("#certsubmit").val("Save");
         }
     });
 </script>

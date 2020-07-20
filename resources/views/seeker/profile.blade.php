@@ -3,259 +3,277 @@
 @include('seeker.searchContainer')
 
 <div class="dashboard-area">
-    <div class="container">
+<div class="container">
+<div class="row">
+    <div class="col-md-3 col-xs-4">
+        <h2 class="main-header">My Profile</h2>
         <div class="row">
-            <div class="col-md-3 col-xs-4">
-                <h2 class="main-header">My Profile</h2>
-                <div class="row">
-                    <div class="col-md-12 mb10">
-                        <div class="bg-white pd20">
-                            <p class="score-text">Profile Score</p>
-                            <div class="scroe">
-                                <div class="inside-scroe" style="--color:red; --width: 70%;"></div>
-                                <span class="scroe-percent" style="--left: 70%;">70%</span>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12">
-                        <div class="bg-white pd20 d-flex center ">
-                            <img src="{{asset('images/adele.jpg')}}" alt="" class="current-user">
-                            <h2 class="d-block">{{Auth::user()->name}}</h2>
-                            <p>Fresher</p>
-                            <div class="flex-row">
-                                <p>+95957363847</p>
-                                <a href="http://">Verify</a>
-                            </div>
-                            <div class="flex-row">
-                                <p>{{Auth::user()->email}}</p>
-                                <a href="http://">Verify</a>
-                            </div>
-                        </div>
+            <div class="col-md-12 mb10">
+                <div class="bg-white pd20">
+                    <p class="score-text">Profile Score</p>
+                    <div class="scroe">
+                        <div class="inside-scroe" style="--color:red; --width: 70%;"></div>
+                        <span class="scroe-percent" style="--left: 70%;">70%</span>
                     </div>
                 </div>
             </div>
-            <div class="col-md-9 col-xs-8">
-                <p class="d-flex justify-content-end">Last Updated on: 7 january 2020</p>
-                <div class="row">
-                    <div class="col-md-12 col-xs-12 mb10">
-                        <div class="bg-white row">
-                            <div class="col-md-9">
-                                <h4 class="medium">Fresher</h4>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="fr blue-color show-modal" id="fr"><i class="fa fa-pencil" aria-hidden="true"></i></a>
-                            </div>
-                        </div>
+            <div class="col-md-12">
+                <div class="bg-white pd20 d-flex center ">
+                    <div class="profile-avatar avatar-dashboard">
+                    <form method="post" enctype="multipart/form-data" action="{{url('profile_detail/create')}}" id="formid">
+                            @csrf
+                        <img src="{{asset('images/seeker_profile/'.$user->profile_details->profile_image)}}" alt="" class="current-user">
+                        <label for="avatar" class="camera-btn">
+                            <input type="file" name="profile_image" id="avatar">
+                            <i class="fa fa-camera"></i>
+                        </label>
+                    </form>
                     </div>
-                    <div class="col-md-12 col-xs-12 mb10">
-                        <div class="bg-white row">
-                            <div class="col-md-9">
-                                <h4 class="medium">Resume</h4>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="fr blue-color show-modal" id="resume"><i class="fa fa-upload" aria-hidden="true"></i></a>
-                            </div>
-                            <div class="col-md-12 mt10">
-                                <div class="show-upload-cv">
-                                    <div class="ico-holder">
-                                        <i class="fa fa-file-text-o" style="font-size: 40px; color: #5d4da8"></i>
-                                    </div>
-                                    <div class="upload-cv-text">
-                                        <p class="mb0">Thet Tun</p>
-                                        <div class="cv-upload-action">
-                                            <a href="http://">Download</a>
-                                            <a href="http://">Delete</a>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                    {{-- <img src="{{asset('images/adele.jpg')}}" alt="" class="current-user"> --}}
+                    <h4 class="d-block">{{Auth::user()->name}}</h4>
+                    <p>Fresher</p>
+                    <div class="flex-row">
+                        <p>+95957363847</p>
+                        <a href="http://">Verify</a>
                     </div>
-                    <div class="col-md-12 col-sx-12 mb10">
-                        <div class="bg-white row">
-                            <div class="col-md-9">
-                                <h4 class="medium">Skills</h4>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="fr blue-color show-modal" id="skill"><i class="fa fa-plus"></i>Add</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sx-12 mb10">
-                        <div class="bg-white row">
-                            <div class="col-md-9">
-                                <h4 class="medium">IT Skills</h4>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="fr blue-color show-modal" id="skill"><i class="fa fa-plus"></i>Add</a>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="col-md-12 col-sx-12 mb10">
-                        @include('users.job_preference')
-                    </div>
-
-                    <div class="col-md-12 col-sx-12 mb10">
-                        @include('users.workexperience')
-                    </div>
-
-                    <!-- Education Detail -->
-                    <div class="col-md-12 col-sx-12 mb10">
-                        @include('users.education')
-                    </div>
-
-                    <!-- Projects -->
-                    <div class="col-md-12 col-sx-12 mb10">
-                        @include('users.project')
-                    </div>
-
-                    <!-- Course And Certification -->
-                    <div class="col-md-12 col-sx-12 mb10">
-                        @include('users.certificate')
-                    </div>
-
-                    <!-- Personal Detail -->
-                    <div class="col-md-12 col-sx-12 mb10">
-                        @include('users.personalDetail')
-                    </div>
-                    <a href="{!! route('seeker.generate_certificate', [$user['id']]) !!}"
-                    class="btn btn-warning pull-right" style="margin-right: 28px;margin-bottom: 10px;"
-                    target="_blank"><i class="fa fa-certificate"></i> Generate
-                    PDF</a>
-                </div>
-            </div>
-            <!-- CModal Overly Section -->
-            <div class="cmodal-overly fr-overly">
-                <div class="global-modal fr-modal">
-                    <span class="close-modal"><i class="fa fa-close"></i></span>
-                    <div class="modal-body">
-                        <div class="cmodal-header d-block">
-                            <h3>Profile Summary</h3>
-                        </div>
-                        <div class="modal-description mt10">
-                            <form action="">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <label for="">Enter Your Summary</label>
-                                            <input type="text" name="" id="" class="formbb">
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group d-flex justify-content-end">
-                                    <input type="submit" value="Verify" class="custom-btn">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="cmodal-overly resume-overly">
-                <div class="global-modal resume-modal">
-                    <span class="close-modal"><i class="fa fa-close"></i></span>
-                    <div class="modal-body">
-                        <div class="cmodal-header d-block">
-                            <h3>Upload Resume</h3>
-                            <p>Upload your resume to get more opportunity to your relevant profile.</p>
-                        </div>
-                        <div class="modal-description mt10">
-                            <form action="{{url('uploadCv')}}" method="post" enctype="multipart/form-data">
-                                @csrf
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="upload-resume mb10">
-                                                <div class="d-flex justify-content-center mb10">
-                                                    <i class="fa fa-cloud-upload" style="font-size: 31px; color: #5d4da8"></i>
-                                                </div>
-                                                <p class="mb30 text-center">Thet_Tun.pdf</p>
-                                                <div class="line-btn text-center">or select file to upload</div>
-                                                <p class="text-center mb0">* doc, docx, rtf, pdf - Max. 6 MB</p>
-                                                <input type="file" name="" class="resume">
-                                            </div>
-                                            <div class="ib hroizonal-line mb30">
-                                                <div class="horizonal-text">OR</div>
-                                            </div>
-                                            <div class="copy-paste-resume mt10">
-                                                <textarea name="" row="12" placeholder="Copy and paste resume"></textarea>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group d-flex justify-content-end">
-                                    <input type="submit" value="Verify" class="custom-btn">
-                                </div>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-
-            <div class="cmodal-overly skill-overly">
-                <div class="global-modal skill-modal">
-                    <span class="close-modal"><i class="fa fa-close"></i></span>
-                    <div class="modal-body">
-                        <div class="cmodal-header d-block">
-                            <h3>Skills</h3>
-                        </div>
-                        <div class="modal-description mt10">
-                            <form action="">
-                                <div class="form-group">
-                                    <div class="row">
-                                        <div class="col-md-12">
-                                            <div class="custom-group">
-                                                <input type="text" name="" id="name" class="formbb inputc">
-                                                <label for="name" class="test">Please Type Here</label>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                                <div class="form-group d-flex justify-content-end">
-                                    <input type="submit" value="Verify" class="custom-btn">
-                                </div>
-                            </form>
-                        </div>
+                    <div class="flex-row">
+                        <p>{{Auth::user()->email}}</p>
+                        <a href="http://">Verify</a>
                     </div>
                 </div>
             </div>
         </div>
-        @endsection
-        @push('css')
-        <link rel="stylesheet" href="{{asset('css/banner.css')}}">
-        <link rel="stylesheet" href="{{asset('css/seeker_index.css')}}">
-        <link rel="stylesheet" href="{{asset('css/profile.css')}}">
-        <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker3.standalone.css')}}">
-        @endpush
+    </div>
+    <div class="col-md-9 col-xs-8">
+        <p class="d-flex justify-content-end">Last Updated on: 7 january 2020</p>
+        <div class="row">
+            <div class="col-md-12 col-xs-12 mb10">
+                <div class="bg-white row">
+                    <div class="col-md-9">
+                        <h4 class="medium">Fresher</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="fr blue-color show-modal" id="fr"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-xs-12 mb10">
+                <div class="bg-white row">
+                    <div class="col-md-9">
+                        <h4 class="medium">Resume</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="fr blue-color show-modal" id="resume"><i class="fa fa-upload" aria-hidden="true"></i></a>
+                    </div>
+                    <div class="col-md-12 mt10">
+                        <div class="show-upload-cv">
+                            <div class="ico-holder">
+                                <i class="fa fa-file-text-o" style="font-size: 40px; color: #5d4da8"></i>
+                            </div>
+                            <div class="upload-cv-text">
+                                <p class="mb0">Thet Tun</p>
+                                <div class="cv-upload-action">
+                                    <a href="http://">Download</a>
+                                    <a href="http://">Delete</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sx-12 mb10">
+                <div class="bg-white row">
+                    <div class="col-md-9">
+                        <h4 class="medium">Skills</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="fr blue-color show-modal" id="skill"><i class="fa fa-plus"></i>Add</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-12 col-sx-12 mb10">
+                <div class="bg-white row">
+                    <div class="col-md-9">
+                        <h4 class="medium">IT Skills</h4>
+                    </div>
+                    <div class="col-md-3">
+                        <a class="fr blue-color show-modal" id="skill"><i class="fa fa-plus"></i>Add</a>
+                    </div>
+                </div>
+            </div>
 
-        @push('script')
-        <script src="{{asset('js/seeker.js')}}"></script>
-        <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
-        <script>
-            $(document).ready(function() {
+            <div class="col-md-12 col-sx-12 mb10">
+                @include('users.job_preference')
+            </div>
 
-                $(".tocurrent").datepicker({
-                    format: 'dd-MM-yyyy',
-                    endDate: "0d",
-                    todayHighlight: true
-                });
+            <div class="col-md-12 col-sx-12 mb10">
+                @include('users.workexperience')
+            </div>
 
-                $(".startyear").datepicker({
-                    format: "yyyy",
-                    viweMode: "years",
-                    minViewMode: "years",
-                    endDate: "year"
-                });
+            <!-- Education Detail -->
+            <div class="col-md-12 col-sx-12 mb10">
+                @include('users.education')
+            </div>
 
-                $(".month").datepicker({
-                    format: "MM",
-                    viweMode: "months",
-                    minViewMode: "months",
-                    endDate: 'today',
-                    todayHighlight: true
-                });
-            });
-        </script>
-        <script src="{{asset('js/customselect.js')}}"></script>
-        @endpush
+            <!-- Projects -->
+            <div class="col-md-12 col-sx-12 mb10">
+                @include('users.project')
+            </div>
+
+            <!-- Course And Certification -->
+            <div class="col-md-12 col-sx-12 mb10">
+                @include('users.certificate')
+            </div>
+
+            <!-- Personal Detail -->
+            <div class="col-md-12 col-sx-12 mb10">
+                @include('users.personalDetail')
+            </div>
+            <a href="{!! route('seeker.generate_certificate', [$user['id']]) !!}"
+            class="btn btn-warning pull-right" style="margin-right: 28px;margin-bottom: 10px;"
+            target="_blank"><i class="fa fa-certificate"></i> Generate
+            PDF</a>
+        </div>
+    </div>
+    <!-- CModal Overly Section -->
+    <div class="cmodal-overly fr-overly">
+        <div class="global-modal fr-modal">
+            <span class="close-modal"><i class="fa fa-close"></i></span>
+            <div class="modal-body">
+                <div class="cmodal-header d-block">
+                    <h3>Profile Summary</h3>
+                </div>
+                <div class="modal-description mt10">
+                    <form action="">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <label for="">Enter Your Summary</label>
+                                    <input type="text" name="" id="" class="formbb">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-end">
+                            <input type="submit" value="Verify" class="custom-btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="cmodal-overly resume-overly">
+        <div class="global-modal resume-modal">
+            <span class="close-modal"><i class="fa fa-close"></i></span>
+            <div class="modal-body">
+                <div class="cmodal-header d-block">
+                    <h3>Upload Resume</h3>
+                    <p>Upload your resume to get more opportunity to your relevant profile.</p>
+                </div>
+                <div class="modal-description mt10">
+                    <form action="{{url('uploadCv')}}" method="post" enctype="multipart/form-data">
+                        @csrf
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="upload-resume mb10">
+                                        <div class="d-flex justify-content-center mb10">
+                                            <i class="fa fa-cloud-upload" style="font-size: 31px; color: #5d4da8"></i>
+                                        </div>
+                                        <p class="mb30 text-center">Thet_Tun.pdf</p>
+                                        <div class="line-btn text-center">or select file to upload</div>
+                                        <p class="text-center mb0">* doc, docx, rtf, pdf - Max. 6 MB</p>
+                                        <input type="file" name="" class="resume">
+                                    </div>
+                                    <div class="ib hroizonal-line mb30">
+                                        <div class="horizonal-text">OR</div>
+                                    </div>
+                                    <div class="copy-paste-resume mt10">
+                                        <textarea name="" row="12" placeholder="Copy and paste resume"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-end">
+                            <input type="submit" value="Verify" class="custom-btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="cmodal-overly skill-overly">
+        <div class="global-modal skill-modal">
+            <span class="close-modal"><i class="fa fa-close"></i></span>
+            <div class="modal-body">
+                <div class="cmodal-header d-block">
+                    <h3>Skills</h3>
+                </div>
+                <div class="modal-description mt10">
+                    <form action="">
+                        <div class="form-group">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <div class="custom-group">
+                                        <input type="text" name="" id="name" class="formbb inputc">
+                                        <label for="name" class="test">Please Type Here</label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="form-group d-flex justify-content-end">
+                            <input type="submit" value="Verify" class="custom-btn">
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endsection
+@push('css')
+<link rel="stylesheet" href="{{asset('css/banner.css')}}">
+<link rel="stylesheet" href="{{asset('css/seeker_index.css')}}">
+<link rel="stylesheet" href="{{asset('css/profile.css')}}">
+<link rel="stylesheet" href="{{asset('css/bootstrap-datepicker3.standalone.css')}}">
+@endpush
+
+@push('script')
+<script src="{{asset('js/seeker.js')}}"></script>
+<script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
+<script>
+    $(document).ready(function() {
+
+        $(".tocurrent").datepicker({
+            format: 'dd-MM-yyyy',
+            endDate: "0d",
+            todayHighlight: true
+        });
+
+        $(".startyear").datepicker({
+            format: "yyyy",
+            viweMode: "years",
+            minViewMode: "years",
+            endDate: "year"
+        });
+
+        $(".month").datepicker({
+            format: "MM",
+            viweMode: "months",
+            minViewMode: "months",
+            endDate: 'today',
+            todayHighlight: true
+        });
+
+        // avatar save
+
+        $("#avatar").on("change", function() {
+            if($(this).val().length != 0) {
+               $("#formid").submit();
+            }
+        });
+    });
+</script>
+<script src="{{asset('js/customselect.js')}}"></script>
+@endpush

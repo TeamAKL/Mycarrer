@@ -11,15 +11,15 @@
         </div>
         <div class="user-dashboard-parent row">
             <div class="user-dashboard-left col-md-4 col-xl-3 col-lg-4">
-                @if(Auth::user())
+                @auth()
                 <div class="profile-sec mb8">
                     <div class="user-imgname">
                         <div class="profile-avatar avatar-dashboard">
-                            <img src="{{asset('images/adele.jpg')}}" alt="" class="user-image">
-                            <label for="avatar" class="camera-btn">
+                            <img src="{{asset('images/seeker_profile/'.Auth::user()->profile_details->profile_image)}}" alt="" class="user-image">
+                            {{-- <label for="avatar" class="camera-btn">
                                 <input type="file" name="" id="avatar">
                                 <i class="fa fa-camera"></i>
-                            </label>
+                            </label> --}}
                         </div>
                         <div class="user-name">
                             <h3>{{Auth::user()->name}}</h3>
@@ -27,11 +27,11 @@
                     </div>
                     <div class="clearb mt10">
                         <p class="fl fs-12 color-g-b">09957363847</p>
-                        <a class="fr" id="ph-show-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        {{-- <a class="fr" id="ph-show-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
                     </div>
                     <div class="clearb mt10">
                         <p class="fl fs-12 color-g-b">{{Auth::user()->email}}</p>
-                        <a class="fr" id="mail-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a>
+                        {{-- <a class="fr" id="mail-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
                     </div>
                     <a class="btn btn-outline-info mt10 w-100" href="{{url('seeker/profile')}}">Update Profile</a>
                     <div class="cmodal-overly phone-overly">
@@ -91,7 +91,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="job-category-holder">
+                <div class="job-category-holder mb8">
                     <div class="row" id="rm-id">
                         <div class="col-md-12 dp-inline">
                             <p class="job-cat">Recommended Jobs <span>(100)</span> </p>
@@ -107,8 +107,9 @@
                         </div>
                     </div>
                 </div>
-                @else
-                <div id="sticky-monster" class="filter-aside mt15">
+                @endauth
+                @guest()
+                <div id="sticky-monster" class="filter-aside mt15 mb8">
                     <aside class="pb0 no-bdr">
                         <div class="engage tc">
                             <h2 class="fs-14 mb20 semi-bold uprcse">New to Mycarrer?</h2>
@@ -128,7 +129,7 @@
                         </div>
                     </aside>
                 </div>
-                @endif
+                @endguest
             </div>
 
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
@@ -216,7 +217,7 @@
                                 </div>
                                 <div class="apply-hover">
                                     <button class="appl-btn apply_btn" post="{{$post->id}}">Apply</button>
-{{--                                    <a href="{{url('seeker/job-detail/'.$post->id)}}" class="appl-btn">Apply</a>--}}
+                                    {{--                                    <a href="{{url('seeker/job-detail/'.$post->id)}}" class="appl-btn">Apply</a>--}}
                                 </div>
                             </div>
                         </div>
@@ -237,32 +238,28 @@
 
 @push('script')
 <script src="{{asset('js/seeker.js')}}"></script>
-@endpush
+<script>
+    $('.apply_btn').on('click',function (e) {
+        e.preventDefault();
+        var $post_id = $(this).attr('post');
+        $.ajax({
+            type: 'post',
+            url: '{{URL::to("checkApplyPost")}}',
+            data: {'post_id':$post_id},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            success: function(data) {
 
-@push('script')
-    <script src="{{asset('js/seeker.js')}}"></script>
-    <script>
-        $('.apply_btn').on('click',function (e) {
-            e.preventDefault();
-            var $post_id = $(this).attr('post');
-            $.ajax({
-                type: 'post',
-                url: '{{URL::to("checkApplyPost")}}',
-                data: {'post_id':$post_id},
-                headers: {
-                    'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
-                },
-                success: function(data) {
-
-                   if(data.status == true){
-                       window.alert('Applied Post');
-                   }else{
-                       window.location.replace("job-detail/"+$post_id);
-                   }
-
+                if(data.status == true){
+                    window.alert('Applied Post');
+                }else{
+                    window.location.replace("job-detail/"+$post_id);
                 }
-            });
+
+            }
         });
-    </script>
+    });
+</script>
 @endpush
 

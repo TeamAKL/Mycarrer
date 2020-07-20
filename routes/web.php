@@ -161,3 +161,4 @@ Route::post('updatepersonaldetail', 'ProfileDetailController@update');
 // Certificate
 Route::post('certificate', 'CertificateController@store');
 Route::get('certEdit', 'CertificateController@edit');
+Route::post('certupdate', 'CertificateController@update');
