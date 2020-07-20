@@ -11,7 +11,7 @@
             <div class="col-md-12 mb10">
                 <div class="bg-white pd20">
                     <p class="score-text">Profile Score</p>
-                    <div class="scroe">
+                     <div class="scroe">
                         <div class="inside-scroe" style="--color:red; --width: 70%;"></div>
                         <span class="scroe-percent" style="--left: 70%;">70%</span>
                     </div>
@@ -71,7 +71,7 @@
                                 <i class="fa fa-file-text-o" style="font-size: 40px; color: #5d4da8"></i>
                             </div>
                             <div class="upload-cv-text">
-                                <p class="mb0">Thet Tun</p>
+                                <p class="mb0">{{$user->profile_details->resume}}</p>
                                 <div class="cv-upload-action">
                                     <a href="http://">Download</a>
                                     <a href="http://">Delete</a>
@@ -170,7 +170,7 @@
                     <p>Upload your resume to get more opportunity to your relevant profile.</p>
                 </div>
                 <div class="modal-description mt10">
-                    <form action="{{url('uploadCv')}}" method="post" enctype="multipart/form-data">
+                    <form action="{{url('profile_detail/create')}}" method="post" enctype="multipart/form-data">
                         @csrf
                         <div class="form-group">
                             <div class="row">
@@ -179,16 +179,15 @@
                                         <div class="d-flex justify-content-center mb10">
                                             <i class="fa fa-cloud-upload" style="font-size: 31px; color: #5d4da8"></i>
                                         </div>
-                                        <p class="mb30 text-center">Thet_Tun.pdf</p>
-                                        <div class="line-btn text-center">or select file to upload</div>
+                                        <div class="line-btn text-center">select file to upload</div>
                                         <p class="text-center mb0">* doc, docx, rtf, pdf - Max. 6 MB</p>
-                                        <input type="file" name="" class="resume">
+                                        <input type="file" name="upload_resume" class="resume">
                                     </div>
                                     <div class="ib hroizonal-line mb30">
                                         <div class="horizonal-text">OR</div>
                                     </div>
                                     <div class="copy-paste-resume mt10">
-                                        <textarea name="" row="12" placeholder="Copy and paste resume"></textarea>
+                                        <textarea name="text_resume" row="12" placeholder="Copy and paste resume"></textarea>
                                     </div>
                                 </div>
                             </div>
