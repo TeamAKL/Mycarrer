@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Country;
 use App\City;
 use App\JobCategory;
+use App\Post;
 use Dotenv\Regex\Result;
 
 class HomeController extends Controller
@@ -21,6 +22,7 @@ class HomeController extends Controller
     public function index()
     {
         $categories = JobCategory::all();
+        $posts = Post::all();
         return view('home', ['categories' => $categories]);
     }
 
