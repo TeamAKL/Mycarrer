@@ -231,7 +231,7 @@
                                     <button class="appl-btn apply_btn" post="{{$post->id}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                                     @endauth
                                     @guest
-                                    <a href="#" id="unauthapply" class="appl-btn apply_btn">Apply</a>
+                                    <a href="#" class="appl-btn apply_btn unauthapply">Apply</a>
                                     @endguest
                                 </div>
                             </div>
@@ -277,7 +277,7 @@
         });
     });
     
-    $("#unauthapply").on("click", function(e) {
+    $(".unauthapply").on("click", function(e) {
         e.preventDefault();
         swal({
             title: "Sorry!",
