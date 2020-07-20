@@ -82,7 +82,7 @@
                         @guest
                         <li class="nav-link guest">
                             <a href="{{url('seeker/login')}}" class="cbtn nav-link-name"><i class="fa fa-user" aria-hidden="true"></i>SEEKER LOGIN</a>
-                            <span class="d-block pt6"><a href="{{url('employer/login')}}">LogIn as Employer Instance</a></span>
+                            <span class="d-block pt6"><a href="{{url('employer/login')}}">LogIn as Employer Instead</a></span>
                         </li>
                         @else
                         <li class="nav-link">

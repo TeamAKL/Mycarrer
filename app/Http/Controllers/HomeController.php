@@ -10,6 +10,8 @@ use App\City;
 use App\JobCategory;
 use App\Post;
 use Dotenv\Regex\Result;
+use Carbon\Carbon;
+use App\Company;
 
 class HomeController extends Controller
 {
@@ -23,7 +25,10 @@ class HomeController extends Controller
     {
         $categories = JobCategory::all();
         $posts = Post::all();
-        return view('home', ['categories' => $categories]);
+        $todayjobs = Post::where('job_status', 'active')->whereDate('created_at', '=',  Carbon::today())->count();
+        $companies = Company::all();
+        // dd($companies);
+        return view('home', ['categories' => $categories, "posts" => $posts, "todayjobs" => $todayjobs, "companies" => $companies]);
     }
 
     public function countrySearch(Request $request)
