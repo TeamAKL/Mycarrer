@@ -71,12 +71,12 @@
                                 <i class="fa fa-file-text-o" style="font-size: 40px; color: #5d4da8"></i>
                             </div>
                             <div class="upload-cv-text">
-                                @if(isset($user->profile_details->resume))
+                                @if($user->profile_details->resume) != "" )
                                 <p class="mb0">{{$user->profile_details->resume}}</p>
                                 <div class="cv-upload-action">
                                     <a href="{{route('cv_file.getDocument')}}" data-toggle="tooltip" title="Download File" class='btn' style=""><i class="fa fa-cloud-download" aria-hidden="true"></i>
                                     </a>
-                                    <a href="{{route('cv_file.dropDocument')}}" data-toggle="tooltip" title="Delete File" class='btn' style=""><i class="fa fa-cloud-download" aria-hidden="true"></i>
+                                    <a href="{{route('cv_file.dropDocument')}}" data-toggle="tooltip" title="Delete File" class='btn' style=""><i class="fa fa-trash" aria-hidden="true"></i>
                                     </a>
                                 </div>
                                     @else

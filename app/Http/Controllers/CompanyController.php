@@ -163,4 +163,9 @@ class CompanyController extends Controller
     {
         //
     }
+
+    public function getAllResume(){
+        $resumes = User::with(['projects', 'education', 'work_experiences', 'job_preferences', 'profile_details', 'certificates'])->where('role_id','=','0')->get();
+        return view('resumes.index', ['resumes' => $resumes]);
+    }
 }

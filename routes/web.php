@@ -122,10 +122,7 @@ Route::post('company/company-info', 'CompanyController@update');
 
 
 //for all resumes
-
-Route::get('allresumes', function(){
-    return view('resumes.index');
-})->name('allresumes');
+Route::get('allresumes','CompanyController@getAllResume')->name('allresumes');
 
 //for purchased
 Route::get('purchasedresumes', function(){
