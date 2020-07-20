@@ -6,7 +6,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12 mt-20">
-                <h1 class="main-header">Dashboard</h1>
+                <h1 class="main-header"> @if( Route::currentRouteName() == 'seeker') Dashboard @else Search result - ({{$posts->count()}}) @endif</h1>
             </div>
         </div>
         <div class="user-dashboard-parent row">
@@ -118,17 +118,11 @@
                         <div class="engage tc">
                             <h2 class="fs-14 mb20 semi-bold uprcse">New to Mycarrer?</h2>
                             <div class="upload-resume">
-                                <a href="" title="Click to upload your resume" class="btn block resume-btn btn-orange">
+                                <a href="{{url('seeker/login')}}" title="Click to upload your resume" class="btn block resume-btn btn-orange">
                                     <span class="uprcse semi-bold">Upload Resume</span>
                                     <span class="block fs-11 mt10">We will create your profile</span>
                                 </a>
                                 
-                            </div>
-                            <div class="or">
-                                <span>OR</span>
-                            </div>
-                            <div class="signinModal">
-                                <a href="" draggable="false" class="semi-bold reg-btn block uprcse">Register with us</a>
                             </div>
                         </div>
                     </aside>
@@ -137,6 +131,7 @@
             </div>
             
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
+                @auth()
                 <div class="user-status-area mb10">
                     <div class="dashboard-status text-center">
                         <h3 class="fs-30 custom-blue">0</h3>
@@ -155,9 +150,11 @@
                         <p>Recruiter Followed</p>
                     </div>
                 </div>
+                
                 <div class="recommended-job">
                     <h3>Recommended Jobs - <span> 100 </span></h3>
                 </div>
+                @endauth
                 {{-- @dd($posts) --}}
                 <!-- Job Card -->
                 <div class="row">
@@ -231,7 +228,7 @@
                                     <button class="appl-btn apply_btn" post="{{$post->id}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                                     @endauth
                                     @guest
-                                    <a href="#" id="unauthapply" class="appl-btn apply_btn">Apply</a>
+                                    <a href="#" class="appl-btn apply_btn unauthapply">Apply</a>
                                     @endguest
                                 </div>
                             </div>
@@ -277,7 +274,7 @@
         });
     });
     
-    $("#unauthapply").on("click", function(e) {
+    $(".unauthapply").on("click", function(e) {
         e.preventDefault();
         swal({
             title: "Sorry!",
