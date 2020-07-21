@@ -38,68 +38,12 @@
                         {{-- <a class="fr" id="mail-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
                     </div>
                     <a class="btn btn-outline-info mt10 w-100" href="{{url('seeker/profile')}}">Update Profile</a>
-                    <div class="cmodal-overly phone-overly">
-                        <div class="global-modal phone-modal">
-                            <span class="close-modal"><i class="fa fa-close"></i></span>
-                            <div class="modal-body">
-                                <div class="cmodal-header d-block">
-                                    <h3>Verify Phone Number</h3>
-                                    <p>We will send OPT to your phone</p>
-                                </div>
-                                <div class="modal-description mt10">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group d-flex justify-content-end">
-                                            <input type="submit" value="Verify" class="custom-btn">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cmodal-overly">
-                        <div class="global-modal">
-                            <span class="close-modal"><i class="fa fa-close"></i></span>
-                            <div class="modal-body">
-                                <div class="cmodal-header d-block">
-                                    <h3>Verify Phone Number</h3>
-                                    <p>We will send OPT to your phone</p>
-                                </div>
-                                <div class="modal-description mt10">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group d-flex justify-content-end">
-                                            <input type="submit" value="Verify" class="custom-btn">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="job-category-holder mb8">
                     <div class="row" id="rm-id">
-                        <div class="col-md-12 dp-inline">
+                        {{-- <div class="col-md-12 dp-inline">
                             <p class="job-cat">Recommended Jobs <span>(100)</span> </p>
-                        </div>
+                        </div> --}}
                         <div class="col-md-12 dp-inline">
                             <p class="job-cat">Applied Jobs <span>({{Auth::user()->posts->count()}})</span></p>
                         </div>
@@ -151,9 +95,9 @@
                     </div>
                 </div>
                 
-                <div class="recommended-job">
+                {{-- <div class="recommended-job">
                     <h3>Recommended Jobs - <span> 100 </span></h3>
-                </div>
+                </div> --}}
                 @endauth
                 {{-- @dd($posts) --}}
                 <!-- Job Card -->

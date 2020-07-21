@@ -1,7 +1,7 @@
 <div class="sidebar" data="blue">
     <div class="sidebar-wrapper">
         <div class="logo">
-            <a href="#" class="simple-text logo-normal">{{ __('Mycareers') }}</a>
+        <a href="{{url('employer')}}" class="simple-text logo-normal">{{ __('Mycareers') }}</a>
             <span style=" color: #fff;
             font-size: .7rem;
             font-weight: 600;">
