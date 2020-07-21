@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\ProfileDetail;
+use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -182,5 +183,20 @@ class ProfileDetailController extends Controller
         ProfileDetail::where('user_id', $user_id)->update(array('resume' => ''));
         return redirect('seeker/profile');
 
+    }
+
+    public function addskill(Request $req)
+    {
+        Skill::create([
+            'skill' => $req->skill,
+            'user_id' => Auth::id()
+        ]);
+        return redirect('seeker/profile');
+    }
+
+    public function deleteskill(Request $req)
+    {
+        Skill::where('id', $req->id)->delete();
+        return response()->json(["data" => true]);
     }
 }

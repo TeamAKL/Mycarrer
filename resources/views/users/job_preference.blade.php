@@ -106,7 +106,7 @@
                                 </div>
 
                                 <div class="custom-group">
-                                    <span class="group-lable">Current Salary</span>
+                                    <span class="group-lable">Expected Salary</span>
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="custom-select">

@@ -203,9 +203,9 @@
                                             <span>Job Description: </span>
                                             {{strip_tags($post->job_description)}}
                                         </p>
-                                        <p class="job-skill">
+                                        {{-- <p class="job-skill">
                                             <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
-                                        </p>
+                                        </p> --}}
                                     </a>
                                 </div>
                             </div>
@@ -284,7 +284,7 @@
             button: "Ok!",
         }).then(result => {
             if(result) {
-                window.location.pathname = '/seeker/login';
+                window.location.href = '/seeker/login';
             }
         });
     });
