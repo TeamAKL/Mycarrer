@@ -22,7 +22,7 @@
     {{-- <link rel="stylesheet" href="{{asset('css/seeker_index.css')}}"> --}}
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    
+
     @stack('css')
     <title>MyCareers</title>
 </head>
@@ -52,12 +52,12 @@
                                 <a href="#">JOB BY POSITION</a>
                                 <a href="#">JOB BY SKILL</a>
                                 <a href="#">PART TIME JOB</a>
-                                
+
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="" class="dropbtn">FRESHER </a>
-                            
+
                         </li>
                         <li class="dropdown">
                             <span href="" class="dropbtn">BLOG</span>
@@ -67,7 +67,7 @@
                                 <a href="#">EMPLOYER TOOLKITS</a>
                                 <a href="#">HOW TO LOGIN</a>
                                 <a href="#">HOW TO POST</a>
-                                
+
                             </div>
                         </li>
                         <li class="dropdown">
@@ -96,7 +96,7 @@
                                 <img src="{{asset('images/seeker_profile/defaultavator.webp')}}" alt="" class="current-user">
                                 @endif
                             </div>
-                            
+
                             <div class="pop-share profile-hover dropdown-content">
                                 <a class="dropdown-item">{{ Auth::user()->name }}</a>
                                 {{-- <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
@@ -109,20 +109,20 @@
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
-                            
-                            
+
+
                             {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form> --}}
@@ -148,7 +148,7 @@
                     @inject('Counter', 'App\Http\CounterTrait\Counter')
                     <i class="fa fa-eye" aria-hidden="true"></i>{{$Counter->userCounter()}}
                 </span>
-                
+
             </div>
             <div class="col-md-3">
                 <a href="tel:+9599771777212"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09771777212</a>

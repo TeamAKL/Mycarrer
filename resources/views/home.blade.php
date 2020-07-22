@@ -40,7 +40,7 @@
             @endforeach
         </ul>
     </div>
-    
+
     <div class="bg-gray my-5">
         <div class="ch job-live">
             <i class="fa fa-briefcase d-block" aria-hidden="true"></i>
@@ -55,11 +55,11 @@
         <div class="ch company-hiring">
             <i class="fa fa-users d-block" aria-hidden="true"></i>
             <span class="d-block">300</span>
-            <span class="d-block">Companies Hiring Today</span>
+            <span class="d-block">Companies Hiring</span>
         </div>
     </div>
-    
-    
+
+
     <div class="row my-5">
         @foreach($categories as $category)
         <div class="col-md-4 text-center">
@@ -69,9 +69,9 @@
         </div>
         @endforeach
     </div>
-    
+
     <!-- For Service -->
-    
+
 <div id="fh5co-staff">
 <div class="container">
 <div class="col-md-12">
@@ -82,7 +82,7 @@ SERVICES <span>We are looking forward to being your partner.</span>
 <div class="row">
 <div class="col-md-4 col-sm-6 col-xs-12 text-center">
 <div class="staff">
-<div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">	
+<div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">
 </div>
 
 <h3><a href="#">Mike Smith</a></h3>
@@ -93,11 +93,11 @@ Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
 </div>
 <div class="col-md-4 col-sm-6 col-xs-12 text-center">
 <div class="staff">
-<div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">	
+<div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">
 </div>
 
 <h3><a href="#">Mike Smith</a></h3>
-<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. 
+<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
 Nullam ac urna eu felis dapibus condimentum.Sed ut imperdiet nisi.</p>
 <a href="" class="btn btn-second btn-full">Detail</a>
 </div>
@@ -108,7 +108,7 @@ Nullam ac urna eu felis dapibus condimentum.Sed ut imperdiet nisi.</p>
 </div>
 
 <h3><a href="#">Mike Smith</a></h3>
-<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit. 
+<p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
 Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
 <a href="" class="btn btn-second btn-full">Detail</a>
 </div>
@@ -134,7 +134,7 @@ Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
         margin-bottom: 60px;
     }
     .content-slider li{
-        
+
         text-align: center;
         width: 175px;
         height:150px;
@@ -144,12 +144,12 @@ Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
         width:130px;
         height:100px;
         box-shadow: 0 5px 8px 5px gray, 0 5px 20px 5px gray;
-        
+
     }
     .demo{
         width: 800px;
     }
-    
+
 </style>
 @endpush
 
@@ -171,4 +171,3 @@ Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
     });
 </script>
 @endpush
-                
