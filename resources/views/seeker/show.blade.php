@@ -68,7 +68,7 @@
                                 </a>
                                 <div class="row mt10">
                                     <di class="col-md-6">
-                                        <span><i class="fa fa-map-marker" aria-hidden="true"></i> Singapore</span>
+                                    <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->address}}</span>
                                     </di>
                                     <di class="col-md-6">
                                         <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
@@ -206,8 +206,14 @@ aria-hidden="true">
 @endpush
 
 @push('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset('js/seeker.js')}}"></script>
 <script>
+    
+    @if(session()->has('needcv'))
+    console.log("hello in");
+    swal('Sorry!','You need to upload CV first','error');
+    @endif
     
     function showModal(check) {
         if(check == 1){

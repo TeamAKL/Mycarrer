@@ -64,9 +64,12 @@ class UserController extends Controller
         $file_name = $user->name . "_cv_form.pdf";
         $cv_file = $request->file('upload_resume');
 
-
         if (isset($request->checkcv)) {
+            if(isset($user->profile_details->resume)) {
             $pdf = file_get_contents(public_path() . '/resumes/resumes/' . $user->profile_details->resume);
+            } else {
+                return false;
+            }
         } else {
             $pdf = file_get_contents($cv_file);
         }
@@ -76,6 +79,7 @@ class UserController extends Controller
             $messages->from('thettun1741997@gmail.com', $name = 'AKL');
             $messages->replyTo('thettun1741997@gmail.com', $name = 'AKL');
         });
+        return true;
 
     }
 
@@ -84,9 +88,14 @@ class UserController extends Controller
         $user_id = Auth::id();
         $user = User::findOrFail($user_id);
         $post = Post::findOrFail($request->post_id);
-        $user->posts()->attach($post);
-        $this->sendEmailToCompany($request);
-        return redirect('seeker/dashboard');
+        $check = $this->sendEmailToCompany($request);
+        if($check) {
+            $user->posts()->attach($post);
+            return redirect('seeker/dashboard');
+        } else {
+            return redirect('/seeker/job-detail/'.$request->post_id)->with('needcv', "Sorry! you don't upload any CV");
+        }
+        
     }
 
     public function checkApplyPost(Request $request)

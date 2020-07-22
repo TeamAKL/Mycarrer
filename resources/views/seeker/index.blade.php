@@ -129,7 +129,7 @@
                                         </a>
                                         <div class="row mt10">
                                             <di class="col-md-6">
-                                                <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->company->country}}</span>
+                                                <span><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->address}}</span>
                                             </di>
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
