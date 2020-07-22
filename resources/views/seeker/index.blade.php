@@ -38,68 +38,12 @@
                         {{-- <a class="fr" id="mail-modal"><i class="fa fa-pencil" aria-hidden="true"></i></a> --}}
                     </div>
                     <a class="btn btn-outline-info mt10 w-100" href="{{url('seeker/profile')}}">Update Profile</a>
-                    <div class="cmodal-overly phone-overly">
-                        <div class="global-modal phone-modal">
-                            <span class="close-modal"><i class="fa fa-close"></i></span>
-                            <div class="modal-body">
-                                <div class="cmodal-header d-block">
-                                    <h3>Verify Phone Number</h3>
-                                    <p>We will send OPT to your phone</p>
-                                </div>
-                                <div class="modal-description mt10">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group d-flex justify-content-end">
-                                            <input type="submit" value="Verify" class="custom-btn">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="cmodal-overly">
-                        <div class="global-modal">
-                            <span class="close-modal"><i class="fa fa-close"></i></span>
-                            <div class="modal-body">
-                                <div class="cmodal-header d-block">
-                                    <h3>Verify Phone Number</h3>
-                                    <p>We will send OPT to your phone</p>
-                                </div>
-                                <div class="modal-description mt10">
-                                    <form action="">
-                                        <div class="form-group">
-                                            <div class="row">
-                                                <div class="col-md-4">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                                <div class="col-md-8">
-                                                    <input type="text" name="" id="" class="formbb">
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <div class="form-group d-flex justify-content-end">
-                                            <input type="submit" value="Verify" class="custom-btn">
-                                        </div>
-                                    </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
                 </div>
                 <div class="job-category-holder mb8">
                     <div class="row" id="rm-id">
-                        <div class="col-md-12 dp-inline">
+                        {{-- <div class="col-md-12 dp-inline">
                             <p class="job-cat">Recommended Jobs <span>(100)</span> </p>
-                        </div>
+                        </div> --}}
                         <div class="col-md-12 dp-inline">
                             <p class="job-cat">Applied Jobs <span>({{Auth::user()->posts->count()}})</span></p>
                         </div>
@@ -122,17 +66,17 @@
                                     <span class="uprcse semi-bold">Upload Resume</span>
                                     <span class="block fs-11 mt10">We will create your profile</span>
                                 </a>
-                                
+
                             </div>
                         </div>
                     </aside>
                 </div>
                 @endguest
             </div>
-            
+
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
                 @auth()
-                <div class="user-status-area mb10">
+                {{-- <div class="user-status-area mb10">
                     <div class="dashboard-status text-center">
                         <h3 class="fs-30 custom-blue">0</h3>
                         <p>Viewed your profile</p>
@@ -149,11 +93,11 @@
                         <h3 class="fs-30 custom-blue">0</h3>
                         <p>Recruiter Followed</p>
                     </div>
-                </div>
-                
-                <div class="recommended-job">
+                </div> --}}
+
+                {{-- <div class="recommended-job">
                     <h3>Recommended Jobs - <span> 100 </span></h3>
-                </div>
+                </div> --}}
                 @endauth
                 {{-- @dd($posts) --}}
                 <!-- Job Card -->
@@ -201,11 +145,11 @@
                                     <a href="{{url('seeker/job-detail/'.$post->id)}}" class="job-des-holder" target="_blank">
                                         <p class="job-desc">
                                             <span>Job Description: </span>
-                                            {{strip_tags($post->job_description)}}
+                                            {!!strip_tags($post->job_description)!!}
                                         </p>
-                                        <p class="job-skill">
+                                        {{-- <p class="job-skill">
                                             <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
-                                        </p>
+                                        </p> --}}
                                     </a>
                                 </div>
                             </div>
@@ -221,7 +165,7 @@
                                             <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="apply-hover">
                                     @auth()
@@ -237,7 +181,7 @@
                     @endforeach
                     {{ $posts->links() }}
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -263,17 +207,17 @@
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             },
             success: function(data) {
-                
+
                 if(data.status == true){
                     window.location.replace('applied-job/'+$post_id);
                 }else{
                     window.location.replace("job-detail/"+$post_id);
                 }
-                
+
             }
         });
     });
-    
+
     $(".unauthapply").on("click", function(e) {
         e.preventDefault();
         swal({
@@ -284,7 +228,7 @@
             button: "Ok!",
         }).then(result => {
             if(result) {
-                window.location.pathname = '/seeker/login';
+                window.location.href = '/seeker/login';
             }
         });
     });

@@ -14,10 +14,9 @@
         <div class="work-company">
             <p class="company">{{$workexp->organisation}}</p>
             <p class="date">{{$workexp->work_from}} to {{$workexp->work_till ? $workexp->work_till : 'Present'}}</p>
-            <p class="salary">Monthly Salary: SGD 1000</p>
         </div>
         <div class="job-description">
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Fugiat dicta cum laboriosam consequatur, nemo tempore, doloremque minus quae architecto, illo possimus dignissimos. Corrupti amet reiciendis deleniti facere facilis cupiditate atque.</p>
+        <p>{{$workexp->profile_detail}}</p>
         </div>
     </div>
     @endforeach
@@ -78,13 +77,13 @@
                                     </div>
                                 </div>
 
-                                <div class="floating-label-input mb30">
+                                {{-- <div class="floating-label-input mb30">
                                     <input type="text" id="noticPeriod" name="noticePeriod" required/>
                                     <label for="noticPeriod" >Notice Period</label>
                                     <span class="line"></span>
-                                </div>
+                                </div> --}}
 
-                                <div class="custom-group">
+                                {{-- <div class="custom-group">
                                     <span class="group-lable">Current Salary</span>
                                     <div class="row">
                                         <div class="col-md-4">
@@ -116,7 +115,7 @@
                                         <span class="checkmark"></span>
                                     </label>
                                     <span class="calculatedSalary"></span>
-                                </div>
+                                </div> --}}
 
                                 <div class="custom-group">
                                     <label for="desProfile" >Describe Your Job Profile</label>
@@ -154,6 +153,7 @@
         $(".calculatedSalary").html($finalresult);
     });
 
+
     $(".show-modal").on('click', function() {
         $('body').css('overflow-y', 'hidden');
         let $index = $(this).attr('id');
@@ -168,39 +168,39 @@
                     $("#organisation").val(data.organisation);
                     checkCurrentCompany(data.current_company)
                     $("#workfrom").val(data.work_from);
-                    $("#noticPeriod").val(data.notc_period);
+                    // $("#noticPeriod").val(data.notc_period);
                     if(data.work_till) {
                         $("#worktill").val(data.work_till);
                     } else {
                         $("#worktill").val('Present');
                     }
 
-                    $(".select-items.select-hide div").each(function() {
-                        if($(this).html() == data.salary_unit) {
-                            $(this).addClass("same-as-selected");
-                            $("div.select-selected").html(data.salary_unit);
-                        }
-                    });
+                    // $(".select-items.select-hide div").each(function() {
+                    //     if($(this).html() == data.salary_unit) {
+                    //         $(this).addClass("same-as-selected");
+                    //         $("div.select-selected").html(data.salary_unit);
+                    //     }
+                    // });
 
-                    $(".amount").val(data.salary_amount);
-                    $("input[name='salarymode']").each(function() {
-                        if($(this).val() == data.salary_mode) {
-                            $(this).attr("checked", "true");
-                        } else {
-                            $(this).removeAttr("checked");
-                        }
-                    });
+                    // $(".amount").val(data.salary_amount);
+                    // $("input[name='salarymode']").each(function() {
+                    //     if($(this).val() == data.salary_mode) {
+                    //         $(this).attr("checked", "true");
+                    //     } else {
+                    //         $(this).removeAttr("checked");
+                    //     }
+                    // });
                     $("#desProfile").val(data.profile_detail);
                     // For Test in edit
-                    $(".calculatedSalary").html(current_salaryMode(data.salary_mode, null));
-                    $(".amount").bind('keyup', function() {
-                        let $finalresult = current_salaryMode(null, $(this).val());
-                        $(".calculatedSalary").html($finalresult);
-                    });
-                    $("input[name='salarymode']").bind('click', function() {
-                        let $resultf = current_salaryMode($(this).val(), null);
-                        $(".calculatedSalary").html($resultf);
-                    });
+                    // $(".calculatedSalary").html(current_salaryMode(data.salary_mode, null));
+                    // $(".amount").bind('keyup', function() {
+                    //     let $finalresult = current_salaryMode(null, $(this).val());
+                    //     $(".calculatedSalary").html($finalresult);
+                    // });
+                    // $("input[name='salarymode']").bind('click', function() {
+                    //     let $resultf = current_salaryMode($(this).val(), null);
+                    //     $(".calculatedSalary").html($resultf);
+                    // });
                 }
             });
             $("#expwork").append("<input type='hidden' value='"+ $dataid +"' name='id'/>");
@@ -215,14 +215,10 @@
             $("#desProfile").val();
             checkCurrentCompany("")
             $("#worktill").val('Present');
-            $("#workfrom").val();
-            $("#noticPeriod").val("");
-            $("div.select-selected").html("Select");
-            $(".amount").val("");
-            $("input[value='Annually']").removeAttr("checked");
-            $(".calculatedSalary").html("");
-            $(".expwork").attr('action', '{{url("addworkexp")}}');
-            $(".expworksubmit").val("Save");
+            $("#desProfile").val("");
+            $("#workfrom").val("");
+            $("#expwork").attr('action', '{{url("addworkexp")}}');
+            $("#expworksubmit").val("Save");
         }
     });
 

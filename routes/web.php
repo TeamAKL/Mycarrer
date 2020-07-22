@@ -164,3 +164,10 @@ Route::get('getDocument', 'ProfileDetailController@getDocument')->name('cv_file.
 Route::get('dropDocument', 'ProfileDetailController@dropDocument')->name('cv_file.dropDocument');
 
 Route::get('seeker/applied-job/{id}', 'PostController@appliedjob');
+
+// Skill
+
+Route::post('skills', 'ProfileDetailController@addskill');
+Route::post('deleteskill', 'ProfileDetailController@deleteskill');
+Route::post('phone_edit', 'UserController@phoneupdate');
+Route::post('email_edit', 'UserController@emailupdate');

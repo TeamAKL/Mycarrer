@@ -71,7 +71,15 @@
                     @else
                     <div class="profile">
                         <div class="row mb10">
-                            <div class="col-xs-9 col-sm-8 col-md-8">{{Auth::user()->name}}</div>
+                            <div class="col-xs-9 col-sm-8 col-md-8" style="text-align:center;">
+                             {{Auth::user()->name}}<br>
+                             {{-- <img src="{{asset('images/1.jpg')}}" alt="Profile Photo" class="img-thumbnail" width="110px" height="89px"> --}}
+                             @if(isset(Auth::user()->profile_details->profile_image))
+                             <img src="{{asset('images/seeker_profile/'.Auth::user()->profile_details->profile_image)}}" alt="" class="img-thumbnail" width="110px">
+                             @else
+                             <img src="{{asset('images/seeker_profile/defaultavator.webp')}}" alt="" class="img-thumbnail" width="110px">
+                             @endif
+                            </div>
                             <div class="col-xs-3 col-sm-4 col-md-4">
                                 <div class="circle-wrap">
                                     <div class="circle">
@@ -90,11 +98,11 @@
                         <hr>
                         <div class="row">
                             <div class="col-md-6 offset-md-3 col-sm-6 actions text-center">
-                                <div class="profile-meter">
+                                <!-- <div class="profile-meter">
                                     <div class="view">
                                         <span><span class="badge badge-primary badge-pill">14</span>Pending Actions</span>
                                     </div>
-                                </div>
+                                </div> -->
                                 <div class="text-center">
                                     <a href="{{url('seeker/profile')}}" class="btn btn-info">Update Profile</a>
                                 </div>

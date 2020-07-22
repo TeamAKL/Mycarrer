@@ -34,7 +34,7 @@ class UserController extends Controller
     public function showProfile()
     {
         $currentUser = Auth::id();
-        $user = User::with(['projects', 'education', 'work_experiences', 'job_preferences', 'profile_details', 'certificates'])->findOrFail($currentUser);
+        $user = User::with(['projects', 'education', 'work_experiences', 'job_preferences', 'profile_details', 'certificates', 'skills'])->findOrFail($currentUser);
         // dd($user);
         return view('seeker.profile', ['user' => $user]);
     }
@@ -100,5 +100,21 @@ class UserController extends Controller
             'message' => 'Valid Pincode'),
             200
         );
+    }
+
+    public function phoneupdate(Request $req)
+    {
+        $user = User::find(Auth::id());
+        $user->phone_number = $req->phone;
+        $user->save();
+        return redirect('seeker/profile');
+    }
+    
+    public function emailupdate(Request $req)
+    {
+        $user = User::find(Auth::id());
+        $user->email = $req->email;
+        $user->save();
+        return redirect('seeker/profile');
     }
 }

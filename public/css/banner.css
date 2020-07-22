@@ -375,3 +375,7 @@ a.button-fill:hover {
 a.c-yellow:hover {
     color: #f57b00;
 }
+
+.img-thumbnail {
+    height: 89px !important;
+}

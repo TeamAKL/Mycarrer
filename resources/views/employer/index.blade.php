@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Dashboard'), 'pageSlug' => 'dashboard'])
+@extends('layouts.app', ['page' => __("{$company->company_name}"), 'pageSlug' => 'dashboard'])
 @section('content')
 <div class="container">
     <h2>Dashboard</h2>

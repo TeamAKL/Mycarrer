@@ -35,14 +35,12 @@
                             </div>
                             {{-- <img src="{{asset('images/adele.jpg')}}" alt="" class="current-user"> --}}
                             <h4 class="d-block">{{Auth::user()->name}}</h4>
-                            <p>Fresher</p>
+                        @if(isset($user->job_preferences->role))<p>{{$user->job_preferences->role}}</p> @endif
                             <div class="flex-row">
-                                <p>+95957363847</p>
-                                <a href="http://">Verify</a>
+                                <p>{{Auth::user()->phone_number}}</p><span>&nbsp&nbsp&nbsp</span><a class="fr blue-color show-modal" id="phone">Verify</a>
                             </div>
                             <div class="flex-row">
-                                <p>{{Auth::user()->email}}</p>
-                                <a href="http://">Verify</a>
+                                <p>{{Auth::user()->email}}</p><span>&nbsp&nbsp</span><a class="fr blue-color show-modal" id="email">Verify</a>
                             </div>
                         </div>
                     </div>
@@ -53,7 +51,7 @@
                 <p class="d-flex justify-content-end">Last Updated on: {{$user->profile_details->updated_at->format('j F Y')}}</p>
                 @endif
                 <div class="row pt-3">
-                    <div class="col-md-12 col-xs-12 mb10">
+                    {{-- <div class="col-md-12 col-xs-12 mb10">
                         <div class="bg-white row">
                             <div class="col-md-9">
                                 <h4 class="medium">Fresher</h4>
@@ -62,6 +60,9 @@
                                 <a class="fr blue-color show-modal" id="fr"><i class="fa fa-pencil" aria-hidden="true"></i></a>
                             </div>
                         </div>
+                    </div> --}}
+                    <div class="col-md-12 col-sx-12 mb10">
+                        @include('users.itskill')
                     </div>
                     <div class="col-md-12 col-xs-12 mb10">
                         <div class="bg-white row">
@@ -77,7 +78,7 @@
                                         <i class="fa fa-file-text-o" style="font-size: 40px; color: #5d4da8"></i>
                                     </div>
                                     <div class="upload-cv-text">
-                                        @if($user->profile_details->resume != "" )
+                                        @if(isset($user->profile_details) && $user->profile_details->resume != "" )
                                         <p class="mb0">{{$user->profile_details->resume}}</p>
                                         <div class="cv-upload-action">
                                             <a href="{{route('cv_file.getDocument')}}" data-toggle="tooltip" title="Download File" class='btn' style=""><i class="fa fa-cloud-download" aria-hidden="true"></i>
@@ -90,26 +91,6 @@
                                         @endif
                                     </div>
                                 </div>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sx-12 mb10">
-                        <div class="bg-white row">
-                            <div class="col-md-9">
-                                <h4 class="medium">Skills</h4>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="fr blue-color show-modal" id="skill"><i class="fa fa-plus"></i>Add</a>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-md-12 col-sx-12 mb10">
-                        <div class="bg-white row">
-                            <div class="col-md-9">
-                                <h4 class="medium">IT Skills</h4>
-                            </div>
-                            <div class="col-md-3">
-                                <a class="fr blue-color show-modal" id="skill"><i class="fa fa-plus"></i>Add</a>
                             </div>
                         </div>
                     </div>
@@ -173,6 +154,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="cmodal-overly resume-overly">
                 <div class="global-modal resume-modal">
                     <span class="close-modal"><i class="fa fa-close"></i></span>
@@ -191,8 +173,8 @@
                                                 <div class="d-flex justify-content-center mb10">
                                                     <i class="fa fa-cloud-upload" style="font-size: 31px; color: #5d4da8"></i>
                                                 </div>
-                                                <div class="line-btn text-center">select file to upload</div>
-                                                <p class="text-center mb0">* doc, docx, rtf, pdf - Max. 6 MB</p>
+                                                <div class="line-btn text-center cvname">select file to upload</div>
+                                                <p class="text-center mb0 ">* pdf </p>
                                                 <input type="file" name="upload_resume" class="resume">
                                             </div>
                                             <div class="ib hroizonal-line mb30">
@@ -213,22 +195,53 @@
                 </div>
             </div>
             
-            
-            <div class="cmodal-overly skill-overly">
-                <div class="global-modal skill-modal">
+            <div class="cmodal-overly phone-overly">
+                <div class="global-modal phone-modal">
                     <span class="close-modal"><i class="fa fa-close"></i></span>
                     <div class="modal-body">
                         <div class="cmodal-header d-block">
-                            <h3>Skills</h3>
+                            <h3>Verify Phone Number</h3>
                         </div>
                         <div class="modal-description mt10">
-                            <form action="">
+                            <form action="{{url('phone_edit')}}" method="POST">
+                                @csrf
                                 <div class="form-group">
                                     <div class="row">
                                         <div class="col-md-12">
-                                            <div class="custom-group">
-                                                <input type="text" name="" id="name" class="formbb inputc">
-                                                <label for="name" class="test">Please Type Here</label>
+                                            <div class="floating-label-input mb30">
+                                                <input type="text" id="itskill" name="phone" value="{{Auth::user()->phone_number}}" required/>
+                                                <label for="itskill">Phone Number</label>
+                                                <span class="line"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group d-flex justify-content-end">
+                                    <input type="submit" value="Verify" class="custom-btn">
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="cmodal-overly email-overly">
+                <div class="global-modal email-modal">
+                    <span class="close-modal"><i class="fa fa-close"></i></span>
+                    <div class="modal-body">
+                        <div class="cmodal-header d-block">
+                            <h3>Verify Email</h3>
+                        </div>
+                        <div class="modal-description mt10">
+                            <form action="{{url('email_edit')}}" method="POST">
+                                @csrf
+                                <div class="form-group">
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <div class="floating-label-input mb30">
+                                                <input type="email" id="itskill" name="email" value="{{Auth::user()->email}}" required/>
+                                                <label for="itskill">Email</label>
+                                                <span class="line"></span>
                                             </div>
                                         </div>
                                     </div>
@@ -287,7 +300,17 @@
                 
                 $(function () {
                     $('[data-toggle="tooltip"]').tooltip()
-                })
+                });
+                
+                $("input.resume").on("change", function() {
+                    if($(this).val().length != 0) {
+                        var name = $(this)[0].files[0].name;
+                        $("div.cvname").html(name);
+                    } else {
+                        console.log("HELLO");
+                        $("div.cvname").html("Select New CV");
+                    }
+                });
             });
         </script>
         <script src="{{asset('js/customselect.js')}}"></script>
