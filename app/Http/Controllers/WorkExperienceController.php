@@ -37,7 +37,6 @@ class WorkExperienceController extends Controller
     */
     public function store(Request $request)
     {
-        dd($request->all());
         WorkExperience::create([
             'desigination' => $request->designation,
             'organisation' => $request->organisation,
@@ -92,12 +91,12 @@ class WorkExperienceController extends Controller
             $workexp->current_company = $request->currcompany;
             $workexp->work_from = $request->workfrom;
             $workexp->work_till = $request->worktill;
-            $workexp->notc_period = $request->noticePeriod;
-            if($request->salary_unit != null) {
-                $workexp->salary_unit = $request->salary_unit;
-            }
-            $workexp->salary_amount = $request->salary_amount;
-            $workexp->salary_mode = $request->salarymode;
+            // $workexp->notc_period = $request->noticePeriod;
+            // if($request->salary_unit != null) {
+            //     $workexp->salary_unit = $request->salary_unit;
+            // }
+            // $workexp->salary_amount = $request->salary_amount;
+            // $workexp->salary_mode = $request->salarymode;
             $workexp->profile_detail = $request->profiledetail;
             $workexp->save();
             return redirect('seeker/profile');

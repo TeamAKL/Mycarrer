@@ -301,9 +301,9 @@
 
 .job-desc::after {
     content: "....";
-    right: 5px;
+    right: -1px;
     position: absolute;
-    bottom: 35px;
+    bottom: -1px;
 }
 
 .card-body {

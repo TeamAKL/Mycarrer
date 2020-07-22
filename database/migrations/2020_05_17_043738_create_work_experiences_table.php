@@ -20,10 +20,10 @@ class CreateWorkExperiencesTable extends Migration
             $table->string('current_company');
             $table->string('work_from');
             $table->string('work_till')->default('Present')->nullable();
-            $table->string('notc_period');
-            $table->string('salary_unit');
-            $table->string('salary_amount');
-            $table->string('salary_mode');
+            // $table->string('notc_period');
+            // $table->string('salary_unit');
+            // $table->string('salary_amount');
+            // $table->string('salary_mode');
             $table->text('profile_detail');
             $table->unsignedBigInteger('user_id');
             $table->foreign('user_id')->references('id')->on('users');

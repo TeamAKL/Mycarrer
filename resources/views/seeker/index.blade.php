@@ -66,14 +66,14 @@
                                     <span class="uprcse semi-bold">Upload Resume</span>
                                     <span class="block fs-11 mt10">We will create your profile</span>
                                 </a>
-                                
+
                             </div>
                         </div>
                     </aside>
                 </div>
                 @endguest
             </div>
-            
+
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
                 @auth()
                 <div class="user-status-area mb10">
@@ -94,7 +94,7 @@
                         <p>Recruiter Followed</p>
                     </div>
                 </div>
-                
+
                 {{-- <div class="recommended-job">
                     <h3>Recommended Jobs - <span> 100 </span></h3>
                 </div> --}}
@@ -145,7 +145,7 @@
                                     <a href="{{url('seeker/job-detail/'.$post->id)}}" class="job-des-holder" target="_blank">
                                         <p class="job-desc">
                                             <span>Job Description: </span>
-                                            {{strip_tags($post->job_description)}}
+                                            {!!strip_tags($post->job_description)!!}
                                         </p>
                                         {{-- <p class="job-skill">
                                             <span>Skill: Regional Pricing Analyst (6 months renewable or Convertible)</span>
@@ -165,7 +165,7 @@
                                             <a href="http://"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i></a>
                                         </div>
                                     </div>
-                                    
+
                                 </div>
                                 <div class="apply-hover">
                                     @auth()
@@ -181,7 +181,7 @@
                     @endforeach
                     {{ $posts->links() }}
                 </div>
-                
+
             </div>
         </div>
     </div>
@@ -207,17 +207,17 @@
                 'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
             },
             success: function(data) {
-                
+
                 if(data.status == true){
                     window.location.replace('applied-job/'+$post_id);
                 }else{
                     window.location.replace("job-detail/"+$post_id);
                 }
-                
+
             }
         });
     });
-    
+
     $(".unauthapply").on("click", function(e) {
         e.preventDefault();
         swal({
