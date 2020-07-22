@@ -76,7 +76,7 @@
 
             <div class="user-dashboard-right col-md-8 col-xl-9 col-lg-8">
                 @auth()
-                <div class="user-status-area mb10">
+                {{-- <div class="user-status-area mb10">
                     <div class="dashboard-status text-center">
                         <h3 class="fs-30 custom-blue">0</h3>
                         <p>Viewed your profile</p>
@@ -93,7 +93,7 @@
                         <h3 class="fs-30 custom-blue">0</h3>
                         <p>Recruiter Followed</p>
                     </div>
-                </div>
+                </div> --}}
 
                 {{-- <div class="recommended-job">
                     <h3>Recommended Jobs - <span> 100 </span></h3>
