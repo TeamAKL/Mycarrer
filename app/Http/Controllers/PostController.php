@@ -111,7 +111,7 @@ class PostController extends Controller
             $counter = Cache::get($counterKey);
             $user = User::find(Auth::id());
             $hasPostUser =  $user->posts()->where('post_id', $id)->exists();
-            return view('seeker.show', ["post" => $postDetail, "counter" => $counter,"hasPostUser" => $hasPostUser]);
+            return view('seeker.show', ["post" => $postDetail, "counter" => $counter,"hasPostUser" => $hasPostUser,"postId" =>$id]);
         }
 
         /**

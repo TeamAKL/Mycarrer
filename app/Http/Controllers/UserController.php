@@ -57,10 +57,15 @@ class UserController extends Controller
     {
 
         $to = $request->company_email;
-        $message = 'test email';
+        if(isset($request->cover_letter)){
+            $message = $request->cover_letter;
+        }else{
+           $message = "Apply CV";
+        }
         $subject = 'CV Form';
         $currentUser = Auth::id();
         $user = User::with(['projects', 'education', 'work_experiences', 'profile_details'])->findOrFail($currentUser);
+        $from = $user->email;
         $file_name = $user->name . "_cv_form.pdf";
         $cv_file = $request->file('upload_resume');
 
@@ -74,10 +79,10 @@ class UserController extends Controller
             $pdf = file_get_contents($cv_file);
         }
 
-        Mail::send(['html' => 'emails.mail'], ['text' => $message], function ($messages) use ($subject, $to, $pdf, $file_name) {
+        Mail::send(['html' => 'emails.mail'], ['text' => $message], function ($messages) use ($subject, $to,$from, $pdf, $file_name) {
             $messages->to($to)->subject($subject)->attachData($pdf, $file_name);
-            $messages->from('thettun1741997@gmail.com', $name = 'AKL');
-            $messages->replyTo('thettun1741997@gmail.com', $name = 'AKL');
+            $messages->from($from, $name = 'AKL');
+            $messages->replyTo($from, $name = 'AKL');
         });
         return true;
 
@@ -91,11 +96,11 @@ class UserController extends Controller
         $check = $this->sendEmailToCompany($request);
         if($check) {
             $user->posts()->attach($post);
-            return redirect('seeker/dashboard');
+            return redirect('/seeker/applied-job/'.$request->post_id);
         } else {
             return redirect('/seeker/job-detail/'.$request->post_id)->with('needcv', "Sorry! you don't upload any CV");
         }
-        
+
     }
 
     public function checkApplyPost(Request $request)
@@ -118,7 +123,7 @@ class UserController extends Controller
         $user->save();
         return redirect('seeker/profile');
     }
-    
+
     public function emailupdate(Request $req)
     {
         $user = User::find(Auth::id());

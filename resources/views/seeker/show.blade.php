@@ -1,6 +1,7 @@
 @extends('layouts.master')
 
 @section('content')
+    <div class="showLoading"></div>
 <div class="dashboard-area" style="padding-bottom: 50px;">
     <div class="sticky-apply">
         <div class="container">
@@ -22,9 +23,9 @@
                         </div>
                     </div>
                     <div class="apply-hover">
-                        <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal(this.value);" value="{{$hasPostUser}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
+                        <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal('{{$hasPostUser}}','{{$postId}}');">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
@@ -32,7 +33,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-10">
-                
+
                 <div class="detail-header mt20">
                     <div class="about-job-detail">
                         <h2>{{$post->position}}</h2>
@@ -51,11 +52,11 @@
                             </div>
                         </div>
                         <div class="apply-hover">
-                            <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal(this.value);" value="{{$hasPostUser}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
+                            <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal('{{$hasPostUser}}','{{$postId}}');">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                         </div>
                     </div>
                 </div>
-                
+
                 <div class="card mt10">
                     <div class="card-body pd-b20">
                         <div class="holder">
@@ -146,7 +147,7 @@
                             </div>
                         </div>
                         <div class="apply-hover">
-                            <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault(); showModal(this.value);" value="{{$hasPostUser}}">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
+                            <button type="button" class="appl-btn btn-fill" onclick="event.preventDefault();showModal('{{$hasPostUser}}','{{$postId}}');">{{isset($hasPostUser) ?  $hasPostUser == "true" ? "Applied"  :"Apply" : '' }}</button>
                         </div>
                     </div>
                 </div>
@@ -166,8 +167,18 @@ aria-hidden="true">
                 <span aria-hidden="true">&times;</span>
             </button>
         </div>
-        <form action="{{url('applyCv')}}" method="post" enctype="multipart/form-data">
+        <form action="{{url('applyCv')}}" method="post" enctype="multipart/form-data" id="applyForm">
             @csrf
+            <div class="row">
+                <div class="col-md-10 offset-md-1">
+                    <div class="form-group row pt-3">
+                        <label for="cover_letter" class="col-sm-3 col-form-label">Cover Letter</label>
+                        <div class="col-sm-9">
+                        <textarea class="form-control" maxlength="300" row="5" id="cover_letter" name="cover_letter" placeholder="Max length 300"></textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
             <input type="hidden" name="company_email" value="{{$post->company->company_email}}"/>
             <input type="hidden" name="post_id" value="{{$post->id}}"/>
             <div class="apply-modal-body">
@@ -185,13 +196,11 @@ aria-hidden="true">
                 <p class="text-center">
                     <input name="checkcv" type="checkbox" value="use_current_cv" class="btn btn-primary" id="checkcv"> <label for="checkcv">Use Current CV</label>
                 </p>
-                
-                {{--                        <button style="alignment: center" type="button" class="btn btn-primary" data-dismiss="modal" id="upload_current_cv" email="{{$post->company->company_email}}">Use Current CV</button>--}}
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                 <button class="btn btn-warning" type="submit">Apply</button>
-                
+
             </div>
         </form>
     </div>
@@ -209,29 +218,36 @@ aria-hidden="true">
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script src="{{asset('js/seeker.js')}}"></script>
 <script>
-    
+
     @if(session()->has('needcv'))
     console.log("hello in");
     swal('Sorry!','You need to upload CV first','error');
     @endif
-    
-    function showModal(check) {
+
+    function showModal(check , post_id = null) {
         if(check == 1){
-            window.alert('Applied post');
+            window.location.href= '../applied-job/'+post_id;
         }else{
             $('#cvUploadModal').modal('toggle');
         }
     }
-    
+
     $("input.resume").on("change", function() {
         if($(this).val().length != 0) {
             var name = $(this)[0].files[0].name;
             $("div.cvname").html(name);
         } else {
-            console.log("HELLO");
             $("div.cvname").html("Select New CV");
         }
     });
-    
+
+    $("#applyForm").submit(function(e) {
+        $('#cvUploadModal').modal('hide');
+        $("div.cvname").html("Select New CV");
+        $(".showLoading").show().delay( 800 );
+    });
+
+    $("div.cvname").html("Select New CV");
+
 </script>
 @endpush

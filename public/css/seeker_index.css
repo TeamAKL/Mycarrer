@@ -661,3 +661,15 @@ span.fs-11{
     text-decoration: none;
     font-weight: 400;
 }
+
+.showLoading {
+    position: fixed;
+    left: 0px;
+    top: 0px;
+    width: 100%;
+    height: 100%;
+    z-index: 999;
+    background: rgba(0,0,0,0.75) url("../images/30.gif") center no-repeat;
+    text-align: center;
+    display: none;
+}

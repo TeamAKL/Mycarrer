@@ -6,7 +6,7 @@
         <div class="table-responsive pt-3">
             <!--Table-->
             <table class="table table-bordered table-hover">
-                
+
                 <!--Table head-->
                 <thead class="thead-light">
                     <tr>
@@ -17,7 +17,7 @@
                     </tr>
                 </thead>
                 <!--Table head-->
-                
+
                 <!--Table body-->
                 <tbody>
                     <tr>
@@ -32,13 +32,13 @@
                             <span style="color: #3490dc; font-weight: bold;">{{$post->position}}</span><br>
                             <span style="color: #3490dc"><i class="fa fa-building-o" aria-hidden="true"></i>{{$post->company->company_name}}</span>
                             <span style="color: #3490dc;"><i class="fa fa-map-marker" aria-hidden="true"></i>{{$post->address}}</span>
-                            
+
                         </td>
                         <td>
                             <span style="color: #3490dc;">{{$post->users->count() - 1}}</span>
                         </td>
                     </tr>
-                    
+
                 </tbody>
                 <!--Table body-->
             </table>
