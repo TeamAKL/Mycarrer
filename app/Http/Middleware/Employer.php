@@ -16,7 +16,7 @@ class Employer
      */
     public function handle($request, Closure $next)
     {
-        if(Auth::user()->role_id == 1) {
+        if(Auth::user()->role_id == 1 || Auth::user()->role_id == 47) {
             return $next($request);
         } else {
             return redirect('/');

@@ -99,11 +99,6 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');
-//    Route::get('company/detail', function() {
-//        return view('employer.company.detail');
-//    });
-
-
 
     // Resume
     Route::get('appliedresume', function() {
@@ -112,8 +107,12 @@ Route::group(['middleware' => 'employer'], function () {
 
     // POST
     Route::post('posts', 'PostController@store')->name('createpost');
-
     Route::get('changejobstatus', 'PostController@edit');
+
+    // ADMIN Dashboard
+    Route::get('admin', 'JobCategoryController@index');
+    Route::get('all-employer', ['as' => 'all-employer', 'uses' => 'AdminController@allEmployer']);
+    Route::get('all-seeker', ['as' => 'allseeker', 'uses' => 'AdminController@allSeeker']);
 
 });
 

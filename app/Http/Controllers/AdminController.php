@@ -13,8 +13,8 @@ class AdminController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('notAdmin');
-        // $this->middleware('auth');
+        // $this->middleware('notAdmin');
+        $this->middleware('employer');
     }
 
     /**
@@ -25,5 +25,19 @@ class AdminController extends Controller
     public function index()
     {
         return view('dashboard');
+    }
+
+    /**
+     *
+     * TO Get All Employer From the system
+     */
+    public function allEmployer()
+    {
+        return view('admin.allemployer');
+    }
+
+    public function allSeeker()
+    {
+        return view('admin.allseeker');
     }
 }

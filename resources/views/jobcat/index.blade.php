@@ -1,7 +1,14 @@
 @extends('layouts.app', ['page' => __('Job Category'), 'pageSlug' => 'job-category'])
 @section('content')
 <div class="card-body">
-    <div class="">
+    {{-- <div class="d-flex justify-content-end p-relative">
+        <form action="" method="post">
+            @csrf
+            <input type="text" name="" id="livesearch" class="custom-search form-control" placeholder="Search">
+            <button type="submit" class="btn btn-linkn cbutton"><i
+                class="tim-icons icon-zoom-split custom-align-right"></i></button>
+            </form>
+        </div> --}}
         <table class="table tablesorter " id="">
             <thead class=" text-primary">
                 <tr><th scope="col">Category Name</th>
@@ -30,7 +37,7 @@
                                         @method('DELETE')
                                     </form> --}}
 
-                                <a href="{{ route('job-category.destroy', ['job_category' => $job->id]) }}" onclick="ddd()" class="dropdown-item"><span class="tim-icons icon-trash-simple"></span>Delete</a>
+                                    <a href="{{ route('job-category.destroy', ['job_category' => $job->id]) }}" onclick="ddd()" class="dropdown-item"><span class="tim-icons icon-trash-simple"></span>Delete</a>
                                     <form id="customdd" action="" method="post" style="display: none;">
                                         @csrf
                                         @method('DELETE')
@@ -43,18 +50,21 @@
                 </tbody>
             </table>
         </div>
-    </div>
 
-    @if(session()->has('success'))
-    @push('js')
-    <script>
-        demo.successAlert('top','center', 2)
-    </script>
-    @endpush
-    @endif
-    @endsection
+        @if(session()->has('success'))
+        @push('js')
+        <script>
+            demo.successAlert('top','center', 2)
+        </script>
+        @endpush
+        @endif
+        @endsection
 
-    @push('js')
+        @push('stylesheet')
+        <link rel="stylesheet" href="{{asset('css/employer/index.css')}}">
+        @endpush
+
+        @push('js')
         <script>
             function ddd() {
                 event.preventDefault();
@@ -62,4 +72,4 @@
                 document.getElementById("customdd").submit();
             }
         </script>
-    @endpush
+        @endpush

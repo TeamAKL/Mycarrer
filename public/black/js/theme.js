@@ -742,7 +742,7 @@ demo = {
   successAlert: function(from, align, color) {
       $.notify({
           icon: "tim-icons icon-paper",
-          message: "This is Thet Tun Alert From CUstom"
+          message: "Successfully Created!"
       }, {
           type: type[color],
           timer: 8000,

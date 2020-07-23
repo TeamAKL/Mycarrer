@@ -2,12 +2,14 @@
     <div class="sidebar-wrapper">
         <div class="logo">
         <a href="{{url('employer')}}" class="simple-text logo-normal">{{ __('Mycareers') }}</a>
+            @if(Auth::user()->role_id == 1)
             <span style=" color: #fff;
             font-size: .7rem;
             font-weight: 600;">
             Your Balance : <span style="
             font-size: .8rem;">MMK - {{number_format('200000')}}</span> <!-- color: #d4420e; -->
-        </span>
+            </span>
+            @endif
     </div>
     <ul class="nav">
         @if(Auth::user()->role_id == 1)
@@ -45,7 +47,7 @@
                         </a>
                     </li>
                     <li @if ($pageSlug == 'users') class="active " @endif>
-                        <a href="{{ route('user.index')  }}">
+                        <a href="#">
                             <i class="tim-icons icon-paper fs-2"></i>
                             <p>{{ __('History List') }}</p>
                         </a>
@@ -92,11 +94,11 @@
                 </ul>
             </div>
         </li>
-        @else
+        @elseif(Auth::user()->role_id = 47)
         <li>
             <a data-toggle="collapse" href="#category" aria-expanded="false"> <!-- initial is true and use flase to hide -->
                 {{-- <i class="fa fa-desktop" aria-hidden="true"></i> --}}
-                <i class="tim-icons icon-istanbul"></i>
+                <i class="tim-icons icon-bullet-list-67"></i>
                 <span class="nav-link-text" >{{ __('Category') }}</span>
                 <b class="caret mt-1"></b>
             </a>
@@ -122,8 +124,8 @@
         </li>
 
         <!-- JOBS -->
-        <li @if ($pageSlug == 'jobs') class="active " @endif>
-            <a href="{{ route('jobs') }}">
+        <li @if ($pageSlug == 'all-employer') class="active " @endif>
+            <a href="{{ route('all-employer') }}">
                 <i class="fa fa-briefcase" aria-hidden="true"></i>
                 <p>{{ __('Employers') }}</p>
             </a>
@@ -132,7 +134,7 @@
         <!-- Seeker Database -->
         <li>
             <a data-toggle="collapse" href="#seeker" aria-expanded="false">
-                <i class="tim-icons  icon-coins"></i>
+                <i class="fa fa-users" aria-hidden="true"></i>
                 <span class="nav-link-text" >{{ __('Seekers') }}</span>
                 <b class="caret mt-1"></b>
             </a>
@@ -145,8 +147,8 @@
                             <p>{{ __('All Resumes') }}</p>
                         </a>
                     </li>
-                    <li @if ($pageSlug == 'appliedresume') class="active " @endif>
-                        <a href="{{ route('appliedresume')  }}">
+                    <li @if ($pageSlug == 'all-seeker') class="active " @endif>
+                        <a href="{{ route('allseeker')  }}">
                             <i class="tim-icons icon-badge"></i>
                             <p>{{ __('Seeker Datas') }}</p>
                         </a>
