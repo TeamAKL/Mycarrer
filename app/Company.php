@@ -16,7 +16,7 @@ class Company extends Model
         'city',
         'country',
         'address',
-        'industry_id',
+        'job_category_id',
         'about',
         'mission',
         'mission_image',
@@ -29,13 +29,20 @@ class Company extends Model
 
     protected $table = 'companies';
 
+    protected $dates = ['created_at'];
+
     public function posts()
     {
         return $this->hasMany('App\Post');
     }
 
-    public function users()
+    public function user()
     {
         return $this->belongsTo('App\User');
+    }
+
+    public function job_category()
+    {
+        return $this->belongsTo('App\JobCategory');
     }
 }

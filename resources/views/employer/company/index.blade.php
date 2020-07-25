@@ -66,8 +66,8 @@
                                     <option >Please Choose</option>
                                     @if(isset($jobCategories))
                                         @foreach($jobCategories as $jobCategory)
-                                            @isset($user->companies->industry_id)
-                                                @if($jobCategory->id == $user->companies->industry_id)
+                                            @isset($user->companies->job_category_id)
+                                                @if($jobCategory->id == $user->companies->job_category_id)
                                                     <option value="{{$jobCategory->id}}" selected>{{$jobCategory->category_name}}</option>
                                                 @endif
                                             @endisset
