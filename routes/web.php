@@ -113,6 +113,8 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('admin', 'JobCategoryController@index');
     Route::get('all-employer', ['as' => 'all-employer', 'uses' => 'AdminController@allEmployer']);
     Route::get('all-seeker', ['as' => 'allseeker', 'uses' => 'AdminController@allSeeker']);
+    Route::get('getallseeker', 'AdminController@getallseeker')->name('getallseeker');
+    Route::get('getcompanies', 'AdminController@getcompanies')->name('getcompanies');
 
 });
 
