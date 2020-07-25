@@ -18,6 +18,14 @@ class User extends Authenticatable
         'name', 'email', 'password','role_id', 'phone_number'
     ];
 
+    // protected $dateFormat = 'd-m-Y';
+
+    protected $dates = ['created_at', 'updated_at'];
+
+    // protected $casts = [
+    //     'created_at'     => 'date',
+    //     'updated_at'     => 'date',
+    // ];
     /**
      * The attributes that should be hidden for arrays.
      *
