@@ -54,15 +54,15 @@ class ProfileDetailController extends Controller
             }
         }
         if(isset($detail)) {
-            $detail->home_town = $request->home_town;
-            $detail->gender = $request->gender;
-            $detail->marital_status = $request->marital_status;
-            $detail->permanent_address = $request->permanent_address;
-            $detail->date_of_birth = $request->date_of_birth;
-            $detail->nationality = $request->nationality;
+            $detail->home_town = isset($request->home_town) ?  $request->home_town : $detail->home_town;
+            $detail->gender = isset($request->gender) ? $request->gender : $detail->gender;
+            $detail->marital_status = isset($request->marital_status) ? $request->marital_status : $detail->marital_status ;
+            $detail->permanent_address = isset($request->permanent_address) ? $request->permanent_address : $detail->permanent_address;
+            $detail->date_of_birth = isset($request->date_of_birth) ? $request->date_of_birth : $detail->date_of_birth;
+            $detail->nationality = isset($request->nationality) ? $request->nationality : $detail->nationality;
             $detail->profile_image = $logo_name;
             $detail->user_id = $user_id;
-            $detail->text_resume = $request->text_resume;
+            $detail->text_resume = isset($request->text_resume) ? $request->text_resume : $detail->text_resume;
             if ($request->hasFile('upload_resume')) {
                 //Remove old sign
                 // $old_cv = public_path() . '/resumes/resumes/' . $detail->resume;
