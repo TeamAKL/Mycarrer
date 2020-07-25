@@ -77,7 +77,7 @@
                     <td>Name</td>
                     <td>{{$user['name']}}</td>
                 </tr>
-
+                @if(!request()->routeIs('seeker.view_resume'))
                 <tr>
                     <td>Phone No</td>
                     <td>{{$user['phone_number']}}</td>
@@ -87,6 +87,7 @@
                     <td>Email</td>
                     <td>{{$user['email']}}</td>
                 </tr>
+                @endif
 
                 <tr>
                     <td>Nationality</td>
@@ -124,14 +125,11 @@
         @if($user)
             <div>
                 <h3>  Skills</h3>
-              <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cupiditate debitis dolore error fuga in ipsa laudantium mollitia optio perspiciatis quaerat quod totam, voluptas. Blanditiis cum in maxime quas ut!</p>
-            </div>
-        @endif
-
-        @if($user)
-            <div>
-                <h3>IT Skills</h3>
-                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusamus cupiditate debitis dolore error fuga in ipsa laudantium mollitia optio perspiciatis quaerat quod totam, voluptas. Blanditiis cum in maxime quas ut!</p>
+                @foreach($user['skills'] as $key=>$skill)
+                    <div>
+                        <label>({{$key+1}}) {{$skill['skill']}} </label>
+                    </div>
+                @endforeach
             </div>
         @endif
         @if($user)
@@ -147,13 +145,8 @@
                 @endforeach
             </div>
         @endif
-
-
-
-
         <div class="page-break"></div>
     </div>
 </div>
-<div><p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium, aut beatae dicta dolore earum esse et eum fuga itaque modi nam omnis placeat quaerat quia repellat saepe sequi ut vel?</p></div>
 </body>
 </html>

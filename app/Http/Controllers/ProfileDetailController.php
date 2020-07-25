@@ -7,6 +7,7 @@ use App\Skill;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 
 class ProfileDetailController extends Controller
@@ -41,7 +42,7 @@ class ProfileDetailController extends Controller
     {
         $user_id = Auth::id();
         $detail = ProfileDetail::where('user_id', '=', $user_id)->first();
-        // dd($detail);
+        dd($detail);
         if($request->hasFile('profile_image')){
         $logo_image = $request->file('profile_image');
         $logo_name = uniqid().'-'.$logo_image->getClientOriginalName();
@@ -73,6 +74,9 @@ class ProfileDetailController extends Controller
 
                 $request->upload_resume->storeAs('resumes', $resume_name, 'upload_resume');
                 $detail->resume = $resume_name;
+                $updated_score = Session::get('user_score')+40;
+                Session::forget('user_score');
+                Session::put('user_score',$updated_score);
             }
             $detail->save();
 
@@ -82,6 +86,9 @@ class ProfileDetailController extends Controller
                 $resume_name = $resume_file->getClientOriginalName();
                 $request->upload_resume->storeAs('resumes', $resume_name, 'upload_resume');
                 $resume = $resume_name;
+                $updated_score = Session::get('user_score')+40;
+                Session::forget('user_score');
+                Session::put('user_score',$updated_score);
             } else {
                 $resume = null;
             }
@@ -144,6 +151,9 @@ class ProfileDetailController extends Controller
             $detail->nationality = $request->nationality;
             $detail->user_id = $user_id;
             $detail->save();
+            $detail_update_score = Session::get('user_score')+10;
+            Session::forget('user_score');
+            Session::put('user_score',$detail_update_score);
             return redirect('seeker/profile');
         }
 
@@ -185,16 +195,29 @@ class ProfileDetailController extends Controller
         $old_cv = public_path() . '/resumes/resumes/' . $detail->resume;
         if(file_exists($old_cv)) unlink($old_cv);
         ProfileDetail::where('user_id', $user_id)->update(array('resume' => ''));
+        $updated_score = Session::get('user_score')-40;
+        Session::forget('user_score');
+        Session::put('user_score',$updated_score);
+        //Session::get('user_score')-40;
         return redirect('seeker/profile');
 
     }
 
     public function addskill(Request $req)
     {
-        Skill::create([
+        if(!session()->has('skill')){
+            $updated_score = Session::get('user_score')+5;
+            Session::forget('user_score');
+            Session::put('user_score',$updated_score);
+        }
+        $skill = Skill::create([
             'skill' => $req->skill,
             'user_id' => Auth::id()
         ]);
+        Session::put('skill',5);
+
+
+
         return redirect('seeker/profile');
     }
 

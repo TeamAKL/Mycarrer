@@ -42,7 +42,7 @@ class UserController extends Controller
     public function generateCertificate()
     {
         $currentUser = Auth::id();
-        $user = User::with(['projects', 'education', 'work_experiences'])->findOrFail($currentUser);
+        $user = User::with(['projects', 'education', 'work_experiences','skills'])->findOrFail($currentUser);
 
         $viewFile = ob_get_clean();
         $viewFile = 'exports.cv_form';

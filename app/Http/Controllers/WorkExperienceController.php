@@ -6,6 +6,7 @@ use App\WorkExperience;
 use Dotenv\Regex\Result;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class WorkExperienceController extends Controller
 {
@@ -37,6 +38,11 @@ class WorkExperienceController extends Controller
     */
     public function store(Request $request)
     {
+        if(!session()->has('work_experience')){
+            $updated_score = Session::get('user_score')+10;
+            Session::forget('user_score');
+            Session::put('user_score',$updated_score);
+        }
         WorkExperience::create([
             'desigination' => $request->designation,
             'organisation' => $request->organisation,
@@ -50,6 +56,7 @@ class WorkExperienceController extends Controller
             'profile_detail' => $request->profiledetail,
             'user_id' => Auth::id()
             ]);
+        Session::put('work_experience',10);
             return redirect('seeker/profile');
         }
 

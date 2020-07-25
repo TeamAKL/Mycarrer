@@ -170,3 +170,5 @@ Route::post('skills', 'ProfileDetailController@addskill');
 Route::post('deleteskill', 'ProfileDetailController@deleteskill');
 Route::post('phone_edit', 'UserController@phoneupdate');
 Route::post('email_edit', 'UserController@emailupdate');
+
+Route::get('/seeker/view-resume/{userID}', 'UserController@generateCertificate')->name('seeker.view_resume');

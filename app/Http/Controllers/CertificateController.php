@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Certificate;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class CertificateController extends Controller
 {
@@ -36,6 +37,11 @@ class CertificateController extends Controller
      */
     public function store(Request $request)
     {
+        if(!session()->has('certificate')){
+            $updated_score = Session::get('user_score')+5;
+            Session::forget('user_score');
+            Session::put('user_score',$updated_score);
+        }
         Certificate::create([
             "certificate" => $request->certificate,
             "issue_by" => $request->issueby,
@@ -44,6 +50,7 @@ class CertificateController extends Controller
             "lifetime" => $request->lifetime,
             "user_id" => Auth::id()
         ]);
+        Session::put('certificate',5);
         return redirect('seeker/profile');
     }
 

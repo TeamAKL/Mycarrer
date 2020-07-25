@@ -44,7 +44,9 @@
               </td>
               <td class="view-resume">
                 <button type="button" class="btn btn-success" style="letter-spacing: 0.8px;">Buy Resume</button><br><br>
-                <button type="button" class="btn btn-info">View Resume</button>
+{{--                <button type="button" class="btn btn-info">View Resume</button>--}}
+                  <a href="{!! route('seeker.view_resume', [$resume['id']]) !!}"
+                     class="btn btn-info" target="_blank">View Resume</a>
               </td>
             </tr>
             @endforeach

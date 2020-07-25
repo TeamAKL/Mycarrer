@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\JobPreference;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class JobPreferenceController extends Controller
 {
@@ -45,6 +46,9 @@ class JobPreferenceController extends Controller
             "employer_type" => $request->emp_type,
             'user_id' => Auth::id()
         ]);
+        $updated_score = Session::get('user_score')+15;
+        Session::forget('user_score');
+        Session::put('user_score',$updated_score);
         return redirect('seeker/profile');
     }
 

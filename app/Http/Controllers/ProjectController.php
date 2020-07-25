@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Project;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class ProjectController extends Controller
 {
@@ -37,6 +38,11 @@ class ProjectController extends Controller
     public function store(Request $request)
     {
         $currentId = Auth::id();
+        if(!session()->has('project')){
+            $updated_score = Session::get('user_score')+5;
+            Session::forget('user_score');
+            Session::put('user_score',$updated_score);
+        }
         Project::create([
             'title' => $request->title,
             'client' => $request->client,
@@ -49,6 +55,7 @@ class ProjectController extends Controller
             'link' => $request->link,
             'user_id' => $currentId,
             ]);
+        Session::put('project',5);
             return redirect('seeker/profile');
         }
 

@@ -80,16 +80,21 @@
                              <img src="{{asset('images/seeker_profile/defaultavator.webp')}}" alt="" class="img-thumbnail" width="110px">
                              @endif
                             </div>
+                            <?php
+                            $percentage = (\Illuminate\Support\Facades\Session::get('user_score')) != '' ? \Illuminate\Support\Facades\Session::get('user_score') : 0;
+                            $result = (($percentage/100) * 180).'deg';
+                            ?>
                             <div class="col-xs-3 col-sm-4 col-md-4">
                                 <div class="circle-wrap">
                                     <div class="circle">
-                                        <div class="mask full">
-                                            <div class="fill"></div>
+                                        <div class="mask full" style="--transform:rotate({{$result}});">
+                                            <div class="fill" style="--transform:rotate({{$result}});"></div>
                                         </div>
                                         <div class="mask half">
-                                            <div class="fill"></div>
+                                            <div class="fill" style="--transform:rotate({{$result}});"></div>
                                         </div>
-                                        <div class="inside-circle">70%</div>
+
+                                        <div class="inside-circle" >{{$percentage.'%'  }}</div>
                                     </div>
                                 </div>
                                 <div class="profile-scroe">Profile Scroe</div>

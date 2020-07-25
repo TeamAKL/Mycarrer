@@ -12,8 +12,8 @@
                         <div class="bg-white pd20">
                             <p class="score-text">Profile Score</p>
                             <div class="scroe">
-                                <div class="inside-scroe" style="--color:red; --width: 70%;"></div>
-                                <span class="scroe-percent" style="--left: 70%;">70%</span>
+                                <div class="inside-scroe" style="--color:red; --width: {{(\Illuminate\Support\Facades\Session::get('user_score')) != '' ? \Illuminate\Support\Facades\Session::get('user_score').'%' : '0%' }};"></div>
+                                <span class="scroe-percent" style="--left: {{\Illuminate\Support\Facades\Session::get('user_score')-3}}%;">{{(\Illuminate\Support\Facades\Session::get('user_score')) != '' ? \Illuminate\Support\Facades\Session::get('user_score').'%' : '0%' }}</span>
                             </div>
                         </div>
                     </div>
@@ -94,30 +94,30 @@
                             </div>
                         </div>
                     </div>
-                    
+
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.job_preference')
                     </div>
-                    
+
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.workexperience')
                     </div>
-                    
+
                     <!-- Education Detail -->
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.education')
                     </div>
-                    
+
                     <!-- Projects -->
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.project')
                     </div>
-                    
+
                     <!-- Course And Certification -->
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.certificate')
                     </div>
-                    
+
                     <!-- Personal Detail -->
                     <div class="col-md-12 col-sx-12 mb10">
                         @include('users.personalDetail')
@@ -154,7 +154,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="cmodal-overly resume-overly">
                 <div class="global-modal resume-modal">
                     <span class="close-modal"><i class="fa fa-close"></i></span>
@@ -194,7 +194,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="cmodal-overly phone-overly">
                 <div class="global-modal phone-modal">
                     <span class="close-modal"><i class="fa fa-close"></i></span>
@@ -224,7 +224,7 @@
                     </div>
                 </div>
             </div>
-            
+
             <div class="cmodal-overly email-overly">
                 <div class="global-modal email-modal">
                     <span class="close-modal"><i class="fa fa-close"></i></span>
@@ -262,26 +262,26 @@
         <link rel="stylesheet" href="{{asset('css/profile.css')}}">
         <link rel="stylesheet" href="{{asset('css/bootstrap-datepicker3.standalone.css')}}">
         @endpush
-        
+
         @push('script')
         <script src="{{asset('js/seeker.js')}}"></script>
         <script src="{{asset('js/bootstrap-datepicker.js')}}"></script>
         <script>
             $(document).ready(function() {
-                
+
                 $(".tocurrent").datepicker({
                     format: 'dd-MM-yyyy',
                     endDate: "0d",
                     todayHighlight: true
                 });
-                
+
                 $(".startyear").datepicker({
                     format: "yyyy",
                     viweMode: "years",
                     minViewMode: "years",
                     endDate: "year"
                 });
-                
+
                 $(".month").datepicker({
                     format: "MM",
                     viweMode: "months",
@@ -289,19 +289,19 @@
                     endDate: 'today',
                     todayHighlight: true
                 });
-                
+
                 // avatar save
-                
+
                 $("#avatar").on("change", function() {
                     if($(this).val().length != 0) {
                         $("#formid").submit();
                     }
                 });
-                
+
                 $(function () {
                     $('[data-toggle="tooltip"]').tooltip()
                 });
-                
+
                 $("input.resume").on("change", function() {
                     if($(this).val().length != 0) {
                         var name = $(this)[0].files[0].name;
@@ -315,4 +315,3 @@
         </script>
         <script src="{{asset('js/customselect.js')}}"></script>
         @endpush
-        

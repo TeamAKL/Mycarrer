@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Education;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Session;
 
 class EducationController extends Controller
 {
@@ -36,6 +37,11 @@ class EducationController extends Controller
      */
     public function store(Request $request)
     {
+        if(!session()->has('education')){
+            $updated_score = Session::get('user_score')+10;
+            Session::forget('user_score');
+            Session::put('user_score',$updated_score);
+        }
         Education::create([
             'qualification' => $request->qualification,
             'specilization' => $request->specilization,
@@ -44,6 +50,7 @@ class EducationController extends Controller
             'education_type' => $request->edutype,
             'user_id' => Auth::id()
         ]);
+        Session::put('education',10);
         return redirect('seeker/profile');
     }
 

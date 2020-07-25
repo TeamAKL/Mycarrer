@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Providers\RouteServiceProvider;
 use App\User;
 use App\Company;
+use Illuminate\Support\Facades\Session;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Validator;
@@ -93,6 +94,7 @@ class RegisterController extends Controller
                         'phone_number' => $data['phone_number'],
                         'role_id' => $data['role_id']
                         ]);
+                    Session::put('user_score',0);
                     } else {
                         return User::create([
                             'name' => $data['name'],
