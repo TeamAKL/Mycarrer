@@ -109,13 +109,19 @@ Route::group(['middleware' => 'employer'], function () {
     Route::post('posts', 'PostController@store')->name('createpost');
     Route::get('changejobstatus', 'PostController@edit');
 
-    // ADMIN Dashboard
-    Route::get('admin', 'JobCategoryController@index');
-    Route::get('all-employer', ['as' => 'all-employer', 'uses' => 'AdminController@allEmployer']);
-    Route::get('all-seeker', ['as' => 'allseeker', 'uses' => 'AdminController@allSeeker']);
-
 });
 
+
+// For ADMIN
+Route::group(['middleware' => 'notAdmin'], function () {
+// ADMIN Dashboard
+Route::get('admin', 'JobCategoryController@index');
+Route::get('all-employer', ['as' => 'all-employer', 'uses' => 'AdminController@allEmployer']);
+Route::get('all-seeker', ['as' => 'allseeker', 'uses' => 'AdminController@allSeeker']);
+Route::get('getallseeker', 'AdminController@getallseeker')->name('getallseeker');
+Route::get('getcompanies', 'AdminController@getcompanies')->name('getcompanies');
+
+});
 
 Route::post('company/company-info', 'CompanyController@update');
 

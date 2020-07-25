@@ -16,7 +16,7 @@
         <span class="text-success">Successed</span>
         @elseif($post->job_status == 'closed')
         <span class="text-danger">Closed</span>
-        @else
+        @elseif($post->job_status == 'expired')
         <span class="text-danger">Expired</span>
         @endif
     </td>

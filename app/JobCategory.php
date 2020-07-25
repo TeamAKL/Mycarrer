@@ -18,4 +18,9 @@ class JobCategory extends Model
     {
         return $this->belongsToMany('App\Post')->withTimestamps();
     }
+
+    public function companies()
+    {
+        return $this->hasOne('App\Company');
+    }
 }
