@@ -42,7 +42,6 @@ class ProfileDetailController extends Controller
     {
         $user_id = Auth::id();
         $detail = ProfileDetail::where('user_id', '=', $user_id)->first();
-        dd($detail);
         if($request->hasFile('profile_image')){
         $logo_image = $request->file('profile_image');
         $logo_name = uniqid().'-'.$logo_image->getClientOriginalName();

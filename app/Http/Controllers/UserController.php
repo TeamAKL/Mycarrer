@@ -39,9 +39,14 @@ class UserController extends Controller
         return view('seeker.profile', ['user' => $user]);
     }
 
-    public function generateCertificate()
+    public function generateCertificate($id=null)
     {
-        $currentUser = Auth::id();
+        if($id == null) {
+            $currentUser = Auth::id();
+        }else {
+            $currentUser = $id;
+        }
+       
         $user = User::with(['projects', 'education', 'work_experiences','skills'])->findOrFail($currentUser);
 
         $viewFile = ob_get_clean();
