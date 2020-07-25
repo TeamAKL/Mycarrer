@@ -4,7 +4,7 @@
     <table class="table tablesorter " id="allseeker">
         <thead class="text-primary">
             <tr>
-                <th scope="col"></th>
+                <th scope="col" class="first_sort"></th>
                 <th scope="col">Name</th>
                 <th scope="col">Prefer Role</th>
                 <th scope="col">Prefer Location</th>
@@ -50,8 +50,9 @@
                 class:          "details-control",
                 orderable:      false,
                 data:           null,
+                targets: 0,
                 defaultContent: "",
-                width: "5%"
+                width: "2%"
             },
             {
                 data: "name",
@@ -81,7 +82,7 @@
             {
                 data: "create",
                 name: "create",
-                width: "15%",
+                width: "18%",
             }
 
             ]
@@ -113,7 +114,11 @@
 <script id="details-template" type="mustache/x-tmpl">
     <table class="table tablesorter">
         <tr>
-            <td>Address:</td>
+            <th>Gender:</th>
+            <td><% gender %></td>
+            <th>Expected Salary:</th>
+            <td><% salary %></td>
+            <th>Address:</th>
             <td><% address %></td>
         </tr>
     </table>

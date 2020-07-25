@@ -23,7 +23,7 @@ class CreateCompaniesTable extends Migration
             $table->string('city')->nullable();
             $table->string('country')->nullable();
             $table->string('address')->nullable();
-            $table->string('industry_id')->nullable();
+            $table->string('job_category_id')->nullable();
             $table->text('about')->nullable();
             $table->text('mission')->nullable();
             $table->text('mission_image')->nullable();

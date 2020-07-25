@@ -138,7 +138,7 @@ class CompanyController extends Controller
                 'city' => $input['city_name'] != null ? $input['city_name'] : '',
                 'country' => $input['country_name'] != null ? $input['country_name'] : '',
                 'address' => $input['address'] != null ? $input['address'] : '',
-                'industry_id' =>$input['industry'] != null ? $input['industry'] : '',
+                'job_category_id' =>$input['industry'] != null ? $input['industry'] : '',
                 'about' =>$input['about'] != null ? $input['about'] : '',
                 'mission' => $input['mission'] != null ? $input['mission'] : '',
                 'vission' => $input['vision'] != null ? $input['vision'] : '',
