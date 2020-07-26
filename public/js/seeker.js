@@ -60,7 +60,8 @@ $(window).on('scroll', function() {
             });
         } else {
             $("#rm-id").css({
-                "position": "relative"
+                "position": "relative",
+                "top": "0"
             });
         }
     }
