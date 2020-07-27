@@ -65,7 +65,7 @@
                                     <h3>
                                         {{$post->position}}
                                     </h3>
-                                    <a href="http://">{{$post->company->company_name}}</a>
+                                    <a href="{{url('company/detail/'.$post->company->id)}}">{{$post->company->company_name}}</a>
                                 </a>
                                 <div class="row mt10">
                                     <di class="col-md-6">
@@ -73,7 +73,7 @@
                                     </di>
                                     <di class="col-md-6">
                                         <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
-                                        <span><i class="fa fa-database" aria-hidden="true"></i> {{$post->min_salary}} - {{$post->max_salary}} {{$post->salary_unit}} </span>
+                                        <span><i class="fa fa-database" aria-hidden="true"></i>@if($post->salary_unit == 'USD') USD @endif {{$post->min_salary}} - {{$post->max_salary}} @if($post->salary_unit == 'MMK') MMK @endif</span>
                                     </di>
                                 </div>
                             </div>
