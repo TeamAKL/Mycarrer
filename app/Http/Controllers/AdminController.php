@@ -55,7 +55,11 @@ class AdminController extends Controller
         ->get();
         return DataTables::of($seekers)
         ->editColumn('create', function($seekers) {
+            if(isset($seekers->created_at)) {
             return $seekers->created_at->format('d-m-Y');
+            } else {
+                return null;
+            }
         })
         ->editColumn('role', function($seekers)
         {

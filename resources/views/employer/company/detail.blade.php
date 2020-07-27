@@ -3,69 +3,65 @@
 @include('employer.company.banner')
 <div class="container">
     <div class="row mt-5">
-        <div class="col-md-4">
+        <div class="col-md-4 col-sm-12 about">
             <h3 class="mb20 underline">About</h3>
-            <p>
-                {{$company->about}}
-            </p>
+            {!! $company->about !!}
         </div>
-        <div class="col-md-8">
-            <table class="table table-dark">
-                <thead>
-                    <tr>
-                        <th scope="col">Job Title</th>
-                        <th scope="col">Job Type</th>
-                        <th scope="col">Location</th>
-                        <th scope="col">Salary</th>
-                        <th scope="col"></th>
-                    </tr>
-                </thead>
-                <tbody>
-{{--                    <tr>--}}
-{{--                        <th scope="row">1</th>--}}
-{{--                        <td>Mark</td>--}}
-{{--                        <td>Otto</td>--}}
-{{--                        <td>@mdo</td>--}}
-{{--                        <td><a href="" class="btn btn-sm btn-primary">Detail</a></td>--}}
-{{--                    </tr>--}}
-{{--                    <tr>--}}
-{{--                        <th scope="row">2</th>--}}
-{{--                        <td>Jacob</td>--}}
-{{--                        <td>Thornton</td>--}}
-{{--                        <td>@fat</td>--}}
-{{--                        <td><a href="" class="btn btn-sm btn-primary">Detail</a></td>--}}
-{{--                    </tr>--}}
-{{--                    <tr>--}}
-{{--                        <th scope="row">3</th>--}}
-{{--                        <td>Larry</td>--}}
-{{--                        <td>the Bird</td>--}}
-{{--                        <td>@twitter</td>--}}
-{{--                        <td><a href="" class="btn btn-sm btn-primary">Detail</a></td>--}}
-{{--                    </tr>--}}
-                </tbody>
-            </table>
+        <div class="col-md-8 col-sm-12 order-1">
+            <div class="table-responsive">
+                <table class="table table-dark">
+                    <thead>
+                        <tr>
+                            <th scope="col">Job Title</th>
+                            <th scope="col">Job Type</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">Salary</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        @foreach($posts as $post)
+                        <tr>
+                            <td>{{$post->position}}</td>
+                            <td>{{$post->type}}</td>
+                            <td>{{$post->address}}</td>
+                            <td>@if($post->salary_unit == 'USD') USD @endif {{number_format($post->min_salary)}} - {{number_format($post->max_salary)}} @if($post->salary_unit == 'MMK') MMK @endif </td>
+                            <td>
+                                @auth()
+                                <button class="btn btn-primary apply_btn" post="{{$post->id}}">@if(Auth::user()->posts()->where('post_id', $post->id)->exists()) Applied @else Apply @endif</button>
+                                @endauth
+                                @guest
+                                <a href="#" class="btn btn-primary apply_btn unauthapply">Apply</a>
+                                @endguest
+                            </td>
+                        </tr>
+                        @endforeach
+                    </tbody>
+                </table>
+            </div>
+            {{$posts->links()}}
         </div>
     </div>
     <div class="row my-5">
-        <div class="clo-md-6 images">
+        <div class="col-md-6 col-sm-12 images">
             <img src="{{$company->vission_image != null ? asset('images/company/'.$company->vission_image) : asset('images/vision.jpg')}}" alt="">
         </div>
-        <div class="clo-md-6 float-right">
+        <div class="col-md-6 col-sm-12 float-right">
             <div class="vision">
                 <h3 class="mb20 underline">Vision</h3>
-                <p>{{isset($company) ? $company->vission : ''}}</p>
+                {!! isset($company) ? $company->vission : '' !!}
             </div>
         </div>
     </div>
 
     <div class="row my-5">
-        <div class="clo-md-6 float-right">
+        <div class="col-md-6 col-sm-12 float-right">
             <div class="vision">
                 <h3 class="mb20 underline">Mission</h3>
-                <p>{{ isset($company) ? $company->mission : ''}}</p>
+                {!! isset($company) ? $company->mission : '' !!}
             </div>
         </div>
-        <div class="clo-md-6 images">
+        <div class="col-md-6 col-sm-12 images">
             <img src="{{$company->mission_image != null ? asset('images/company/'.$company->mission_image) : asset('images/mission.jpg') }}" alt="">
         </div>
     </div>
@@ -73,5 +69,56 @@
 @endsection
 
 @push('css')
+<style>
+    div.job-ch a {
+        cursor: pointer;
+    }
+    .vision ul, .vission ol, .about ol, .about ul {
+        display: flex;
+        flex-direction: column;
+    }
+</style>
 <link rel="stylesheet" href="{{asset('css/employer/banner.css')}}">
+@endpush
+
+@push('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $('.apply_btn').on('click',function (e) {
+        e.preventDefault();
+        var $post_id = $(this).attr('post');
+        $.ajax({
+            type: 'post',
+            url: '{{URL::to("checkApplyPost")}}',
+            data: {'post_id':$post_id},
+            headers: {
+                'X-CSRF-TOKEN': $('meta[name="_token"]').attr('content')
+            },
+            success: function(data) {
+
+                if(data.status == true){
+                    window.location.replace('../../seeker/applied-job/'+$post_id);
+                }else{
+                    window.location.replace("../../seeker/job-detail/"+$post_id);
+                }
+
+            }
+        });
+    });
+
+    $(".unauthapply").on("click", function(e) {
+        e.preventDefault();
+        swal({
+            title: "Sorry!",
+            text: "Please Login First",
+            icon: "warning",
+            dangerMode: true,
+            button: "Ok!",
+        }).then(result => {
+            if(result) {
+                window.location.href = '/seeker/login';
+            }
+        });
+    });
+</script>
 @endpush

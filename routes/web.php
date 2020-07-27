@@ -140,7 +140,8 @@ Route::get('purchasedresumes', function(){
 //});
 
 
-Route::get('company/detail/{id}','CompanyController@show');
+Route::get('company/detail/{id}', 'CompanyController@show')->name('hotjobs');
+Route::get('company/detail/alljobs/{id}', 'CompanyController@alljobs')->name('alljobs');
 
 // JOB SEARCH
 Route::get('result', 'PostController@searchjobs');
