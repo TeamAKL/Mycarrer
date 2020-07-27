@@ -27,7 +27,7 @@
 
 .job-title > a {
     text-decoration: none;
-    cursor: default;
+    cursor: pointer;
 }
 
 @media(max-width: 768px) {
