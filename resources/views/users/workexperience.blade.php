@@ -39,13 +39,13 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="floating-label-input mb10">
-                                    <input type="text" id="designation" name="designation" required/>
+                                    <input type="text" id="designation" name="designation"/>
                                     <label for="designation" >Designation</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="organisation" name="organisation" required/>
+                                    <input type="text" id="organisation" name="organisation"/>
                                     <label for="organisation" >Organisation</label>
                                     <span class="line"></span>
                                 </div>
@@ -76,47 +76,6 @@
                                         </div>
                                     </div>
                                 </div>
-
-                                {{-- <div class="floating-label-input mb30">
-                                    <input type="text" id="noticPeriod" name="noticePeriod" required/>
-                                    <label for="noticPeriod" >Notice Period</label>
-                                    <span class="line"></span>
-                                </div> --}}
-
-                                {{-- <div class="custom-group">
-                                    <span class="group-lable">Current Salary</span>
-                                    <div class="row">
-                                        <div class="col-md-4">
-                                            <div class="custom-select">
-                                                <select name="salary_unit" id="unit">
-                                                    <option value="">Select</option>
-                                                    <option value="USD" class="salary_unit">USD</option>
-                                                    <option value="MMK" class="salary_unit">MMK</option>
-                                                    <option value="SGD" class="salary_unit">SGD</option>
-                                                </select>
-                                            </div>
-                                        </div>
-                                        <div class="col-md-8">
-                                            <input type="text" name="salary_amount" id="amount1" class="formbb amount">
-                                        </div>
-                                    </div>
-                                </div>
-
-                                <div class="custom-group">
-                                    <span class="group-lable">Salary Mode</span>
-                                    <label class="radio-lable-container pr100">
-                                        <span class="clabel">Monthly</span>
-                                        <input type="radio" name="salarymode" value="Monthly" class="work" checked>
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <label class="radio-lable-container pr100">
-                                        <span class="clabel">Annually</span>
-                                        <input type="radio" name="salarymode" value="Annually" class="work">
-                                        <span class="checkmark"></span>
-                                    </label>
-                                    <span class="calculatedSalary"></span>
-                                </div> --}}
-
                                 <div class="custom-group">
                                     <label for="desProfile" >Describe Your Job Profile</label>
                                     <textarea name="profiledetail" id="desProfile" rows="6" class="form-control" placeholder="Please Type Here"></textarea>
@@ -158,6 +117,7 @@
         $('body').css('overflow-y', 'hidden');
         let $index = $(this).attr('id');
         let $dataid = $(this).attr('dataid');
+        let $stst = 'yes';
         if($dataid) {
             $.ajax({
                 type: 'get',
@@ -168,39 +128,12 @@
                     $("#organisation").val(data.organisation);
                     checkCurrentCompany(data.current_company)
                     $("#workfrom").val(data.work_from);
-                    // $("#noticPeriod").val(data.notc_period);
                     if(data.work_till) {
                         $("#worktill").val(data.work_till);
                     } else {
                         $("#worktill").val('Present');
                     }
-
-                    // $(".select-items.select-hide div").each(function() {
-                    //     if($(this).html() == data.salary_unit) {
-                    //         $(this).addClass("same-as-selected");
-                    //         $("div.select-selected").html(data.salary_unit);
-                    //     }
-                    // });
-
-                    // $(".amount").val(data.salary_amount);
-                    // $("input[name='salarymode']").each(function() {
-                    //     if($(this).val() == data.salary_mode) {
-                    //         $(this).attr("checked", "true");
-                    //     } else {
-                    //         $(this).removeAttr("checked");
-                    //     }
-                    // });
                     $("#desProfile").val(data.profile_detail);
-                    // For Test in edit
-                    // $(".calculatedSalary").html(current_salaryMode(data.salary_mode, null));
-                    // $(".amount").bind('keyup', function() {
-                    //     let $finalresult = current_salaryMode(null, $(this).val());
-                    //     $(".calculatedSalary").html($finalresult);
-                    // });
-                    // $("input[name='salarymode']").bind('click', function() {
-                    //     let $resultf = current_salaryMode($(this).val(), null);
-                    //     $(".calculatedSalary").html($resultf);
-                    // });
                 }
             });
             $("#expwork").append("<input type='hidden' value='"+ $dataid +"' name='id'/>");
@@ -212,8 +145,8 @@
         } else {
             $("#designation").val("");
             $("#organisation").val("");
+            checkCurrentCompany($stst)
             $("#desProfile").val();
-            checkCurrentCompany("")
             $("#worktill").val('Present');
             $("#desProfile").val("");
             $("#workfrom").val("");
@@ -248,7 +181,6 @@
                 $result = "Calculated Annually Salary is "+ $final;
             } else {
                 $final = $amount / 12;
-                // $result = "Calculated Monthly Salary is "+$salary_unit+" "+ Math.round($final);
                 $result = "Calculated Monthly Salary is "+ Math.round($final);
             }
         }
@@ -265,6 +197,54 @@
         return $result;
     }
 
-    // console.log(totalSalary());
 </script>
+@endpush
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                if (regexp.constructor != RegExp)
+                    regexp = new RegExp(regexp);
+                else if (regexp.global)
+                    regexp.lastIndex = 0;
+                return this.optional(element) || regexp.test(value);
+            },"erreur expression reguliere"
+        );
+
+        $("#expwork").validate({
+            "errorClass": 'is-invalid',
+            "validClass": 'is-valid',
+            "errorElement": 'div',
+
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.appendTo(element.parent());
+            },
+
+            rules: {
+                "designation": {
+                    required: true,
+                },
+                "organisation": {
+                    required: true
+                },
+                "workfrom": {
+                    required: true
+                },
+                "worktill": {
+                    required: true
+                },
+                "profiledetail": {
+                    required: true
+                }
+            },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    </script>
 @endpush

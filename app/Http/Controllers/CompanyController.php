@@ -16,7 +16,7 @@ class CompanyController extends Controller
     use CompanySize;
     public function __construct()
     {
-        $this->middleware('auth')->except('show');
+        $this->middleware('auth')->except(['show', 'alljobs']);
     }
     /**
      * Display a listing of the resource.
@@ -63,9 +63,16 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $company = Company::where('id', $id)->with('posts')->first();
+        $company = Company::where('id', $id)->first();
+        $posts = Post::where('company_id', '=', $id)->where('job_status', '=', 'active')->paginate(1);
+        return view('employer.company.detail',['company' => $company, 'posts' => $posts]);
+    }
 
-        return view('employer.company.detail',compact('company'));
+    public function alljobs($id)
+    {
+        $company = Company::where('id', $id)->first();
+        $posts = Post::where('company_id', '=', $id)->paginate(1);
+        return view('employer.company.detail',['company' => $company, 'posts' => $posts]);
     }
 
     /**

@@ -140,7 +140,8 @@ Route::get('purchasedresumes', function(){
 //});
 
 
-Route::get('company/detail/{id}','CompanyController@show');
+Route::get('company/detail/{id}', 'CompanyController@show')->name('hotjobs');
+Route::get('company/detail/alljobs/{id}', 'CompanyController@alljobs')->name('alljobs');
 
 // JOB SEARCH
 Route::get('result', 'PostController@searchjobs');
@@ -176,5 +177,6 @@ Route::post('skills', 'ProfileDetailController@addskill');
 Route::post('deleteskill', 'ProfileDetailController@deleteskill');
 Route::post('phone_edit', 'UserController@phoneupdate');
 Route::post('email_edit', 'UserController@emailupdate');
-
 Route::get('/seeker/view-resume/{userID}', 'UserController@generateCertificate')->name('seeker.view_resume');
+
+Route::get('jobs/{cateid}', 'PostController@showbycate');

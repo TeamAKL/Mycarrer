@@ -224,4 +224,9 @@ class PostController extends Controller
             }
             return view('seeker.applied_job', ["post" => $post, "date" => $applieddate]);
         }
+
+        public function showbycate($id) {
+            $posts = JobCategory::find($id)->posts()->orderBy('created_at', 'desc')->paginate(10);
+            return view('seeker.index', ["posts" => $posts]);
+        }
     }

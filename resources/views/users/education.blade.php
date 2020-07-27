@@ -35,25 +35,25 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="floating-label-input mb10">
-                                    <input type="text" id="qualification" name="qualification" required/>
+                                    <input type="text" id="qualification" name="qualification"/>
                                     <label for="qualification" >Highest Qualification</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb10">
-                                    <input type="text" id="specilization" name="specilization" required/>
+                                    <input type="text" id="specilization" name="specilization"/>
                                     <label for="specilization" >Specilization</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb10">
-                                    <input type="text" id="institute" name="institute" required/>
+                                    <input type="text" id="institute" name="institute"/>
                                     <label for="institute" >Institute</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="passyear" name="passing_year" class="startyear" required/>
+                                    <input type="text" id="passyear" name="passing_year" class="startyear"/>
                                     <label for="passyear" >Passing Year</label>
                                     <span class="line"></span>
                                 </div>
@@ -136,4 +136,53 @@
         }
     });
 </script>
+@endpush
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                if (regexp.constructor != RegExp)
+                    regexp = new RegExp(regexp);
+                else if (regexp.global)
+                    regexp.lastIndex = 0;
+                return this.optional(element) || regexp.test(value);
+            },"erreur expression reguliere"
+        );
+
+        $("#eduaction").validate({
+            "errorClass": 'is-invalid',
+            "validClass": 'is-valid',
+            "errorElement": 'div',
+
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.appendTo(element.parent());
+            },
+
+            rules: {
+                "qualification": {
+                    required: true,
+                },
+                "specilization": {
+                    required: true
+                },
+                "institute": {
+                    required: true
+                },
+                "passing_year": {
+                    required: true
+                },
+                "edutype": {
+                    required: true
+                }
+            },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    </script>
 @endpush
