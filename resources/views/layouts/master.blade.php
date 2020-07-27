@@ -29,14 +29,14 @@
 <body>
     <header>
         <div class="container">
-            <div class="spinner-master3">
+            <!-- <div class="spinner-master3">
                 <input type="checkbox" id="spinner-form3" />
                 <label for="spinner-form3" class="spinner-spin3">
                     <div class="spinner3 diagonal part-1"></div>
                     <div class="spinner3 horizontal"></div>
                     <div class="spinner3 diagonal part-2"></div>
                 </label>
-            </div>
+            </div> -->
             <div class="custom-nav-bar">
                 <div class="nav-logo">
                     <a href="{{url('/')}}" class="monster-logo">
@@ -130,10 +130,63 @@
                     </li>
                     @endguest
                 </ul>
+                </div>
+            </div>
+            <div class="nav-bar">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a class="res" href="{{url('/')}}" style="font-size:20px;"><b>MyCareers</b></a>
+                    @auth
+                    <a class="res" href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 15px"></i>Dashboard</a>
+                    @endauth
+                    <a class="res" href="#" id="dropdown1">Job Search  <i class="fa fa-caret-down"></i></a>
+                    <div class="dropdown-content-nav" id="dropdown-content1">
+                        <a href="#">Job By Company</a>
+                        <a href="#">Job By Position</a>
+                        <a href="#">Job By Skill</a>
+                        <a href="#">Part Time Job</a>
+                    </div>
+                    <a href="#" class="res">Fresher</a>
+                    <a href="#" class="res" id="dropdown2">Blog  <i class="fa fa-caret-down"></i></a>
+                    <div class="dropdown-content-nav" id="dropdown-content2">
+                        <a href="#">News</a>
+                        <a href="#">JS Toolkits</a>
+                        <a href="#">Employer Toolkits</a>
+                        <a href="#">How To Login</a>
+                        <a href="#">How To Post</a>
+                    </div>
+                    <a href="#" class="res" id="dropdown3">About  <i class="fa fa-caret-down"></i> </a>
+                    <div class="dropdown-content-nav" id="dropdown-content3">
+                        <a href="#">JS Toolkits</a>
+                        <a href="#">Employer Toolkits</a>
+                
+                    </div>
+                    @guest
+                    <a href="{{url('seeker/login')}}" class="res">Seeker Login</a>
+                    <a href="{{url('employer/login')}}" class="res">Login as Employer Instead</a>
+                    @else 
+                    <a href="#" class="res" id="dropdown4">{{ Auth::user()->name }}  <i class="fa fa-caret-down"></i> </a>
+                    <div class="dropdown-content-nav" id="dropdown-content4">
+                            <a href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                document.getElementById('logout-form').submit();">
+                                {{ __('Logout') }}
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                            <a href="{{url('seeker/profile')}}">Update Profile</a>
+                    </div>
+                            
+                    @endguest
+                </div>
+                
+                
+                <span style="font-size:26px;cursor:pointer" class="open-nav" onclick="openNav()">&#9776; </span>
             </div>
         </div>
-    </div>
-</header>
+    </header>
 
 <div class="custom-padding">
     @yield('content')
@@ -206,7 +259,7 @@
 
 <div class="copyright-footer">
     <div class="container">
-        <p class="copyright">&copy; 2020 MyCareers- All Rights Reserved</p>
+        <p class="text-center copyright">&copy; 2020 MyCareers- All Rights Reserved</p>
     </div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
@@ -214,7 +267,30 @@
 <script src="{{asset('js/searcharea.js')}}"></script>
 <script src="{{asset('js/template.js')}}"></script>
 <script src="https://kit.fontawesome.com/a75f6596a2.js" crossorigin="anonymous"></script>
+<script> 
+    function openNav() {
+    document.getElementById("mySidenav").style.width = "80%";
+    }
 
+    function closeNav() {
+    document.getElementById("mySidenav").style.width = "0";
+    }
+    $(document).ready(function(){
+        $('#dropdown1').click(function(){
+            $('#dropdown-content1').slideToggle('slow');
+        })
+        $('#dropdown2').click(function(){
+            $('#dropdown-content2').slideToggle('slow');
+        })
+        $('#dropdown3').click(function(){
+            $('#dropdown-content3').slideToggle('slow');
+        })
+        $('#dropdown4').click(function(){
+            $('#dropdown-content4').slideToggle('slow');
+        })
+    })
+</script>
 @stack('script')
+
 </body>
 </html>
