@@ -39,13 +39,13 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="floating-label-input mb10">
-                                    <input type="text" id="job-title" name="title" required/>
+                                    <input type="text" id="job-title" name="title"/>
                                     <label for="job-title" >Title</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="job-client" name="client" required/>
+                                    <input type="text" id="job-client" name="client"/>
                                     <label for="job-client" >Client</label>
                                     <span class="line"></span>
                                 </div>
@@ -108,13 +108,13 @@
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="job-location" required name="location"/>
+                                    <input type="text" id="job-location"  name="location"/>
                                     <label for="job-location" >Location</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="job-link" required name="link"/>
+                                    <input type="text" id="job-link" name="link"/>
                                     <label for="job-link" >Link</label>
                                     <span class="line"></span>
                                 </div>
@@ -183,4 +183,65 @@
         }
     });
 </script>
+@endpush
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                if (regexp.constructor != RegExp)
+                    regexp = new RegExp(regexp);
+                else if (regexp.global)
+                    regexp.lastIndex = 0;
+                return this.optional(element) || regexp.test(value);
+            },"erreur expression reguliere"
+        );
+
+        $("#pjaction").validate({
+            "errorClass": 'is-invalid',
+            "validClass": 'is-valid',
+            "errorElement": 'div',
+
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.appendTo(element.parent());
+            },
+
+            rules: {
+                "title": {
+                    required: true,
+                },
+                "client": {
+                    required: true
+                },
+                "start_year": {
+                    required: true
+                },
+                "start_month": {
+                    required: true
+                },
+                "end_year": {
+                    required: true
+                },
+                "end_month": {
+                    required: true
+                },
+                "detailpj": {
+                    required: true
+                },
+                "location": {
+                    required: true
+                },
+                "link": {
+                    required: true
+                }
+            },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    </script>
 @endpush

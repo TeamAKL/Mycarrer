@@ -37,13 +37,13 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="floating-label-input mb10">
-                                    <input type="text" id="certificate" name="certificate" required/>
+                                    <input type="text" id="certificate" name="certificate"/>
                                     <label for="certificate" >Certificate</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb10">
-                                    <input type="text" id="issueby" name="issueby" required/>
+                                    <input type="text" id="issueby" name="issueby"/>
                                     <label for="issueby" >Issued By</label>
                                     <span class="line"></span>
                                 </div>
@@ -52,7 +52,7 @@
                                     <div class="col-md-6">
                                         <p class="validity">Validity</p>
                                         <div class="floating-label-input mb10">
-                                            <input type="text" id="year" name="certificate_year" required class="startyear"/>
+                                            <input type="text" id="year" name="certificate_year"  class="startyear"/>
                                             <label for="year" >Year</label>
                                             <span class="line"></span>
                                         </div>
@@ -130,4 +130,53 @@
         }
     });
 </script>
+@endpush
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                if (regexp.constructor != RegExp)
+                    regexp = new RegExp(regexp);
+                else if (regexp.global)
+                    regexp.lastIndex = 0;
+                return this.optional(element) || regexp.test(value);
+            },"erreur expression reguliere"
+        );
+
+        $("#certificateform").validate({
+            "errorClass": 'is-invalid',
+            "validClass": 'is-valid',
+            "errorElement": 'div',
+
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.appendTo(element.parent());
+            },
+
+            rules: {
+                "certificate": {
+                    required: true,
+                },
+                "issueby": {
+                    required: true
+                },
+                "certificate_year": {
+                    required: true
+                },
+                "cerfificate_month": {
+                    required: true
+                },
+                "lifetime": {
+                    required: true
+                }
+            },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    </script>
 @endpush
