@@ -69,7 +69,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="prole" name="role" value="{{$user->job_preferences ? $user->job_preferences->role : ''}}" required/>
+                                    <input type="text" id="prole" name="role" value="{{$user->job_preferences ? $user->job_preferences->role : ''}}"/>
                                     <label for="prole">Preferred Role</label>
                                     <span class="line"></span>
                                 </div>
@@ -94,13 +94,13 @@
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="pshift" name="location" value="{{$user->job_preferences ? $user->job_preferences->preferred_location : ''}}" required/>
+                                    <input type="text" id="pshift" name="location" value="{{$user->job_preferences ? $user->job_preferences->preferred_location : ''}}" />
                                     <label for="pshift">Preferred Location</label>
                                     <span class="line"></span>
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="noticeperiod" name="notice" value="{{$user->job_preferences ? $user->job_preferences->notice_period : ''}}" required/>
+                                    <input type="text" id="noticeperiod" name="notice" value="{{$user->job_preferences ? $user->job_preferences->notice_period : ''}}" />
                                     <label for="noticeperiod">Notice Period</label>
                                     <span class="line"></span>
                                 </div>
@@ -114,7 +114,6 @@
                                                     <option value="">Select</option>
                                                     <option value="USD" class="salary_unit" @if($user->job_preferences && $user->job_preferences->salary_mode == 'USD') selected @endif>USD</option>
                                                     <option value="MMK" class="salary_unit" @if($user->job_preferences && $user->job_preferences->salary_mode == 'MMK') selected @endif>MMK</option>
-                                                    <option value="SGD" class="salary_unit" @if($user->job_preferences && $user->job_preferences->salary_mode == 'SGD') selected @endif>SGD</option>
                                                 </select>
                                             </div>
                                         </div>
@@ -128,7 +127,7 @@
                                     <span class="group-lable">Salary Mode</span>
                                     <label class="radio-lable-container pr100">
                                         <span class="clabel">Monthly</span>
-                                        <input type="radio" name="salarymode" value="Monthly" checked>
+                                        <input type="radio" name="salarymode" value="Monthly">
                                         <span class="checkmark"></span>
                                     </label>
                                     <label class="radio-lable-container pr100">
@@ -172,5 +171,58 @@
     });
 
 </script>
+@endpush
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                if (regexp.constructor != RegExp)
+                    regexp = new RegExp(regexp);
+                else if (regexp.global)
+                    regexp.lastIndex = 0;
+                return this.optional(element) || regexp.test(value);
+            },"erreur expression reguliere"
+        );
+
+        $("#preference_form").validate({
+            "errorClass": 'is-invalid',
+            "validClass": 'is-valid',
+            "errorElement": 'div',
+
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.appendTo(element.parent());
+            },
+
+            rules: {
+                "role": {
+                    required: true,
+                },
+                "emp_type": {
+                    required: true
+                },
+                "location": {
+                    required: true
+                },
+                "notice": {
+                    required: true
+                },
+                "salary_amount": {
+                    required: true,
+                    digits: true
+                },
+                "salary_unit": {
+                    required: true,
+                }
+            },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    </script>
 @endpush
 

@@ -75,7 +75,7 @@
                         <div class="row">
                             <div class="col-md-12">
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="hometown" name="home_town" value="{{$user->profile_details ? $user->profile_details->home_town : ''}}" required/>
+                                    <input type="text" id="hometown" name="home_town" value="{{$user->profile_details ? $user->profile_details->home_town : ''}}"/>
                                     <label for="hometown">Home Town</label>
                                     <span class="line"></span>
                                 </div>
@@ -109,7 +109,7 @@
                                 </div>
 
                                 <div class="floating-label-input mb30">
-                                    <input type="text" id="permanent_address" name="permanent_address" value="{{$user->profile_details ? $user->profile_details->permanent_address : ''}}" required/>
+                                    <input type="text" id="permanent_address" name="permanent_address" value="{{$user->profile_details ? $user->profile_details->permanent_address : ''}}"/>
                                     <label for="permanent_address">Permanent Address</label>
                                     <span class="line"></span>
                                 </div>
@@ -157,4 +157,56 @@
     });
 
 </script>
+@endpush
+@push('script')
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+    <script>
+        jQuery.validator.addMethod(
+            "regex",
+            function(value, element, regexp) {
+                if (regexp.constructor != RegExp)
+                    regexp = new RegExp(regexp);
+                else if (regexp.global)
+                    regexp.lastIndex = 0;
+                return this.optional(element) || regexp.test(value);
+            },"erreur expression reguliere"
+        );
+
+        $("#personaldetail").validate({
+            "errorClass": 'is-invalid',
+            "validClass": 'is-valid',
+            "errorElement": 'div',
+
+            errorPlacement: function(error, element) {
+                error.addClass('invalid-feedback');
+                error.appendTo(element.parent());
+            },
+
+            rules: {
+                "home_town": {
+                    required: true,
+                },
+                "gender": {
+                    required: true
+                },
+                "marital_status": {
+                    required: true
+                },
+                "permanent_address": {
+                    required: true
+                },
+                "date_of_birth": {
+                    required: true
+                },
+                "nationality": {
+                    required: true
+                }
+            },
+
+            submitHandler: function(form) {
+                form.submit();
+            }
+        });
+    </script>
 @endpush

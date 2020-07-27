@@ -104,6 +104,12 @@ class ProfileDetailController extends Controller
                 "text_resume" => $request->text_resume
 
             ]);
+            if(!session()->has('profile_details')){
+                $updated_score = Session::get('user_score')+10;
+                Session::forget('user_score');
+                Session::put('user_score',$updated_score);
+            }
+            Session::put('profile_details',10);
         }
         return redirect('seeker/profile');
 
@@ -140,6 +146,11 @@ class ProfileDetailController extends Controller
         */
         public function update(Request $request)
         {
+            if(!session()->has('profile_details')){
+                $updated_score = Session::get('user_score')+10;
+                Session::forget('user_score');
+                Session::put('user_score',$updated_score);
+            }
             $user_id = Auth::id();
             $detail = profileDetail::find($request->id);
             $detail->home_town = $request->home_town;
@@ -150,9 +161,7 @@ class ProfileDetailController extends Controller
             $detail->nationality = $request->nationality;
             $detail->user_id = $user_id;
             $detail->save();
-            $detail_update_score = Session::get('user_score')+10;
-            Session::forget('user_score');
-            Session::put('user_score',$detail_update_score);
+            Session::put('profile_details',10);
             return redirect('seeker/profile');
         }
 

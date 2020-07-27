@@ -42,6 +42,9 @@ header {
     max-width: 100%;
     border: 0;
 }
+.nav-bar{
+    display: none;
+}
 
 .nav-wapper {
     width: 100%;
