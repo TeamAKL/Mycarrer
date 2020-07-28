@@ -2,12 +2,12 @@
 @section('content')
 @include('employer.company.banner')
 <div class="container">
-    <div class="row mt-5">
-        <div class="col-md-4 col-sm-12 about">
+    <div class="d-flex mt-5 parent">
+        <div class="item1 about">
             <h3 class="mb20 underline">About</h3>
             {!! $company->about !!}
         </div>
-        <div class="col-md-8 col-sm-12 order-1">
+        <div class="item2">
             <div class="table-responsive">
                 <table class="table table-dark">
                     <thead>
@@ -28,10 +28,10 @@
                             <td>@if($post->salary_unit == 'USD') USD @endif {{number_format($post->min_salary)}} - {{number_format($post->max_salary)}} @if($post->salary_unit == 'MMK') MMK @endif </td>
                             <td>
                                 @auth()
-                                <button class="btn btn-primary apply_btn" post="{{$post->id}}">@if(Auth::user()->posts()->where('post_id', $post->id)->exists()) Applied @else Apply @endif</button>
+                                <button class="btn btn-sm btn-primary apply_btn" post="{{$post->id}}">@if(Auth::user()->posts()->where('post_id', $post->id)->exists()) Applied @else Apply @endif</button>
                                 @endauth
                                 @guest
-                                <a href="#" class="btn btn-primary apply_btn unauthapply">Apply</a>
+                                <a href="#" class="btn btn-sm btn-primary apply_btn unauthapply">Apply</a>
                                 @endguest
                             </td>
                         </tr>
@@ -70,12 +70,40 @@
 
 @push('css')
 <style>
+    .parent {
+        flex-direction: row;
+        width: 100%;
+    }
+    .item1 {
+        width: 30%;
+    }
+    .item2 {
+        width: 70%;
+    }
     div.job-ch a {
         cursor: pointer;
     }
     .vision ul, .vission ol, .about ol, .about ul {
         display: flex;
         flex-direction: column;
+    }
+    @media(max-width: 768px) {
+        .parent {
+            flex-direction: column;
+        }
+        .item1, .item2 {
+            width: 100%;
+        }
+
+        .item1 {
+            margin-top: 5px;
+            order: 2;
+        }
+
+        .item2 {
+            order: 1;
+            font-size: .8rem;
+        }
     }
 </style>
 <link rel="stylesheet" href="{{asset('css/employer/banner.css')}}">
