@@ -80,12 +80,12 @@
       height: 100%;
       width: 0;
       position: fixed;
-      z-index: 1;
+      z-index: 3;
       top: 0;
       left: 0;
       background-color: #0060a2;
       overflow-x: hidden;
-      transition: 0.5s;
+      transition: 0.3s;
       padding-top: 15px;
       box-shadow: inset -9px 0 12px 0 #3490dc;
       -webkit-box-shadow: inset -9px 0 12px 0 #3490dc;
@@ -106,7 +106,7 @@
       font-size: 16px;
       color: #faf3f3;
       display: block;
-      transition: 0.3s;
+      transition: 0.1s;
       opacity: 0.8;
       background-color: #3490dc;
     }
@@ -129,9 +129,9 @@
     .open-nav{
         cursor: pointer;
         position: absolute;
-        /* z-index: 99; */
-        height: 100%;
-        width: 100%;
+        z-index: 2;
+        height: 15%;
+        width: 15%;
         top: 16px;
         left: 10px;
         

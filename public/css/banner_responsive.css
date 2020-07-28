@@ -9,6 +9,10 @@
         height: 200px;
         margin: 20px auto 0;
     }
+
+    .mb-mt {
+        margin-top: 7px;
+    }
 }
 
 

@@ -139,13 +139,13 @@
                     @auth
                     <a class="res" href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 15px"></i>Dashboard</a>
                     @endauth
-                    <a class="res" href="#" id="dropdown1">Job Search  <i class="fa fa-caret-down"></i></a>
+                    <!-- <a class="res" href="#" id="dropdown1">Job Search  <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content-nav" id="dropdown-content1">
                         <a href="#">Job By Company</a>
                         <a href="#">Job By Position</a>
                         <a href="#">Job By Skill</a>
                         <a href="#">Part Time Job</a>
-                    </div>
+                    </div> -->
                     <a href="#" class="res">Fresher</a>
                     <a href="#" class="res" id="dropdown2">Blog  <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content-nav" id="dropdown-content2">
@@ -167,16 +167,18 @@
                     @else 
                     <a href="#" class="res" id="dropdown4">{{ Auth::user()->name }}  <i class="fa fa-caret-down"></i> </a>
                     <div class="dropdown-content-nav" id="dropdown-content4">
+                            <a href="{{url('seeker/profile')}}">Update Profile</a>
                             <a href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
+                                <i class="fa fa-power-off" aria-hidden="true"></i>
                                 {{ __('Logout') }}
                             </a>
 
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form>
-                            <a href="{{url('seeker/profile')}}">Update Profile</a>
+                           
                     </div>
                             
                     @endguest
