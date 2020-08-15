@@ -71,11 +71,8 @@
                             </div>
                         </li>
                         <li class="dropdown">
-                            <span class="dropbtn">ABOUT</span>
-                            <div class="dropdown-content">
-                                <a href="#">JOB SEEKERS TOOLKITS</a>
-                                <a href="#">EMPLOYER TOOLKITS</a>
-                            </div>
+                        <a href="{{url('/about')}}" class="dropbtn">ABOUT </a>
+
                         </li>
                     </ul>
                     <ul class="login-section-nav">
@@ -155,12 +152,8 @@
                         <a href="#">How To Login</a>
                         <a href="#">How To Post</a>
                     </div>
-                    <a href="#" class="res" id="dropdown3">About  <i class="fa fa-caret-down"></i> </a>
-                    <div class="dropdown-content-nav" id="dropdown-content3">
-                        <a href="#">JS Toolkits</a>
-                        <a href="#">Employer Toolkits</a>
-                
-                    </div>
+                    <a href="{{url('/about')}}" class="res">About </a>
+            
                     @guest
                     <a href="{{url('seeker/login')}}" class="res">Seeker Login</a>
                     <a href="{{url('employer/login')}}" class="res">Login as Employer Instead</a>
