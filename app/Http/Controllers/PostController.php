@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Company;
+use App\Cmoney;
 use App\Post;
 use App\JobCategory;
 use App\User;
@@ -69,6 +69,11 @@ class PostController extends Controller
             "urgent" => $urgent
             ]);
             $post->job_categories()->attach(JobCategory::findOrFail($request->jobcategory));
+            if(isset($post)) {
+                $company = Cmoney::where('company_id', '=', $request->company_id)->first();
+                $company->amount -= 30000;
+                $company->save();
+            }
             return redirect('employer');
         }
 
@@ -226,7 +231,7 @@ class PostController extends Controller
         }
 
         public function showbycate($id) {
-            $posts = JobCategory::find($id)->posts()->orderBy('created_at', 'desc')->paginate(10);
+            $posts = JobCategory::find($id)->posts()->where('job_status', 'active')->orderBy('created_at', 'desc')->paginate(10);
             return view('seeker.index', ["posts" => $posts]);
         }
     }

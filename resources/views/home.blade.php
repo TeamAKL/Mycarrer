@@ -35,7 +35,9 @@
             </li>
             @foreach($companies as $company)
             <li>
-                <img src="{{asset('images/company/'.$company->company_logo)}}" alt="Img">
+                <a href="{{url('company/detail/'.$company->id)}}">
+                    <img src="{{asset('images/company/'.$company->company_logo)}}" alt="Img">
+                </a>
             </li>
             @endforeach
         </ul>
@@ -64,7 +66,7 @@
         @foreach($categories as $category)
         <div class="col-md-4 text-center">
             <div class="job-title">
-                <a href="{{url('jobs/'.$category->id)}}">{{$category->category_name}}</a><span class="pl-4 custom-blue">{{$category->posts()->count()}}</span>
+                <a href="{{url('jobs/'.$category->id)}}">{{$category->category_name}}</a><span class="pl-4 custom-blue">{{$category->posts()->where('job_status', 'active')->count()}}</span>
             </div>
         </div>
         @endforeach

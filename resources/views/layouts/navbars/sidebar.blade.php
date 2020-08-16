@@ -3,11 +3,10 @@
         <div class="logo">
         <a href="{{url('employer')}}" class="simple-text logo-normal">{{ __('Mycareers') }}</a>
             @if(Auth::user()->role_id == 1)
-            <span style=" color: #fff;
+            <span id="amount" style=" color: #fff;
             font-size: .7rem;
             font-weight: 600;">
-            Your Balance : <span style="
-            font-size: .8rem;">MMK - {{number_format('200000')}}</span> <!-- color: #d4420e; -->
+             <!-- color: #d4420e; -->
             </span>
             @endif
     </div>
@@ -156,6 +155,13 @@
 
                 </ul>
             </div>
+        </li>
+
+        <li @if ($pageSlug == 'add-amount') class="active " @endif>
+            <a href="{{ route('add-amount') }}">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <p>{{ __('Add Amount') }}</p>
+            </a>
         </li>
         @endif
     </ul>

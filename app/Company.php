@@ -36,6 +36,11 @@ class Company extends Model
         return $this->hasMany('App\Post');
     }
 
+    public function cmoney()
+    {
+        return $this->belongsTo('App\Cmoney');
+    }
+
     public function user()
     {
         return $this->belongsTo('App\User');

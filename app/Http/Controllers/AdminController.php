@@ -7,6 +7,7 @@ use App\User;
 use Illuminate\Http\Request;
 use DataTables;
 use DB;
+use App\Cmoney;
 use App\Helper\CompanySize;
 class AdminController extends Controller
 {
@@ -187,4 +188,45 @@ class AdminController extends Controller
         // })
         ->make(true);
     }
+
+    public function addAmount()
+    {
+        return view('admin.add_amount');
+    }
+
+    public function getCompanyName()
+    {
+       $companies = Company::select(['company_name', 'id'])->get();
+      return response()->json(['companies' => $companies], 200);
+    }
+
+    public function getCompanySearch(Request $request)
+    {
+        $search = $request->get('name');
+        $companies = Company::where('company_name', 'like', '%'.$search.'%')->get();
+
+        return response()->json(['companies' => $companies], 200);
+    }
+
+    public function saveAmount(Request $req)
+    {
+        $req->validate([
+            'amount' => 'required|numeric',
+            'company' => 'required'
+        ]);
+
+        $company = Cmoney::where('company_id', '=', $req->company_id)->first();
+        if(isset($company)) {
+            $company->amount += $req->amount;
+            $company->save();
+            return redirect('add-amount')->with('success', 'You added '. number_format($req->amount) .' to '. $req->company);
+        } else {
+        Cmoney::create([
+            'amount' => $req->amount,
+            'company_id' => $req->company_id
+        ]);
+        return redirect('add-amount')->with('success', "Successfully Added Amount to ".$req->company);
+        }
+    }
+
 }

@@ -133,7 +133,19 @@
                                             </di>
                                             <di class="col-md-6">
                                                 <span><i class="fa fa-briefcase" aria-hidden="true"></i> {{$post->experience}} Years</span>
-                                                <span><i class="fa fa-database" aria-hidden="true"></i> @if($post->salary_unit == 'USD') USD @endif {{$post->min_salary}} - {{$post->max_salary}} @if($post->salary_unit == 'MMK') MMK @endif </span>
+                                                <span style="position: absolute;"><i class="fa fa-database" aria-hidden="true"></i>
+                                                    @guest
+                                                        <a href="{{url('/seeker/login')}}" style="text-decoration: none;"><i class="fa fa-sign-in" aria-hidden="true"></i>Login to view salary</a>
+                                                    @else
+                                                        @if($post->salary_unit == 'USD')
+                                                            USD
+                                                        @endif
+                                                        {{$post->min_salary}} - {{$post->max_salary}}
+                                                        @if($post->salary_unit == 'MMK')
+                                                            MMK
+                                                        @endif
+                                                    @endguest
+                                                </span>
                                             </di>
                                         </div>
                                     </div>

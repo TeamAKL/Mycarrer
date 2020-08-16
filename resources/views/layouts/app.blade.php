@@ -222,7 +222,18 @@
                 // ],
             });
         });
-
+        $(document).ready(function() {
+            function getAmount() {
+                $.ajax({
+                    type: "get",
+                    url: 'get-amount',
+                    success: function(result) {
+                        $('#amount').html("Your Balance : <span style='font-size: .8rem;'>MMK - "+result.amount+"</span>");
+                    }
+                });
+            }
+            getAmount();
+        });
     </script>
     @stack('js')
 </body>

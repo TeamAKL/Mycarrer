@@ -99,6 +99,7 @@ Route::group(['middleware' => 'employer'], function () {
     Route::get('company/view', 'CompanyController@edit')->name('company');
     Route::get('findcountry', 'HomeController@countrySearch');
     Route::get('city', 'HomeController@searchCity');
+    Route::get('get-amount', 'CompanyController@getAmount');
 
     // Resume
     Route::get('appliedresume', function() {
@@ -115,11 +116,15 @@ Route::group(['middleware' => 'employer'], function () {
 // For ADMIN
 Route::group(['middleware' => 'notAdmin'], function () {
 // ADMIN Dashboard
-Route::get('admin', 'JobCategoryController@index');
+Route::get('administrator/mcm', 'JobCategoryController@index');
 Route::get('all-employer', ['as' => 'all-employer', 'uses' => 'AdminController@allEmployer']);
 Route::get('all-seeker', ['as' => 'allseeker', 'uses' => 'AdminController@allSeeker']);
 Route::get('getallseeker', 'AdminController@getallseeker')->name('getallseeker');
 Route::get('getcompanies', 'AdminController@getcompanies')->name('getcompanies');
+Route::get('add-amount', 'AdminController@addAmount')->name('add-amount');
+Route::get('get-company-name', 'AdminController@getCompanyName');
+Route::get('get-company-search', 'AdminController@getCompanySearch');
+Route::post('save-amount', 'AdminController@saveAmount');
 
 });
 

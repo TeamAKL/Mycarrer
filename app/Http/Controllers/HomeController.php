@@ -26,8 +26,7 @@ class HomeController extends Controller
         $categories = JobCategory::all();
         $posts = Post::all();
         $todayjobs = Post::where('job_status', 'active')->whereDate('created_at', '=',  Carbon::today())->count();
-        $companies = Company::all();
-        // dd($companies);
+        $companies = Company::withCount('posts')->orderBy('posts_count', 'desc')->take(1)->get();
         return view('home', ['categories' => $categories, "posts" => $posts, "todayjobs" => $todayjobs, "companies" => $companies]);
     }
 

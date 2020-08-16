@@ -7,6 +7,7 @@ use App\Helper\CompanySize;
 use App\JobCategory;
 use App\Post;
 use App\User;
+use App\Cmoney;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -28,10 +29,18 @@ class CompanyController extends Controller
         $company_id = Auth::user()->companies->id;
         $company = Company::where('id', $company_id)->with('posts')->first();
         $jobCategories = JobCategory::all();
+        // dd(number_format($amount));
         // $emp_sizes = $this->get_company_size();
         return view('employer.index', ['jobCategories' => $jobCategories, 'company' => $company]);
         // return view('employer.index', ['jobCategories' => $jobCategories,'emp_sizes' => $emp_sizes]);
 
+    }
+
+    public function getAmount()
+    {
+        $company_id = Auth::user()->companies->id;
+        $amount = Cmoney::select('amount')->where('company_id', '=', $company_id)->first();
+        return response()->json(['amount' => number_format($amount->amount)], 200);
     }
 
     /**

@@ -23,7 +23,7 @@ class RouteServiceProvider extends ServiceProvider
      */
     public const HOME = '/seeker/dashboard';
 
-    public const ADMIN = '/admin';
+    public const ADMIN = '/administrator/mcm';
 
     public const EMPLOYER = '/employer';
 
