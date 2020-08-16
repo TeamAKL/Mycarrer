@@ -29,6 +29,9 @@
     text-decoration: none;
     cursor: pointer;
 }
+.container>.row {
+    clear:both;
+}
 
 @media(max-width: 768px) {
     .nth-selector {

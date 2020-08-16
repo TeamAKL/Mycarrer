@@ -48,12 +48,12 @@
                                 <option value="11">More than 10 Year</option>
                             </select>
                         </div>
-                        <div class="col-md-2 col-sm-12 pl-pr-0">
+                        <div class="col-md-2 col-sm-12 pl-pr-0 mb-mt">
                             <input type="submit" value="Search" class="custom-btn" disabled>
                         </div>
                     </div>
                 </form>
-                <a href="http://" class="search-model" data-toggle="modal" data-target=".bd-example-modal-lg">Advanced Search</a>
+                <!-- <a href="http://" class="search-model" data-toggle="modal" data-target=".bd-example-modal-lg">Advanced Search</a> -->
             </div>
 
             <div class="right-side">

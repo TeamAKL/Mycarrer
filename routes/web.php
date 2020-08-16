@@ -185,3 +185,17 @@ Route::post('email_edit', 'UserController@emailupdate');
 Route::get('/seeker/view-resume/{userID}', 'UserController@generateCertificate')->name('seeker.view_resume');
 
 Route::get('jobs/{cateid}', 'PostController@showbycate');
+
+//about
+
+Route::get('/about', 'PageController@about');
+
+//blog
+Route::get('/blog/create', 'BlogController@create');
+Route::post('/blog', 'BlogController@store');
+Route::get('/blog','BlogController@index');
+Route::get('/blog/{id}','BlogController@show');
+Route::get('/blog/edit/{id}','BlogController@edit');
+Route::put('/blog/update','BlogController@update');
+Route::get('/blog/del/{id}','BlogController@delete');
+
