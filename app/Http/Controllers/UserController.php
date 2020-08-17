@@ -4,12 +4,14 @@ namespace App\Http\Controllers;
 
 use App\JobCategory;
 use App\Post;
+use App\ProfileDetail;
 use App\User;
 use Barryvdh\DomPDF\Facade as PDF;
 use Carbon\Carbon;
 use http\Env\Response;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 use Mail;
 
 class UserController extends Controller
@@ -46,7 +48,7 @@ class UserController extends Controller
         }else {
             $currentUser = $id;
         }
-       
+
         $user = User::with(['projects', 'education', 'work_experiences','skills'])->findOrFail($currentUser);
 
         $viewFile = ob_get_clean();
@@ -136,4 +138,39 @@ class UserController extends Controller
         $user->save();
         return redirect('seeker/profile');
     }
+
+    public function getUserEmail(){
+             return view('seeker/get_email_forget_pass');
+    }
+
+    public function sendEmailForgotPassword(Request $request){
+        $subject = 'reset your password';
+        $to = $request->email;
+        $user = User::where('email',$request->email)->first();
+        $from = 'thettun1741997@gmail.com';
+        $message = 'thettun1741997@gmail.com';
+
+if($user != null){
+    Mail::send(['html' => 'emails.forgot_password_mail'], ['user' => $user], function ($messages) use ($subject, $to ,$from) {
+        $messages->to($to)->subject($subject);
+        $messages->from($from, $name = 'AKL');
+    });
+    return redirect('/seeker/getUserEmail')->with('success', 'hello');
+        }else{
+    return redirect('/seeker/getUserEmail')->with('error', 'hello');
+}
+    }
+    public function showResetForm($id){
+        return view('users/reset_password',['id' => $id]);
+    }
+    public function setResetPassword(Request $request){
+        $request->validate([
+            'new_password' => 'required|string|min:8|confirmed'
+        ]);
+        $user = User::find($request->user_id);
+        $user->password = Hash::make($request->new_password);
+        $user->save();
+        return redirect('/');
+    }
+
 }
