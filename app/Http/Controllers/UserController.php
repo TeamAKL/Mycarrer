@@ -17,11 +17,11 @@ use Mail;
 class UserController extends Controller
 {
     /**
-     * Display a listing of the users
-     *
-     * @param \App\User $model
-     * @return \Illuminate\View\View
-     */
+    * Display a listing of the users
+    *
+    * @param \App\User $model
+    * @return \Illuminate\View\View
+    */
     public function index(User $model)
     {
         return view('users.index', ['users' => $model->paginate(15)]);
@@ -67,7 +67,7 @@ class UserController extends Controller
         if(isset($request->cover_letter)){
             $message = $request->cover_letter;
         }else{
-           $message = "Apply CV";
+            $message = "Apply CV";
         }
         $subject = 'CV Form';
         $currentUser = Auth::id();
@@ -78,7 +78,7 @@ class UserController extends Controller
 
         if (isset($request->checkcv)) {
             if(isset($user->profile_details->resume)) {
-            $pdf = file_get_contents(public_path() . '/resumes/resumes/' . $user->profile_details->resume);
+                $pdf = file_get_contents(public_path() . '/resumes/resumes/' . $user->profile_details->resume);
             } else {
                 return false;
             }
@@ -140,7 +140,7 @@ class UserController extends Controller
     }
 
     public function getUserEmail(){
-             return view('seeker/get_email_forget_pass');
+        return view('seeker/get_email_forget_pass');
     }
 
     public function sendEmailForgotPassword(Request $request){
@@ -150,15 +150,15 @@ class UserController extends Controller
         $from = 'thettun1741997@gmail.com';
         $message = 'thettun1741997@gmail.com';
 
-if($user != null){
-    Mail::send(['html' => 'emails.forgot_password_mail'], ['user' => $user], function ($messages) use ($subject, $to ,$from) {
-        $messages->to($to)->subject($subject);
-        $messages->from($from, $name = 'AKL');
-    });
-    return redirect('/seeker/getUserEmail')->with('success', 'hello');
+        if($user != null){
+            Mail::send(['html' => 'emails.forgot_password_mail'], ['user' => $user], function ($messages) use ($subject, $to ,$from) {
+                $messages->to($to)->subject($subject);
+                $messages->from($from, $name = 'AKL');
+            });
+            return redirect('/seeker/getUserEmail')->with('success', 'hello');
         }else{
-    return redirect('/seeker/getUserEmail')->with('error', 'hello');
-}
+            return redirect('/seeker/getUserEmail')->with('error', 'hello');
+        }
     }
     public function showResetForm($id){
         return view('users/reset_password',['id' => $id]);
@@ -166,12 +166,12 @@ if($user != null){
     public function setResetPassword(Request $request){
         $request->validate([
             'new_password' => 'required|string|min:8|confirmed'
-        ]);
-        $user = User::find($request->user_id);
-        $user->password = Hash::make($request->new_password);
-        $user->save();
-        return redirect('/');
-    }
+            ]);
+            $user = User::find($request->user_id);
+            $user->password = Hash::make($request->new_password);
+            $user->save();
+            return redirect('/');
+        }
 
     public function sendEmailToAdmin(Request $request){
         $to = 'kokogyiec1997@gmail.com';
@@ -186,4 +186,16 @@ if($user != null){
         }
     }
 
+    public function feedBack(Request $req)
+    {
+        $subject = "Feedback Email From Mycareers";
+        $to = "thettun1741997@gmail.com";
+        $from = $req->email;
+        $message = $req->message;
+        Mail::send(['html' => 'emails.feedback'], ['text' => $message], function ($messages) use ($subject, $to ,$from) {
+            $messages->to($to)->subject($subject);
+            $messages->from($from, $name = "Mycareers");
+        });
+        return redirect('/')->with('feedback', 'helo');
+    }
 }

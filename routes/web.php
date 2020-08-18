@@ -206,5 +206,9 @@ Route::get('seeker/getUserEmail','UserController@getUserEmail');
 Route::post('seeker/putEmailForForgotPass','UserController@sendEmailForgotPassword');
 Route::get('seeker/showResetForm/{id}','UserController@showResetForm');
 Route::post('seeker/resetPassword','UserController@setResetPassword');
+
 Route::post('seeker/putEmailForSubscribe','UserController@sendEmailToAdmin');
+
+//feedBack
+Route::post('feed-back', 'UserController@feedBack');
 
