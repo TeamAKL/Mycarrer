@@ -84,9 +84,9 @@
                         @else
                         <li class="nav-link">
                             @if(Auth::user()->role_id == 1)
-                                <a href="{{url('employer')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 20px"></i></a>
+                            <a href="{{url('employer')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 20px"></i></a>
                             @else
-                                <a href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 20px"></i></a>
+                            <a href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 20px"></i></a>
                             @endif
                         </li>
                         <li class="nav-link logined-usname share-hover mr0 pr">
@@ -250,22 +250,19 @@
                     <h5 class="footer-title">About Us</h5>
                     <div><a href="http://" class="footer-link">Career with Us</a></div>
                     <div><a href="javascript:void();" class="footer-link" data-toggle="modal" data-target=".sendFeedback">Send Feedback</a></div>
-                    {{-- <div>
-                        <p>We would to hear your thoughts, concerns or problems with anything so we can improve!</p>
-                    </div> --}}
                     <div class="modal fade sendFeedback" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title">Send Feedback</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body">
-                                    <p class="text-center" style="font-weight: 600;
-                                    font-style: italic;">We would like your feedback to improve our website.</p>
-                                    <form action="" method="post">
+                                <form action="{{url('')}}" method="post">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title">Send Feedback</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <p class="text-center" style="font-weight: 600;
+                                        font-style: italic;">We would like your feedback to improve our website.</p>
                                         <div class="form-group">
                                             <label for="">Email</label>
                                             <input type="email" name="" id="" class="form-control">
@@ -274,12 +271,13 @@
                                             <label for="">Message</label>
                                             <textarea name="" id="" cols="20" rows="6" class="form-control"></textarea>
                                         </div>
-                                    </form>
-                                </div>
-                                <div class="modal-footer">
-                                    <button type="button" class="btn btn-sm btn-secondary">Cancle</button>
-                                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Send</button>
-                                </div>
+
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-sm btn-secondary">Cancle</button>
+                                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Send</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>
