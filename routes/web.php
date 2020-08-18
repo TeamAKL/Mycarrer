@@ -192,8 +192,8 @@ Route::get('jobs/{cateid}', 'PostController@showbycate');
 //about -terms -policy
 
 Route::get('/about', 'PageController@about');
-Route::get('/terms', 'PageController@about');
-Route::get('/policy', 'PageController@about');
+Route::get('/terms', 'PageController@terms');
+Route::get('/policy', 'PageController@policy');
 
 //blog
 Route::post('/blog', 'BlogController@store');

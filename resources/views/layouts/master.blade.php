@@ -264,6 +264,7 @@
                                 <button type="submit" class="btn btn-primary">Submit</button>
                             </form>
                         </div>
+                    </div>
                     <div class="modal fade sendFeedback" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
