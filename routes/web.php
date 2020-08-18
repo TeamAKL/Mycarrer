@@ -189,9 +189,11 @@ Route::get('/seeker/view-resume/{userID}', 'UserController@generateCertificate')
 
 Route::get('jobs/{cateid}', 'PostController@showbycate');
 
-//about
+//about -terms -policy
 
 Route::get('/about', 'PageController@about');
+Route::get('/terms', 'PageController@about');
+Route::get('/policy', 'PageController@about');
 
 //blog
 Route::post('/blog', 'BlogController@store');

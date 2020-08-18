@@ -240,9 +240,9 @@
             <div class="col-md-3">
                 <div>
                     <h5 class="footer-title">Legal</h5>
-                    <div><a href="http://" class="footer-link">Security</a></div>
-                    <div><a href="http://" class="footer-link">Policy</a></div>
-                    <div><a href="http://" class="footer-link">Terms of Us</a></div>
+                    <div><a href="#" class="footer-link">Security</a></div>
+                    <div><a href="{{url('/policy')}}" class="footer-link">Policy</a></div>
+                    <div><a href="{{url('/terms')}}" class="footer-link">Terms of Us</a></div>
                 </div>
             </div>
             <div class="col-md-3">
