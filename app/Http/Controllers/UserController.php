@@ -173,4 +173,17 @@ if($user != null){
         return redirect('/');
     }
 
+    public function sendEmailToAdmin(Request $request){
+        $to = 'kokogyiec1997@gmail.com';
+        $from = 'thettun1741997@gmail.com';
+        $subject = 'User Subscribe mail';
+        if($request->email != null){
+            Mail::send(['html' => 'emails.sent_subscribe_mail'], ['email' => $request->email], function ($messages) use ($subject, $to ,$from) {
+                $messages->to($to)->subject($subject);
+                $messages->from($from, $name = 'AKL');
+            });
+            return redirect('/');
+        }
+    }
+
 }

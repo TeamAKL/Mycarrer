@@ -7,7 +7,7 @@
             <div class="fh5co-blog animate-box">
                 @if(isset($blog->blog_image))
                 <a href="{{'blog/'.$blog->id}}" class="blog-img-holder">
-                    <img src="{{'images/blog/'.$blog->blog_image}}" alt="" width="100%"; height="100%;">
+                    <img src="{{'images/blog/'.$blog->blog_image}}" alt="" width="100%"; height="100%">
                 </a>
                 @else
                 {!!$blog->video!!}

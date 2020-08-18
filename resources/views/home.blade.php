@@ -87,13 +87,13 @@
                     <div class="staff">
                         <div class="staff-img" >
                             @if(isset($toolkit->blog_image))
-                            <img src="{{'images/blog/'.$toolkit->blog_image}}" alt="img" style="width: 100%; height: 100%">
+                            <img src="{{'images/blog/'.$toolkit->blog_image}}" alt="img" style="width: 100%;height: 200px">
                             @else
                             {!! $toolkit->video !!}
                             @endif
                         </div>
 
-                        <h3><a href="#">{{$toolkit->title}}</a></h3>
+                        <h3><a href="{{'blog/'.$toolkit->id}}">{{$toolkit->title}}</a></h3>
                         <p>{{Str::limit($toolkit->content,350)}}</p>
                         <a href="{{'blog/'.$toolkit->id}}" class="btn btn-second btn-full">Detail</a>
                     </div>
@@ -103,13 +103,13 @@
                     <div class="staff">
                         <div class="staff-img">
                             @if(isset($latestBlog->blog_image))
-                            <img src="{{'images/blog/'.$latestBlog->blog_image}}" alt="img" style="width: 100%; height: 100%">
+                            <img src="{{'images/blog/'.$latestBlog->blog_image}}" alt="img" style="width: 100%; height: 200px">
                             @else
                             {!! $latestBlog->video !!}
                             @endif
                         </div>
 
-                        <h3><a href="#">{{$latestBlog->title}}</a></h3>
+                        <h3><a href="{{'blog/'.$latestBlog->id}}">{{$latestBlog->title}}</a></h3>
                         <p>{{Str::limit($latestBlog->content,350)}}</p>
                         <a href="{{'blog/'.$latestBlog->id}}" class="btn btn-second btn-full">Detail</a>
                     </div>

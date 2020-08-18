@@ -250,6 +250,20 @@
                     <h5 class="footer-title">About Us</h5>
                     <div><a href="http://" class="footer-link">Career with Us</a></div>
                     <div><a href="javascript:void();" class="footer-link" data-toggle="modal" data-target=".sendFeedback">Send Feedback</a></div>
+                    <p class="footer-link">Please write your email and get our new jobs</p>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <form action="{{url('seeker/putEmailForSubscribe')}}" method="post">
+                                @csrf
+                                <div class="form-group">
+                                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" placeholder="Email" value="{{old('email')}}">
+                                    @if ($errors->has('email'))
+                                        <span class="invalid-feedback" role="alert">{{ $errors->first('email') }}</span>
+                                    @endif
+                                </div>
+                                <button type="submit" class="btn btn-primary">Submit</button>
+                            </form>
+                        </div>
                     <div class="modal fade sendFeedback" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
