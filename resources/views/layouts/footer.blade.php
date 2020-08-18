@@ -2,22 +2,22 @@
     <div class="container-fluid">
         <ul class="nav">
             <li class="nav-item">
-                <a href="https://creative-tim.com" target="blank" class="nav-link">
+                <a href="" target="blank" class="nav-link">
                     {{ __('Employer Toolkits') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a href="https://updivision.com" target="blank" class="nav-link">
+                <a href="javascript:void();" class="nav-link">
                     {{ __('How to Post') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+            <a href="{{url('about')}}" class="nav-link">
                     {{ __('About Us') }}
                 </a>
             </li>
             <li class="nav-item">
-                <a href="#" class="nav-link">
+            <a href="{{url('blog')}}" class="nav-link">
                     {{ __('Blog') }}
                 </a>
             </li>

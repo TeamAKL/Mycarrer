@@ -60,7 +60,7 @@
 
                         </li>
                         <li class="dropdown">
-                            <span href="" class="dropbtn">BLOG</span>
+                            <a href="{{url('blog')}}" class="dropbtn">BLOG</a>
                             <div class="dropdown-content">
                                 <a href="#"> NEWS</a>
                                 <a href="#">JS TOOLKITS</a>
@@ -71,7 +71,7 @@
                             </div>
                         </li>
                         <li class="dropdown">
-                        <a href="{{url('/about')}}" class="dropbtn">ABOUT </a>
+                            <a href="{{url('/about')}}" class="dropbtn">ABOUT </a>
 
                         </li>
                     </ul>
@@ -83,7 +83,11 @@
                         </li>
                         @else
                         <li class="nav-link">
-                            <a href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 20px"></i></a>
+                            @if(Auth::user()->role_id == 1)
+                                <a href="{{url('employer')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 20px"></i></a>
+                            @else
+                                <a href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 20px"></i></a>
+                            @endif
                         </li>
                         <li class="nav-link logined-usname share-hover mr0 pr">
                             <div class="profile-avatar-user">
@@ -127,16 +131,16 @@
                     </li>
                     @endguest
                 </ul>
-                </div>
             </div>
-            <div class="nav-bar">
-                <div id="mySidenav" class="sidenav">
-                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
-                    <a class="res" href="{{url('/')}}" style="font-size:20px;"><b>MyCareers</b></a>
-                    @auth
-                    <a class="res" href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 15px"></i>Dashboard</a>
-                    @endauth
-                    <!-- <a class="res" href="#" id="dropdown1">Job Search  <i class="fa fa-caret-down"></i></a>
+        </div>
+        <div class="nav-bar">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a class="res" href="{{url('/')}}" style="font-size:20px;"><b>MyCareers</b></a>
+                @auth
+                <a class="res" href="{{url('seeker/dashboard')}}" style="cursor: pointer;"><i class="fa fa-tachometer" aria-hidden="true" style="font-size: 15px"></i>Dashboard</a>
+                @endauth
+                <!-- <a class="res" href="#" id="dropdown1">Job Search  <i class="fa fa-caret-down"></i></a>
                     <div class="dropdown-content-nav" id="dropdown-content1">
                         <a href="#">Job By Company</a>
                         <a href="#">Job By Position</a>
@@ -153,35 +157,35 @@
                         <a href="#">How To Post</a>
                     </div>
                     <a href="{{url('/about')}}" class="res">About </a>
-            
+
                     @guest
                     <a href="{{url('seeker/login')}}" class="res">Seeker Login</a>
                     <a href="{{url('employer/login')}}" class="res">Login as Employer Instead</a>
-                    @else 
+                    @else
                     <a href="#" class="res" id="dropdown4">{{ Auth::user()->name }}  <i class="fa fa-caret-down"></i> </a>
                     <div class="dropdown-content-nav" id="dropdown-content4">
-                            <a href="{{url('seeker/profile')}}">Update Profile</a>
-                            <a href="{{ route('logout') }}"
-                                onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                <i class="fa fa-power-off" aria-hidden="true"></i>
-                                {{ __('Logout') }}
-                            </a>
+                        <a href="{{url('seeker/profile')}}">Update Profile</a>
+                        <a href="{{ route('logout') }}"
+                        onclick="event.preventDefault();
+                        document.getElementById('logout-form').submit();">
+                        <i class="fa fa-power-off" aria-hidden="true"></i>
+                        {{ __('Logout') }}
+                    </a>
 
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                @csrf
-                            </form>
-                           
-                    </div>
-                            
-                    @endguest
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                        @csrf
+                    </form>
+
                 </div>
-                
-                
-                <span style="font-size:26px;cursor:pointer" class="open-nav" onclick="openNav()">&#9776; </span>
+
+                @endguest
             </div>
+
+
+            <span style="font-size:26px;cursor:pointer" class="open-nav" onclick="openNav()">&#9776; </span>
         </div>
-    </header>
+    </div>
+</header>
 
 <div class="custom-padding">
     @yield('content')
@@ -245,7 +249,40 @@
                 <div>
                     <h5 class="footer-title">About Us</h5>
                     <div><a href="http://" class="footer-link">Career with Us</a></div>
-                    <div><a href="http://" class="footer-link">Send Feedback</a></div>
+                    <div><a href="javascript:void();" class="footer-link" data-toggle="modal" data-target=".sendFeedback">Send Feedback</a></div>
+                    {{-- <div>
+                        <p>We would to hear your thoughts, concerns or problems with anything so we can improve!</p>
+                    </div> --}}
+                    <div class="modal fade sendFeedback" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
+                        <div class="modal-dialog modal-md">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title">Send Feedback</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body">
+                                    <p class="text-center" style="font-weight: 600;
+                                    font-style: italic;">We would like your feedback to improve our website.</p>
+                                    <form action="" method="post">
+                                        <div class="form-group">
+                                            <label for="">Email</label>
+                                            <input type="email" name="" id="" class="form-control">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="">Message</label>
+                                            <textarea name="" id="" cols="20" rows="6" class="form-control"></textarea>
+                                        </div>
+                                    </form>
+                                </div>
+                                <div class="modal-footer">
+                                    <button type="button" class="btn btn-sm btn-secondary">Cancle</button>
+                                    <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Send</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
@@ -262,13 +299,13 @@
 <script src="{{asset('js/searcharea.js')}}"></script>
 <script src="{{asset('js/template.js')}}"></script>
 <script src="https://kit.fontawesome.com/a75f6596a2.js" crossorigin="anonymous"></script>
-<script> 
+<script>
     function openNav() {
-    document.getElementById("mySidenav").style.width = "80%";
+        document.getElementById("mySidenav").style.width = "80%";
     }
 
     function closeNav() {
-    document.getElementById("mySidenav").style.width = "0";
+        document.getElementById("mySidenav").style.width = "0";
     }
     $(document).ready(function(){
         $('#dropdown1').click(function(){

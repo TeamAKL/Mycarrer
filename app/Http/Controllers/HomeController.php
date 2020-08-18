@@ -12,6 +12,7 @@ use App\Post;
 use Dotenv\Regex\Result;
 use Carbon\Carbon;
 use App\Company;
+use App\Blog;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,9 @@ class HomeController extends Controller
         $posts = Post::all();
         $todayjobs = Post::where('job_status', 'active')->whereDate('created_at', '=',  Carbon::today())->count();
         $companies = Company::withCount('posts')->orderBy('posts_count', 'desc')->take(1)->get();
-        return view('home', ['categories' => $categories, "posts" => $posts, "todayjobs" => $todayjobs, "companies" => $companies]);
+        $toolkits = Blog::whereIn('id', [1, 2])->get();
+        $latestblog = Blog::orderBy('created_at', 'desc')->first();
+        return view('home', ['categories' => $categories, "posts" => $posts, "todayjobs" => $todayjobs, "companies" => $companies, 'toolkits' => $toolkits, 'latestBlog' => $latestblog]);
     }
 
     public function countrySearch(Request $request)

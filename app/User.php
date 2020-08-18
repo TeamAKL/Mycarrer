@@ -76,7 +76,7 @@ class User extends Authenticatable
 
     public function companies()
     {
-        return $this->belongsTo('App\Company');
+        return $this->hasOne('App\Company');
     }
     public function profile_details()
     {

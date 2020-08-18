@@ -228,7 +228,13 @@
                     type: "get",
                     url: 'get-amount',
                     success: function(result) {
-                        $('#amount').html("Your Balance : <span style='font-size: .8rem;'>MMK - "+result.amount+"</span>");
+                        if(result.amount >= 5000) {
+                            $('#amount').html("Your Balance : <span style='font-size: .8rem;'>"+result.amount+" - MMk</span>");
+                        } else if(result.amount == null) {
+                            $('#amount').html("Your Balance : <span style='font-size: .8rem; color: #d4420e;'>"+0+" - MMK</span>");
+                        }else {
+                            $('#amount').html("Your Balance : <span style='font-size: .8rem; color: #d4420e;'>"+result.amount+" - MMK</span>");
+                        }
                     }
                 });
             }

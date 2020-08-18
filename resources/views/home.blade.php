@@ -82,94 +82,97 @@
                 </h3>
             </div>
             <div class="row">
+                @foreach($toolkits as $toolkit)
                 <div class="col-md-4 col-sm-6 col-xs-12 text-center">
                     <div class="staff">
-                        <div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">
+                        <div class="staff-img" >
+                            @if(isset($toolkit->blog_image))
+                            <img src="{{'images/blog/'.$toolkit->blog_image}}" alt="img" style="width: 100%; height: 100%">
+                            @else
+                            {!! $toolkit->video !!}
+                            @endif
                         </div>
 
-                        <h3><a href="#">Mike Smith</a></h3>
-                        <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                            Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
-                            <a href="" class="btn btn-second btn-full">Detail</a>
+                        <h3><a href="#">{{$toolkit->title}}</a></h3>
+                        <p>{{Str::limit($toolkit->content,350)}}</p>
+                        <a href="{{'blog/'.$toolkit->id}}" class="btn btn-second btn-full">Detail</a>
                     </div>
                 </div>
-                <div class="col-md-4 col-sm-6 col-xs-12 text-center">
-                    <div class="staff">
-                        <div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">
-                        </div>
-
-                        <h3><a href="#">Mike Smith</a></h3>
-                        <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                            Nullam ac urna eu felis dapibus condimentum.Sed ut imperdiet nisi.</p>
-                            <a href="" class="btn btn-second btn-full">Detail</a>
-                    </div>
-                </div>
+                @endforeach
                 <div class="col-md-4 col-sm-6  col-xs-12 text-center">
                     <div class="staff">
-                        <div class="staff-img" style="background-image: url({{asset('images/it.jpg')}});">
+                        <div class="staff-img">
+                            @if(isset($latestBlog->blog_image))
+                            <img src="{{'images/blog/'.$latestBlog->blog_image}}" alt="img" style="width: 100%; height: 100%">
+                            @else
+                            {!! $latestBlog->video !!}
+                            @endif
                         </div>
 
-                        <h3><a href="#">Mike Smith</a></h3>
-                        <p>Nullam ac urna eu felis dapibus condimentum sit amet a augue. Sed non neque elit.
-                            Nullam ac urna eu felis dapibus condimentum. Sed ut imperdiet nisi.</p>
-                            <a href="#" class="btn btn-second btn-full">Detail</a>
+                        <h3><a href="#">{{$latestBlog->title}}</a></h3>
+                        <p>{{Str::limit($latestBlog->content,350)}}</p>
+                        <a href="{{'blog/'.$latestBlog->id}}" class="btn btn-second btn-full">Detail</a>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-           
-                @endsection
 
-                @push('css')
-                <link rel="stylesheet" href="{{asset('css/service.css')}}">
-                <link rel="stylesheet" href="{{asset('css/slider.css')}}">
-                <link rel="stylesheet" href="{{asset('css/home.css')}}">
-                <link type="text/css" rel="stylesheet" href="{{asset('css/lightslider.css')}}" />
-                <style>
-                    ul{
-                        list-style: none outside none;
-                        padding-left: 0;
-                        margin: 0;
-                    }
-                    .demo .item{
-                        margin-bottom: 60px;
-                    }
-                    .content-slider li{
+    @endsection
 
-                        text-align: center;
-                        width: 175px;
-                        height:150px;
-                    }
-                    .content-slider img {
-                        margin:22px auto;
-                        width:130px;
-                        height:100px;
-                        box-shadow: 0 5px 8px 5px gray, 0 5px 20px 5px gray;
+    @push('css')
+    <link rel="stylesheet" href="{{asset('css/service.css')}}">
+    <link rel="stylesheet" href="{{asset('css/slider.css')}}">
+    <link rel="stylesheet" href="{{asset('css/home.css')}}">
+    <link type="text/css" rel="stylesheet" href="{{asset('css/lightslider.css')}}" />
+    <style>
+        div.staff-img iframe {
+            width: 100% !important;
+            height: 100% !important;
+        }
+        ul{
+            list-style: none outside none;
+            padding-left: 0;
+            margin: 0;
+        }
+        .demo .item{
+            margin-bottom: 60px;
+        }
+        .content-slider li{
 
-                    }
-                    .demo{
-                        width: 800px;
-                    }
+            text-align: center;
+            width: 175px;
+            height:150px;
+        }
+        .content-slider img {
+            margin:22px auto;
+            width:130px;
+            height:100px;
+            box-shadow: 0 5px 8px 5px gray, 0 5px 20px 5px gray;
 
-                </style>
-                @endpush
+        }
+        .demo{
+            width: 800px;
+        }
 
-                @push('script')
-                <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
-                <script src="{{asset('js/lightslider.js')}}"></script>
-                <script>
-                    $(document).ready(function() {
-                        var autoplaySlider = $('#autoplay').lightSlider({
-                            auto:true,
-                            loop:true,
-                            autoWidth: true,
-                            pauseOnHover: true,
-                            onBeforeSlide: function (el) {
-                                $('#current').text(el.getCurrentSlideCount());
-                            }
-                        });
-                        $('#total').text(autoplaySlider.getTotalSlideCount());
-                    });
-                </script>
-                @endpush
+    </style>
+    @endpush
+
+    @push('script')
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+    <script src="{{asset('js/lightslider.js')}}"></script>
+    <script>
+        $(document).ready(function() {
+            var autoplaySlider = $('#autoplay').lightSlider({
+                auto:true,
+                loop:true,
+                autoWidth: true,
+                pauseOnHover: true,
+                onBeforeSlide: function (el) {
+                    $('#current').text(el.getCurrentSlideCount());
+                }
+            });
+            $('#total').text(autoplaySlider.getTotalSlideCount());
+        });
+    </script>
+    @endpush

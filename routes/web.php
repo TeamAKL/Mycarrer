@@ -126,6 +126,9 @@ Route::get('get-company-name', 'AdminController@getCompanyName');
 Route::get('get-company-search', 'AdminController@getCompanySearch');
 Route::post('save-amount', 'AdminController@saveAmount');
 
+//Blog
+Route::get('/blog/create', 'BlogController@create')->name('blog-create');
+
 });
 
 Route::post('company/company-info', 'CompanyController@update');
@@ -191,7 +194,6 @@ Route::get('jobs/{cateid}', 'PostController@showbycate');
 Route::get('/about', 'PageController@about');
 
 //blog
-Route::get('/blog/create', 'BlogController@create');
 Route::post('/blog', 'BlogController@store');
 Route::get('/blog','BlogController@index');
 Route::get('/blog/{id}','BlogController@show');

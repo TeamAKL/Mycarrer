@@ -13,13 +13,13 @@ class BlogController extends Controller
         return view('blog.post');
     }
     public function store(Request $request){
-        
+
         if($request->hasFile('blog_image')){
             $blog_image = $request->file('blog_image');
             $blog_name = uniqid().'-'.$blog_image->getClientOriginalName();
             $request->blog_image->storeAs('blog', $blog_name, 'my_upload');
             } else {
-            
+
                     $blog_name = null;
             }
         // dd($blog_name);
@@ -28,13 +28,13 @@ class BlogController extends Controller
             'content'=>$request->content,
             'video'=>$request->video,
             'blog_image'=>$blog_name
-           
+
         ]);
-        return redirect('blog');
+        return redirect('/blog/create')->with('success', 'Post Successfully' );
     }
     public function index()
     {
-        $blogs=Blog::all();
+        $blogs=Blog::paginate(9);
         return view('blog.index',compact('blogs',$blogs));
         // return view('blog/index');
     }

@@ -93,7 +93,7 @@
                 </ul>
             </div>
         </li>
-        @elseif(Auth::user()->role_id = 47)
+        @elseif(Auth::user()->role_id == 47)
         <li>
             <a data-toggle="collapse" href="#category" aria-expanded="false"> <!-- initial is true and use flase to hide -->
                 {{-- <i class="fa fa-desktop" aria-hidden="true"></i> --}}
@@ -130,6 +130,12 @@
             </a>
         </li>
 
+        <li @if ($pageSlug == 'blog-create') class="active " @endif>
+            <a href="{{ route('blog-create') }}">
+                <i class="fa fa-plus-circle" aria-hidden="true"></i>
+                <p>{{ __('Add Post') }}</p>
+            </a>
+        </li>
         <!-- Seeker Database -->
         <li>
             <a data-toggle="collapse" href="#seeker" aria-expanded="false">

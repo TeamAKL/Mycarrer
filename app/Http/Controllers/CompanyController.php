@@ -29,8 +29,6 @@ class CompanyController extends Controller
         $company_id = Auth::user()->companies->id;
         $company = Company::where('id', $company_id)->with('posts')->first();
         $jobCategories = JobCategory::all();
-        // dd(number_format($amount));
-        // $emp_sizes = $this->get_company_size();
         return view('employer.index', ['jobCategories' => $jobCategories, 'company' => $company]);
         // return view('employer.index', ['jobCategories' => $jobCategories,'emp_sizes' => $emp_sizes]);
 
@@ -40,6 +38,7 @@ class CompanyController extends Controller
     {
         $company_id = Auth::user()->companies->id;
         $amount = Cmoney::select('amount')->where('company_id', '=', $company_id)->first();
+        // dd($amount);
         return response()->json(['amount' => number_format($amount->amount)], 200);
     }
 

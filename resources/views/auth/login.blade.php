@@ -51,3 +51,14 @@
     </div>
 </div>
 @endsection
+
+@push('script')
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+<script>
+    $(window).on('load', function() {
+        if(window.location.pathname == '/employer/login') {
+            swal("Super Promotion Period. Till November-30-2020");
+        }
+    });
+</script>
+@endpush
