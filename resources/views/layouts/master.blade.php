@@ -22,7 +22,7 @@
     {{-- <link rel="stylesheet" href="{{asset('css/seeker_index.css')}}"> --}}
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-
+    
     @stack('css')
     <title>MyCareers</title>
 </head>
@@ -52,12 +52,12 @@
                                 <a href="#">JOB BY POSITION</a>
                                 <a href="#">JOB BY SKILL</a>
                                 <a href="#">PART TIME JOB</a>
-
+                                
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="" class="dropbtn">FRESHER </a>
-
+                            
                         </li>
                         <li class="dropdown">
                             <a href="{{url('blog')}}" class="dropbtn">BLOG</a>
@@ -67,12 +67,12 @@
                                 <a href="#">EMPLOYER TOOLKITS</a>
                                 <a href="#">HOW TO LOGIN</a>
                                 <a href="#">HOW TO POST</a>
-
+                                
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="{{url('/about')}}" class="dropbtn">ABOUT </a>
-
+                            
                         </li>
                     </ul>
                     <ul class="login-section-nav">
@@ -97,7 +97,7 @@
                                 <img src="{{asset('images/seeker_profile/defaultavator.webp')}}" alt="" class="current-user">
                                 @endif
                             </div>
-
+                            
                             <div class="pop-share profile-hover dropdown-content">
                                 <a class="dropdown-item">{{ Auth::user()->name }}</a>
                                 {{-- <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
@@ -110,20 +110,20 @@
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-
+                                
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
-
-
+                            
+                            
                             {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-
+                            
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form> --}}
@@ -157,7 +157,7 @@
                         <a href="#">How To Post</a>
                     </div>
                     <a href="{{url('/about')}}" class="res">About </a>
-
+                    
                     @guest
                     <a href="{{url('seeker/login')}}" class="res">Seeker Login</a>
                     <a href="{{url('employer/login')}}" class="res">Login as Employer Instead</a>
@@ -171,17 +171,17 @@
                         <i class="fa fa-power-off" aria-hidden="true"></i>
                         {{ __('Logout') }}
                     </a>
-
+                    
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-
+                    
                 </div>
-
+                
                 @endguest
             </div>
-
-
+            
+            
             <span style="font-size:26px;cursor:pointer" class="open-nav" onclick="openNav()">&#9776; </span>
         </div>
     </div>
@@ -200,7 +200,7 @@
                     @inject('Counter', 'App\Http\CounterTrait\Counter')
                     <i class="fa fa-eye" aria-hidden="true"></i>{{$Counter->userCounter()}}
                 </span>
-
+                
             </div>
             <div class="col-md-3">
                 <a href="tel:+9599771777212"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09771777212</a>
@@ -253,7 +253,8 @@
                     <div class="modal fade sendFeedback" tabindex="-1" role="dialog" aria-labelledby="mySmallModalLabel" aria-hidden="true">
                         <div class="modal-dialog modal-md">
                             <div class="modal-content">
-                                <form action="{{url('')}}" method="post">
+                                <form action="{{url('feed-back')}}" method="post" id="feedbackForm">
+                                    @csrf
                                     <div class="modal-header">
                                         <h5 class="modal-title">Send Feedback</h5>
                                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -264,18 +265,18 @@
                                         <p class="text-center" style="font-weight: 600;
                                         font-style: italic;">We would like your feedback to improve our website.</p>
                                         <div class="form-group">
-                                            <label for="">Email</label>
-                                            <input type="email" name="" id="" class="form-control">
+                                            <label for="email">Email</label>
+                                            <input type="email" name="email" id="email" class="form-control">
                                         </div>
                                         <div class="form-group">
-                                            <label for="">Message</label>
-                                            <textarea name="" id="" cols="20" rows="6" class="form-control"></textarea>
+                                            <label for="message">Message</label>
+                                            <textarea name="message" id="message" cols="20" rows="6" class="form-control"></textarea>
                                         </div>
-
+                                        
                                     </div>
                                     <div class="modal-footer">
-                                        <button type="button" class="btn btn-sm btn-secondary">Cancle</button>
-                                        <button type="button" class="btn btn-sm btn-primary" data-dismiss="modal">Send</button>
+                                        <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancle</button>
+                                        <button type="submit" class="btn btn-sm btn-primary">Send</button>
                                     </div>
                                 </form>
                             </div>
@@ -297,11 +298,14 @@
 <script src="{{asset('js/searcharea.js')}}"></script>
 <script src="{{asset('js/template.js')}}"></script>
 <script src="https://kit.fontawesome.com/a75f6596a2.js" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.2/dist/jquery.validate.min.js"></script>
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 <script>
     function openNav() {
         document.getElementById("mySidenav").style.width = "80%";
     }
-
+    
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
@@ -318,7 +322,43 @@
         $('#dropdown4').click(function(){
             $('#dropdown-content4').slideToggle('slow');
         })
-    })
+    });
+
+
+    jQuery.validator.addMethod(
+    "regex",
+    function(value, element, regexp) {
+        if (regexp.constructor != RegExp)
+        regexp = new RegExp(regexp);
+        else if (regexp.global)
+        regexp.lastIndex = 0;
+        return this.optional(element) || regexp.test(value);
+    },"erreur expression reguliere"
+    );
+    $("#feedbackForm").validate({
+        "errorClass": 'is-invalid',
+        "validClass": 'is-valid',
+        "errorElement": 'span',
+        errorPlacement: function(error, element) {
+            error.addClass('invalid-feedback');
+            error.appendTo(element.parent());
+        },
+
+        rules: {
+            "email": {
+                required: true,
+            },
+            'message': {
+                required: true
+            }
+        },
+        submitHandler: function(form) {
+            form.submit();
+        }
+    });
+    @if(session()->has('feedback'))
+        swal("Success!", "Than you for your feedback", "success");
+    @endif
 </script>
 @stack('script')
 
