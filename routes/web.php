@@ -200,4 +200,7 @@ Route::get('/blog/{id}','BlogController@show');
 Route::get('/blog/edit/{id}','BlogController@edit');
 Route::put('/blog/update','BlogController@update');
 Route::get('/blog/del/{id}','BlogController@delete');
-
+Route::get('seeker/getUserEmail','UserController@getUserEmail');
+Route::post('seeker/putEmailForForgotPass','UserController@sendEmailForgotPassword');
+Route::get('seeker/showResetForm/{id}','UserController@showResetForm');
+Route::post('seeker/resetPassword','UserController@setResetPassword');
