@@ -22,7 +22,23 @@
     {{-- <link rel="stylesheet" href="{{asset('css/seeker_index.css')}}"> --}}
     <link href="https://fonts.googleapis.com/css?family=Poppins&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
-    
+    <style>
+        #subscribe {
+            position: absolute;
+            top: 0;
+            right: 0;
+            border-top-left-radius: unset;
+            border-bottom-left-radius: unset;
+        }
+        #subscribeemail {
+            width: 79%;
+        }
+        .color-change {
+            color: #fdb813;
+            font-weight: 900;
+            font-style: italic;
+        }
+    </style>
     @stack('css')
     <title>MyCareers</title>
 </head>
@@ -203,9 +219,9 @@
                 
             </div>
             <div class="col-md-3">
-                <a href="tel:+9599771777212"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09771777212</a>
+                <a href="tel:+959755755490"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09755755490, 09755755491</a>
             </div>
-            <div class="col-md-3"><a href="mailto:info@mycareersmyanmar.com"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i>info@mycareersmyanmar.com</a></div>
+            <div class="col-md-3"><a href="mailto:hello@mycareersmyanmar.com"><i class="fa fa-envelope-o social-font" aria-hidden="true"></i>hello@mycareersmyanmar.com</a></div>
             <div class="col-md-3 last-social-items">
                 <a href="mailto:" class="pl"><i class="fa fa-twitter-square social-font-l" aria-hidden="true"></i></a>
                 <a href="https://www.facebook.com/mycareersmyanmar/" class="pl"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
@@ -221,18 +237,18 @@
                 <div>
                     <h5 class="footer-title">Job Seekers</h5>
                     <div><a href="http://" class="footer-link">Job Search</a></div>
-                    <div><a href="http://" class="footer-link">Log In</a></div>
+                    <div><a href="{{url('seeker/login')}}" class="footer-link">Log In</a></div>
                     <div><a href="http://" class="footer-link">Upload Resume</a></div>
                     <div><a href="http://" class="footer-link">Free Job Alert</a></div>
-                    <div><a href="http://" class="footer-link">Find Companies</a></div>
+                    {{-- <div><a href="http://" class="footer-link">Find Companies</a></div> --}}
                     <div><a href="http://" class="footer-link">Help</a></div>
                 </div>
             </div>
             <div class="col-md-3">
                 <div>
                     <h5 class="footer-title">Employers</h5>
-                    <div><a href="http://" class="footer-link">Employer Log In</a></div>
-                    <div><a href="http://" class="footer-link">Job Posting</a></div>
+                    <div><a href="{{url('employer/login')}}" class="footer-link">Employer Log In</a></div>
+                    <div><a href="{{url('blog/3')}}" class="footer-link">How to post</a></div>
                     <div><a href="http://" class="footer-link">Access Resume Database</a></div>
                     <div><a href="http://" class="footer-link">Advertise with Us</a></div>
                 </div>
@@ -240,7 +256,7 @@
             <div class="col-md-3">
                 <div>
                     <h5 class="footer-title">Legal</h5>
-                    <div><a href="#" class="footer-link">Security</a></div>
+                    {{-- <div><a href="#" class="footer-link">Security</a></div> --}}
                     <div><a href="{{url('/policy')}}" class="footer-link">Policy</a></div>
                     <div><a href="{{url('/terms')}}" class="footer-link">Terms of Us</a></div>
                 </div>
@@ -250,18 +266,18 @@
                     <h5 class="footer-title">About Us</h5>
                     <div><a href="http://" class="footer-link">Career with Us</a></div>
                     <div><a href="javascript:void();" class="footer-link" data-toggle="modal" data-target=".sendFeedback">Send Feedback</a></div>
-                    <p class="footer-link">Please write your email and get our new jobs</p>
+                    <p class="color-change">Please write your email and get our new jobs</p>
                     <div class="row">
                         <div class="col-md-12">
                             <form action="{{url('seeker/putEmailForSubscribe')}}" method="post">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="email" placeholder="Email" value="{{old('email')}}">
+                                    <input type="email" name="email" class="form-control {{ $errors->has('email') ? ' is-invalid' : '' }}" id="subscribeemail" placeholder="Email" value="{{old('email')}}">
                                     @if ($errors->has('email'))
-                                        <span class="invalid-feedback" role="alert">{{ $errors->first('email') }}</span>
+                                    <span class="invalid-feedback" role="alert">{{ $errors->first('email') }}</span>
                                     @endif
                                 </div>
-                                <button type="submit" class="btn btn-primary">Submit</button>
+                                <button type="submit" class="btn btn-primary" id="subscribe">Submit</button>
                             </form>
                         </div>
                     </div>
@@ -338,8 +354,8 @@
             $('#dropdown-content4').slideToggle('slow');
         })
     });
-
-
+    
+    
     jQuery.validator.addMethod(
     "regex",
     function(value, element, regexp) {
@@ -358,7 +374,7 @@
             error.addClass('invalid-feedback');
             error.appendTo(element.parent());
         },
-
+        
         rules: {
             "email": {
                 required: true,
@@ -372,7 +388,7 @@
         }
     });
     @if(session()->has('feedback'))
-        swal("Success!", "Than you for your feedback", "success");
+    swal("Success!", "Than you for your feedback", "success");
     @endif
 </script>
 @stack('script')

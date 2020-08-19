@@ -36,7 +36,7 @@
                 <button type="submit" class="btn btn-primary btn-block">Submit</button>
                 <div class="row">
                     <div class="col-md-6 text-left">
-                        <a href="" class="text-danger">Forgot Password?</a>
+                    <a href="{{url('seeker/getUserEmail')}}" class="text-danger">Forgot Password?</a>
                     </div>
                     <div class="col-md-6 text-right">
                         @if(Route::currentRouteName() == 'seekerlogin')

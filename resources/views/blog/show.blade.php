@@ -28,12 +28,15 @@
             <span class="posted_on">{{$blog->created_at->format('d-M-Y')}}</span>
             <p>{{$blog->content}}</p>
         </div>
-        @if(Auth::user()->role_id == 47)
+        @guest
+        @else
+        @if( Auth::user()->role_id == 47)
         <div class="new-blog col-lg-12 col-md-12">
             <a href="{{'/blog/edit/'.$blog->id}}" type="button" class="btn btn-md btn-primary" id="edit-btn">Edit Blog</a>
             <a href="{{'/blog/del/'.$blog->id}}" type="button" class="btn btn-md btn-danger" id="del-btn">Delete Blog</a>
         </div>
         @endif
+        @endguest
 
     </div>
 </div>
