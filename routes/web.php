@@ -109,6 +109,7 @@ Route::group(['middleware' => 'employer'], function () {
     // POST
     Route::post('posts', 'PostController@store')->name('createpost');
     Route::get('changejobstatus', 'PostController@edit');
+    Route::get('payment', 'CompanyController@payment_index');
 
 });
 
@@ -148,7 +149,8 @@ Route::get('purchasedresumes', function(){
 //});
 
 
-Route::get('company/detail/{id}', 'CompanyController@show')->name('hotjobs');
+Route::get('company/detail/{id}', 'CompanyController@show')->name('about');
+Route::get('company/hotjobs/{id}', 'CompanyController@hotjobs')->name('hotjobs');
 Route::get('company/detail/alljobs/{id}', 'CompanyController@alljobs')->name('alljobs');
 
 // JOB SEARCH

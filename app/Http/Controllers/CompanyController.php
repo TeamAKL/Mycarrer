@@ -17,7 +17,7 @@ class CompanyController extends Controller
     use CompanySize;
     public function __construct()
     {
-        $this->middleware('auth')->except(['show', 'alljobs']);
+        $this->middleware('auth')->except(['show', 'alljobs', 'hotjobs']);
     }
     /**
      * Display a listing of the resource.
@@ -72,15 +72,22 @@ class CompanyController extends Controller
     public function show($id)
     {
         $company = Company::where('id', $id)->first();
-        $posts = Post::where('company_id', '=', $id)->where('job_status', '=', 'active')->paginate(1);
-        return view('employer.company.detail',['company' => $company, 'posts' => $posts]);
+        // $posts = Post::where('company_id', '=', $id)->where('job_status', '=', 'active')->paginate(1);
+        return view('employer.company.detail',['company' => $company]);
+    }
+
+    public function hotjobs($id)
+    {
+        $company = Company::where('id', $id)->first();
+        $posts = Post::where('company_id', '=', $id)->paginate(10);
+        return view('employer.company.hotjobs', ['company' => $company, 'posts' => $posts]);
     }
 
     public function alljobs($id)
     {
         $company = Company::where('id', $id)->first();
-        $posts = Post::where('company_id', '=', $id)->paginate(1);
-        return view('employer.company.detail',['company' => $company, 'posts' => $posts]);
+        $posts = Post::where('company_id', '=', $id)->paginate(10);
+        return view('employer.company.hotjobs',['company' => $company, 'posts' => $posts]);
     }
 
     /**
@@ -182,5 +189,10 @@ class CompanyController extends Controller
     public function getAllResume(){
         $resumes = User::with(['projects', 'education', 'work_experiences', 'job_preferences', 'profile_details', 'certificates'])->where('role_id','=','0')->get();
         return view('resumes.index', ['resumes' => $resumes]);
+    }
+
+    public function payment_index()
+    {
+        return view('employer.payment_page');
     }
 }
