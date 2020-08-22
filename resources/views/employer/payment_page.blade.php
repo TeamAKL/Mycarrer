@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Payment'), 'pageSlug' => 'jobs'])
+@extends('layouts.app', ['page' => __('Payment'), 'pageSlug' => 'payment'])
 @section('content')
 <h1>Welcome from Payment page </h1>
 <div class="card">

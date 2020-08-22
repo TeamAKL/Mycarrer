@@ -109,7 +109,7 @@ Route::group(['middleware' => 'employer'], function () {
     // POST
     Route::post('posts', 'PostController@store')->name('createpost');
     Route::get('changejobstatus', 'PostController@edit');
-    Route::get('payment', 'CompanyController@payment_index');
+    Route::get('payment', 'CompanyController@payment_index')->name('payment');
 
 });
 

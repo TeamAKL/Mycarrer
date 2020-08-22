@@ -1,14 +1,14 @@
 <div class="sidebar" data="blue">
     <div class="sidebar-wrapper">
         <div class="logo">
-        <a href="{{url('employer')}}" class="simple-text logo-normal">{{ __('Mycareers') }}</a>
+            <a href="{{url('employer')}}" class="simple-text logo-normal">{{ __('Mycareers') }}</a>
             @if(Auth::user()->role_id == 1)
             <span id="amount" style=" color: #fff;
             font-size: .7rem;
             font-weight: 600;">
-             <!-- color: #d4420e; -->
-            </span>
-            @endif
+            <!-- color: #d4420e; -->
+        </span>
+        @endif
     </div>
     <ul class="nav">
         @if(Auth::user()->role_id == 1)
@@ -18,7 +18,8 @@
                 <p>{{ __('Dashboard') }}</p>
             </a>
         </li>
-
+        
+        
         <!-- JOBS -->
         <li @if ($pageSlug == 'jobs') class="active " @endif>
             <a href="{{ route('jobs') }}">
@@ -26,7 +27,7 @@
                 <p>{{ __('Jobs') }}</p>
             </a>
         </li>
-
+        
         <!-- Company -->
         <li>
             <a data-toggle="collapse" href="#company" aria-expanded="false"> <!-- initial is true and use flase to hide -->
@@ -35,7 +36,7 @@
                 <span class="nav-link-text" >{{ __('Company') }}</span>
                 <b class="caret mt-1"></b>
             </a>
-
+            
             <div class="collapse" id="company"> <!-- IF you want to show use like this  <div class="collapse show" id="company"> -->
                 <ul class="nav pl-4">
                     <li @if ($pageSlug == 'company_info') class="active " @endif>
@@ -61,7 +62,7 @@
             </div>
         </li>
         <!-- End Company -->
-
+        
         <!-- Resume Database -->
         <li>
             <a data-toggle="collapse" href="#resume" aria-expanded="false">
@@ -69,7 +70,7 @@
                 <span class="nav-link-text" >{{ __('Resume Database') }}</span>
                 <b class="caret mt-1"></b>
             </a>
-
+            
             <div class="collapse" id="resume">
                 <ul class="nav pl-4">
                     <li @if ($pageSlug == 'allresume') class="active " @endif>
@@ -93,6 +94,14 @@
                 </ul>
             </div>
         </li>
+        
+        <!-- Payment -->
+        <li @if ($pageSlug == 'payment') class="active " @endif>
+            <a href="{{ route('payment') }}">
+                <i class="tim-icons icon-money-coins" aria-hidden="true"></i>
+                <p>{{ __('Payment') }}</p>
+            </a>
+        </li>
         @elseif(Auth::user()->role_id == 47)
         <li>
             <a data-toggle="collapse" href="#category" aria-expanded="false"> <!-- initial is true and use flase to hide -->
@@ -101,7 +110,7 @@
                 <span class="nav-link-text" >{{ __('Category') }}</span>
                 <b class="caret mt-1"></b>
             </a>
-
+            
             <div class="collapse" id="category"> <!-- IF you want to show use like this  <div class="collapse show" id="category"> -->
                 <ul class="nav pl-4">
                     <li @if ($pageSlug == 'company_info') class="active " @endif>
@@ -117,11 +126,11 @@
                             <p>{{ __('Category List') }}</p>
                         </a>
                     </li>
-
+                    
                 </ul>
             </div>
         </li>
-
+        
         <!-- JOBS -->
         <li @if ($pageSlug == 'all-employer') class="active " @endif>
             <a href="{{ route('all-employer') }}">
@@ -129,7 +138,7 @@
                 <p>{{ __('Employers') }}</p>
             </a>
         </li>
-
+        
         <li @if ($pageSlug == 'blog-create') class="active " @endif>
             <a href="{{ route('blog-create') }}">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
@@ -143,7 +152,7 @@
                 <span class="nav-link-text" >{{ __('Seekers') }}</span>
                 <b class="caret mt-1"></b>
             </a>
-
+            
             <div class="collapse" id="seeker">
                 <ul class="nav pl-4">
                     <li @if ($pageSlug == 'allresume') class="active " @endif>
@@ -158,11 +167,11 @@
                             <p>{{ __('Seeker Datas') }}</p>
                         </a>
                     </li>
-
+                    
                 </ul>
             </div>
         </li>
-
+        
         <li @if ($pageSlug == 'add-amount') class="active " @endif>
             <a href="{{ route('add-amount') }}">
                 <i class="fa fa-plus-circle" aria-hidden="true"></i>
