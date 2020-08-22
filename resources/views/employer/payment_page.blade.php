@@ -13,7 +13,12 @@
             <div class="col-md-8 mt-5">
                 <ul id="payment-ul">
                     <li><div class="circle"></div> MPU Card</li>
-                    <li>
+                    <div class="mput">
+                        <div class="mpuTransfer">
+                            MUP
+                        </div>
+                    </div>
+                    <li class="bt">
                         <div class="circle"></div> Bank Transfer
                     </li>
                     <div class="btcontent">
@@ -33,7 +38,7 @@
         cursor: pointer;
         margin-bottom: 10px;
     }
-    
+
     .circle {
         position: relative;
         display: inline-block;
@@ -52,6 +57,15 @@
         border-radius: 50%;
         border: 4.9px solid #75758a;
     }
+    div.mput {
+        display: none;
+    }
+    div.mpuTransfer {
+        opacity: 0;
+    }
+    div.btcontent {
+        opacity: 0;
+    }
 </style>
 @endpush
 
@@ -60,6 +74,26 @@
     $("ul#payment-ul li").on('click', function() {
         $(".circle").removeClass('checked');
         $(this).children().addClass('checked');
+        if($(this).hasClass('bt')) {
+            $("div.btcontent").animate({
+                opacity: 1,
+                width: "100%",
+                height: "auto"
+            }, 300, function() {
+                $("div.mput").css({
+                    display: "none"
+                });
+            });
+        } else {
+            $("div.mput").css({
+                display: "block"
+            });
+            $("div.mpuTransfer").animate({
+                opacity: 1
+            }, 300, function() {
+                $("div.btcontent").css("opacity", 0);
+            });
+        }
     });
 </script>
 @endpush

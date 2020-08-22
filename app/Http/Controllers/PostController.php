@@ -69,11 +69,11 @@ class PostController extends Controller
             "urgent" => $urgent
             ]);
             $post->job_categories()->attach(JobCategory::findOrFail($request->jobcategory));
-            if(isset($post)) {
-                $company = Cmoney::where('company_id', '=', $request->company_id)->first();
-                $company->amount -= 30000;
-                $company->save();
-            }
+            // if(isset($post)) {
+            //     $company = Cmoney::where('company_id', '=', $request->company_id)->first();
+            //     $company->amount -= 30000;
+            //     $company->save();
+            // }
             return redirect('employer');
         }
 
