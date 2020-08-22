@@ -213,4 +213,8 @@ Route::post('seeker/putEmailForSubscribe','UserController@sendEmailToAdmin');
 
 //feedBack
 Route::post('feed-back', 'UserController@feedBack');
+Route::get('show_all_jobs', 'PostController@showAllJobs');
+//Route::get('show_contract_jobs', 'PostController@showContractJobs');
+Route::get('show_fresher_jobs', 'PostController@showFresherJobs');
+Route::get('show_part_time_jobs', 'PostController@showPartTimeJobs');
 

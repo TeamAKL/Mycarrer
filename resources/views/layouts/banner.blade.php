@@ -10,10 +10,10 @@
             <div class="search-engin">
                 <div class="unexpend-nav-bar">
                     <ul class="search-nav">
-                        <li class="search-nav-itme"><a href="http://" class="search-nav-link-name">All Jobs</a></li>
-                        <li class="search-nav-itme"><a href="http://" class="search-nav-link-name">Contract Jobs</a></li>
-                        <li class="search-nav-itme"><a href="http://" class="search-nav-link-name">Fresher Jobs</a></li>
-                        <li class="search-nav-itme"><a href="http://" class="search-nav-link-name">Part Time</a></li>
+                        <li class="search-nav-itme"><a href="{{url('show_all_jobs')}}" class="search-nav-link-name">All Jobs</a></li>
+{{--                        <li class="search-nav-itme"><a href="{{url('show_contract_jobs')}}" class="search-nav-link-name">Contract Jobs</a></li>--}}
+                        <li class="search-nav-itme"><a href="{{url('show_fresher_jobs')}}" class="search-nav-link-name">Fresher Jobs</a></li>
+                        <li class="search-nav-itme"><a href="{{url('show_part_time_jobs')}}" class="search-nav-link-name">Part Time</a></li>
                     </ul>
                 </div>
                 <form class="user-search-form" action="{{url('result')}}" method="GET">

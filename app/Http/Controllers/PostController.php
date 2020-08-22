@@ -234,4 +234,23 @@ class PostController extends Controller
             $posts = JobCategory::find($id)->posts()->where('job_status', 'active')->orderBy('created_at', 'desc')->paginate(10);
             return view('seeker.index', ["posts" => $posts]);
         }
+
+        public function showAllJobs(){
+            $posts = Post::where('posts.job_status', '=' , 'active')->orderBy('created_at', 'desc')->paginate(10);
+            return view('seeker.index', ["posts" => $posts]);
+        }
+
+//        public function showContractJobs(){
+//            $posts = Post::where('job_status', '=' , 'active')->orderBy('created_at', 'desc')->paginate(10);
+//            return view('seeker.index', ["posts" => $posts]);
+//        }
+        public function showFresherJobs(){
+            $posts = Post::where('experience','<','2')->where('job_status', '=' , 'active')->orderBy('created_at', 'desc')->paginate(10);
+            return view('seeker.index', ["posts" => $posts]);
+        }
+
+        public function showPartTimeJobs(){
+            $posts = Post::where('type', '=' , 'Part Time')->where('posts.job_status', '=' , 'active')->orderBy('created_at', 'desc')->paginate(10);
+            return view('seeker.index', ["posts" => $posts]);
+        }
     }
