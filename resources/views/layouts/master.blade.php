@@ -31,7 +31,8 @@
             border-bottom-left-radius: unset;
         }
         #subscribeemail {
-            width: 79%;
+            /* width: 79%; */
+            width: 85%;
         }
         .color-change {
             color: #fdb813;
@@ -61,19 +62,19 @@
                 </div>
                 <div class="nav-wapper">
                     <ul class="custom-nav-items">
-                        <li class="dropdown">
+                        {{-- <li class="dropdown">
                             <span class="dropbtn">JOB SEARCH</span>
                             <div class="dropdown-content">
                                 <a href="#">JOB BY COMPANY</a>
                                 <a href="#">JOB BY POSITION</a>
                                 <a href="#">JOB BY SKILL</a>
                                 <a href="#">PART TIME JOB</a>
-                                
+
                             </div>
-                        </li>
+                        </li> --}}
                         <li class="dropdown">
-                            <a href="" class="dropbtn">FRESHER </a>
-                            
+                            <a href="{{url('show_fresher_jobs')}}" class="dropbtn">FRESHER </a>
+
                         </li>
                         <li class="dropdown">
                             <a href="{{url('blog')}}" class="dropbtn">BLOG</a>
@@ -83,12 +84,12 @@
                                 <a href="#">EMPLOYER TOOLKITS</a>
                                 <a href="#">HOW TO LOGIN</a>
                                 <a href="#">HOW TO POST</a>
-                                
+
                             </div>
                         </li>
                         <li class="dropdown">
                             <a href="{{url('/about')}}" class="dropbtn">ABOUT </a>
-                            
+
                         </li>
                     </ul>
                     <ul class="login-section-nav">
@@ -113,7 +114,7 @@
                                 <img src="{{asset('images/seeker_profile/defaultavator.webp')}}" alt="" class="current-user">
                                 @endif
                             </div>
-                            
+
                             <div class="pop-share profile-hover dropdown-content">
                                 <a class="dropdown-item">{{ Auth::user()->name }}</a>
                                 {{-- <a href="http://"><i class="fa fa-facebook-square social-font-l" aria-hidden="true"></i></a>
@@ -126,20 +127,20 @@
                                     document.getElementById('logout-form').submit();">
                                     {{ __('Logout') }}
                                 </a>
-                                
+
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                     @csrf
                                 </form>
                             </div>
-                            
-                            
+
+
                             {{-- <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
                                 <a class="dropdown-item" href="{{ route('logout') }}"
                                 onclick="event.preventDefault();
                                 document.getElementById('logout-form').submit();">
                                 {{ __('Logout') }}
                             </a>
-                            
+
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                 @csrf
                             </form> --}}
@@ -173,7 +174,7 @@
                         <a href="#">How To Post</a>
                     </div>
                     <a href="{{url('/about')}}" class="res">About </a>
-                    
+
                     @guest
                     <a href="{{url('seeker/login')}}" class="res">Seeker Login</a>
                     <a href="{{url('employer/login')}}" class="res">Login as Employer Instead</a>
@@ -187,17 +188,17 @@
                         <i class="fa fa-power-off" aria-hidden="true"></i>
                         {{ __('Logout') }}
                     </a>
-                    
+
                     <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                         @csrf
                     </form>
-                    
+
                 </div>
-                
+
                 @endguest
             </div>
-            
-            
+
+
             <span style="font-size:26px;cursor:pointer" class="open-nav" onclick="openNav()">&#9776; </span>
         </div>
     </div>
@@ -216,7 +217,7 @@
                     @inject('Counter', 'App\Http\CounterTrait\Counter')
                     <i class="fa fa-eye" aria-hidden="true"></i>{{$Counter->userCounter()}}
                 </span>
-                
+
             </div>
             <div class="col-md-3">
                 <a href="tel:+959755755490"><i class="fa fa-phone-square social-font" aria-hidden="true"></i>09755755490, 09755755491</a>
@@ -233,38 +234,42 @@
 <div class="footer-section">
     <div class="container">
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div>
                     <h5 class="footer-title">Job Seekers</h5>
-                    <div><a href="http://" class="footer-link">Job Search</a></div>
+                    <div><a href="javascript:void(0);" class="footer-link jos">Job Search</a></div>
                     <div><a href="{{url('seeker/login')}}" class="footer-link">Log In</a></div>
-                    <div><a href="http://" class="footer-link">Upload Resume</a></div>
-                    <div><a href="http://" class="footer-link">Free Job Alert</a></div>
+                    @guest
+                    <div><a href="{{url('seeker/login')}}" class="footer-link">Upload Resume</a></div>
+                    @else
+                    <div><a href="{{url('seeker/profile')}}" class="footer-link">Upload Resume</a></div>
+                    @endguest
+                    {{-- <div><a href="http://" class="footer-link">Free Job Alert</a></div> --}}
                     {{-- <div><a href="http://" class="footer-link">Find Companies</a></div> --}}
-                    <div><a href="http://" class="footer-link">Help</a></div>
+                    <div><a href="{{url('blog/1')}}" class="footer-link">Help</a></div>
                 </div>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-4">
                 <div>
                     <h5 class="footer-title">Employers</h5>
                     <div><a href="{{url('employer/login')}}" class="footer-link">Employer Log In</a></div>
                     <div><a href="{{url('blog/3')}}" class="footer-link">How to post</a></div>
-                    <div><a href="http://" class="footer-link">Access Resume Database</a></div>
+                    {{-- <div><a href="http://" class="footer-link">Access Resume Database</a></div> --}}
                     <div><a href="http://" class="footer-link">Advertise with Us</a></div>
                 </div>
             </div>
-            <div class="col-md-3">
+            {{-- <div class="col-md-3">
                 <div>
-                    <h5 class="footer-title">Legal</h5>
+                    <h5 class="footer-title">Legal</h5> --}}
                     {{-- <div><a href="#" class="footer-link">Security</a></div> --}}
-                    <div><a href="{{url('/policy')}}" class="footer-link">Policy</a></div>
+                    {{-- <div><a href="{{url('/policy')}}" class="footer-link">Policy</a></div>
                     <div><a href="{{url('/terms')}}" class="footer-link">Terms of Us</a></div>
                 </div>
-            </div>
-            <div class="col-md-3">
+            </div> --}}
+            <div class="col-md-4">
                 <div>
                     <h5 class="footer-title">About Us</h5>
-                    <div><a href="http://" class="footer-link">Career with Us</a></div>
+                    {{-- <div><a href="http://" class="footer-link">Career with Us</a></div> --}}
                     <div><a href="javascript:void();" class="footer-link" data-toggle="modal" data-target=".sendFeedback">Send Feedback</a></div>
                     <p class="color-change">Please write your email and get our new jobs</p>
                     <div class="row">
@@ -303,7 +308,7 @@
                                             <label for="message">Message</label>
                                             <textarea name="message" id="message" cols="20" rows="6" class="form-control"></textarea>
                                         </div>
-                                        
+
                                     </div>
                                     <div class="modal-footer">
                                         <button type="button" class="btn btn-sm btn-secondary" data-dismiss="modal">Cancle</button>
@@ -336,7 +341,7 @@
     function openNav() {
         document.getElementById("mySidenav").style.width = "80%";
     }
-    
+
     function closeNav() {
         document.getElementById("mySidenav").style.width = "0";
     }
@@ -354,8 +359,8 @@
             $('#dropdown-content4').slideToggle('slow');
         })
     });
-    
-    
+
+
     jQuery.validator.addMethod(
     "regex",
     function(value, element, regexp) {
@@ -374,7 +379,7 @@
             error.addClass('invalid-feedback');
             error.appendTo(element.parent());
         },
-        
+
         rules: {
             "email": {
                 required: true,
@@ -390,6 +395,12 @@
     @if(session()->has('feedback'))
     swal("Success!", "Than you for your feedback", "success");
     @endif
+
+    $(".jos").click(function(event) {
+		event.preventDefault();
+		jQuery('html, body').animate({scrollTop: 0}, 500);
+		return false;
+	});
 </script>
 @stack('script')
 

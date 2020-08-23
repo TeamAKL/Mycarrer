@@ -78,7 +78,7 @@
         <div class="container">
             <div class="col-md-12">
                 <h3 class="heading-title text-center">
-                    SERVICES <span>We are looking forward to being your partner.</span>
+                    <span>We are looking forward to support your organization better.</span>
                 </h3>
             </div>
             <div class="row">

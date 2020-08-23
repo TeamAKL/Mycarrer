@@ -3,9 +3,8 @@
 <h1>Welcome from Payment page </h1>
 <div class="card">
     <div class="card-body">
-        <p>
-            Blade also allows you to define comments in your views. However, unlike HTML comments, Blade comments are not included in the HTML returned by your application:
-        </p>
+        <h3 class="content">Choose payment for the cost. Once we confirm, we will start building the items you purchased.</h3>
+        <p class="ptext">*Please note that payment may take longer depending on the payment method you choose.</p>
         <div class="row">
             <div class="col-md-4 mt-5">
                 <p>Select Payment Method</p>
@@ -22,7 +21,23 @@
                         <div class="circle"></div> Bank Transfer
                     </li>
                     <div class="btcontent">
-                        မင်းေဖလား
+                        <ul>
+                            <li>Account No: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 2010600300000132</li>
+                            <li>Account Name: &nbsp  MY CAREERS CO.,LTD</li>
+                            <li>Bank Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp CB Bank </li>
+                        </ul>
+                        <hr>
+                        <ul>
+                            <li>Account No: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 00250300204193501</li>
+                            <li>Account Name: &nbsp MY CAREERS CO.,LTD</li>
+                            <li>Bank Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp KBZ Bank </li>
+                        </ul>
+                        <hr>
+                        <ul>
+                            <li>Account No: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp 0024203013917343</li>
+                            <li>Account Name: &nbsp MY CAREERS CO.,LTD</li>
+                            <li>Bank Name: &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp AYA Bank </li>
+                        </ul>
                     </div>
                 </ul>
             </div>
@@ -65,6 +80,14 @@
     }
     div.btcontent {
         opacity: 0;
+    }
+    h3.content, p.ptext {
+        font-style: italic;
+    }
+
+    hr {
+        margin-left: 40px;
+        border-color: #fff !important;
     }
 </style>
 @endpush

@@ -62,7 +62,7 @@
                     <h3 class="pt-3 text-center">Register With Us</h3>
                     <div class="row my-3">
                         <div class="col-md-6 sepreater">
-                            <a href="" class="button-fill button-custom v-align-center">Upload Resume</a>
+                            <a href="{{url('seeker/login')}}" class="button-fill button-custom v-align-center">Upload Resume</a>
                         </div>
                         <div class="col-md-6">
                             <a href="" class="c-yellow button-custom v-align-center">Create Job Alert</a>
